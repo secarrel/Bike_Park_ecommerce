@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- Heading, difficulty and description -->
+    <div class="container-fluid text-center">
+        <div>
+            <h3 class="text-bottom">{{ activity.name}}</h3>
+        </div>
+        <div class="my-3">
+            {{ activity.difficulty}}
+        </div>
+        <div > 
+            <p> {{ activity.description }} </p>
+        </div>
+    </div>
+    <!-- Further details -->
+    <div class="container-fluid d-flex flex-wrap text-center">
+        <!-- text -->
+        <div class="d-flex flex-column col-12 col-lg-4 m-auto">
+            <div class="d-flex flex-column mx-auto py-3">
+                <h4>Info <i class="fa-solid fa-circle-info ms-2"></i> </h4>
+                {% if activity.price %}
+                <div class="d-flex px-2 activity-info-item">
+                    <div class="circle-icon px-1"><i class="fa-solid fa-sterling-sign"></i></div>
+                    <p class="card-text px-1">{{activity.price}}</p>
+                </div>
+                {% endif %}
+                {% if activity.get_duration %}
+                <div class="d-flex px-2 activity-info-item">
+                    <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
+                    <p class="card-text px-1">{{activity.get_duration}}</p>
+                </div>
+                {% endif %}
+                {% if activity.capacity %}
+                <div class="d-flex px-2 activity-info-item">
+                    <div class="circle-icon px-1"><i class="fa-solid fa-user-group"></i></div>
+                    <p class="card-text px-1">{{activity.capacity}}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="d-flex flex-column mx-auto py-3 ">
+                <div class="d-flex justify-content-center" >
+                    <h4>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h4>
+                </div>
+                <div class="d-flex px-2 activity-info-item">
+                    <p class="card-text px-1">{{activity.requirements}}</p>
+                </div>
+            </div>
+            <div class="d-flex flex-column mx-auto py-3 ">
+                <div class="d-flex justify-content-center" >
+                    <h4>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></i></h4>
+                </div>
+                <div class="d-flex px-2 activity-info-item">
+                    <p class="card-text px-1">{{activity.details}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Calander -->
+        <div class="col-12 col-lg-7 m-auto">
+            <div class="big-square">
+                <form class="form" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if activity.timeslot.all %}
+                        <select name="timeslot" id="timeslot-select" class="form-select" required aria-label="Default select example">
+                            <option selected value="None">Select a timeslot</option>
+                            {% for timeslot in activity.timeslot.all %}
+                                {% if timeslot.available_capacity > 0 %}
+                                <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">{{ timeslot.start_time }} <span><em>({{ timeslot.available_capacity }} spaces available)</em></span></option>
+                                
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="{{timeslot.available_capacity}}" required>
+                        <p id="quantity-error" class="error-message text-warning"></p>
+
+                        <div class="col-12">
+                            <a href="{% url 'activities' %}" class="btn">
+                                <span>Keep Browsing</span>
+                            </a>
+                            <input type="submit" class="btn" value="Add to Basket">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    {% else %}
+                        <p>No timeslots available for this activity</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Reviews -->
+    <div>
+        <h3> Reviews </h3>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }} 
+    <script>
+        document.getElementById('basket-form').addEventListener('submit', function(event) {
+            var timeslotSelect = document.getElementById('timeslot-select');
+            var quantityInput = document.getElementById('quantity-input');
+        
+            if (timeslotSelect.value === 'None' || quantityInput.value === '') {
+                event.preventDefault();
+                alert('Please select a timeslot.');
+            }
+        });
+    </script>
+{% endblock %}
+

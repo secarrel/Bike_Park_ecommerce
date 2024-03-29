@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <!-- Page intro -->
+        <div class="row">
+            {% if category %}
+                {% if category.image %}
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                {% else %}
+                    <p>No image</p>
+                    <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ activity.name }}">
+                {% endif %}
+                <h3>{{catgeory}}</h3>
+                <p>{{catgeory.overview}}
+            {% else %}
+            <div class="text-center">
+                <h3> All Products </h3>
+                <p>Nestled amidst breathtaking natural landscapes, our park offers a diverse array of thrilling activities designed to ignite your passion for outdoor excitement. From heart-pounding downhill descents to serene cross-country trails, our park caters to riders of all skill levels and preferences.</p>
+                <p>Below you can browse the coaching sessions, day passes, events and courses we offer. </p>
+            </div>
+            {% endif %}
+        </div>
+        <!-- Soring and filtering -->
+        <div class="row">
+            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                <div class="sort-select-wrapper w-50">
+                    <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                        <option value="difficulty_asc" {% if current_sorting == 'difficulty_asc' %}selected{% endif %}>Difficulty (beginner to expert)</option>
+                        <option value="difficulty_desc" {% if current_sorting == 'difficulty_desc' %}selected{% endif %}>Difficulty (expert to beginner)</option>
+                    </select>
+                </div>
+            </div>
+            {% comment %} <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                <div class="sort-select-wrapper w-50">
+                    <select id="difficulty-filter">
+                        <option value="reset">All Difficulty Levels</option>
+                        <option value="BEGINNER">Beginner</option>
+                        <option value="INTERMEDIATE">Intermediate</option>
+                        <option value="ADVANCED">Advanced</option>
+                        <option value="EXPERT">Expert</option>
+                        <option value="ANY">Any</option>
+                    </select>
+                </div>
+            </div> {% endcomment %}
+        </div>
+        <!-- Activity list display -->
+        <div class="row" id="activities-list">
+            <div class="container">
+                <div class="d-flex flex-wrap">
+                    {% for activity in activities %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100 m-1 text-center">
+                                <!-- image display -->
+                                {% if activity.image %}
+                                    <a href="{% url 'activity_details' activity.id %}">
+                                        <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                    <a/>                                
+                                {% elif category.image %}
+                                    <a href="{% url 'activity_details' activity.id %}">
+                                        <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                    <a/>
+                                {% else %}
+                                    <a href="{% url 'activity_details' activity.id %}">
+                                        <img src="#" class="card-img-top" alt="{{ activity.name }}">
+                                    <a/>
+                                {% endif %}
+                                <!--Info display-->
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-end p-0 m-0">{{activity.category.friendly_name}}</p>
+                                        {% if activity.average_rating %}
+                                            <div>
+                                                {% for star in activity.average_rating.1 %}
+                                                    {% if star == 'full' %}
+                                                        <i class="fa-solid fa-star"></i>
+                                                    {% elif star == 'half' %}
+                                                        <i class="fa-solid fa-star-half"></i>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                ({{activity.average_rating.0}})
+                                                ({{activity.review_count.0}})
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <h5 class="card-title">{{activity.name}}</h5>
+                                    <div class="card-text my-2">Skill Level: {{activity.difficulty}}</div>
+                                    <div class="container d-flex flex-wrap justify-content-between">
+                                        {% if activity.price %}
+                                        <div class="d-flex px-2">
+                                            <div class="circle-icon px-1"><i class="fa-solid fa-sterling-sign"></i></div>
+                                            <p class="card-text px-1">{{activity.price}}</p>
+                                        </div>
+                                        {% endif %}
+                                        {% if activity.get_duration %}
+                                        <div class="d-flex px-2">
+                                            <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
+                                            <p class="card-text px-1">{{activity.get_duration}}</p>
+                                        </div>
+                                        {% endif %}
+                                        {% if activity.capacity %}
+                                        <div class="d-flex px-2">
+                                            <div class="circle-icon px-1"><i class="fa-solid fa-user-group"></i></div>
+                                            <p class="card-text px-1">{{activity.capacity}}</p>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }} 
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
+
+{% endblock %}
