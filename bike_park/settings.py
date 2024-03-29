@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'activities',
     'basket',
     'timeslots',
+    'checkout',
 ]
 
 MIDDLEWARE = [
