@@ -1,33 +1,33 @@
 <ul class="nav d-none d-lg-flex col-12 justify-content-around">
-    <!-- Book Products-->
-    <li class="nav-item dropdown-center">
-      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Book
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Day Passes</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Courses</a></li>
-        <li><a class="dropdown-item" href="#">Private Coaching</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Events</a></li>
-      </ul>
-    </li>
-    <!-- About Section-->
-    <li class="nav-item dropdown-center">
-      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        About
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">About Us</a></li>
-        <li><a class="dropdown-item" href="#">Trails</a></li>
-        <li><a class="dropdown-item" href="#">Contact</a></li>
-        <li><a class="dropdown-item" href="#">News</a></li>
-        <li><a class="dropdown-item" href="#">Reviews</a></li>
-      </ul>
-    </li>
-    <!-- Events -->
-    <li class="nav-item">
-      <a class="nav-link" href="#">Events</a>
-    </li>
-  </ul>
+  <!-- Book Products-->
+  <li class="nav-item dropdown-center">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Book
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'activities' %}?category=day_passes">Day Passes</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="{% url 'activities' %}?category=courses">Courses</a></li>
+      <li><a class="dropdown-item" href="{% url 'activities' %}?category=private_coaching">Private Coaching</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="{% url 'activities' %}?category=events">Events</a></li>
+    </ul>
+  </li>
+  <!-- About Section-->
+  <li class="nav-item dropdown-center">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      About
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">About Us</a></li>
+      <li><a class="dropdown-item" href="#">Trails</a></li>
+      <li><a class="dropdown-item" href="#">Contact</a></li>
+      <li><a class="dropdown-item" href="#">News</a></li>
+      <li><a class="dropdown-item" href="#">Reviews</a></li>
+    </ul>
+  </li>
+  <!-- Events -->
+  <li class="nav-item">
+    <a class="nav-link" href="#">Events</a>
+  </li>
+</ul>

@@ -1,0 +1,28 @@
+:root {
+    --grey: #303030;
+    --dark-grey: #1b1b1b;
+    --opaque-grey: #3030302f;
+    --opaque-dark-grey: #1b1b1b2e;
+
+  }
+
+
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+}
+
+.big-square {
+    padding: 10px;
+    width: 100%;
+    height: 400px;
+    background-color: white;
+}
+
+.activity-info-item i{
+    width: 18px;
+    margin-right: 5px;
+}

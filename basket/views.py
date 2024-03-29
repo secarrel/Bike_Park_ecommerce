@@ -16,6 +16,7 @@ def add_to_basket(request, item_id):
         quantity = int(request.POST.get('quantity'))
         redirect_url = request.POST.get('redirect_url')
         basket = request.session.get('basket', {}) 
+        print(basket)
 
         if timeslot.available_capacity < quantity :
             messages.error(request, f'Could not add activity to your basket. Not enough available spaces in this timeslot.')
@@ -33,6 +34,7 @@ def add_to_basket(request, item_id):
 
             messages.success(request, f'{timeslot.activity} has been added to your basket')
             request.session['basket'] = basket
+            print(basket)
 
     return redirect(redirect_url)
 

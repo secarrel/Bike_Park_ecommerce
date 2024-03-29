@@ -19,7 +19,8 @@ def basket_contents(request):
             'activity': activity,
             'timeslot': timeslot
         })
-
+        print(basket_items)
+        print(basket_contents)
         activity_ids.add(activity.id)
         timeslot_ids.add(timeslot.id)
 
