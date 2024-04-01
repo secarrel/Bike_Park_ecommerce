@@ -32,8 +32,11 @@
     <script src="https://js.stripe.com/v3/"></script>{% endblock %}
     {% block extra_js %}
     {% endblock %}
-
-    <title>FastTrack Bike Park {% block extra_title %}{% endblock %}</title>
+    <title>
+      FastTrack Bike Park 
+      {% block extra_title %}
+      {% endblock %}
+    </title>
   </head>
   <body>
     <header>
@@ -68,12 +71,11 @@
               </a>
               <ul class="dropdown-menu">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'profile'%}">My Account</a></li>
-                <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-                <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+                  <li><a href="{% url 'profile' %}">My Account</a></li>
+                  <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
                 {% else %}
-                <li><a href="{% url 'account_login' %}">Sign In</a></li>
-                <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+                  <li><a href="{% url 'account_login' %}">Sign In</a></li>
+                  <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
                 {% endif %}                
               </ul>
               <a class="nav-link m-3" aria-current="page" href="{% url 'view_basket' %}">
@@ -137,10 +139,7 @@
             {% endfor %}
         </div>
     {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
+    
     {% block content %}
     {% endblock %}
 
