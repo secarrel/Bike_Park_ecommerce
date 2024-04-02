@@ -8,6 +8,19 @@ from checkout.models import Order
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
+    orders = profile.orders.all()
+
+    template = 'profiles/profile.html'
+    context = {
+        'orders': orders,
+    }
+
+    return render(request, template, context)
+
+
+def user_details(request):
+    """ Display the user's details. """
+    profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -16,30 +29,22 @@ def profile(request):
             messages.success(request, 'Profile updated successfully')
 
     form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
 
-    template = 'profiles/profile.html'
+    template = 'profiles/user_details.html'
     context = {
         'form': form,
-        'orders': orders,
         'on_profile_page': True
     }
 
     return render(request, template, context)
 
+def order_history(request, user_id):
+    # Retrieve the user's orders based on the user_id
+    orders = Order.objects.filter(user_profile__user_id=user_id)
 
-def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=request.order_number)
-
-    messages.info(request, (
-        f'This is a past conformation for order number {order_number}.'
-        'A confirmation email was sent on the order date.'
-    ))
-
-    template = 'checkout/checkout_success.html'
+    template = 'profiles/order_history.html'
     context = {
-        'order': order,
-        'from_profile': True
+        'orders': orders,
     }
 
     return render(request, template, context)

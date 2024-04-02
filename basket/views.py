@@ -34,7 +34,6 @@ def add_to_basket(request, item_id):
 
             messages.success(request, f'{timeslot.activity} has been added to your basket')
             request.session['basket'] = basket
-            print(basket)
 
     return redirect(redirect_url)
 
