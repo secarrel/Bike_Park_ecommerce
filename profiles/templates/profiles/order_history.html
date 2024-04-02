@@ -22,8 +22,10 @@
             <thead>
                 <tr>
                     <th>Order Number</th>
-                    <th>Date</th>
-                    <th>Items</th>
+                    <th>Order date</th>
+                    <th>Activities</th>
+                    <th>Timeslot</th>
+                    <th>quantity</th>
                     <th>Order Total</th>
                 </tr>
             </thead>
@@ -32,7 +34,7 @@
                     <tr>
                         <td>
                             <a href="{% url 'order_history' user_id=user.id %}">
-                                Order History
+                                {{ order.order_number }}
                             </a>
                         </td>
                         <td>{{ order.date }}</td>
@@ -40,12 +42,30 @@
                             <ul class="list-unstyled">
                                 {% for item in order.lineitems.all %}
                                     <li class="small">
-                                        {{ item.timeslot.activity }} x{{ item.quantity }}
+                                        {{ item.timeslot.activity }} 
                                     </li>
                                 {% endfor %}
                             </ul>
                         </td>
-                        <td>£{{ order.total }}</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                        {{ item.timeslot.start_time }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="list-unstyled">
+                                {% for item in order.lineitems.all %}
+                                    <li class="small">
+                                        {{ item.quantity }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>£{{ total }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
