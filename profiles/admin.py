@@ -5,6 +5,7 @@ from .models import UserProfile
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = (
         'user',
+        'default_full_name'
     )
 
 

@@ -1,18 +1,43 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.utils import timezone
 
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 
 def profile(request):
-    """ Display the user's profile. """
+    """Display the user's profile."""
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()
+
+    # Dictionary to store timeslots and their quantities
+    timeslot_quantities = {}
+
+    # Iterate through orders
+    for order in orders:
+        # Iterate through items in the order
+        for item in order.lineitems.all():
+            timeslot = item.timeslot
+            quantity = item.quantity
+            start_time = timeslot.start_time
+
+            # Check timeslot is in the future
+            if start_time > timezone.now():
+            
+                # Check if the timeslot is already in the dictionary
+                if timeslot in timeslot_quantities:
+                    # Increment the quantity if the timeslot exists
+                    timeslot_quantities[timeslot] += quantity
+                else:
+                    # Add the timeslot to the dictionary with the initial quantity
+                    timeslot_quantities[timeslot] = quantity
+
 
     template = 'profiles/profile.html'
     context = {
         'orders': orders,
+        'timeslot_quantities': timeslot_quantities,
     }
 
     return render(request, template, context)

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load tz %}
+
+{% get_current_timezone as TIME_ZONE %}
+{% timezone TIME_ZONE %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
@@ -24,19 +28,31 @@
                 <hr>
             </div>
         </div>
-        <div class="col-12 col-md-6 d-flex flex-column">
-            <a class="btn btn-primary m-2" href="{% url 'user_details' %}">
-                My Details
-            </a>
-            <a class="btn btn-primary m-2" href="{% url 'order_history' user_id=user.id %}">
-                Order History
-            </a>
-            <a class="btn btn-primary m-2" href="{% url 'user_details' %}">
-                Change Password
-            </a>
-            <a class="btn btn-primary m-2" href="{% url 'user_details' %}">
-                Logout
-            </a>
+        <div class="row">
+            <div class="col-12 col-md-6 p-2 d-flex flex-column">
+                <h3 class="mx-auto"> Manage Account </h3>
+                <a class="btn btn-primary m-2" href="{% url 'user_details' %}">
+                    My Details
+                </a>
+                <a class="btn btn-primary m-2" href="{% url 'order_history' user_id=user.id %}">
+                    Order History
+                </a>
+                <a class="btn btn-primary m-2" href="{% url 'account_logout' %}">
+                    Sign Out
+                </a>
+            </div>
+            <div class="col-12 col-md-6 p-2 d-flex flex-column">
+                <h3 class="mx-auto"> Upcoming Bookings </h3>
+                <div class="p-2 d-flex justify-content-center">
+                    {% if timeslot_quantities %}
+                        {% for timeslot, quantity in timeslot_quantities.items %}
+                            <p>{{ timeslot }} x {{ quantity }}</p>
+                        {% endfor %}
+                    {% else %} 
+                        <p> You have no upcoming bookings. </p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -45,3 +61,5 @@
     {{ block.super }}
     <script type="text/javascript" src="{% static 'profiles/js/profiles.js' %}"></script>
 {% endblock %}
+
+{% endtimezone %}

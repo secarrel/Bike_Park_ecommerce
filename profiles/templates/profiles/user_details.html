@@ -19,12 +19,31 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-8 m-auto">
+    <div class="col-8 m-auto"> 
         <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
             {% csrf_token %}
-            {{ form|crispy }}
-            <button class="btn btn-primary">Update Information</button>
+            <fieldset class="d-flex flex-column">
+                <legend class="fieldset-label">Your Details</legend>
+                {{ form.default_full_name }}
+                {{ form.email }}
+                {{ form.default_phone_number }}
+            </fieldset>
+            <fieldset class="d-flex flex-column">
+                <legend class="fieldset-label">Billing Address</legend>
+                {{ form.default_street_address1 }}
+                {{ form.default_street_address2 }}
+                {{ form.default_town_or_city }}
+                {{ form.default_county }}
+                {{ form.default_country }}
+                {{ form.default_postcode }}
+            </fieldset>
+            <button class="btn btn-success">Save and Update</button>
         </form>
-    </div>
+        <div class="row">
+            <a class="btn btn-primary m-2" href="{% url 'account_change_password' %}">
+                Change Password
+            </a>
+        </div>
+</div>
 </div>
 {% endblock %}
