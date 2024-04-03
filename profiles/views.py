@@ -33,11 +33,13 @@ def profile(request):
                     # Add the timeslot to the dictionary with the initial quantity
                     timeslot_quantities[timeslot] = quantity
 
+    # Sort timeslot_quantities by start time
+    sorted_timeslot_quantities = dict(sorted(timeslot_quantities.items(), key=lambda item: item[0].start_time))
 
     template = 'profiles/profile.html'
     context = {
         'orders': orders,
-        'timeslot_quantities': timeslot_quantities,
+        'sorted_timeslot_quantities': sorted_timeslot_quantities,
     }
 
     return render(request, template, context)

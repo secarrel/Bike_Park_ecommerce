@@ -43,10 +43,12 @@
             </div>
             <div class="col-12 col-md-6 p-2 d-flex flex-column">
                 <h3 class="mx-auto"> Upcoming Bookings </h3>
-                <div class="p-2 d-flex justify-content-center">
-                    {% if timeslot_quantities %}
-                        {% for timeslot, quantity in timeslot_quantities.items %}
-                            <p>{{ timeslot }} x {{ quantity }}</p>
+                <div class="p-2 d-flex flex-column justify-content-center">
+                    {% if sorted_timeslot_quantities %}
+                        {% for timeslot, quantity in sorted_timeslot_quantities.items %}
+                            <div class="col">
+                                <p>{{ timeslot }} x {{ quantity }}</p>
+                            </div>
                         {% endfor %}
                     {% else %} 
                         <p> You have no upcoming bookings. </p>
