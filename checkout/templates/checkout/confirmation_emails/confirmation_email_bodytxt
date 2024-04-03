@@ -1,0 +1,26 @@
+Hi, {{ order.fill_name }}!
+
+Thanks for making a booking with us at FastTrack Bike Park! Here are your order details...
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Your Order:
+{% for item in order %}
+    {{ quantity }} x {{ item.activity }} on {{ item.start_time.date }} at {{ item.start_time.time }}
+{% endfor %}
+Order Total: £{{ order.order_total }}
+
+Billing Address: 
+{{ order.street_address1 }}, 
+{{ order.town_or_city }},
+{{ order.country }},
+{{ order.postcode }}
+
+Contact number: {{ order.phone_number }}
+
+Please ensure the above details are correct. If you have any queries or ammendments, please contact us at {{ contact_email }}item.activity
+
+We're looking forward to seeing you soon!
+
+FastTrack Team
