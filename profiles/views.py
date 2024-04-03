@@ -104,7 +104,6 @@ def order_history(request, user_id):
                     # Add the timeslot to the dictionary with the initial quantity
                     timeslot_future[timeslot] = quantity
 
-
     # Sort timeslot_quantities by start time
     sorted_timeslot_past = dict(sorted(timeslot_past.items(), key=lambda item: item[0].start_time, reverse=True))
     sorted_timeslot_future = dict(sorted(timeslot_future.items(), key=lambda item: item[0].start_time))
