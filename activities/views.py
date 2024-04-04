@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Activity, Category
+from .forms import ActivityForm, TimeslotForm
 
 # Create your views here.
 def all_activities(request):
@@ -64,3 +65,47 @@ def activity_details(request, activity_id):
     }
 
     return render(request, 'activities/activity_details.html', context)
+
+
+def manage_activities(request):
+    """ Show manage activities options """
+
+    return render(request, 'activities/manage_activities.html')
+
+def add_activity(request):
+    """ Add a activity to a catgeory """
+    if request.method == "POST":
+        form = ActivityForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added activity!')
+            return redirect(reverse('add_activity'))
+        else: 
+            messages.error(request, 'Failed to add activity. Please ensure the form is valid.')
+    else:
+        form = ActivityForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'activities/add_activity.html', context)
+
+def add_timeslot(request):
+    """ Add a timeslot to an activity """
+    if request.method == "POST":
+        form = TimeslotForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added timeslot!')
+            return redirect(reverse('add_timeslot'))
+        else: 
+            messages.error(request, 'Failed to add timeslot. Please ensure the form is valid.')
+    else:
+        form = TimeslotForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'activities/add_timeslot.html', context)
