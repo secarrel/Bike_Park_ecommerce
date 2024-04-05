@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -66,7 +67,6 @@ def activity_details(request, activity_id):
 
     return render(request, 'activities/activity_details.html', context)
 
-
 def manage_activities(request):
     """ Show manage activities options """
     activities = Activity.objects.all()
@@ -82,15 +82,14 @@ def manage_timeslots(request):
 
     return render(request, 'activities/manage_timeslots.html')
 
-
 def add_activity(request):
     """ Add a activity to a catgeory """
     if request.method == "POST":
         form = ActivityForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            activity = form.save()
             messages.success(request, 'Successfully added activity!')
-            return redirect(reverse('add_activity'))
+            return redirect(reverse('activity_details', args=[activity.id]))
         else: 
             messages.error(request, 'Failed to add activity. Please ensure the form is valid.')
     else:
@@ -144,7 +143,6 @@ def edit_activity(request, activity_id):
 
     return render(request, template, context)
 
-
 def edit_timeslot(request, timeslot_id):
     """ Edit an activity """
 
@@ -159,3 +157,19 @@ def edit_timeslot(request, timeslot_id):
     }
 
     return render(request, template, context)
+
+def delete_activity(request, activity_id):
+    """ Delete activity """
+    activity = get_object_or_404(Activity, id=activity_id)
+    activity.delete()
+    messages.success(request, 'Activity Deleted')
+    referer = request.META.get('HTTP_REFERER', None)
+    if referer:
+        # Check if the referer contains 'manage_activities'
+        if 'manage_activities' in referer:
+            # Redirect to manage_activities page
+            return HttpResponseRedirect(referer)
+   
+    # If the referer does not contain 'manage_activities' or is None, redirect to 'activities' page
+    return redirect(reverse('activities'))
+
