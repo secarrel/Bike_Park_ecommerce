@@ -10,51 +10,55 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Manage Activities</h2>
-            <hr>
-            {% if activities %}
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th> Activity </th>
-                        <th> Category </th>
-                        <th> Price </th>
-                        <th> Duration </th>
-                        <th> Capacity </th>
-                        <th> Difficulty </th>
-                        <th> edit </th>
-                        <th> delete </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for activity in activities %}
+    {% if request.user.is_superuser %}
+        <div class="container mb-2">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Manage Activities</h2>
+                <hr>
+                {% if activities %}
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
-                            <td> {{ activity.category.friendly_name }} </td>
-                            <td> {{ activity.price }} </td>
-                            <td> {{ activity.duration }} </td>
-                            <td> {{ activity.capacity }} </td>
-                            <td> {{ activity.difficulty }} </td>
-                            <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                            <td><a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
+                            <th> Activity </th>
+                            <th> Category </th>
+                            <th> Price </th>
+                            <th> Duration </th>
+                            <th> Capacity </th>
+                            <th> Difficulty </th>
+                            <th> edit </th>
+                            <th> delete </th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-                
-            </table>
-            {% else %}
-                <p> No activities have been created yet </p>
-            {% endif %}
-            <a class="btn btn-primary m-2" href="{% url 'add_activity' %}">
-                Add Activity
-            </a>
-            <a class="btn btn-primary m-2" href="{% url 'add_timeslot' %}">
-                Add Timeslot
-            </a>
+                    </thead>
+                    <tbody>
+                        {% for activity in activities %}
+                            <tr>
+                                <td> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
+                                <td> {{ activity.category.friendly_name }} </td>
+                                <td> {{ activity.price }} </td>
+                                <td> {{ activity.duration }} </td>
+                                <td> {{ activity.capacity }} </td>
+                                <td> {{ activity.difficulty }} </td>
+                                <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                <td><a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+                {% else %}
+                    <p> No activities have been created yet </p>
+                {% endif %}
+                <a class="btn btn-primary m-2" href="{% url 'add_activity' %}">
+                    Add Activity
+                </a>
+                <a class="btn btn-primary m-2" href="{% url 'add_timeslot' %}">
+                    Add Timeslot
+                </a>
+            </div>
         </div>
-    </div>
+    {% else %}
+        Redirect User - They are Not authorised
+    {% endif %}
 {% endblock %}

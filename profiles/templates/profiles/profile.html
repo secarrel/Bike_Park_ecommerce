@@ -40,9 +40,11 @@
                 <a class="btn btn-primary m-2" href="{% url 'account_logout' %}">
                     Sign Out
                 </a>
-                <a class="btn btn-primary m-2" href="{% url 'manage_activities' %}">
-                    Manage Activities
-                </a>
+                {% if request.user.is_superuser %}
+                    <a class="btn btn-primary m-2" href="{% url 'manage_activities' %}">
+                        Manage Activities
+                    </a>
+                {% endif %}
             </div>
             <div class="col-12 col-md-6 p-2 d-flex flex-column">
                 <h3 class="mx-auto"> Upcoming Bookings </h3>
