@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Activity, Category
 from .forms import ActivityForm, TimeslotForm
+from timeslots.models import Timeslot
 
 # Create your views here.
 def all_activities(request):
@@ -172,4 +173,14 @@ def delete_activity(request, activity_id):
    
     # If the referer does not contain 'manage_activities' or is None, redirect to 'activities' page
     return redirect(reverse('activities'))
+
+def delete_timeslot(request, timeslot_id):
+    """ Delete activity """
+    timeslot = get_object_or_404(Timeslot, id=timeslot_id)
+    activity = timeslot.activity
+    timeslot.delete()
+    messages.success(request, 'Timeslot Deleted')
+    return redirect(reverse('activity_details', args=[activity.id]))
+
+
 
