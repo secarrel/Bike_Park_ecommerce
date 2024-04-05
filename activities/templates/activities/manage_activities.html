@@ -16,11 +16,44 @@
             <hr>
             <h2 class="logo-font mb-4">Manage Activities</h2>
             <hr>
+            {% if activities %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> Activity </th>
+                        <th> Category </th>
+                        <th> Price </th>
+                        <th> Duration </th>
+                        <th> Capacity </th>
+                        <th> Difficulty </th>
+                        <th> edit </th>
+                        <th> delete </th>
+                        <th> Add timeslot </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for activity in activities %}
+                        <tr>
+                            <td> {{ activity.name }} </td>
+                            <td> {{ activity.category.friendly_name }} </td>
+                            <td> {{ activity.price }} </td>
+                            <td> {{ activity.duration }} </td>
+                            <td> {{ activity.capacity }} </td>
+                            <td> {{ activity.difficulty }} </td>
+                            <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                            <td><a href="#"><i class="fa-regular fa-trash-can"></i></a></td>
+                            {% comment %} <td><a href="{% url 'add_timeslot' activity.id %}"><i class="fa-regular fa-calendar-plus"></i></a></td> {% endcomment %}
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+            {% else %}
+                <p> No activities have been created yet </p>
+            {% endif %}
             <a class="btn btn-primary m-2" href="{% url 'add_activity' %}">
                 Add Activity
-            </a>
-            <a class="btn btn-primary m-2" href="{% url 'add_timeslot' %}">
-                Add Timeslot
             </a>
         </div>
     </div>

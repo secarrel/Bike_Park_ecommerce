@@ -18,12 +18,13 @@
             <h2 class="logo-font mb-4">Manage Activities</h2>
             <hr>
             <h5> Edit an Activity </h5>
-            <form method="POST" action="{% url 'add_activity' %}" class="form" enctype="multipart/form-data">
+            <h6> {{ activity }} </h6>
+            <form method="POST" action="{% url 'edit_activity' activity.id %}" class="form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-right">
                     <a class="btn" href="{% url 'manage_activities' %}"> Cancel</a>
-                    <button class="btn" type="submit">Add Product</button>
+                    <button class="btn" type="submit">Update Product</button>
                 </div>
             </form>
         </div>
