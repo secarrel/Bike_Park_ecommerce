@@ -34,7 +34,7 @@
                 <tbody>
                     {% for activity in activities %}
                         <tr>
-                            <td> {{ activity.name }} </td>
+                            <td> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
                             <td> {{ activity.category.friendly_name }} </td>
                             <td> {{ activity.price }} </td>
                             <td> {{ activity.duration }} </td>
@@ -42,8 +42,6 @@
                             <td> {{ activity.difficulty }} </td>
                             <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                             <td><a href="#"><i class="fa-regular fa-trash-can"></i></a></td>
-                            {% comment %} <td><a href="{% url 'add_timeslot' activity.id %}"><i class="fa-regular fa-calendar-plus"></i></a></td> {% endcomment %}
-
                         </tr>
                     {% endfor %}
                 </tbody>
