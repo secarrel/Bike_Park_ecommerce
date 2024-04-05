@@ -79,6 +79,8 @@
                                             <img src="#" class="card-img-top" alt="{{ activity.name }}">
                                         <a/>
                                     {% endif %}
+                                    <a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a>
                                     <!--Info display-->
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
