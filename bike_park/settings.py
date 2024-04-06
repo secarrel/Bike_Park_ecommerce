@@ -12,9 +12,9 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # debug
-DEBUG = True
+DEBUG = 'DEVELOPEMNT' in os.environ
 
-ALLOWED_HOSTS = ['fasttrack-bike-park-415cb30571a3.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['fasttrack-bike-park-415cb30571a3.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -89,7 +89,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
