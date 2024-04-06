@@ -21,7 +21,13 @@
             <h6> {{ activity }} </h6>
             <form method="POST" action="{% url 'edit_activity' activity.id %}" class="form" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form | crispy }}
+                {% for field in form %}
+                    {% if field.name != 'image' %}
+                        {{ field | as_crispy_field }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                {% endfor %}
                 <div class="text-right">
                     <a class="btn" href="{% url 'manage_activities' %}"> Cancel</a>
                     <button class="btn" type="submit">Update Product</button>

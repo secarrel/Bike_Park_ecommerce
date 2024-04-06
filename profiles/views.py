@@ -1,13 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 
+
 def profile(request):
     """Display the user's profile."""
+
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()
 
@@ -44,8 +47,14 @@ def profile(request):
 
     return render(request, template, context)
 
+
+@login_required
 def user_details(request):
     """ Display the user's details. """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -66,8 +75,14 @@ def user_details(request):
 
     return render(request, template, context)
 
+
+@login_required
 def order_history(request, user_id):
     """ Display the user's order history. """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.orders.all()
 
@@ -118,7 +133,14 @@ def order_history(request, user_id):
 
     return render(request, template, context)
 
+
+@login_required
 def order_details(request, order_number):
+    """ Display specific order details """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
