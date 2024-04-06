@@ -16,7 +16,7 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # debug
-DEBUG = 'DEVELOPEMNT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['fasttrack-bike-park-415cb30571a3.herokuapp.com', '127.0.0.1', 'localhost']
 
@@ -159,7 +159,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
