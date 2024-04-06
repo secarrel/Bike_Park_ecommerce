@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -7,7 +8,7 @@ from .models import Activity, Category
 from .forms import ActivityForm, TimeslotForm
 from timeslots.models import Timeslot
 
-# Create your views here.
+
 def all_activities(request):
     """ A view to all activities, including sorting and search queries."""
 
@@ -68,8 +69,13 @@ def activity_details(request, activity_id):
 
     return render(request, 'activities/activity_details.html', context)
 
+@login_required
 def manage_activities(request):
     """ Show manage activities options """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     activities = Activity.objects.all()
     
     context = {
@@ -78,13 +84,14 @@ def manage_activities(request):
 
     return render(request, 'activities/manage_activities.html', context)
 
-def manage_timeslots(request):
-    """ Show manage timeslots options """
 
-    return render(request, 'activities/manage_timeslots.html')
-
+@login_required
 def add_activity(request):
     """ Add a activity to a catgeory """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     if request.method == "POST":
         form = ActivityForm(request.POST, request.FILES)
         if form.is_valid():
@@ -102,8 +109,14 @@ def add_activity(request):
 
     return render(request, 'activities/add_activity.html', context)
 
+
+@login_required
 def add_timeslot(request):
     """ Add a timeslot to an activity """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     if request.method == "POST":
         form = TimeslotForm(request.POST, request.FILES)
         if form.is_valid():
@@ -121,8 +134,14 @@ def add_timeslot(request):
 
     return render(request, 'activities/add_timeslot.html', context)
 
+
+@login_required
 def edit_activity(request, activity_id):
     """ Edit an activity """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     activity = get_object_or_404(Activity, pk=activity_id)
     if request.method == "POST":
         form = ActivityForm(request.POST, request.FILES, instance=activity)
@@ -144,8 +163,13 @@ def edit_activity(request, activity_id):
 
     return render(request, template, context)
 
+
+@login_required
 def edit_timeslot(request, timeslot_id):
     """ Edit an activity """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
 
     timeslot = get_object_or_404(Activity, pk=timeslot_id)
     form = TimeslotForm(instance=timeslot)
@@ -159,8 +183,14 @@ def edit_timeslot(request, timeslot_id):
 
     return render(request, template, context)
 
+
+@login_required
 def delete_activity(request, activity_id):
     """ Delete activity """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     activity = get_object_or_404(Activity, id=activity_id)
     activity.delete()
     messages.success(request, 'Activity Deleted')
@@ -174,8 +204,14 @@ def delete_activity(request, activity_id):
     # If the referer does not contain 'manage_activities' or is None, redirect to 'activities' page
     return redirect(reverse('activities'))
 
+
+@login_required
 def delete_timeslot(request, timeslot_id):
     """ Delete activity """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     timeslot = get_object_or_404(Timeslot, id=timeslot_id)
     activity = timeslot.activity
     timeslot.delete()
