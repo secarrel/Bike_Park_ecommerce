@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from cloudinary_storage.storage import MediaCloudinaryStorage
 
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
