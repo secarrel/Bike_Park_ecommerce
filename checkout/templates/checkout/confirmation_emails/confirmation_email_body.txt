@@ -15,7 +15,7 @@ Billing Address:
 
 Contact number: {{ order.phone_number }}
 
-Please ensure the above details are correct. If you have any queries or ammendments, please contact us at {{ contact_email }}item.activity
+Please ensure the above details are correct. If you have any queries or amendments, please contact us at {{ contact_email }}.
 
 We're looking forward to seeing you soon!
 
