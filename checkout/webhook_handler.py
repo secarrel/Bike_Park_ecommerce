@@ -90,7 +90,7 @@ class StripeWH_Handler:
                     county__iexact=billing_details.address.state,
                     country__iexact=billing_details.address.country,
                     postcode__iexact=billing_details.address.postal_code,
-                    total=total,
+                    order_total=total,
                     original_basket=basket,
                     stripe_pid=pid,
                 )
