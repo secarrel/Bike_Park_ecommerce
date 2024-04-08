@@ -37,7 +37,7 @@
       {% block extra_title %}
       {% endblock %}
     </title>
-    <link rel="icon" type="image/x-icon" href="/media/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ MEDIA_URL }}/favicon.png">
   </head>
   <body>
     <header>
@@ -47,7 +47,7 @@
           <!-- Nabvar logo -->
           <div class="d-flex col-12 justify-content-center col-sm-4"> 
             <a class="navbar-brand align-items-center" href="{% url 'home' %}">
-              <img src="#" alt="FastTrack">
+              <img src="{{ MEDIA_URL }}/media/logo_no_background.png" alt="Fasttrack logo">
             </a>
           </div>
           <!-- Navbar top row -->
