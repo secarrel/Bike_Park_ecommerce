@@ -6,21 +6,32 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
         <!-- Page intro -->
         <div class="main-image-title text-center">
             {% if current_categories %}
+            <div>
                 {% for category in current_categories %}
                     {% if category.image %}
                         <img class="hero-image m-auto w-100" src="{{ category.image.url }}" alt="{{ category.name }}">
+                        <div class="image-fade-out"></div>
                     {% else %}
                         <img class="hero-image m-auto w-100" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ category.name }}">
+                        <div class="image-fade-out"></div>
                     {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div>
+                <img class="hero-image m-auto w-100" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ category.name }}">    
+                <div class="image-fade-out"></div> 
+            </div>
+            {% endif %}
+            {% if current_categories %}
+                {% for category in current_categories %}
                     <h1 class="text-center light-text"><em><strong class="gold"> {{ category.friendly_name }} </strong></em></h1>
                     <p>{{ category.overview }}</p>
                 {% endfor %}
             {% else %}
-                <img class="hero-image m-auto w-100" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ category.name }}">    
                 <h1 class="text-center light-text"><em><strong class="gold"> All Activities </strong></em></h1>
                 <p>Nestled amidst breathtaking natural landscapes, our park offers a diverse array of thrilling activities designed to ignite your passion for outdoor excitement. From heart-pounding downhill descents to serene cross-country trails, our park caters to riders of all skill levels and preferences.</p>
                 <p>Below you can browse the coaching sessions, day passes, events, and courses we offer.</p>
@@ -72,10 +83,12 @@
                                         {% elif category.image %}
                                             <a class="round-border" href="{% url 'activity_details' activity.id %}">
                                                 <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                                <div class="text round-border">Learn more...</div>
                                             <a/>
                                         {% else %}
                                             <a class="round-border" href="{% url 'activity_details' activity.id %}">
                                                 <img src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ activity.name }}">
+                                                <div class="text round-border">Learn more...</div>
                                             <a/>
                                         {% endif %}
                                         {% if request.user.is_superuser %}
