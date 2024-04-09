@@ -7,7 +7,7 @@
     {% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
-    <p>
+    <p class="text-center">
         {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
     </p>
     {% url 'account_signup' as action_url %}
