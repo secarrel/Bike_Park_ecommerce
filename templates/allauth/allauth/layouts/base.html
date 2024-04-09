@@ -2,11 +2,14 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="container header-container">
+    <div class="full-page-image">
+        <img  src="{{ MEDIA_URL }}woods-jump.jpg" class="card-img-top" alt="{{ activity.name }}">
+    </div>
+    <div class="container p-5 header-container">
         <div class="overlay"></div>
-        <div class="row">
-            <div class="col-12 col-md-8 m-auto">
-                <div class="allauth-form-inner-content">
+        <div class="row ">
+            <div class="col-12 col-md-8 m-auto round-border box-shadow bg-d-grey p-3">
+                <div class="allauth-form-inner-content light-text">
                     {% block inner_content %}
                     {% endblock %}
                 </div>

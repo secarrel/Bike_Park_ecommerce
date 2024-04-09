@@ -8,6 +8,7 @@
     --opaque: rgba(255, 255, 255, 0);
     --opaque-grey: #3030302f;
     --opaque-dark-grey: #1b1b1b2e;
+
 }
 
 html {
@@ -19,9 +20,74 @@ body {
     background-color: var(--dark-grey);
 }
 
-/* -------- PRE-SET CLASSES -------- */
+a {
+    color: var(--gold)
+}
 
-.gold {
+p {
+    color: var(--almost-white)
+}
+
+/* -------- INPUT FIELDS -------- */
+
+input {
+    background-color: var(--grey);
+    color: var(--light-grey);
+    border-radius: 5px !important;
+    padding: 0 10px;
+    border: none;
+    margin: 10px 0;
+}
+
+input::placeholder {
+    color: var(--light-grey);
+    opacity: 1; /* Firefox */
+}
+  
+input::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--almost-white);
+}
+
+input:focus {
+    background-color: var(--light-grey);
+    color: var(--dark-grey)
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+form {
+    padding: 10px;
+    display: flex;
+    text-align: center;
+}
+
+form p{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 200px;
+}
+
+form ul {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+
+form li {
+    list-style: '~  ';
+    text-align: start;
+}
+
+label {
+    margin: 0 10px;
+}
+/* -------- PRE-SET TEXT -------- */
+
+.gold-text {
     color: var(--gold)
 }
 
@@ -29,10 +95,24 @@ body {
     color: var(--light-grey)
 }
 
-.bg-lg-grey {
+.light-text {
+    color: var(--almost-white)
+}
+
+/* -------- PRE-SET BACKGROUNDS -------- */
+.bg-grey {
+    background-color: var(--grey);
+}
+
+.bg-l-grey {
+    background-color: var(--light-grey);
+}
+
+.bg-d-grey {
     background-color: var(--dark-grey);
 }
 
+/* -------- PRE-SET CLASSES -------- */
 .round-border {
     border-radius: 5px !important;
 }
@@ -40,6 +120,46 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+/* --------- BUTTONS --------- */
+
+.box-shadow {
+    box-shadow: 1px 1px 20px 10px var(--grey);
+}
+
+.good-button {
+
+}
+
+.warning-button {
+
+}
+
+.disabled-button {
+}
+
+button {
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+    box-shadow: 1px 2px 1px 1px var(--grey);
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+button:hover {
+    background-color: var(--almost-white);
+    color: var(--dark-grey);
+    box-shadow: 1px 2px 1px 1px var(--grey);
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: none;
+    width: fit-content;
+    margin: 20px auto;
+}
+
 
 /* --------- NAVBAR --------- */
 nav {
@@ -93,7 +213,6 @@ nav {
 }
 
 .form-control:focus {
-    background-color: var(--light-grey);
     color: var(--almost-white);
     border-color: var(--gold);
     box-shadow: 0 0 0 0 var(--dark-grey);
@@ -245,9 +364,15 @@ nav {
 .activity-details div h3 {
     color: var(--gold);
 }
-/* -------- HOME -------- */
-
-
+/* -------- Allauth -------- */
+.full-page-image {
+    position: absolute;
+    max-height: 100vh;
+    object-fit: fill;
+    z-index: -60;
+    opacity: 0.5;
+    overflow: hidden;
+}
 
 
 /* -------- MEDIA QUERIES -------- */
