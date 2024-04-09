@@ -28,11 +28,11 @@
             {% endif %}
             {% if current_categories %}
                 {% for category in current_categories %}
-                    <h1 class="text-center light-text"><em><strong class="gold"> {{ category.friendly_name }} </strong></em></h1>
+                    <h1 class="text-center light-text"><em><strong class="gold-text"> {{ category.friendly_name }} </strong></em></h1>
                     <p>{{ category.overview }}</p>
                 {% endfor %}
             {% else %}
-                <h1 class="text-center light-text"><em><strong class="gold"> All Activities </strong></em></h1>
+                <h1 class="text-center light-text"><em><strong class="gold-text"> All Activities </strong></em></h1>
                 <p>Nestled amidst breathtaking natural landscapes, our park offers a diverse array of thrilling activities designed to ignite your passion for outdoor excitement. From heart-pounding downhill descents to serene cross-country trails, our park caters to riders of all skill levels and preferences.</p>
                 <p>Below you can browse the coaching sessions, day passes, events, and courses we offer.</p>
             {% endif %}
