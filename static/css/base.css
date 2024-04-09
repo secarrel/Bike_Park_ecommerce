@@ -116,15 +116,25 @@ nav {
 /* -------- HOME -------- */
 .hero-image {
     position: relative;
-    top: -40px;
+    translate:0 -40px;
     z-index: -40;
+    width: 100%;
+    object-fit: cover;
+    min-height: 300px;
+    max-height: 400px;
 }
 
-.main-image-title div {
-    position: relative;
+.hero-div {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.image-fade-out {
+    position: absolute;
     height: 150px;
+    width: 100%;
     background-image: linear-gradient(to top, var(--dark-grey), var(--opaque));
-    bottom: 150px;
+    translate: 0 -189px;
 }
 
 .main-image-title p {
@@ -196,6 +206,7 @@ nav {
     backface-visibility: hidden;
 
 }
+
 .skill-level {
     display: flex;
     flex-direction: row;
@@ -231,7 +242,9 @@ nav {
     margin-right: 5px;
 }
 
-
+.activity-details div h3 {
+    color: var(--gold);
+}
 /* -------- HOME -------- */
 
 
