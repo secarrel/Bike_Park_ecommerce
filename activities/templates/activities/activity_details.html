@@ -11,53 +11,82 @@
 
 {% block content %}
     <!-- Heading, difficulty and description -->
-    <div class="container-fluid text-center">
+    <div class="main-image-title text-center">
         <div>
-            <h3 class="text-bottom">{{ activity.name}}</h3>
-        </div>
-        <div class="my-3">
-            {{ activity.difficulty}}
+            {% if activity.image %}
+                <img class="hero-image" src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                <div class="image-fade-out"></div>                                  
+            {% elif category.image %}
+                <img class="hero-image" src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                <div class="image-fade-out"></div>
+            {% else %}
+                <img class="hero-image" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ activity.name }}">
+                <div class="image-fade-out"></div>
+            {% endif %}
+            {% if request.user.is_superuser %}
+                <a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a>
+            {% endif %}
+        <div>
+        <h1 class="gold"><em>{{ activity.name}}</em></h1>
+        <div class="d-flex justify-content-center my-4" >
+            <div class="skill-level round-border">
+                <div class="skill-title">
+                    <em> Skill Level: </em>
+                </div>
+                <div class="skill-value">
+                    <strong>{{activity.difficulty}}</strong>
+                </div>
+            </div>
         </div>
         <div > 
             <p> {{ activity.description }} </p>
         </div>
     </div>
     <!-- Further details -->
-    <div class="container-fluid d-flex flex-wrap text-center">
-        <!-- text -->
-        <div class="d-flex flex-column col-12 col-lg-4 m-auto">
+    <div class="container-fluid d-flex flex-wrap text-center muted-text">
+        <!-- Activity Details -->
+        <div class="activity-details d-flex flex-column col-12 col-lg-4 m-auto">
+            <!-- Info -->
             <div class="d-flex flex-column mx-auto py-3">
-                <h4>Info <i class="fa-solid fa-circle-info ms-2"></i> </h4>
+                <h3>Info <i class="fa-solid fa-circle-info ms-2"></i> </h3>
+                <!-- Price -->
                 {% if activity.price %}
                 <div class="d-flex px-2 activity-info-item">
                     <div class="circle-icon px-1"><i class="fa-solid fa-sterling-sign"></i></div>
                     <p class="card-text px-1">{{activity.price}}</p>
                 </div>
                 {% endif %}
+                <!-- Duration -->
                 {% if activity.get_duration %}
                 <div class="d-flex px-2 activity-info-item">
                     <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
                     <p class="card-text px-1">{{activity.get_duration}}</p>
                 </div>
                 {% endif %}
-                {% if activity.capacity %}
+                <!-- Info -->
+                {% if activity.capacity and activity.capacity <= 10 %}
                 <div class="d-flex px-2 activity-info-item">
                     <div class="circle-icon px-1"><i class="fa-solid fa-user-group"></i></div>
                     <p class="card-text px-1">{{activity.capacity}}</p>
                 </div>
                 {% endif %}
             </div>
-            <div class="d-flex flex-column mx-auto py-3 ">
+            <!-- Requirements -->
+                <div class="d-flex flex-column mx-auto py-3 ">
                 <div class="d-flex justify-content-center" >
-                    <h4>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h4>
+                    <h3>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h3>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
                     <p class="card-text px-1">{{activity.requirements}}</p>
                 </div>
+                <p> Please read through the equipment requirements before booking. </p>
+                <a href="#"> Equipment Requirements </a>
             </div>
+            <!-- Details -->
             <div class="d-flex flex-column mx-auto py-3 ">
                 <div class="d-flex justify-content-center" >
-                    <h4>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></i></h4>
+                    <h3>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></h3>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
                     <p class="card-text px-1">{{activity.details}}</p>
