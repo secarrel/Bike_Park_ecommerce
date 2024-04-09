@@ -20,61 +20,80 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="main-image-title text-center">
+        <div>
+            <img class="hero-image" src="{{ MEDIA_URL }}profile.jpg" class="card-img-top" alt="{{ activity.name }}">
+            <div class="image-fade-out"></div>
+        <div>
+    </div>
+    <div class="container my-3 text-light">
         <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
-                <hr>
-            </div>
+            {% if request.user.is_superuser %}
+                <h1 class="logo-font mb-4 gold-text">Welcome, Admin!</h1>
+            {% else %}
+                <h1 class="logo-font mb-4 gold-text">My Profile</h1>
+            {% endif %}
         </div>
         <div class="row">
-            <div class="col-12 col-md-6 p-2 d-flex flex-column">
-                <h3 class="mx-auto"> Manage Account </h3>
-                <a class="btn btn-primary m-2" href="{% url 'user_details' %}">
-                    My Details
-                </a>
-                <a class="btn btn-primary m-2" href="{% url 'order_history' user_id=user.id %}">
-                    Order History
-                </a>
-                <a class="btn btn-primary m-2" href="{% url 'account_logout' %}">
-                    Sign Out
-                </a>
+            <div class="col-12 col-md-5 p-2 mx-auto d-flex flex-column justify-content-center bg-grey round-border">
                 {% if request.user.is_superuser %}
-                    <a class="btn btn-primary m-2" href="{% url 'manage_activities' %}">
+                    <h3 class="mx-auto"> Site Management </h3>
+                {% else %}
+                    <h3 class="mx-auto"> Manage Account </h3>
+                {% endif %}
+                {% if request.user.is_superuser %}
+                    <a class="profile-button" href="{% url 'manage_activities' %}">
                         Manage Activities
                     </a>
+                    <a class="profile-button" href="#">
+                        Manage Users
+                    </a>
+                    <a class="profile-button" href="#">
+                        Manage Bookings
+                    </a>
+                {% else %}
+                    <a class="profile-button" href="{% url 'user_details' %}">
+                        My Details
+                    </a>
+                    <a class="profile-button" href="{% url 'order_history' user_id=user.id %}">
+                        Order History
+                    </a>
                 {% endif %}
+                <a class="profile-button bg-red" href="{% url 'account_logout' %}">
+                    Sign Out
+                </a>
             </div>
-            <div class="col-12 col-md-6 p-2 d-flex flex-column">
-                <h3 class="mx-auto"> Upcoming Bookings </h3>
-                <div class="p-2 d-flex flex-column justify-content-center">
-                    {% if sorted_timeslot_quantities %}
-                        <table class="table table-responsive table-sm text-center">
-                            <thead>
-                                <tr>
-                                    <th> Activity </th>
-                                    <th> Date </th>
-                                    <th> Time </th>
-                                    <th> Qty </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for timeslot, quantity in sorted_timeslot_quantities.items %}
+            {% if not request.user.is_superuser %}
+                <div class="col-12 col-md-6 p-2 mx-auto d-flex flex-column justify-content-center bg-grey round-border">
+                    <h3 class="mx-auto"> Upcoming Bookings </h3>
+                    <div class="p-2 d-flex flex-column justify-content-center">
+                        {% if sorted_timeslot_quantities %}
+                            <table class="table table-responsive table-sm text-center">
+                                <thead>
                                     <tr>
-                                        <td>{{ timeslot.activity }}</td>
-                                        <td>{{ timeslot.start_time.date }}</td>
-                                        <td>{{ timeslot.start_time.time }}</td>
-                                        <td>{{ quantity }}</td>
+                                        <th> Activity </th>
+                                        <th> Date </th>
+                                        <th> Time </th>
+                                        <th> Qty </th>
                                     </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %} 
-                        <p> You have no upcoming bookings. </p>
-                    {% endif %}
+                                </thead>
+                                <tbody>
+                                    {% for timeslot, quantity in sorted_timeslot_quantities.items %}
+                                        <tr>
+                                            <td>{{ timeslot.activity }}</td>
+                                            <td>{{ timeslot.start_time.date }}</td>
+                                            <td>{{ timeslot.start_time.time }}</td>
+                                            <td>{{ quantity }}</td>
+                                        </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %} 
+                            <p> You have no upcoming bookings. </p>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
