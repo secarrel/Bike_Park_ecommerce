@@ -19,7 +19,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # debug
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['fasttrack-bike-park-415cb30571a3.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    'fasttrack-bike-park-415cb30571a3.herokuapp.com', '127.0.0.1', 'localhost'
+    ]
 
 # Application definition
 INSTALLED_APPS = [
@@ -122,16 +124,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': ('django.contrib.auth.password_validation.User'
+                 'AttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'MinimumLengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'CommonPasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'NumericPasswordValidator'),
     },
 ]
 
@@ -160,11 +166,12 @@ cloudinary.config(
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 if 'DEVELOPMENT' in os.environ:
     STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    )
+        os.path.join(BASE_DIR, 'static'),
+        )
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    STATICFILES_STORAGE = ('django.contrib.staticfiles.storage.'
+                           'StaticFilesStorage')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
