@@ -4,6 +4,7 @@ from django.db.models import Avg, Count
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
 
@@ -13,14 +14,24 @@ class Category(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField(
+        'category',
+        folder='categories',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.name
 
     def get_friendly_name(self):
         return self.friendly_name
+    
+    @property
+    def category_url(self):
+        if self.category:
+            return self.category.url
+        return '/static/images/default_category.svg'
     
 
 class Activity(models.Model):
@@ -55,8 +66,12 @@ class Activity(models.Model):
     requirements = models.TextField()
     details = models.TextField()
     duration = models.DurationField(default=timedelta)
-    image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = CloudinaryField(
+        'activity',
+        folder='activities',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.name
@@ -104,6 +119,14 @@ class Activity(models.Model):
         count_per_rating = Review.objects.filter(activity=self).values('rating').annotate(count=Count('id'))
         rating_count = {rating['rating']: rating['count'] for rating in count_per_rating}
         return count, rating_count
+    
+
+    @property
+    def activity_url(self):
+        if self.activity:
+            return self.activity.url
+        return '/static/images/default_activity.svg'
+
     
 class Review(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
