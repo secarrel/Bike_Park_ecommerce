@@ -77,12 +77,12 @@
                                         <!-- image display -->
                                         {% if activity.image %}
                                             <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="{{ activity.image }}" class="card-img-top" alt="{{ activity.name }}">
+                                                <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                                 <div class="text round-border">Learn more...</div>
                                             <a/>                                
                                         {% elif category.image %}
                                             <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="{{ category.image }}" class="card-img-top" alt="{{ activity.name }}">
+                                                <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                                 <div class="text round-border">Learn more...</div>
                                             <a/>
                                         {% else %}

@@ -14,10 +14,10 @@
     <div class="main-image-title text-center">
         <div>
             {% if activity.image %}
-                <img class="hero-image" src="{{ activity.image }}" class="card-img-top" alt="{{ activity.name }}">
+                <img class="hero-image" src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                 <div class="image-fade-out"></div>                                  
             {% elif category.image %}
-                <img class="hero-image" src="{{ category.image }}" class="card-img-top" alt="{{ activity.name }}">
+                <img class="hero-image" src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                 <div class="image-fade-out"></div>
             {% else %}
                 <img class="hero-image" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
