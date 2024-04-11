@@ -27,17 +27,19 @@ def profile(request):
 
             # Check timeslot is in the future
             if start_time > timezone.now():
-            
+
                 # Check if the timeslot is already in the dictionary
                 if timeslot in timeslot_quantities:
                     # Increment the quantity if the timeslot exists
                     timeslot_quantities[timeslot] += quantity
                 else:
-                    # Add the timeslot to the dictionary with the initial quantity
+                    # Add timeslot to the dictionary with the initial quantity
                     timeslot_quantities[timeslot] = quantity
 
     # Sort timeslot_quantities by start time
-    sorted_timeslot_quantities = dict(sorted(timeslot_quantities.items(), key=lambda item: item[0].start_time))
+    sorted_timeslot_quantities = dict(
+        sorted(
+            timeslot_quantities.items(), key=lambda item: item[0].start_time))
 
     template = 'profiles/profile.html'
     context = {
@@ -52,7 +54,8 @@ def profile(request):
 def user_details(request):
     """ Display the user's details. """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -63,7 +66,8 @@ def user_details(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
 
@@ -80,7 +84,8 @@ def user_details(request):
 def order_history(request, user_id):
     """ Display the user's order history. """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -106,7 +111,7 @@ def order_history(request, user_id):
                     # Increment the quantity if the timeslot exists
                     timeslot_past[timeslot] += quantity
                 else:
-                    # Add the timeslot to the dictionary with the initial quantity
+                    # Add timeslot to the dictionary with the initial quantity
                     timeslot_past[timeslot] = quantity
 
             # Check timeslot is in the future
@@ -117,12 +122,18 @@ def order_history(request, user_id):
                     # Increment the quantity if the timeslot exists
                     timeslot_future[timeslot] += quantity
                 else:
-                    # Add the timeslot to the dictionary with the initial quantity
+                    # Add timeslot to the dictionary with the initial quantity
                     timeslot_future[timeslot] = quantity
 
     # Sort timeslot_quantities by start time
-    sorted_timeslot_past = dict(sorted(timeslot_past.items(), key=lambda item: item[0].start_time, reverse=True))
-    sorted_timeslot_future = dict(sorted(timeslot_future.items(), key=lambda item: item[0].start_time))
+    sorted_timeslot_past = dict(
+        sorted(
+            timeslot_past.items(),
+            key=lambda item: item[0].start_time,
+            reverse=True))
+    sorted_timeslot_future = dict(
+        sorted(timeslot_future.items(),
+               key=lambda item: item[0].start_time))
 
     template = 'profiles/order_history.html'
     context = {
@@ -138,7 +149,8 @@ def order_history(request, user_id):
 def order_details(request, order_number):
     """ Display specific order details """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     order = get_object_or_404(Order, order_number=order_number)
