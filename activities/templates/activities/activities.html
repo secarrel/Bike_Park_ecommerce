@@ -15,14 +15,14 @@
                         <img class="hero-image m-auto w-100" src="{{ category.image.url }}" alt="{{ category.name }}">
                         <div class="image-fade-out"></div>
                     {% else %}
-                        <img class="hero-image m-auto w-100" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ category.name }}">
+                        <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
                         <div class="image-fade-out"></div>
                     {% endif %}
                 {% endfor %}
             </div>
             {% else %}
             <div>
-                <img class="hero-image m-auto w-100" src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ category.name }}">    
+                <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">    
                 <div class="image-fade-out"></div> 
             </div>
             {% endif %}
@@ -87,7 +87,7 @@
                                             <a/>
                                         {% else %}
                                             <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="{{ MEDIA_URL }}activities.jpg" class="card-img-top" alt="{{ activity.name }}">
+                                                <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
                                                 <div class="text round-border">Learn more...</div>
                                             <a/>
                                         {% endif %}
