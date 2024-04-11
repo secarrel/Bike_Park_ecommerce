@@ -8,6 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'rating',

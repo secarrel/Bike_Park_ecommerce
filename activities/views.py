@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
@@ -43,7 +43,7 @@ def all_activities(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria")
                 return redirect(reverse('activities'))
-            
+
             queries = Q(name__icontains=query)
             activities = activities.filter(queries)
 
@@ -58,6 +58,7 @@ def all_activities(request):
 
     return render(request, 'activities/activities.html', context)
 
+
 def activity_details(request, activity_id):
     """ A view for displaying details of a specific activity """
 
@@ -69,15 +70,17 @@ def activity_details(request, activity_id):
 
     return render(request, 'activities/activity_details.html', context)
 
+
 @login_required
 def manage_activities(request):
     """ Show manage activities options """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     activities = Activity.objects.all()
-    
+
     context = {
         'activities': activities,
     }
@@ -89,7 +92,8 @@ def manage_activities(request):
 def add_activity(request):
     """ Add a activity to a catgeory """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     if request.method == "POST":
@@ -98,8 +102,11 @@ def add_activity(request):
             activity = form.save()
             messages.success(request, 'Successfully added activity!')
             return redirect(reverse('activity_details', args=[activity.id]))
-        else: 
-            messages.error(request, 'Failed to add activity. Please ensure the form is valid.')
+        else:
+            messages.error(
+                request,
+                'Failed to add activity. Please ensure the form is valid.'
+                )
     else:
         form = ActivityForm()
 
@@ -114,7 +121,8 @@ def add_activity(request):
 def add_timeslot(request):
     """ Add a timeslot to an activity """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     if request.method == "POST":
@@ -123,8 +131,10 @@ def add_timeslot(request):
             form.save()
             messages.success(request, 'Successfully added timeslot!')
             return redirect(reverse('add_timeslot'))
-        else: 
-            messages.error(request, 'Failed to add timeslot. Please ensure the form is valid.')
+        else:
+            messages.error(
+                request,
+                'Failed to add timeslot. Please ensure the form is valid.')
     else:
         form = TimeslotForm()
 
@@ -139,7 +149,8 @@ def add_timeslot(request):
 def edit_activity(request, activity_id):
     """ Edit an activity """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     activity = get_object_or_404(Activity, pk=activity_id)
@@ -149,8 +160,10 @@ def edit_activity(request, activity_id):
             form.save()
             messages.success(request, 'Successfully updated activity!')
             return redirect(reverse('activity_details', args=[activity.id]))
-        else: 
-            messages.error(request, 'Failed to update activity. Please ensure the form is valid.')
+        else:
+            messages.error(
+                request,
+                'Failed to update activity. Please ensure the form is valid.')
     else:
         form = ActivityForm(instance=activity)
         messages.info(request, f'You are editing {activity.name}')
@@ -168,7 +181,8 @@ def edit_activity(request, activity_id):
 def edit_timeslot(request, timeslot_id):
     """ Edit an activity """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     timeslot = get_object_or_404(Activity, pk=timeslot_id)
@@ -188,7 +202,8 @@ def edit_timeslot(request, timeslot_id):
 def delete_activity(request, activity_id):
     """ Delete activity """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     activity = get_object_or_404(Activity, id=activity_id)
@@ -200,8 +215,9 @@ def delete_activity(request, activity_id):
         if 'manage_activities' in referer:
             # Redirect to manage_activities page
             return HttpResponseRedirect(referer)
-   
-    # If the referer does not contain 'manage_activities' or is None, redirect to 'activities' page
+
+    # If the referer does not contain 'manage_activities' or is None,
+    # redirect to 'activities' page
     return redirect(reverse('activities'))
 
 
@@ -209,7 +225,8 @@ def delete_activity(request, activity_id):
 def delete_timeslot(request, timeslot_id):
     """ Delete activity """
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, you are not authorized to complete this action.')
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
 
     timeslot = get_object_or_404(Timeslot, id=timeslot_id)
@@ -217,6 +234,3 @@ def delete_timeslot(request, timeslot_id):
     timeslot.delete()
     messages.success(request, 'Timeslot Deleted')
     return redirect(reverse('activity_details', args=[activity.id]))
-
-
-

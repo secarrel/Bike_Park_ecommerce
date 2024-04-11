@@ -2,9 +2,8 @@ from django.db import models
 from datetime import timedelta
 from django.db.models import Avg, Count
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from cloudinary.models import CloudinaryField
+
 
 class Category(models.Model):
 
@@ -26,13 +25,13 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
-    
+
     @property
     def category_url(self):
         if self.category:
             return self.category.url
         return '/static/images/default_category.svg'
-    
+
 
 class Activity(models.Model):
     BEGINNER = 'Beginner'
@@ -75,7 +74,7 @@ class Activity(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def get_duration(self):
         if self.duration:
             if self.duration > timedelta(hours=7):
@@ -89,11 +88,11 @@ class Activity(models.Model):
                     return f"{hours} hrs {minutes} mins"
         else:
             return None
-        
+
     def average_rating(self):
         # Get all the reviews associated with this activity
         reviews = Review.objects.filter(activity=self)
-        
+
         # Calculate the average rating
         average = reviews.aggregate(Avg('rating'))['rating__avg']
 
@@ -113,21 +112,16 @@ class Activity(models.Model):
             return round_average, stars
         else:
             return None
-        
+
     def review_count(self):
         count = Review.objects.filter(activity=self).count()
-        count_per_rating = Review.objects.filter(activity=self).values('rating').annotate(count=Count('id'))
-        rating_count = {rating['rating']: rating['count'] for rating in count_per_rating}
+        count_per_rating = Review.objects.filter(activity=self).values(
+            'rating').annotate(count=Count('id'))
+        rating_count = {
+            rating['rating']: rating['count'] for rating in count_per_rating}
         return count, rating_count
-    
 
-    @property
-    def activity_url(self):
-        if self.activity:
-            return self.activity.url
-        return '/static/images/default_activity.svg'
 
-    
 class Review(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(

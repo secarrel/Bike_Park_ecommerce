@@ -1,37 +1,19 @@
 from django import forms
 from timeslots.models import Timeslot
-from django.utils.translation import gettext_lazy as _
 from .widgets import CustomClearableFileInput
-from django.core.exceptions import ValidationError
 from .models import Activity, Category
 
-class DurationInput(forms.TextInput):
-    def value_from_datadict(self, data, files, name):
-        value = data.get(name)
-        if value:
-            # Check if the value is in the format HH:MM
-            parts = value.split(':')
-            if len(parts) == 2:
-                try:
-                    hours = int(parts[0])
-                    minutes = int(parts[1])
-                    if 0 <= hours <= 23 and 0 <= minutes <= 59:
-                        # Return the value in HH:MM:00 format
-                        return f'{hours:02d}:{minutes:02d}:00'
-                except ValueError:
-                    pass
-            raise ValidationError('Invalid duration format. Please use HH:MM format.')
 
-        return value
-    
 class ActivityForm(forms.ModelForm):
-    duration = forms.CharField(label='Duration', required=True, widget=DurationInput(attrs={'placeholder': 'HH:MM'}))
-    
+
     class Meta:
         model = Activity
         fields = '__all__'
 
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(label='Image', required=False,
+                             widget=CustomClearableFileInput)
+    duration = forms.DurationField(widget=forms.TextInput(
+        attrs={'placeholder': 'HH:MM:SS'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -54,6 +36,7 @@ class TimeslotForm(forms.ModelForm):
         activities = Activity.objects.all()
 
         self.fields['activity'].queryset = activities
-        self.fields['start_time'].widget = forms.DateTimeInput(attrs={'type': 'datetime-local'})
+        self.fields['start_time'].widget = forms.DateTimeInput(
+            attrs={'type': 'datetime-local'})
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
