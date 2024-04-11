@@ -14,6 +14,7 @@ class Category(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     overview = models.TextField(null=True, blank=True)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = CloudinaryField(
         'category',
         folder='categories',
@@ -66,6 +67,7 @@ class Activity(models.Model):
     requirements = models.TextField()
     details = models.TextField()
     duration = models.DurationField(default=timedelta)
+    image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = CloudinaryField(
         'activity',
         folder='activities',
