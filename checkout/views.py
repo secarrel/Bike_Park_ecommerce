@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse,
+                              get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -10,8 +11,9 @@ from .models import Order, OrderLineItem
 from .forms import OrderForm
 from basket.contexts import basket_contents
 
-import stripe 
+import stripe
 import json
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -28,7 +30,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-    
+
 
 def checkout(request):
     # Sets Stripe Keys
@@ -68,14 +70,15 @@ def checkout(request):
                         order_line_item.save()
                 except Timeslot.DoesNotExist:
                     messages.error(request, (
-                        "One of the activities in your bag wasn't found in our database. "
-                        "Please call us for assistance. "
+                        "One of the activities in your bag wasn't found"
+                        "in our database. Please call us for assistance."
                     ))
                     order.delete()
                     return redirect(reverse('view_basket'))
-            
+
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                            Please double check your information.')
@@ -93,8 +96,8 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        
-        # Attempt to prefill the form with any info the user maintains in their profile
+
+        # Attempt to prefill the form with any info in the user profile.
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -117,7 +120,7 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
-        
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -127,13 +130,14 @@ def checkout(request):
 
     return render(request, template, context)
 
+
 def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
     profile = UserProfile.objects.get(user=request.user)
     # Attach order to user profile
     order.user_profile = profile
@@ -157,7 +161,7 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-    
+
     if 'basket' in request.session:
         del request.session['basket']
 

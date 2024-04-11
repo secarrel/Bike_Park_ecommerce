@@ -9,7 +9,7 @@ class OrderForm(forms.ModelForm):
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
                   'county',)
-        
+
         widgets = {
             'country': forms.Select(attrs={'class': 'form-control'}),
         }

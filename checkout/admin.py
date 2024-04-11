@@ -54,7 +54,8 @@ class OrderAdmin(admin.ModelAdmin):
     fields = ('order_number', 'date', 'full_name',
               'email', 'phone_number', 'country',
               'postcode', 'town_or_city', 'street_address1',
-              'street_address2', 'county', 'order_total', 'original_basket', 'stripe_pid')
+              'street_address2', 'county', 'order_total',
+              'original_basket', 'stripe_pid')
 
     list_display = (
         'user_profile',

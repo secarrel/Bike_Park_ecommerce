@@ -14,4 +14,3 @@ def update_on_save(sender, instance, created, **kwargs):
 def update_on_delete(sender, instance, **kwargs):
     """ Updpate order total when line item is deleted"""
     instance.order.update_total()
-

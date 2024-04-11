@@ -8,6 +8,7 @@ from profiles.models import UserProfile
 
 from django_countries.fields import CountryField
 
+
 class Order(models.Model):
     user_profile = models.ForeignKey(
         UserProfile,
@@ -31,10 +32,11 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     town_or_city = models.CharField(max_length=40, null=True, blank=False)
     county = models.CharField(max_length=80, null=True, blank=True)
-    country = CountryField(blank_label='Country *', null=False)    
+    country = CountryField(blank_label='Country *', null=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     original_basket = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """
@@ -94,7 +96,7 @@ class OrderLineItem(models.Model):
             # Decrease available capacity and increase spaces_booked
             self.timeslot.available_capacity -= quantity_difference
             self.timeslot.spaces_booked += quantity_difference
-            
+
             self.timeslot.save()
 
         # Update quantity to be equal to updated_quantity
