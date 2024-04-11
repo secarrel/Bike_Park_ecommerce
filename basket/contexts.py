@@ -1,11 +1,12 @@
 from timeslots.models import Timeslot
 from django.shortcuts import get_object_or_404
 
+
 def basket_contents(request):
     basket_items = []
-    total = 0 
+    total = 0
     basket = request.session.get('basket', {})
-    
+
     activity_ids = set()
     timeslot_ids = set()
 
