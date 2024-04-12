@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">Order History</div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col-8 m-auto"> 
+        {% if reviews %}
+            <table class="table table-responsive text-center">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Rating</th>
+                        <th>Content</th>
+                        <th>Date Created</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in reviews %}
+                        <tr>
+                            <td>{{ review.activity }}</td>
+                            <td>
+                                {% if review.display_rating %}
+                                    {% for star in review.display_rating %}
+                                        {% if star == 'full' %}
+                                            <i class="fa-solid fa-star"></i>
+                                        {% elif star == 'half' %}
+                                            <i class="fa-solid fa-star-half"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    {{ review.rating }}/5
+                                {% endif %}
+                            </td>
+                            <td>{{ review.content|truncatechars:300 }}</td>
+                            <td>
+                                {{ review.review_time }}
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_review' review.id %}"><i class="fa-regular fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

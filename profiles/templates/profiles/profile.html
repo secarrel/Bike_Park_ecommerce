@@ -58,6 +58,9 @@
                     <a class="profile-button" href="{% url 'order_history' user_id=user.id %}">
                         Order History
                     </a>
+                    <a class="profile-button" href="{% url 'user_reviews' %}">
+                        My Reviews
+                    </a>
                 {% endif %}
                 <a class="profile-button bg-red" href="{% url 'account_logout' %}">
                     Sign Out

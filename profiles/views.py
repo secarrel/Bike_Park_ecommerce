@@ -170,9 +170,14 @@ def order_details(request, order_number):
 
     return render(request, template, context)
 
-
+@login_required
 def add_review(request, activity_id):
     """ Add a timeslot to an activity """
+    if not request.user.is_authenticated:
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('order_history', kwargs={'user_id': request.user.id }))
+
     activity = get_object_or_404(Activity, pk=activity_id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
@@ -196,16 +201,26 @@ def add_review(request, activity_id):
 
     return render(request, 'profiles/add_review.html', context)
 
-
-def edit_review(request, review_id):
+def user_reviews(request):
     """ Edit an activity """
-    review = get_object_or_404(Review, pk=review_id)
-    form = ReviewForm(instance=review)
+    reviews = Review.objects.filter(reviewer=request.user)
 
-    template = 'activities/edit_review.html'
+    template = 'profiles/user_reviews.html'
     context = {
-        'form': form,
-        'review': review,
+        'reviews': reviews,
     }
 
     return render(request, template, context)
+
+@login_required
+def delete_review(request, review_id):
+    """ Delete activity """
+    if not request.user.is_authenticated:
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
+    review = get_object_or_404(Review, id=review_id)
+    review.delete()
+    messages.success(request, 'Review Deleted')
+    return redirect(reverse('user_reviews'))
