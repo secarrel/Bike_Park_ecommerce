@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
+from activities.forms import ReviewForm
+from activities.models import Activity, Review
 
 
 def profile(request):
@@ -167,3 +169,42 @@ def order_details(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def add_review(request, activity_id):
+    """ Add a timeslot to an activity """
+    activity = get_object_or_404(Activity, pk=activity_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.activity = activity
+            form.save()
+            messages.success(request, 'Successfully added Review!')
+            return redirect(reverse('order_history', kwargs={'user_id': request.user.id }))
+        else:
+            messages.error(
+                request,
+                'Failed to add review. Please ensure the form is valid.')
+    else:
+        form = ReviewForm(initial={'activity': activity}) 
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'profiles/add_review.html', context)
+
+
+# def edit_review(request, review_id):
+#     """ Edit an activity """
+#     review = get_object_or_404(Review, pk=review_id)
+#     form = ReviewForm(instance=review)
+
+#     template = 'activities/edit_review.html'
+#     context = {
+#         'form': form,
+#         'review': review,
+#     }
+
+#     return render(request, template, context)

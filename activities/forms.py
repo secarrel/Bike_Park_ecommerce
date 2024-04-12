@@ -1,7 +1,7 @@
 from django import forms
 from timeslots.models import Timeslot
 from .widgets import CustomClearableFileInput
-from .models import Activity, Category
+from .models import Activity, Category, Review
 
 
 class ActivityForm(forms.ModelForm):
@@ -40,3 +40,14 @@ class TimeslotForm(forms.ModelForm):
             attrs={'type': 'datetime-local'})
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
+
+
+class ReviewForm(forms.ModelForm):
+
+    class Meta:
+        model = Review
+        fields = ['rating', 'content', 'activity']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['rating'].widget = forms.RadioSelect(choices=Review.RATING_CHOICES)
