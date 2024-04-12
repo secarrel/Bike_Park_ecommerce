@@ -126,28 +126,36 @@ def add_activity(request):
 
 
 @login_required
-def add_timeslot(request):
+def add_timeslot(request, activity_id):
     """ Add a timeslot to an activity """
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
-
+    activity = get_object_or_404(Activity, pk=activity_id)
+    activity_capacity = request.session.get('activity_capacity')
     if request.method == "POST":
-        form = TimeslotForm(request.POST, request.FILES)
+        form = TimeslotForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added timeslot!')
-            return redirect(reverse('add_timeslot'))
+            return redirect(
+                reverse('activity_details', args=[activity.id]))
         else:
             messages.error(
                 request,
                 'Failed to add timeslot. Please ensure the form is valid.')
     else:
-        form = TimeslotForm()
+        form = TimeslotForm(
+            initial={
+                'activity': activity.id,
+                'available_capacity': activity_capacity
+                })
+
 
     context = {
         'form': form,
+        'activity': activity
     }
 
     return render(request, 'activities/add_timeslot.html', context)
@@ -188,14 +196,26 @@ def edit_activity(request, activity_id):
 @login_required
 def edit_timeslot(request, timeslot_id):
     """ Edit an activity """
+    
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
+    
+    timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
 
-    timeslot = get_object_or_404(Activity, pk=timeslot_id)
-    form = TimeslotForm(instance=timeslot)
-    messages.info(request, f'You are editing {timeslot.name}')
+    if request.method == "POST":
+        form = TimeslotForm(request.POST, instance=timeslot)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated timeslot!')
+            return redirect(reverse('activity_details', args=[timeslot.activity.id]))
+        else:
+            messages.error(
+                request,
+                'Failed to update timeslot. Please ensure the form is valid.')
+    else:
+        form = TimeslotForm(instance=timeslot)
 
     template = 'activities/edit_timeslot.html'
     context = {

@@ -33,7 +33,7 @@ urlpatterns = [
         name='delete_timeslot'
         ),
     path(
-        'add_timeslot/',
+        'add_timeslot/<int:activity_id>/',
         views.add_timeslot,
         name='add_timeslot'
         ),

@@ -21,26 +21,31 @@ class ActivityForm(forms.ModelForm):
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
         self.fields['category'].choices = friendly_names
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black rounded-0'
 
 
 class TimeslotForm(forms.ModelForm):
 
     class Meta:
         model = Timeslot
-        exclude = ['spaces_booked', 'available_capacity']
+        exclude = ['spaces_booked',]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         activities = Activity.objects.all()
 
-        self.fields['activity'].queryset = activities
         self.fields['start_time'].widget = forms.DateTimeInput(
             attrs={'type': 'datetime-local'})
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black rounded-0'
-
+        self.fields['activity'].widget.attrs['disabled'] = True
+        
+    def clean_start_time(self):
+            """
+            Remove seconds from the date time field to reduce 
+            validation errors.
+            """
+            start_time = self.cleaned_data.get('start_time')
+            if start_time:
+                start_time = start_time.replace(second=0)
+            return start_time
 
 class ReviewForm(forms.ModelForm):
 

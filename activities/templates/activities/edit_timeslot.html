@@ -17,13 +17,16 @@
             <hr>
             <h2 class="logo-font mb-4">Manage Activities</h2>
             <hr>
-            <h5> Edit a Timeslot</h5>
-            <form method="POST" action="{% url 'edit_timeslot' timeslot.id %}" class="form" enctype="multipart/form-data">
+            <h5> Edit {{ timeslot }} </h5>
+            <form method="POST" action="{% url 'edit_timeslot' timeslot.id %}" class="form d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <div class="text-right">
+                <div class="d-flex align-items-center col-6 m-auto">
                     <a class="btn" href="{% url 'manage_activities' %}"> Cancel</a>
                     <button class="btn" type="submit">Update Timeslot</button>
+                    <a class="btn text-danger" href={% url 'delete_timeslot' timeslot.id %}> 
+                        Delete Timeslot
+                    </a>
                 </div>
             </form>
         </div>

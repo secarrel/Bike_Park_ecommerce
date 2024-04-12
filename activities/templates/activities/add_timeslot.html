@@ -15,17 +15,17 @@
     <div class="row">
         <div class="col">
             <hr>
-            <h2 class="logo-font mb-4">Manage Activities</h2>
+            <h2 class="logo-font mb-4">Manage Timeslots</h2>
             <hr>
-            <h5> Add a Timeslot</h5>
-            <form method="POST" action="{% url 'add_timeslot' %}" class="form" enctype="multipart/form-data">
+            <h5> Add a new timeslot</h5>
+            <form method="POST" action="{% url 'add_timeslot' activity.id %}" class="form d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-right">
-                    <a class="btn" href="{% url 'manage_activities' %}"> Cancel</a>
+                    <a class="btn" href="{% url 'activities'  %}">Cancel</a>
                     <button class="btn" type="submit">Add Timeslot</button>
                 </div>
-            </form>
+            </form> 
         </div>
     </div>
 {% endblock %}
