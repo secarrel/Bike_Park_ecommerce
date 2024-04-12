@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.db.models import Avg, Count
 from django.core.validators import MinValueValidator, MaxValueValidator
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -137,3 +138,4 @@ class Review(models.Model):
     )
     content = models.CharField(max_length=800, null=True, blank=True)
     review_time = models.DateTimeField(auto_now_add=True)
+    reviewer = models.ForeignKey(User, default=None, on_delete=models.CASCADE)

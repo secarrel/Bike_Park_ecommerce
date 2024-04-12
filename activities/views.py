@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Activity, Category
+from .models import Activity, Category, Review
 from .forms import ActivityForm, TimeslotForm
 from timeslots.models import Timeslot
 
@@ -63,9 +63,10 @@ def activity_details(request, activity_id):
     """ A view for displaying details of a specific activity """
 
     activity = get_object_or_404(Activity, pk=activity_id)
-
+    reviews = Review.objects.filter(activity=activity)
     context = {
         'activity': activity,
+        'reviews': reviews
     }
 
     return render(request, 'activities/activity_details.html', context)

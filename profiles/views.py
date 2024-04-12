@@ -179,6 +179,7 @@ def add_review(request, activity_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.activity = activity
+            review.reviewer = request.user
             form.save()
             messages.success(request, 'Successfully added Review!')
             return redirect(reverse('order_history', kwargs={'user_id': request.user.id }))
@@ -187,7 +188,7 @@ def add_review(request, activity_id):
                 request,
                 'Failed to add review. Please ensure the form is valid.')
     else:
-        form = ReviewForm(initial={'activity': activity}) 
+        form = ReviewForm(initial={'activity': activity, 'reviewer': request.user}) 
 
     context = {
         'form': form,
@@ -196,15 +197,15 @@ def add_review(request, activity_id):
     return render(request, 'profiles/add_review.html', context)
 
 
-# def edit_review(request, review_id):
-#     """ Edit an activity """
-#     review = get_object_or_404(Review, pk=review_id)
-#     form = ReviewForm(instance=review)
+def edit_review(request, review_id):
+    """ Edit an activity """
+    review = get_object_or_404(Review, pk=review_id)
+    form = ReviewForm(instance=review)
 
-#     template = 'activities/edit_review.html'
-#     context = {
-#         'form': form,
-#         'review': review,
-#     }
+    template = 'activities/edit_review.html'
+    context = {
+        'form': form,
+        'review': review,
+    }
 
-#     return render(request, template, context)
+    return render(request, template, context)

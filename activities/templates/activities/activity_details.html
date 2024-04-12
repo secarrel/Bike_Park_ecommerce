@@ -96,7 +96,7 @@
         <!-- Calander -->
         <div class="col-12 col-lg-7 m-auto">
             <div class="big-square">
-                <form class="form" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
+                <form class="form d-flex flex-column" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
                     {% csrf_token %}
                     {% if activity.timeslot.all %}
                         <select name="timeslot" id="timeslot-select" class="form-select" required aria-label="Default select example">
@@ -104,13 +104,11 @@
                             {% for timeslot in activity.timeslot.all %}
                                 {% if timeslot.available_capacity > 0 %}
                                 <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">{{ timeslot.start_time }} <span><em>({{ timeslot.available_capacity }} spaces available)</em></span></option>
-                                
                                 {% endif %}
                             {% endfor %}
                         </select>
                         <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="{{timeslot.available_capacity}}" required>
                         <p id="quantity-error" class="error-message text-warning"></p>
-
                         <div class="col-12">
                             <a href="{% url 'activities' %}" class="btn">
                                 <span>Keep Browsing</span>
@@ -134,15 +132,51 @@
                                 <li class="list-group-item"> {{ timeslot }} <a href={% url 'delete_timeslot' timeslot.id %}> <i class="fa-regular fa-trash-can"></i> </a> </li>
                             {% endfor %}
                         </ul>
-                    <div>
+                    </div>
                 {% endif %}
             </div>
         </div>
     </div>
     <!-- Reviews -->
     <div>
-        <h3> Reviews </h3>
+        <h3> Customer Reviews </h3>
     </div>
+    {% if reviews %}
+        <div class="d-flex flex-column reviews-display">
+            {% if activity.average_rating %}
+            <div class="d-flex">
+                <p> Average Rating: </p>
+                <div>
+                    {% for star in activity.average_rating.1 %}
+                        {% if star == 'full' %}
+                            <i class="fa-solid fa-star"></i>
+                        {% elif star == 'half' %}
+                            <i class="fa-solid fa-star-half"></i>
+                        {% endif %}
+                    {% endfor %}
+                    ({{activity.review_count.0}} {% if activity.review_count.0 == 1 %} review {% else %} reviews {% endif %})
+                </div>
+            </div>
+            {% endif %}
+            {% for review in reviews %}
+            <div class="d-flex flex-column review-item">
+                <div class="d-flex flex-row">
+                {% for star in activity.average_rating.1 %}
+                    {% if star == 'full' %}
+                        <i class="fa-solid fa-star"></i>
+                    {% elif star == 'half' %}
+                        <i class="fa-solid fa-star-half"></i>
+                    {% endif %}
+                    {% endfor %}        
+                </div>
+                <p>{{ review.content }}</p>
+                <p><em>by: </em>{{ review.reviewer }}</p> 
+            </div>   
+            {% endfor %}
+        </div>
+    {% else %}
+        There are currently no reviews for this activity.
+    {% endif %}
 {% endblock %}
 
 {% block postloadjs %}

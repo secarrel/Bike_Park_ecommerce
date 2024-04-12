@@ -46,8 +46,13 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ['rating', 'content', 'activity']
+        fields = ['rating', 'content', 'activity', 'reviewer']
+        widgets = {
+            'rating': forms.RadioSelect(choices=Review.RATING_CHOICES),
+            'reviewer': forms.HiddenInput(),
+            'activity': forms.HiddenInput(),
+        }
 
     def __init__(self, *args, **kwargs):
+        self.reviewer = kwargs.pop('reviewer', None)
         super().__init__(*args, **kwargs)
-        self.fields['rating'].widget = forms.RadioSelect(choices=Review.RATING_CHOICES)
