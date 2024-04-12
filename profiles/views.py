@@ -53,7 +53,7 @@ def profile(request):
 @login_required
 def user_details(request):
     """ Display the user's details. """
-    if not request.user.is_superuser:
+    if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
@@ -83,7 +83,7 @@ def user_details(request):
 @login_required
 def order_history(request, user_id):
     """ Display the user's order history. """
-    if not request.user.is_superuser:
+    if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
@@ -148,7 +148,7 @@ def order_history(request, user_id):
 @login_required
 def order_details(request, order_number):
     """ Display specific order details """
-    if not request.user.is_superuser:
+    if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
