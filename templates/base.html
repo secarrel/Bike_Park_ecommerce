@@ -47,19 +47,9 @@
           <div class="col-12 col-sm-8 ">         
             <div class="top-row-nav d-flex px-2 align-items-center justify-content-center justify-content-sm-end">
               <!-- Search -->
-              <form id="search-form"class="d-none d-sm-flex col mx-auto" role="search" method="GET" action="{% url 'activities' %}">
-                <input class="form-control round-border me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                <button id="search-button" class="nav-link" type="submit"><i class="fa-solid fa-magnifying-glass gold-text"></i></button>
+              <form id="search-form"class="d-flex col mx-auto" role="search" method="GET" action="{% url 'activities' %}">
+                <input class="form-control round-border me-2" type="search" name="q" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal">
               </form>
-              <button class="nav-link m-3 d-sm-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>       
-              <ul class="dropdown-menu">
-                <form class="d-flex col px-3 mx-auto" role="search" method="GET" action="{% url 'activities' %}">
-                  <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                  <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-              </ul>
               {% if user.is_authenticated %}                
                 <a class="nav-link m-3" href="{% url 'profile' %}">
                   <i class="fa-solid fa-user"></i>               
@@ -71,9 +61,15 @@
               {% endif %}
               <a class="nav-link m-3" aria-current="page" href="{% url 'view_basket' %}">
                 <i class="fa-solid fa-basket-shopping"></i>
+                <span id="basket-counter">
+                  {% if timeslot_count < 100 %} 
+                    {{ timeslot_count }}
+                  {% else %}
+                    99+
+                  {% endif  %}
+                  </span>
               </a>
             </div>
-            {% comment %} {% include 'includes/lg-screen-nav.html' %} {% endcomment %}
           </div>
           <!-- Navbar bottom row -->
           <ul class="nav lower-nav d-flex col-12">

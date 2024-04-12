@@ -42,9 +42,13 @@ def all_activities(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria")
+                messages.error(
+                    request, 
+                    ("You didn't enter any search criteria." + 
+                    " Here are all activities offered at the park.")
+                )
                 return redirect(reverse('activities'))
-
+            
             queries = Q(name__icontains=query)
             activities = activities.filter(queries)
 
