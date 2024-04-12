@@ -68,6 +68,7 @@ def activity_details(request, activity_id):
     """ A view for displaying details of a specific activity """
 
     activity = get_object_or_404(Activity, pk=activity_id)
+    category = activity.category
     current_activity = activity.id
     activity_capacity = activity.capacity
     request.session['current_activity'] = current_activity
@@ -77,7 +78,8 @@ def activity_details(request, activity_id):
     context = {
         'activity': activity,
         'future_timeslots': future_timeslots,
-        'reviews': reviews
+        'reviews': reviews,
+        'category': category,
     }
 
     return render(request, 'activities/activity_details.html', context)
@@ -212,6 +214,7 @@ def edit_timeslot(request, timeslot_id):
         return redirect(reverse('home'))
     
     timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
+    activity = timeslot.activity
 
     if request.method == "POST":
         form = TimeslotForm(request.POST, instance=timeslot)
@@ -230,6 +233,7 @@ def edit_timeslot(request, timeslot_id):
     context = {
         'form': form,
         'timeslot': timeslot,
+        'activity': activity,
     }
 
     return render(request, template, context)

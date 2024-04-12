@@ -12,6 +12,7 @@
 
 {% block content %}
 <div class="container mb-2">
+    <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
     <div class="row">
         <div class="col">
             <hr>
@@ -28,7 +29,7 @@
                     {% endif %}
                 {% endfor %}
                 <div class="text-right">
-                    <a class="btn btn-outline-black rounded-0" href="{% url 'activities' %}">Cancel</a>
+                    <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
                     <button class="btn btn-black rounded-0" type="submit">Add Activity</button>
                 </div>
             </form>
