@@ -192,7 +192,6 @@ def edit_activity(request, activity_id):
                 'Failed to update activity. Please ensure the form is valid.')
     else:
         form = ActivityForm(instance=activity)
-        messages.info(request, f'You are editing {activity.name}')
 
     template = 'activities/edit_activity.html'
     context = {
