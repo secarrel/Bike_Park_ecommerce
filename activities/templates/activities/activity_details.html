@@ -110,12 +110,20 @@
                                 <option selected value="None">Select a timeslot</option>
                                 {% for timeslot in activity.timeslot.all %}
                                     {% if timeslot.available_capacity > 0 and timeslot.is_future_timeslot %}
-                                    <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">{{ timeslot.start_time }} <span><em>({{ timeslot.available_capacity }} spaces available)</em></span></option>
+                                    <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">
+                                        <strong>{{ timeslot.start_time.date }}</strong>
+                                        {% if activity.get_duration.1 %}
+                                             | All Day
+                                        {% else %}
+                                            {{ timeslot.start_time.time }}
+                                        {% endif %}
+                                        <span><em> | {{ timeslot.available_capacity }} spaces available</em></span></option>
                                     {% else %}
                                         No timeslots available
                                     {% endif %}
                                 {% endfor %}
                             </select>
+                            <label name="quantity" for="quantity" required >Quantity *</lable>
                             <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="{{timeslot.available_capacity}}" required>
                             <p id="quantity-error" class="error-message text-warning"></p>
                             <div class="col-12">
@@ -140,7 +148,13 @@
                             {% if future_timeslots %}
                                 {% for timeslot in future_timeslots %}
                                     <li class="list-group-item"> 
-                                        {{ timeslot }} | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
+                                        <strong>{{ timeslot.start_time.date }}</strong>
+                                        {% if activity.get_duration.1 %}
+                                             | All Day
+                                        {% else %}
+                                            {{ timeslot.start_time.time }}
+                                        {% endif %}
+                                         | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
                                         <a class="mx-3"href={% url 'delete_timeslot' timeslot.id %}><i class="fa-regular fa-trash-can text-danger"></i></a> 
                                         <a href={% url 'edit_timeslot' timeslot.id %}> 
                                             <i class="fa-solid fa-pen"></i>

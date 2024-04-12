@@ -77,9 +77,11 @@ class Activity(models.Model):
         return self.name
 
     def get_duration(self):
+        all_day=False 
         if self.duration:
             if self.duration > timedelta(hours=7):
-                return "All Day"
+                all_day = True
+                return "All Day", all_day
             else:
                 hours = self.duration.seconds // 3600
                 minutes = (self.duration.seconds % 3600) // 60
