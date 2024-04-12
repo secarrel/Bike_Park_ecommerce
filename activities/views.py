@@ -68,6 +68,10 @@ def activity_details(request, activity_id):
     """ A view for displaying details of a specific activity """
 
     activity = get_object_or_404(Activity, pk=activity_id)
+    current_activity = activity.id
+    activity_capacity = activity.capacity
+    request.session['current_activity'] = current_activity
+    request.session['activity_capacity'] = activity_capacity
     future_timeslots = activity.timeslot.filter(start_time__gt=timezone.now())
     reviews = Review.objects.filter(activity=activity)
     context = {
@@ -126,36 +130,42 @@ def add_activity(request):
 
 
 @login_required
-def add_timeslot(request, activity_id):
+def add_timeslot(request):
     """ Add a timeslot to an activity """
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
-    activity = get_object_or_404(Activity, pk=activity_id)
+    current_activity = request.session.get('current_activity')
     activity_capacity = request.session.get('activity_capacity')
-    if request.method == "POST":
-        form = TimeslotForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully added timeslot!')
-            return redirect(
-                reverse('activity_details', args=[activity.id]))
-        else:
-            messages.error(
-                request,
-                'Failed to add timeslot. Please ensure the form is valid.')
+    if current_activity is None:
+        messages.error(
+            request, 
+            ('Unable to load form, please return to' + 
+            'the activity page and try again')
+        )
     else:
-        form = TimeslotForm(
-            initial={
-                'activity': activity.id,
-                'available_capacity': activity_capacity
-                })
+        if request.method == "POST":
+            form = TimeslotForm(request.POST)
+            if form.is_valid():
+                timeslot = form.save()
+                messages.success(request, 'Successfully added timeslot!')
+                return redirect(
+                    reverse('activity_details', args=[current_activity]))
+            else:
+                messages.error(
+                    request,
+                    'Failed to add timeslot. Please ensure the form is valid.')
+        else:
+            form = TimeslotForm(
+                initial={
+                    'activity': current_activity,
+                    'available_capacity': activity_capacity})
 
 
     context = {
         'form': form,
-        'activity': activity
+        'current_activity': current_activity
     }
 
     return render(request, 'activities/add_timeslot.html', context)

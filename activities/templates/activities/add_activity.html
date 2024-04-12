@@ -18,7 +18,7 @@
             <h2 class="logo-font mb-4">Manage Activities</h2>
             <hr>
             <h5> Edit an Activity </h5>
-            <form method="POST" action="{% url 'add_activity' %}" class="form mb-2" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'add_activity' %}" class="form mb-2 d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
                     {% if field.name != 'image' %}

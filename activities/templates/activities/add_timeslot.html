@@ -18,7 +18,7 @@
             <h2 class="logo-font mb-4">Manage Timeslots</h2>
             <hr>
             <h5> Add a new timeslot</h5>
-            <form method="POST" action="{% url 'add_timeslot' activity.id %}" class="form d-flex flex-column" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'add_timeslot' %}" class="form d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-right">

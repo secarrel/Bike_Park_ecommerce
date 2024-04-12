@@ -35,7 +35,6 @@ class TimeslotForm(forms.ModelForm):
 
         self.fields['start_time'].widget = forms.DateTimeInput(
             attrs={'type': 'datetime-local'})
-        self.fields['activity'].widget.attrs['disabled'] = True
         
     def clean_start_time(self):
             """
