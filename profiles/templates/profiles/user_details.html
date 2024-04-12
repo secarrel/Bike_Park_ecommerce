@@ -19,8 +19,8 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-8 m-auto"> 
-        <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+    <div class="col-8 m-auto light-text"> 
+        <form class="mt-3 d-flex flex-column" action="{% url 'profile' %}" method="POST" id="profile-update-form">
             {% csrf_token %}
             <fieldset class="d-flex flex-column">
                 <legend class="fieldset-label">Your Details</legend>
