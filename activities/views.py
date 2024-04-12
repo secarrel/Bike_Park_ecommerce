@@ -7,6 +7,7 @@ from django.db.models.functions import Lower
 from .models import Activity, Category, Review
 from .forms import ActivityForm, TimeslotForm
 from timeslots.models import Timeslot
+from django.utils import timezone
 
 
 def all_activities(request):
@@ -63,9 +64,11 @@ def activity_details(request, activity_id):
     """ A view for displaying details of a specific activity """
 
     activity = get_object_or_404(Activity, pk=activity_id)
+    future_timeslots = activity.timeslot.filter(start_time__gt=timezone.now())
     reviews = Review.objects.filter(activity=activity)
     context = {
         'activity': activity,
+        'future_timeslots': future_timeslots,
         'reviews': reviews
     }
 

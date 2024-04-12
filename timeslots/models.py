@@ -1,5 +1,6 @@
 from django.db import models
 from activities.models import Activity
+from django.utils import timezone
 
 
 class Timeslot(models.Model):
@@ -24,6 +25,13 @@ class Timeslot(models.Model):
     def __str__(self):
         return f"{self.activity} - {self.start_time.strftime(
             '%d/%m/%Y @ %H:%M')}"
+    
+    def is_future_timeslot(self):
+        """
+        Check if the start time of the timeslot is in the future.
+        Returns True if the start time is in the future and False otherwise.
+        """
+        return self.start_time > timezone.now()
 
     def save(self, *args, **kwargs):
         if self.available_capacity in [None, '']:
