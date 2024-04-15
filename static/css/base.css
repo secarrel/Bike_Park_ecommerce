@@ -300,8 +300,9 @@ nav {
    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
 }
 
-#sort-selector {
-    background-color: var(--grey);
+#sort-selector,
+#difficulty-filter {
+    background-color: var(--grey) !important;
     border-color: var(--ligh-grey);
     height: 30px;
     color: var(--gold);
