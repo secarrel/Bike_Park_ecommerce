@@ -29,4 +29,8 @@ urlpatterns = [
           views.delete_review,
           name='delete_review'
           ),
+     path('bookings/',
+          views.bookings,
+          name='bookings'
+          ),
 ]

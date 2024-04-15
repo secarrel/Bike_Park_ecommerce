@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">Bookings</div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+<a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
+<div class="container d-flex light-text">
+    <div class="d-flex flex-column col-12 text-center p-1">
+        <h1 class="text-center">Bookings</h1>
+        {% if timeslot_list %}
+        <div class="row py-4">
+            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                    <input type="text" id="datepicker" placeholder="Select a date">
+            </div>
+            <a class="button mx-2" href="{% url 'bookings' %}">Show all future bookings</a>
+
+        </div>
+
+            <table class="table table-responsive text-center">
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Date</th>
+                        <th>Start time</th>
+                        <th>Duration</th>
+                        <th>Booked Spaces</th>
+                        <th>Capacity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for timeslot, data in timeslot_list.items %}
+                        <tr>
+                            <td>{{ timeslot.activity }}</td>
+                            <td>{{ timeslot.start_time.date }}</td>
+                            <td>{{ timeslot.start_time.time }}</td>
+                            <td>{{ timeslot.activity.get_duration.0 }}
+                            <td>{{ data.quantity }}</td>
+                            <td>{{ data.capacity }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {%else %}
+            No upcoming bookings.
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }} 
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery UI library -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script>
+        $(document).ready(function() {
+          // Initialize Datepicker
+          $("#datepicker").datepicker({
+            onSelect: function(dateText) {
+                // Redirect to the view with the selected date as a parameter
+                var parts = dateText.split('/');
+                var formattedDate = parts[1] + '/' + parts[0] + '/' + parts[2];
+                window.location.href = "{% url 'bookings' %}?date=" + formattedDate;
+            }
+          });
+        });
+      </script>
+{% endblock %}

@@ -12,7 +12,7 @@
 {% block content %}
     {% if request.user.is_superuser %}
     <div class="container mb-2">
-        <a class="button mx-2" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+        <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
         <div class="row">
             <div class="col">
                 <hr>

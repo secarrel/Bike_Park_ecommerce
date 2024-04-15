@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 from .models import UserProfile
 from .forms import UserProfileForm
@@ -224,3 +225,61 @@ def delete_review(request, review_id):
     review.delete()
     messages.success(request, 'Review Deleted')
     return redirect(reverse('user_reviews'))
+
+
+def bookings(request):
+    """ Display future bookings """
+    orders = Order.objects.all()
+    timeslot_list = {}
+
+    # Iterate through orders
+    for order in orders:
+        # Iterate through items in the order
+        for item in order.lineitems.all():
+            # Set relevant variables
+            timeslot = item.timeslot
+            quantity = item.quantity
+            capacity = timeslot.available_capacity + timeslot.spaces_booked
+            formatted_date = timeslot.start_time.strftime('%d/%m/%Y')
+            # Check if the timeslot is already in the dictionary
+            if timeslot in timeslot_list:
+                # Increase the quantity if the timeslot exists
+                timeslot_list[timeslot]['quantity'] += quantity
+            else:
+                # Add timeslot to the dictionary with the initial quantity
+                timeslot_list[timeslot] = {
+                    'quantity': quantity,
+                    'capacity': capacity,
+                    'date': formatted_date,
+                    }
+
+    #Sort future bookings to show soonest first
+    timeslot_list = dict(
+        sorted(timeslot_list.items(),
+            key=lambda item: item[0].start_time))
+
+
+    date_filter = request.GET.get('date')
+    filtered_timeslots = {}
+
+    if date_filter:
+        # Only show bookings on selected date
+        date = datetime.strptime(date_filter, '%d/%m/%Y').date()
+        for timeslot, info in timeslot_list.items():
+            if timeslot.start_time.date() == date:
+                filtered_timeslots[timeslot] = info
+        timeslot_list = filtered_timeslots
+    else:
+        # Only show future bookings
+        for timeslot, info in timeslot_list.items():
+            if timeslot.start_time > timezone.now():
+                filtered_timeslots[timeslot] = info
+        timeslot_list = filtered_timeslots
+
+    template = 'profiles/bookings.html'
+    context = { 
+        'timeslot_list': timeslot_list,
+    }
+
+    return render(request, template, context)
+

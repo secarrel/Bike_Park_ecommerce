@@ -38,20 +38,17 @@
             <div class="col-12 col-md-5 p-2 mx-auto d-flex flex-column justify-content-center bg-grey round-border">
                 {% if request.user.is_superuser %}
                     <h3 class="mx-auto"> Site Management </h3>
-                {% else %}
-                    <h3 class="mx-auto"> Manage Account </h3>
-                {% endif %}
-                {% if request.user.is_superuser %}
                     <a class="profile-button" href="{% url 'manage_activities' %}">
                         Manage Activities
                     </a>
                     <a class="profile-button" href="#">
                         Manage Users
                     </a>
-                    <a class="profile-button" href="#">
-                        Manage Bookings
+                    <a class="profile-button" href="{% url 'bookings' %}">
+                        Bookings
                     </a>
                 {% else %}
+                    <h3 class="mx-auto"> Manage Account </h3>
                     <a class="profile-button" href="{% url 'user_details' %}">
                         My Details
                     </a>
