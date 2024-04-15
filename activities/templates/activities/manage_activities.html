@@ -11,11 +11,12 @@
 
 {% block content %}
     {% if request.user.is_superuser %}
-        <div class="container mb-2">
+    <div class="container mb-2">
+        <a class="button mx-2" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Manage Activities</h2>
+                <h2 class="logo-font mb-4 text-light">Manage Activities</h2>
                 <hr>
                 {% if activities %}
                 <table class="table">
@@ -51,7 +52,7 @@
                     <p> No activities have been created yet </p>
                 {% endif %}
                 <a class="m-2" href="{% url 'add_activity' %}">
-                    Add Activity
+                    <i class="fa-solid fa-circle-plus"></i> Add Activity
                 </a>
             </div>
         </div>
