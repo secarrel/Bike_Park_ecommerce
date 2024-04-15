@@ -253,12 +253,6 @@ def bookings(request):
                     'date': formatted_date,
                     }
 
-    #Sort future bookings to show soonest first
-    timeslot_list = dict(
-        sorted(timeslot_list.items(),
-            key=lambda item: item[0].start_time))
-
-
     date_filter = request.GET.get('date')
     filtered_timeslots = {}
 
@@ -276,9 +270,17 @@ def bookings(request):
                 filtered_timeslots[timeslot] = info
         timeslot_list = filtered_timeslots
 
+    #Sort future bookings to show soonest first
+    timeslot_list = dict(
+        sorted(timeslot_list.items(),
+            key=lambda item: item[0].start_time))
+
+    activities = Activity.objects.all()
+
     template = 'profiles/bookings.html'
     context = { 
         'timeslot_list': timeslot_list,
+        'activities': activities,
     }
 
     return render(request, template, context)

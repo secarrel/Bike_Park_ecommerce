@@ -24,11 +24,20 @@
         <h1 class="text-center">Bookings</h1>
         {% if timeslot_list %}
         <div class="row py-4">
-            <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                    <input type="text" id="datepicker" placeholder="Select a date">
+            <div>
+                <input type="text" id="datepicker" placeholder="Select a date">
             </div>
+            {% if activities %}
+                <div class="activity-select-wrapper w-50">
+                    <select id="activity-filter">
+                        <option value="reset">All Activities</option>
+                        {% for activity in activities%}
+                            <option value="{{ activity.id }}">{{ activity }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endif %}
             <a class="button mx-2" href="{% url 'bookings' %}">Show all future bookings</a>
-
         </div>
 
             <table class="table table-responsive text-center">
@@ -44,7 +53,7 @@
                 </thead>
                 <tbody>
                     {% for timeslot, data in timeslot_list.items %}
-                        <tr>
+                        <tr class="timeslot" data-activity={{ timeslot.activity.id }} >
                             <td>{{ timeslot.activity }}</td>
                             <td>{{ timeslot.start_time.date }}</td>
                             <td>{{ timeslot.start_time.time }}</td>
@@ -72,15 +81,34 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
         $(document).ready(function() {
-          // Initialize Datepicker
-          $("#datepicker").datepicker({
-            onSelect: function(dateText) {
-                // Redirect to the view with the selected date as a parameter
-                var parts = dateText.split('/');
-                var formattedDate = parts[1] + '/' + parts[0] + '/' + parts[2];
-                window.location.href = "{% url 'bookings' %}?date=" + formattedDate;
-            }
-          });
+            // Initialize Datepicker
+            $("#datepicker").datepicker({
+                onSelect: function(dateText) {
+                    // Redirect to the view with the selected date as a parameter
+                    var parts = dateText.split('/');
+                    var formattedDate = parts[1] + '/' + parts[0] + '/' + parts[2];
+                    window.location.href = "{% url 'bookings' %}?date=" + formattedDate;
+                }
+            });      
+            
+            // Filter bookings by activity
+            $('#activity-filter').change(function() {
+                let selectedActivity = $(this).val();
+                console.log(selectedActivity)
+                let timeslots = $('.timeslot')
+
+                $('.timeslot').each(function () {
+                    console.log(this)
+                    let activity = $(this).data('activity'); 
+                    console.log(activity)
+                    if (!selectedActivity || selectedActivity === 'reset' || activity == selectedActivity) {
+                        $(this).show(); // Show the timeslot
+                    } else {
+                        $(this).hide(); // Hide the timeslot
+                    }
+                });
+            });
         });
-      </script>
+    </script>
+
 {% endblock %}
