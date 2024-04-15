@@ -69,7 +69,7 @@ def activity_details(request, activity_id):
 
     activity = get_object_or_404(Activity, pk=activity_id)
     category = activity.category
-    current_activity = activity.id
+    current_activity = activity_id
     activity_capacity = activity.capacity
     request.session['current_activity'] = current_activity
     request.session['activity_capacity'] = activity_capacity
@@ -167,7 +167,7 @@ def add_timeslot(request):
 
     context = {
         'form': form,
-        'current_activity': current_activity
+        'current_activity': current_activity,
     }
 
     return render(request, 'activities/add_timeslot.html', context)
