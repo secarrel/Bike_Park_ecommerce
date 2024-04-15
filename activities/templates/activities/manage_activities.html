@@ -37,7 +37,7 @@
                                 <td> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
                                 <td> {{ activity.category.friendly_name }} </td>
                                 <td> £{{ activity.price }} </td>
-                                <td> {{ activity.get_duration }} </td>
+                                <td> {{ activity.get_duration.0 }} </td>
                                 <td> {{ activity.capacity }} </td>
                                 <td> {{ activity.difficulty }} </td>
                                 <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
