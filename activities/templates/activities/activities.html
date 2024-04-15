@@ -46,8 +46,6 @@
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                             <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                            <option value="difficulty_asc" {% if current_sorting == 'difficulty_asc' %}selected{% endif %}>Difficulty (beginner to expert)</option>
-                            <option value="difficulty_desc" {% if current_sorting == 'difficulty_desc' %}selected{% endif %}>Difficulty (expert to beginner)</option>
                         </select>
                     </div>
                 </div>
@@ -109,7 +107,6 @@
                                                             <i class="fa-solid fa-star-half"></i>
                                                         {% endif %}
                                                         {% endfor %}
-                                                    ({{activity.average_rating.0}})
                                                     ({{activity.review_count.0}})
                                                 </div>
                                             {% endif %}
