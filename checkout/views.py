@@ -40,7 +40,6 @@ def checkout(request):
 
         if request.method == 'POST':
             basket = request.session.get('basket', {})
-
             form_data = {
                 'full_name': request.POST['full_name'],
                 'email': request.POST['email'],
@@ -68,7 +67,17 @@ def checkout(request):
                                 timeslot=timeslot,
                                 updated_quantity=item_data,
                             )
-                            order_line_item.save()
+                            capacity = timeslot.available_capacity
+                            print('quantity:' + str(item_data))
+                            if capacity - item_data < 0:
+                                messages.error(
+                                    request,
+                                    (f'Unable to complete order.' +
+                                     f'Not enough capacity in {timeslot}.')
+                                )
+                                return redirect(reverse('view_basket'))
+                            else:
+                                order_line_item.save()
                     except Timeslot.DoesNotExist:
                         messages.error(request, (
                             "One of the activities in your bag wasn't found"
