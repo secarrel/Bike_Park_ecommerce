@@ -51,8 +51,8 @@
                         </select>
                     </div>
                 </div>
-                {% comment %} <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                    <div class="sort-select-wrapper w-50">
+                <div>
+                    <div class="activity-select-wrapper w-50">
                         <select id="difficulty-filter">
                             <option value="reset">All Difficulty Levels</option>
                             <option value="BEGINNER">Beginner</option>
@@ -62,7 +62,7 @@
                             <option value="ANY">Any</option>
                         </select>
                     </div>
-                </div> {% endcomment %}
+                </div>
             </div>
         {% endif %}
         <!-- Activity list display -->
@@ -71,7 +71,7 @@
                 <div class="d-flex flex-wrap mx-3">
                     {% if activities %}
                         {% for activity in activities %}
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="activity-display col-sm-6 col-md-6 col-lg-4 col-xl-3" data-difficulty={{activity.difficulty|upper }}>
                                 <div class="activity card h-100 m-1 text-center">
                                     <div class="image-container round-border">
                                         <!-- image display -->
@@ -187,6 +187,24 @@
                 window.location.replace(currentUrl);
             }
         })
+
+        // Filter bookings by difficulty
+        $('#difficulty-filter').change(function() {
+            let selectedDifficulty = $(this).val();
+            console.log(selectedDifficulty)
+            let timeslots = $('.activity-display')
+
+            $('.activity-display').each(function () {
+                console.log(this)
+                let difficulty = $(this).data('difficulty'); 
+                console.log(difficulty)
+                if (!selectedDifficulty || selectedDifficulty === 'reset' || difficulty == selectedDifficulty) {
+                    $(this).show(); // Show the activity
+                } else {
+                    $(this).hide(); // Hide the activity
+                }
+            });
+        });
     </script>
 
 {% endblock %}
