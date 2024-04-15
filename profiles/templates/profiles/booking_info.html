@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">Timeslot Bookings</div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+<a class="button mx-2" href="{% url 'bookings' %}">Go Back</a>
+<div class="container d-flex light-text">
+    <div class="d-flex flex-column col-12 text-center p-1">
+        <div>
+            <h1 class="text-center">Timeslot Bookings</h1>
+            <h2> {{ timeslot.activity }} </h2>
+            <h3> {{ timeslot.start_time.date}} | {{ timeslot.start_time.time }}
+        </div>
+        <div class="container my-5">
+            {% if orders %}
+                <table class="col-12 col-md-6 mx-auto">
+                    <thead>
+                        <tr>
+                            <th>Booking Name</th>
+                            <th>Spaces Booked </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td>{{ order.order.full_name }} </td>
+                                <td>{{ order.quantity }} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                No Bookings have been made for this timeslot.
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }} 
+{% endblock %}

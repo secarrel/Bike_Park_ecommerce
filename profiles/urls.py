@@ -33,4 +33,8 @@ urlpatterns = [
           views.bookings,
           name='bookings'
           ),
+     path('booking_info/<int:timeslot_id>/',
+          views.booking_info,
+          name='booking_info'
+          ),
 ]

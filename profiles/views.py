@@ -6,9 +6,10 @@ from datetime import datetime
 
 from .models import UserProfile
 from .forms import UserProfileForm
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 from activities.forms import ReviewForm
 from activities.models import Activity, Review
+from timeslots.models import Timeslot
 
 
 def profile(request):
@@ -285,3 +286,14 @@ def bookings(request):
 
     return render(request, template, context)
 
+
+def booking_info(request, timeslot_id):
+
+    timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
+    orders = OrderLineItem.objects.filter(timeslot=timeslot)
+    template = 'profiles/booking_info.html'
+    context = {
+        'timeslot': timeslot,
+        'orders': orders,
+        }
+    return render(request, template, context)

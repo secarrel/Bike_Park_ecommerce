@@ -54,7 +54,11 @@
                 <tbody>
                     {% for timeslot, data in timeslot_list.items %}
                         <tr class="timeslot" data-activity={{ timeslot.activity.id }} >
-                            <td>{{ timeslot.activity }}</td>
+                            <td>
+                                <a href="{% url 'booking_info' timeslot_id=timeslot.id %}"> 
+                                    {{ timeslot.activity }} 
+                                </a>
+                            </td>
                             <td>{{ timeslot.start_time.date }}</td>
                             <td>{{ timeslot.start_time.time }}</td>
                             <td>{{ timeslot.activity.get_duration.0 }}
