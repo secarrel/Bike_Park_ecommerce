@@ -248,18 +248,19 @@ def delete_activity(request, activity_id):
         return redirect(reverse('home'))
 
     activity = get_object_or_404(Activity, id=activity_id)
-    activity.delete()
-    messages.success(request, 'Activity Deleted')
-    referer = request.META.get('HTTP_REFERER', None)
-    if referer:
-        # Check if the referer contains 'manage_activities'
-        if 'manage_activities' in referer:
-            # Redirect to manage_activities page
-            return HttpResponseRedirect(referer)
 
-    # If the referer does not contain 'manage_activities' or is None,
-    # redirect to 'activities' page
-    return redirect(reverse('activities'))
+    if request.method == 'POST':
+        activity.delete()
+        messages.success(request, 'Activity Deleted')
+        return redirect('manage_activities')
+
+    template = 'activities/delete_activity.html'
+    context = {
+        'activity': activity,
+    }
+
+    return render(request, template, context)
+
 
 
 @login_required
@@ -272,6 +273,17 @@ def delete_timeslot(request, timeslot_id):
 
     timeslot = get_object_or_404(Timeslot, id=timeslot_id)
     activity = timeslot.activity
-    timeslot.delete()
-    messages.success(request, 'Timeslot Deleted')
-    return redirect(reverse('activity_details', args=[activity.id]))
+
+    if request.method == 'POST':
+        timeslot.delete()
+        messages.success(request, 'Timeslot Deleted')
+        return redirect(reverse('activity_details', args=[activity.id]))
+
+
+    template = 'activities/delete_timeslot.html'
+    context = {
+        'timeslot': timeslot,
+        'activity': activity,
+    }
+
+    return render(request, template, context)

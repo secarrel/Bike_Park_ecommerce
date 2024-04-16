@@ -6,159 +6,155 @@
 {% endblock %}
 
 {% block content %}
-        <!-- Page intro -->
-        <div class="main-image-title text-center">
-            {% if current_categories %}
-            <div>
-                {% for category in current_categories %}
-                    {% if category.image %}
-                        <img class="hero-image m-auto w-100" src="{{ category.image.url }}" alt="{{ category.name }}">
-                        <div class="image-fade-out"></div>
-                    {% else %}
-                        <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
-                        <div class="image-fade-out"></div>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            {% else %}
-            <div>
-                <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">    
-                <div class="image-fade-out"></div> 
-            </div>
-            {% endif %}
-            {% if current_categories %}
-                {% for category in current_categories %}
-                    <h1 class="text-center light-text"><em><strong class="gold-text"> {{ category.friendly_name }} </strong></em></h1>
-                    <p>{{ category.overview }}</p>
-                {% endfor %}
-            {% else %}
-                <h1 class="text-center light-text"><em><strong class="gold-text"> All Activities </strong></em></h1>
-                <p>Nestled amidst breathtaking natural landscapes, our park offers a diverse array of thrilling activities designed to ignite your passion for outdoor excitement. From heart-pounding downhill descents to serene cross-country trails, our park caters to riders of all skill levels and preferences.</p>
-                <p>Below you can browse the coaching sessions, day passes, events, and courses we offer.</p>
-            {% endif %}
-        </div>     
-        {% if activities %}   
-            <!-- Soring and filtering -->
-            <div class="row py-4">
-                <div class="col d-flex justify-content-center">
-                    <div class="sort-select-wrapper">
-                        <select id="sort-selector" class="round-border pointer">
-                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
-                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col d-flex justify-content-center">
-                    <div class="sort-select-wrapper w-50">
-                        <select id="difficulty-filter" class="round-border pointer">
-                            <option value="reset">All Difficulty Levels</option>
-                            <option value="BEGINNER">Beginner</option>
-                            <option value="INTERMEDIATE">Intermediate</option>
-                            <option value="ADVANCED">Advanced</option>
-                            <option value="EXPERT">Expert</option>
-                            <option value="ANY">Any</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+    <!-- Page intro -->
+    <div class="main-image-title text-center">
+        {% if current_categories %}
+        <div>
+            {% for category in current_categories %}
+                {% if category.image %}
+                    <img class="hero-image m-auto w-100" src="{{ category.image.url }}" alt="{{ category.name }}">
+                    <div class="image-fade-out"></div>
+                {% else %}
+                    <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
+                    <div class="image-fade-out"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <div>
+            <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">    
+            <div class="image-fade-out"></div> 
+        </div>
         {% endif %}
-        <!-- Activity list display -->
-        <div class="row py-4" id="activities-list">
-            <div class="container">
-                <div class="d-flex flex-wrap mx-3">
-                    {% if activities %}
-                        {% for activity in activities %}
-                            <div class="activity-display col-sm-6 col-md-6 col-lg-4 col-xl-3" data-difficulty={{activity.difficulty|upper }}>
-                                <div class="activity card h-100 m-1 text-center">
-                                    <div class="image-container round-border">
-                                        <!-- image display -->
-                                        {% if activity.image %}
-                                            <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
-                                                <div class="text round-border">Learn more...</div>
-                                            <a/>                                
-                                        {% elif category.image %}
-                                            <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
-                                                <div class="text round-border">Learn more...</div>
-                                            <a/>
-                                        {% else %}
-                                            <a class="round-border" href="{% url 'activity_details' activity.id %}">
-                                                <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
-                                                <div class="text round-border">Learn more...</div>
-                                            <a/>
-                                        {% endif %}
-                                        {% if request.user.is_superuser %}
-                                            <a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a>
-                                            <a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a>
+        {% if current_categories %}
+            {% for category in current_categories %}
+                <h1 class="text-center light-text"><em><strong class="gold-text"> {{ category.friendly_name }} </strong></em></h1>
+                <p>{{ category.overview }}</p>
+            {% endfor %}
+        {% else %}
+            <h1 class="text-center light-text"><em><strong class="gold-text"> All Activities </strong></em></h1>
+            <p>Nestled amidst breathtaking natural landscapes, our park offers a diverse array of thrilling activities designed to ignite your passion for outdoor excitement. From heart-pounding downhill descents to serene cross-country trails, our park caters to riders of all skill levels and preferences.</p>
+            <p>Below you can browse the coaching sessions, day passes, events, and courses we offer.</p>
+        {% endif %}
+    </div>     
+    {% if activities %}   
+        <!-- Soring and filtering -->
+        <div class="row py-4">
+            <div class="col d-flex justify-content-center">
+                <div class="sort-select-wrapper">
+                    <select id="sort-selector" class="round-border pointer">
+                        <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                        <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                        <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="sort-select-wrapper w-50">
+                    <select id="difficulty-filter" class="round-border pointer">
+                        <option value="reset">All Difficulty Levels</option>
+                        <option value="BEGINNER">Beginner</option>
+                        <option value="INTERMEDIATE">Intermediate</option>
+                        <option value="ADVANCED">Advanced</option>
+                        <option value="EXPERT">Expert</option>
+                        <option value="ANY">Any</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- Activity list display -->
+    <div class="row py-4" id="activities-list">
+        <div class="container">
+            <div class="d-flex flex-wrap mx-3">
+                {% if activities %}
+                    {% for activity in activities %}
+                        <div class="activity-display col-sm-6 col-md-6 col-lg-4 col-xl-3" data-difficulty={{activity.difficulty|upper }}>
+                            <div class="activity card h-100 m-1 text-center">
+                                <div class="image-container round-border">
+                                    <!-- image display -->
+                                    {% if activity.image %}
+                                        <a class="round-border" href="{% url 'activity_details' activity.id %}">
+                                            <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                            <div class="text round-border">Learn more...</div>
+                                        <a/>                                
+                                    {% elif category.image %}
+                                        <a class="round-border" href="{% url 'activity_details' activity.id %}">
+                                            <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                            <div class="text round-border">Learn more...</div>
+                                        <a/>
+                                    {% else %}
+                                        <a class="round-border" href="{% url 'activity_details' activity.id %}">
+                                            <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
+                                            <div class="text round-border">Learn more...</div>
+                                        <a/>
+                                    {% endif %}
+                                </div>
+                                <!--Info display-->
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-end p-0 m-0 muted-text">{{activity.category.friendly_name}}</p>
+                                        {% if activity.average_rating %}
+                                            <div>
+                                                {% for star in activity.average_rating.1 %}
+                                                    {% if star == 'full' %}
+                                                        <i class="fa-solid fa-star"></i>
+                                                    {% elif star == 'half' %}
+                                                        <i class="fa-solid fa-star-half"></i>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                ({{activity.review_count.0}})
+                                            </div>
                                         {% endif %}
                                     </div>
-                                    <!--Info display-->
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="text-end p-0 m-0 muted-text">{{activity.category.friendly_name}}</p>
-                                            {% if activity.average_rating %}
-                                                <div>
-                                                    {% for star in activity.average_rating.1 %}
-                                                        {% if star == 'full' %}
-                                                            <i class="fa-solid fa-star"></i>
-                                                        {% elif star == 'half' %}
-                                                            <i class="fa-solid fa-star-half"></i>
-                                                        {% endif %}
-                                                        {% endfor %}
-                                                    ({{activity.review_count.0}})
+                                    <h5 class="card-title">{{activity.name}}</h5>
+                                    <div class="card-text my-2">
+                                        <div class="d-flex justify-content-center my-4" >
+                                            <div class="skill-level round-border">
+                                                <div class="skill-title">
+                                                    <em> Skill Level: </em>
                                                 </div>
-                                            {% endif %}
+                                                <div class="skill-value">
+                                                    <strong>{{activity.difficulty}}</strong>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <h5 class="card-title">{{activity.name}}</h5>
-                                        <div class="card-text my-2">
-                                            <div class="d-flex justify-content-center my-4" >
-                                                <div class="skill-level round-border">
-                                                    <div class="skill-title">
-                                                        <em> Skill Level: </em>
-                                                    </div>
-                                                    <div class="skill-value">
-                                                        <strong>{{activity.difficulty}}</strong>
-                                                    </div>
-                                                </div>
+                                        <div class="container d-flex flex-wrap justify-content-between">
+                                            {% if activity.price %}
+                                            <div class="d-flex px-2">
+                                                <div class="circle-icon px-1"><i class="fa-solid fa-sterling-sign"></i></div>
+                                                <p class="card-text px-1">{{activity.price}}</p>
                                             </div>
-                                            <div class="container d-flex flex-wrap justify-content-between">
-                                                {% if activity.price %}
-                                                <div class="d-flex px-2">
-                                                    <div class="circle-icon px-1"><i class="fa-solid fa-sterling-sign"></i></div>
-                                                    <p class="card-text px-1">{{activity.price}}</p>
-                                                </div>
-                                                {% endif %}
-                                                {% if activity.get_duration %}
-                                                <div class="d-flex px-2">
-                                                    <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
-                                                    <p class="card-text px-1">{{activity.get_duration.0}}</p>
-                                                </div>
-                                                {% endif %}
-                                                {% if activity.capacity %}
-                                                <div class="d-flex px-2">
-                                                    <div class="circle-icon px-1"><i class="fa-solid fa-user-group"></i></div>
-                                                    <p class="card-text px-1">{{activity.capacity}}</p>
-                                                </div>
-                                                {% endif %}
+                                            {% endif %}
+                                            {% if activity.get_duration %}
+                                            <div class="d-flex px-2">
+                                                <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
+                                                <p class="card-text px-1">{{activity.get_duration.0}}</p>
                                             </div>
+                                            {% endif %}
+                                            {% if activity.capacity %}
+                                            <div class="d-flex px-2">
+                                                <div class="circle-icon px-1"><i class="fa-solid fa-user-group"></i></div>
+                                                <p class="card-text px-1">{{activity.capacity}}</p>
+                                            </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
-                    {% else %}
-                    <p> No
-                        {% for category in current_categories %}
-                            {{ category.friendly_name|lower }}
-                        {% endfor %}
-                        available at the bike park at the moment. Keep checking in for updates.
-                    </p>
-                    {% endif %}
-                </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                <p> No
+                    {% for category in current_categories %}
+                        {{ category.friendly_name|lower }}
+                    {% endfor %}
+                    available at the bike park at the moment. Keep checking in for updates.
+                </p>
+                {% endif %}
             </div>
         </div>
+    </div>
 {% endblock %}
 
 {% block postloadjs %}

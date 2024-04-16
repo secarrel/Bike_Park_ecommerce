@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container mb-2">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="logo-font mb-4">Manage Activity</h2>
+            <hr>
+            <h5> Deleteing: {{ activity }} </h5>
+            <a class="button" href="{% url 'manage_activities' %}"> Cancel </a>
+            <form action="{% url 'delete_activity' activity_id=activity.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger p-2 m-2">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
