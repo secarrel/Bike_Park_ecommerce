@@ -9,7 +9,6 @@
     --opaque-grey: #3030302f;
     --opaque-dark-grey: #1b1b1b2e;
     --danger: rgb(136, 61, 61);
-
 }
 
 html {
@@ -18,7 +17,7 @@ html {
 
 body {
     background-color: var(--dark-grey);
-    max-width: 1400px;
+    max-width: 1800px;
     margin: auto;
     height: 100%;
 }
@@ -45,9 +44,10 @@ a {
     color: var(--gold)
 }
 
-p {
+a:hover {
     color: var(--almost-white)
 }
+
 
 /* -------- INPUT FIELDS -------- */
 
@@ -111,34 +111,57 @@ label {
 /* -------- PRE-SET TEXT -------- */
 
 .gold-text {
-    color: var(--gold)
+    color: var(--gold);
 }
 
 .muted-text {
-    color: var(--light-grey)
+    color: var(--light-grey);
 }
 
 .light-text {
-    color: var(--almost-white)
+    color: var(--almost-white);
 }
 
 /* -------- PRE-SET BACKGROUNDS -------- */
 .bg-grey {
-    background-color: var(--grey);
+    background-color: var(--grey)!important;
+    color: var(--dark-grey)!important;
 }
 
 .bg-l-grey {
-    background-color: var(--light-grey);
+    background-color: var(--light-grey)!important;
+    color: var(--dark-grey)!important;
 }
 
 .bg-d-grey {
-    background-color: var(--dark-grey);
+    background-color: var(--dark-grey)!important;
+    color: var(--almost-white)!important;
 }
 
-.bg-red {
+.bg-ft-danger {
     background-color: var(--danger) !important;
+    color: var(--dark-grey)!important;
 }
 
+.bg-ft-error {
+    background-color: rgb(212, 163, 163) !important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-success {
+    background-color: rgb(163, 211, 163)!important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-info {
+    background-color: rgb(174, 207, 228)!important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-warning {
+    background-color: rgb(230, 212, 175) !important;
+    color: var(--dark-grey)!important;
+}
 /* -------- PRE-SET CLASSES -------- */
 .round-border {
     border-radius: 5px !important;
@@ -191,6 +214,27 @@ button:hover i{
 
 .profile-button:hover {
     background-color: var(--almost-white);
+}
+
+.btn-close {
+    margin: auto;
+}
+
+/* --------- Toasts --------- */
+
+.toast {
+    padding: 4px;
+}
+
+.toast-body{
+    display: flex;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.toast-message {
+    margin: 0 !important;
+    width: 300px;
 }
 
 /* --------- NAVBAR --------- */
