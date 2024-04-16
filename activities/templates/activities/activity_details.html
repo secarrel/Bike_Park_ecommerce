@@ -101,7 +101,7 @@
         <!-- Calander -->
         <div class="col-12 col-lg-7 m-auto">
             <div class="big-square">
-                <h3> {% if request.user.is_superuser %} Manage Timeslots {% else %} Timeslots {% endif %} </h3>
+                <h3> {% if request.user.is_superuser %} Manage Timeslots {% else %} Book your space! {% endif %} </h3>
                 {% if not request.user.is_superuser %}
                     <form class="form d-flex flex-column" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
                         {% csrf_token %}
@@ -195,21 +195,23 @@
                 </div>
                 {% endif %}
                 {% for review in reviews %}
-                <div class="d-flex flex-column align-items-center col-8 p-3 m-1 bg-grey review-item">
-                    <div class="d-flex flex-row">
-                    {% for star in activity.average_rating.1 %}
-                        {% if star == 'full' %}
-                            <i class="fa-solid fa-star gold-text"></i>
-                        {% elif star == 'half' %}
-                            <i class="fa-solid fa-star-half gold-text"></i>
-                        {% endif %}
-                    {% endfor %}        
+                <div class="d-flex flex-column align-items-center col-12 col-md-8 p-3 m-1 bg-grey review-item">
+                    <div class="d-flex col-12 justify-content-center bg-d-grey">
+                        <div>
+                            {% for star in activity.average_rating.1 %}
+                                {% if star == 'full' %}
+                                    <i class="fa-solid fa-star gold-text"></i>
+                                {% elif star == 'half' %}
+                                    <i class="fa-solid fa-star-half gold-text"></i>
+                                {% endif %}
+                            {% endfor %}        
+                        </div>
+                        <p><em>from: </em>{{ review.reviewer }}</p> 
                     </div>
-                    <p><em>by: </em>{{ review.reviewer }}</p> 
                     <div class="d-flex col-12 justify-content-around">
-                        <i class="fa-solid fa-quote-left gold-text"></i> 
+                        <i class="fa-solid fa-quote-left"></i> 
                         <p>{{ review.content }}</p>
-                        <i class="fa-solid fa-quote-right gold-text"></i>
+                        <i class="fa-solid fa-quote-right"></i>
                     </div>
                 </div>   
                 {% endfor %}
