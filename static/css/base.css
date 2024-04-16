@@ -198,6 +198,10 @@ nav {
     overflow: hidden;
 }
 
+.basket-link{
+    width: 35px;
+}
+
 .nav-link:hover {
     color: var(--almost-white) !important;
 }
@@ -230,11 +234,6 @@ nav {
     border-radius:  10px 0  0 10px;
 }
 
-#search-button{
-    background-color: var(--dark-grey);
-    box-shadow: none;
-}
-
 .lower-nav{
     border-top: 2px solid;
     border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
@@ -257,7 +256,7 @@ nav {
     color: var(--almost-white) !important;
 }
 
-.form-control {
+.form-control{
     background-color: var(--grey);
     border-color: var(--dark-grey);
     color: var(--light-grey);
