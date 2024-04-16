@@ -29,7 +29,6 @@
                             <th> Capacity </th>
                             <th> Difficulty </th>
                             <th> edit </th>
-                            <th> delete </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +41,6 @@
                                 <td> {{ activity.capacity }} </td>
                                 <td> {{ activity.difficulty }} </td>
                                 <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                                <td><a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular fa-trash-can"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -17,7 +17,7 @@
             <h2 class="logo-font mb-4">Manage Activity</h2>
             <hr>
             <h5> Deleteing: {{ activity }} </h5>
-            <a class="button" href="{% url 'manage_activities' %}"> Cancel </a>
+            <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
             <form action="{% url 'delete_activity' activity_id=activity.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger p-2 m-2">Delete</button>
