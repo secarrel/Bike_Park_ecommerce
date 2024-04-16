@@ -39,9 +39,9 @@
     </div>     
     {% if activities %}   
         <!-- Soring and filtering -->
-        <div class="row py-4">
-            <div class="col d-flex justify-content-center">
-                <div class="sort-select-wrapper">
+        <div class="container py-4">
+            <div class="d-flex justify-content-center">
+                <div class="sort-select-wrapper my-2">
                     <select id="sort-selector" class="round-border pointer">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -49,8 +49,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col d-flex justify-content-center">
-                <div class="sort-select-wrapper w-50">
+            <div class="d-flex justify-content-center">
+                <div class="sort-select-wrapper my-2">
+                    <p class="text-center"> Filter by difficulty: </p>
                     <select id="difficulty-filter" class="round-border pointer">
                         <option value="reset">All Difficulty Levels</option>
                         <option value="BEGINNER">Beginner</option>
