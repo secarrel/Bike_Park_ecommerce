@@ -11,31 +11,33 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Manage Activities</h2>
-            <hr>
-            <h5> Edit Activity </h5>
-            <form method="POST" action="{% url 'edit_activity' activity.id %}" class="form f-flex flex-column" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% for field in form %}
-                    {% if field.name != 'image' %}
-                        {{ field | as_crispy_field }}
-                    {% else %}
-                        {{ field }}
-                    {% endif %}
-                {% endfor %}
-                <div class="text-right">
-                    <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
-                    <button class="btn" type="submit">Update Product</button>
-                </div>
-            </form>
-            <a class="mx-3 btn btn-danger" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+    <div class="container mb-2">
+        <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="mb-4 text-light">Manage Activities</h2>
+                <hr>
+                <h5 class="text-light"> Edit Activity </h5>
+                <form method="POST" action="{% url 'edit_activity' activity.id %}" class="form f-flex flex-column  text-light" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
+                    <div class="text-right">
+                        <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
+                        <button class="btn  text-light" type="submit">Update Product</button>
+                    </div>
+                </form>
+                <a class="mx-3 btn btn-danger" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+            </div>
         </div>
     </div>
+    <div class="footer-block"><div>
 {% endblock %}
 
 {% block postloadjs %}

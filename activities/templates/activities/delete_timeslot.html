@@ -10,20 +10,21 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <a class="button" href="{% url 'activity_details' activity.id %}">Go Back</a>
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Manage Timeslot</h2>
-            <hr>
-            <h5> Deleteing: {{ timeslot }} </h5>
-            <a class="button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
-            <form action="{% url 'delete_timeslot' timeslot_id=timeslot.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger p-2 m-2">Delete</button>
-            </form>
+    <div class="container mb-2">
+        <a class="button" href="{% url 'activity_details' activity.id %}">Go Back</a>
+        <div class="row">
+            <div class="col text-light">
+                <hr>
+                <h2 class="mb-4">Manage Timeslot</h2>
+                <hr>
+                <h5> Deleteing: {{ timeslot }} </h5>
+                <a class="button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
+                <form action="{% url 'delete_timeslot' timeslot_id=timeslot.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger p-2 m-2">Delete</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+    <div class="footer-block"><div>
 {% endblock %}

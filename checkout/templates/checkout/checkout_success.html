@@ -15,39 +15,39 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="text-light mb-4">Thank You</h2>
-            <hr>
-            <p> Confirmation of your order will be sent to {{ order.email }}. </p>
-        </div>
-    </div>
-    <div class="row">
-        {% if from_profile %}
+    <div class="container">
         <div class="row">
-			<div class="col-12 col-lg-7 text-right">
-				<a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
-					<span class="icon mr-2">
-						<i class="fas fa-user"></i>
-					</span>
-					<span class="text-uppercase">Return to my profile</span>
-				</a>
-			</div>
-		</div>
-        {% else %}
-        <a href="{% url 'activities' %}" class="btn">
-            <span class="icon">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            <span class="text-uppercase text-light">Keep Shopping</span>
-        </a>
-        {% endif %}
+            <div class="col">
+                <hr>
+                <h2 class="text-light mb-4">Thank You</h2>
+                <hr>
+                <p> Confirmation of your order will be sent to {{ order.email }}. </p>
+            </div>
+        </div>
+        <div class="row">
+            {% if from_profile %}
+            <div class="row">
+                <div class="col-12 col-lg-7 text-right">
+                    <a href="{% url 'profile' %}" class="btn btn-black rounded-0 my-2">
+                        <span class="icon mr-2">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <span class="text-uppercase">Return to my profile</span>
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <a href="{% url 'activities' %}" class="btn">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase text-light">Keep Shopping</span>
+            </a>
+            {% endif %}
+
+        </div>
 
     </div>
-
-</div>
-
+    <div class="footer-block"><div>
 {% endblock %}
 

@@ -11,22 +11,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2">
-    <a class="button" href="{% url 'activity_details' current_activity %}">Go Back</a>
-    <div class="row">
-        <div class="col">
-            <hr>
-            <h2 class="logo-font mb-4">Manage Timeslots</h2>
-            <hr>
-            <h5> Add a new timeslot</h5>
-            <form method="POST" action="{% url 'add_timeslot' %}" class="form d-flex flex-column" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="text-right">
-                    <a class="btn" href="{% url 'activities'  %}">Cancel</a>
-                    <button class="btn" type="submit">Add Timeslot</button>
-                </div>
-            </form> 
+    <div class="container mb-2">
+        <a class="button" href="{% url 'activity_details' current_activity %}">Go Back</a>
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Manage Timeslots</h2>
+                <hr>
+                <h5> Add a new timeslot</h5>
+                <form method="POST" action="{% url 'add_timeslot' %}" class="form d-flex flex-column" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-right">
+                        <a class="btn" href="{% url 'activities'  %}">Cancel</a>
+                        <button class="btn" type="submit">Add Timeslot</button>
+                    </div>
+                </form> 
+            </div>
         </div>
     </div>
+    <div class="footer-block"><div>
 {% endblock %}
