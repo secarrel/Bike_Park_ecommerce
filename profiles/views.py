@@ -172,13 +172,15 @@ def order_details(request, order_number):
 
     return render(request, template, context)
 
+
 @login_required
 def add_review(request, activity_id):
     """ Add a timeslot to an activity """
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
-        return redirect(reverse('order_history', kwargs={'user_id': request.user.id }))
+        return redirect(
+            reverse('order_history', kwargs={'user_id': request.user.id}))
 
     activity = get_object_or_404(Activity, pk=activity_id)
     if request.method == "POST":
@@ -189,19 +191,24 @@ def add_review(request, activity_id):
             review.reviewer = request.user
             form.save()
             messages.success(request, 'Successfully added Review!')
-            return redirect(reverse('order_history', kwargs={'user_id': request.user.id }))
+            return redirect(
+                reverse('order_history',
+                        kwargs={'user_id': request.user.id}
+                        ))
         else:
             messages.error(
                 request,
                 'Failed to add review. Please ensure the form is valid.')
     else:
-        form = ReviewForm(initial={'activity': activity, 'reviewer': request.user}) 
+        form = ReviewForm(
+            initial={'activity': activity, 'reviewer': request.user})
 
     context = {
         'form': form,
     }
 
     return render(request, 'profiles/add_review.html', context)
+
 
 def user_reviews(request):
     """ Edit an activity """
@@ -213,6 +220,7 @@ def user_reviews(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_review(request, review_id):
@@ -271,15 +279,15 @@ def bookings(request):
                 filtered_timeslots[timeslot] = info
         timeslot_list = filtered_timeslots
 
-    #Sort future bookings to show soonest first
+    # Sort future bookings to show soonest first
     timeslot_list = dict(
         sorted(timeslot_list.items(),
-            key=lambda item: item[0].start_time))
+               key=lambda item: item[0].start_time))
 
     activities = Activity.objects.all()
 
     template = 'profiles/bookings.html'
-    context = { 
+    context = {
         'timeslot_list': timeslot_list,
         'activities': activities,
     }

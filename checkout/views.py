@@ -72,7 +72,7 @@ def checkout(request):
                             if capacity - item_data < 0:
                                 messages.error(
                                     request,
-                                    (f'Unable to complete order.' +
+                                    ('Unable to complete order.' +
                                      f'Not enough capacity in {timeslot}.')
                                 )
                                 return redirect(reverse('view_basket'))

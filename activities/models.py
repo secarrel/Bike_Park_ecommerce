@@ -77,7 +77,7 @@ class Activity(models.Model):
         return self.name
 
     def get_duration(self):
-        all_day=False 
+        all_day = False
         if self.duration:
             if self.duration > timedelta(hours=7):
                 all_day = True
@@ -133,7 +133,7 @@ class Review(models.Model):
         (4, '4'),
         (5, '5'),
     ]
-    
+
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)]

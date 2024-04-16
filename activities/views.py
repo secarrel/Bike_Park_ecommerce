@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
@@ -43,12 +42,12 @@ def all_activities(request):
             query = request.GET['q']
             if not query:
                 messages.error(
-                    request, 
-                    ("You didn't enter any search criteria." + 
-                    " Here are all activities offered at the park.")
+                    request,
+                    ("You didn't enter any search criteria." +
+                     " Here are all activities offered at the park.")
                 )
                 return redirect(reverse('activities'))
-            
+
             queries = Q(name__icontains=query)
             activities = activities.filter(queries)
 
@@ -142,9 +141,9 @@ def add_timeslot(request):
     activity_capacity = request.session.get('activity_capacity')
     if current_activity is None:
         messages.error(
-            request, 
-            ('Unable to load form, please return to' + 
-            'the activity page and try again')
+            request,
+            ('Unable to load form, please return to' +
+             'the activity page and try again')
         )
     else:
         if request.method == "POST":
@@ -162,12 +161,13 @@ def add_timeslot(request):
             form = TimeslotForm(
                 initial={
                     'activity': current_activity,
-                    'available_capacity': activity_capacity})
-
+                    'available_capacity': activity_capacity,
+                    })
 
     context = {
         'form': form,
         'current_activity': current_activity,
+        'timeslot': timeslot,
     }
 
     return render(request, 'activities/add_timeslot.html', context)
@@ -207,12 +207,12 @@ def edit_activity(request, activity_id):
 @login_required
 def edit_timeslot(request, timeslot_id):
     """ Edit an activity """
-    
+
     if not request.user.is_superuser:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
-    
+
     timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
     activity = timeslot.activity
 
@@ -221,7 +221,8 @@ def edit_timeslot(request, timeslot_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated timeslot!')
-            return redirect(reverse('activity_details', args=[timeslot.activity.id]))
+            return redirect(
+                reverse('activity_details', args=[timeslot.activity.id]))
         else:
             messages.error(
                 request,
@@ -262,7 +263,6 @@ def delete_activity(request, activity_id):
     return render(request, template, context)
 
 
-
 @login_required
 def delete_timeslot(request, timeslot_id):
     """ Delete activity """
@@ -278,7 +278,6 @@ def delete_timeslot(request, timeslot_id):
         timeslot.delete()
         messages.success(request, 'Timeslot Deleted')
         return redirect(reverse('activity_details', args=[activity.id]))
-
 
     template = 'activities/delete_timeslot.html'
     context = {

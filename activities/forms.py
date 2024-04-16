@@ -31,20 +31,20 @@ class TimeslotForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        activities = Activity.objects.all()
 
         self.fields['start_time'].widget = forms.DateTimeInput(
             attrs={'type': 'datetime-local'})
-        
+
     def clean_start_time(self):
-            """
-            Remove seconds from the date time field to reduce 
-            validation errors.
-            """
-            start_time = self.cleaned_data.get('start_time')
-            if start_time:
-                start_time = start_time.replace(second=0)
-            return start_time
+        """
+        Remove seconds from the date time field to reduce
+        validation errors.
+        """
+        start_time = self.cleaned_data.get('start_time')
+        if start_time:
+            start_time = start_time.replace(second=0)
+        return start_time
+
 
 class ReviewForm(forms.ModelForm):
 
