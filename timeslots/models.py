@@ -25,7 +25,7 @@ class Timeslot(models.Model):
     def __str__(self):
         return f"{self.activity} - {self.start_time.strftime(
             '%d/%m/%Y @ %H:%M')}"
-    
+
     def is_future_timeslot(self):
         """
         Check if the start time of the timeslot is in the future.
