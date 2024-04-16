@@ -78,17 +78,17 @@
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}">
                                             <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                             <div class="text round-border">Book Now!</div>
-                                        <a/>                                
+                                        </a>                                
                                     {% elif category.image %}
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}">
                                             <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                             <div class="text round-border">Book Now!</div>
-                                        <a/>
+                                        </a>
                                     {% else %}
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}">
                                             <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
                                             <div class="text round-border">Book Now!</div>
-                                        <a/>
+                                        </a>
                                     {% endif %}
                                 </div>
                                 <!--Info display-->
@@ -156,7 +156,6 @@
             </div>
         </div>
     </div>
-    <div class="footer-block"><div>
 {% endblock %}
 
 {% block postloadjs %}

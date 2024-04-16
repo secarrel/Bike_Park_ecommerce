@@ -13,7 +13,7 @@
 }
 
 html {
-    height: 100vh;
+    height: 100%;
 }
 
 body {
@@ -21,6 +21,24 @@ body {
     max-width: 1400px;
     margin: auto;
     height: 100%;
+}
+
+main {
+    min-height: 80%;
+    padding-bottom: 10px;
+}
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--dark-grey);
+    color: var(--gold) !important;
+    font-size: x-large;
+    padding: 10px;
+    border-top: 5px solid;
+    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
 }
 
 a {
@@ -88,7 +106,7 @@ form li {
 }
 
 label {
-    margin: 0 10px;
+    margin: auto 10px;
 }
 /* -------- PRE-SET TEXT -------- */
 
@@ -261,19 +279,6 @@ nav {
     color: var(--light-grey);
 }
 
-
-/* -------- FOOTER -------- */
-
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: var(--dark-grey);
-    color: white;
-    text-align: center;
- }
-
 /* -------- HOME -------- */
 .hero-image {
     position: relative;
@@ -306,7 +311,6 @@ footer {
 #activities-list{
    background-color: var(--grey); 
    border-top: 5px solid;
-   border-bottom: 5px solid;
    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
 }
 
