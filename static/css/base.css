@@ -479,6 +479,12 @@ nav {
     width: 100%;
 }
 
+table, th, td {
+    border-radius: 10px;
+    border-color: var(--dark-grey);
+    background-color: var(--grey);
+}
+
 .table>:not(caption)>*>* {
     background-color: var(--grey);
     color: var(--almost-white);
