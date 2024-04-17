@@ -107,6 +107,18 @@ label {
     margin: auto 10px;
 }
 
+.form-select {
+    background-color: var(--grey);
+    border: none;
+    color: var(--light-grey)
+}
+
+.form-select:focus {
+    background-color: var(--light-grey);
+    border: none;
+    color: var(--dark-grey)
+}
+
 /* -------- PRE-SET TEXT -------- */
 
 .gold-text {
@@ -124,22 +136,22 @@ label {
 /* -------- PRE-SET BACKGROUNDS -------- */
 .bg-grey {
     background-color: var(--grey)!important;
-    color: var(--dark-grey)!important;
+    color: var(--dark-grey);
 }
 
 .bg-l-grey {
     background-color: var(--light-grey)!important;
-    color: var(--dark-grey)!important;
+    color: var(--dark-grey);
 }
 
 .bg-d-grey {
     background-color: var(--dark-grey)!important;
-    color: var(--almost-white)!important;
+    color: var(--almost-white);
 }
 
 .bg-ft-danger {
     background-color: var(--danger) !important;
-    color: var(--dark-grey)!important;
+    color: var(--dark-grey);
 }
 
 .bg-ft-danger:hover {
@@ -244,6 +256,12 @@ button:hover i{
 .checkout-button:hover {
     background-color: var(--dark-grey);
     color: var(--gold) !important;
+}
+
+.activity-details-control {
+    width: 150px;
+    color: var(--gold);
+    margin: 3px;
 }
 
 /* --------- NAVBAR --------- */
@@ -483,6 +501,7 @@ nav {
     width: 100%;
     background-color: var(--grey);
     margin: 20px 0;
+    color: var(--ligh-grey)
 }
 
 .activity-info-item i{
@@ -548,6 +567,23 @@ nav {
     outline: 0;
     box-shadow: 0 0 0 2px var(--gold);
 }
+
+.list-group {
+    background-color: var(--dark-grey) !important;
+    border-radius: 5px;
+}
+
+.list-group-item {
+    color: var(--almost-white);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: var(--grey);
+}
+
+/* -------- Edit Activity -------- */
+#new-image {
+    max-width: 90%;
+}
+
 /* -------- Basket --------*/
 .update-link:hover, 
 .remove-item:hover  {
