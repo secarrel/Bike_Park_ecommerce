@@ -14,11 +14,11 @@
     <div class="container mb-2">
         <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
         <div class="row">
-            <div class="col">
+            <div class="col text-light">
                 <hr>
-                <h2 class="logo-font mb-4">Manage Activities</h2>
+                <h2 class="mb-4">Manage Activity</h2>
                 <hr>
-                <h5> Edit an Activity </h5>
+                <h5> Add an Activity </h5>
                 <form method="POST" action="{% url 'add_activity' %}" class="form mb-2 d-flex flex-column" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -30,7 +30,7 @@
                     {% endfor %}
                     <div class="text-right">
                         <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Activity</button>
+                        <button class="btn col-8 checkout-button text-light mx-3" type="submit">Add Activity</button>
                     </div>
                 </form>
             </div>
