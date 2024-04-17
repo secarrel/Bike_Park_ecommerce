@@ -33,9 +33,11 @@
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
-                        <a class="btn checkout-button mx-3" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
-                        <button class="btn col-5 checkout-button text-light mx-3" type="submit">Update Product</button>
-                        <a class="mx-auto btn bg-ft-danger text-light" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+                        <button class="btn col-8 checkout-button text-light mx-3" type="submit">Update Product</button>
+                        <div>
+                            <a class="btn checkout-button bg-d-grey mx-3" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
+                            <a class="mx-auto btn bg-ft-danger text-light" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+                        </div>
                     </div>
                 </form>
             </div>
