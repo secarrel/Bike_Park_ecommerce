@@ -61,3 +61,33 @@
     overflow-x: auto;
     width: 100%;
 }
+
+/* Add Review */
+form {
+    text-align: start !important;
+}
+
+legend {
+    font-size: medium;
+}
+
+.review-form-container {
+    background-color: var(--grey);
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.form-check .form-check-input {
+    height: 20px;
+}
+
+#div_id_content {
+    background-color: var(--dark-grey);
+    padding: 10px;
+    border-radius: 5px;;
+}

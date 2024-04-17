@@ -2,6 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -11,10 +15,27 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit">Submit Review</button>
-</form>
-{{ form.errors }}
+<div>
+    <div class="col-8 m-auto light-text"> 
+        <hr>
+        <h2> Add a Review </h2>
+        <hr>
+        <h4> Reviewing: {{ activity }}</h4>
+        <div class="review-form-container">
+                <div class="d-flex flex-row flex-wrap">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <button type="submit" class="checkout-button" >Submit Review</button>
+            </form>
+            {{ form.errors }}
+        </div>
+        <div class="d-flex flex-row justify-content-around col">
+            <a class="btn back-button m-2" href="{% url 'profile' %}">
+                Back to order history
+            </a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

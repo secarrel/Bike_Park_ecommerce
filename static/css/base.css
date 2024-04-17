@@ -255,8 +255,9 @@ nav {
     width: 35px;
 }
 
-.nav-link:hover {
-    color: var(--almost-white) !important;
+.nav-link:hover, 
+.nav-link:focus {
+    color: var(--gold) !important;
 }
 
 #navbar-logo-container {
