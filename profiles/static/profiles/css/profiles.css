@@ -1,24 +1,57 @@
-#profile-update-form .form-control {
-    color: #000;
-}
-
-#profile-update-form input::placeholder {
-    color: #aab7c4;
-}
-
-#id_default_country,
-#id_default_country option:not(:first-child) {
-    color: #000;
-}
-
-#id_default_country option:first-child {
-    color: #aab7c4;
-}
-
+/* Profile Page */
 .manage-container {
     display: flex;
     flex-direction: column;
     background-color: var(--grey);
     border-radius: 5px;
     padding: 10px;
+}
+
+/* User Details Page */
+.details-form-container {
+    background-color: var(--grey);
+    border-radius: 5px;
+}
+
+#profile-update-form > .form-control {
+    color: #000;
+}
+
+#profile-update-form > input::placeholder {
+    color: var(--grey);
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: var(--dark-grey);
+    background-color: var(--light-grey);
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+#id_default_country option:first-child {
+    color: var(--gold);
+}
+
+#profile-update-form input {
+    background-color: var(--light-grey);
+    color: var(--grey);
+    border-radius: 5px !important;
+    padding: 0 10px;
+    border: none;
+    margin: 10px 0;
+}
+
+#profile-update-form input:focus {
+    background-color: var(--dark-grey);
+    color: var(--almost-white);
+    border-radius: 5px !important;
+    padding: 0 10px;
+    border: none;
+    margin: 10px 0;
+}
+
+.details-page {
+    margin-bottom: 40px;
 }

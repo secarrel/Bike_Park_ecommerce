@@ -18,31 +18,40 @@
 
 
 {% block content %}
-<div class="row">
+<div class="row details-page">
     <div class="col-8 m-auto light-text"> 
-        <form class="mt-3 d-flex flex-column" action="{% url 'profile' %}" method="POST" id="profile-update-form">
-            {% csrf_token %}
-            <fieldset class="d-flex flex-column">
-                <legend class="fieldset-label">Your Details</legend>
-                {{ form.default_full_name }}
-                {{ form.email }}
-                {{ form.default_phone_number }}
-            </fieldset>
-            <fieldset class="d-flex flex-column">
-                <legend class="fieldset-label">Billing Address</legend>
-                {{ form.default_street_address1 }}
-                {{ form.default_street_address2 }}
-                {{ form.default_town_or_city }}
-                {{ form.default_county }}
-                {{ form.default_country }}
-                {{ form.default_postcode }}
-            </fieldset>
-            <button class="btn btn-success">Save and Update</button>
-        </form>
-        <div class="row">
-            <a class="btn btn-primary m-2" href="{% url 'account_change_password' %}">
+        <hr>
+        <h2> Manage Your Details </h2>
+        <hr>
+        <div class="details-form-container">
+            <form class="mt-3 d-flex flex-column" action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                <fieldset class="d-flex flex-column">
+                    <legend class="fieldset-label">Your Details</legend>
+                    {{ form.default_full_name }}
+                    {{ form.email }}
+                    {{ form.default_phone_number }}
+                </fieldset>
+                <fieldset class="d-flex flex-column">
+                    <legend class="fieldset-label">Billing Address</legend>
+                    {{ form.default_street_address1 }}
+                    {{ form.default_street_address2 }}
+                    {{ form.default_town_or_city }}
+                    {{ form.default_county }}
+                    {{ form.default_country }}
+                    {{ form.default_postcode }}
+                </fieldset>
+                <button class="btn checkout-button">Save and Update</button>
+            </form>
+        </div>
+        <div class="d-flex flex-row justify-content-around col">
+            <a class="btn back-button m-2" href="{% url 'profile' %}">
+                Back to profile
+            </a>
+            <a class="btn checkout-button m-2" href="{% url 'account_change_password' %}">
                 Change Password
             </a>
+
         </div>
 </div>
 </div>
