@@ -15,37 +15,39 @@
 {% endblock %}
 
 {% block content %}
-<a class="button mx-2" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
 <div class="container d-flex flex-column light-text text-center">
+    <a class="button mx-2 text-start" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
     <h1> Your Orders </h1>
     <hr>
-    <div class="d-flex">
+    <div class="d-flex flex-wrap">
         <div class="d-flex flex-column col-12 col-lg-7 mx-auto text-center p-1">
             <h3 class="text-center">Order Histroy</h3>
             <hr>
             {% if orders %}
-                <table class="table table-responsive text-center">
+                <table class="table order-history-table responsive-table text-center">
                     <thead>
                         <tr>
-                            <th>Order #</th>
-                            <th>Activities</th>
-                            <th>Timeslot</th>
-                            <th>Quantity</th>
-                            <th>Order Total</th>
-                            <th class="text-muted">Order date</th>
-                            <th> Review </th>
+                            <th class="col">Order #</th>
+                            <th class="col d-none d-md-table-cell">Activity</th>
+                            <th class="col">Timeslot</th>
+                            <th class="col d-none d-md-table-cell">Quantity</th>
+                            <th class="col d-none d-md-table-cell">Order Total</th>
+                            <th class="col">Order date</th>
+                            <th class="col d-none d-md-table-cell"> Review </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for order in orders %}
                             <tr>
-                                <td>
+                                <!--Order number-->
+                                <td class="col">
                                     <a href="{% url 'order_details' order.order_number %}"
                                                 title="{{ order.order_number }}">
                                                     {{ order.order_number|truncatechars:6 }}
                                                 </a>
                                 </td>
-                                <td>
+                                <!--Order activity-->
+                                <td class="col d-none d-md-table-cell">
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
@@ -54,16 +56,30 @@
                                         {% endfor %}
                                     </ul>
                                 </td>
-                                <td>
-                                    <ul class="list-unstyled">
+                                <!--Order start time-->
+                                <td class="col">
+                                    <ul class="list-unstyled d-none d-md-flex flex-column">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
                                                 {{ item.timeslot.start_time.date }}
-                                            </li>
+                                            </li>                                            
+                                        {% endfor %}
+                                    </ul>
+                                    <ul class="list-unstyled d-md-none">
+                                        {% for item in order.lineitems.all %}
+                                            {% if forloop.last %}
+                                                <li class="small">{{ item.timeslot.activity }} <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}"><i class="fa-regular fa-star-half-stroke"></i></a></li> 
+                                                <li class="small">({{ item.timeslot.start_time.date }})</li>
+                                            {% else %}            
+                                                <li class="small">{{ item.timeslot.activity }} <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}"><i class="fa-regular fa-star-half-stroke"></i></a></li> 
+                                                <li class="small">({{ item.timeslot.start_time.date }})</li>
+                                                <li><hr></li>       
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 </td>
-                                <td>
+                                <!--Order quantity-->
+                                <td class="col d-none d-md-table-cell">
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
@@ -72,13 +88,16 @@
                                         {% endfor %}
                                     </ul>
                                 </td>
-                                <td>£{{ order.order_total }}</td>
-                                <td class="text-muted">{{ order.date.date }}</td>
-                                <td> 
+                                <!--Order total-->
+                                <td class="col d-none d-md-table-cell">£{{ order.order_total }}</td>
+                                <!--Order date-->
+                                <td class="col"><small>{{ order.date.date }}</small></td>
+                                <!--Review-->
+                                <td class="col d-none d-md-table-cell"> 
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
-                                                <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}">Leave a Review</a>
+                                                <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}">Review</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -103,7 +122,7 @@
                                 <th> Activity </th>
                                 <th> Date </th>
                                 <th> Time </th>
-                                <th> Qty </th>
+                                <th class="d-none d-sm-table-cell"> Qty </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -112,13 +131,13 @@
                                     <td>{{ timeslot.activity }}</td>
                                     <td>{{ timeslot.start_time.date }}</td>
                                     <td>{{ timeslot.start_time.time }}</td>
-                                    <td>{{ quantity }}</td>
+                                    <td class="d-none d-sm-table-cell">{{ quantity }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 {% else %}
-                    <p> No future bookings. </p>
+                <p class="small muted-text"> No future bookings. </p>
                 {% endif %}
             </div>
             <div class="col-12">
@@ -130,7 +149,7 @@
                                 <th> Activity </th>
                                 <th> Date </th>
                                 <th> Time </th>
-                                <th> Qty </th>
+                                <th class="d-none d-sm-table-cell"> Qty </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -139,13 +158,13 @@
                                     <td>{{ timeslot.activity }}</td>
                                     <td>{{ timeslot.start_time.date }}</td>
                                     <td>{{ timeslot.start_time.time }}</td>
-                                    <td>{{ quantity }}</td>
+                                    <td class="d-none d-sm-table-cell">{{ quantity }}</td>
                                 </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 {% else %}
-                    <p> No past bookings. </p>
+                    <p class="small muted-text"> No past bookings. </p>
                 {% endif %}
             </div>
         </div>

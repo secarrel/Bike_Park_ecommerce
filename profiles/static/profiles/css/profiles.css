@@ -55,3 +55,9 @@
 .details-page {
     margin-bottom: 40px;
 }
+
+/* Order History */
+.order-history-table {
+    overflow-x: auto;
+    width: 100%;
+}
