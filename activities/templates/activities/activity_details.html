@@ -49,9 +49,9 @@
         </div>
     </div>
     <!-- Further details -->
-    <div class="container-fluid d-flex flex-wrap text-center muted-text">
+    <div class="further-details-container container-fluid d-flex flex-wrap text-center muted-text">
         <!-- Activity Details -->
-        <div class="activity-details d-flex flex-column col-12 col-lg-4 m-auto">
+        <div class="activity-details d-flex flex-column col-12 col-lg-6 m-auto">
             <!-- Info -->
             <div class="d-flex flex-column mx-auto py-3">
                 <h3>Info <i class="fa-solid fa-circle-info ms-2"></i> </h3>
@@ -99,9 +99,9 @@
             </div>
         </div>
         <!-- Calander -->
-        <div class="col-12 col-lg-7 m-auto">
-            <div class="big-square">
-                <h3> {% if request.user.is_superuser %} Manage Timeslots {% else %} Book your space! {% endif %} </h3>
+        <div class="col-12 col-lg-5 m-auto">
+            <div class="big-square round-border">
+                <h3 class="text-light"> {% if request.user.is_superuser %} Manage Timeslots {% else %} Book your space! {% endif %} </h3>
                 {% if not request.user.is_superuser %}
                     <form class="form d-flex flex-column" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
                         {% csrf_token %}
@@ -123,14 +123,14 @@
                                     {% endif %}
                                 {% endfor %}
                             </select>
-                            <label name="quantity" for="quantity" required >Quantity *</lable>
-                            <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="{{timeslot.available_capacity}}" required>
+                            <label name="quantity" for="quantity" class="text-light"required >Quantity *</lable>
+                            <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="10" required>
                             <p id="quantity-error" class="error-message text-warning"></p>
                             <div class="col-12">
-                                <a href="{% url 'activities' %}" class="btn">
+                                <a href="{% url 'activities' %}" class="btn gold-text">
                                     <span>Keep Browsing</span>
                                 </a>
-                                <input type="submit" class="btn" value="Add to Basket">
+                                <input type="submit" class="btn add-to-basket text-light" value="Add to Basket">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% else %}
@@ -171,9 +171,9 @@
         </div>
     </div>
     <!-- Reviews -->
-    <div class="d-flex flex-column bg-l-grey align-items-center p-2 m-2">
+    <div id="customer-reviews" class="d-flex flex-column align-items-center">
         <div>
-            <h3 class="text-center"> Customer Reviews </h3>
+            <h3 class="text-center text-light"> Customer Reviews </h3>
         </div>
         {% if reviews %}
             <div class="d-flex flex-column align-items-center reviews-display col-12 text-center">
@@ -195,8 +195,8 @@
                 </div>
                 {% endif %}
                 {% for review in reviews %}
-                <div class="d-flex flex-column align-items-center col-12 col-md-8 p-3 m-1 bg-grey review-item">
-                    <div class="d-flex col-12 justify-content-center bg-d-grey">
+                <div class="d-flex flex-column align-items-center col-12 col-md-8 review-item">
+                    <div class="d-flex col-12 justify-content-center review-item-rating">
                         <div>
                             {% for star in activity.average_rating.1 %}
                                 {% if star == 'full' %}
@@ -208,10 +208,13 @@
                         </div>
                         <p><em>from: </em>{{ review.reviewer }}</p> 
                     </div>
-                    <div class="d-flex col-12 justify-content-around">
-                        <i class="fa-solid fa-quote-left"></i> 
+                    <div class="d-flex col-12 justify-content-around review-item-content">
+                        <i class="fa-solid fa-quote-left muted-text"></i> 
                         <p>{{ review.content }}</p>
-                        <i class="fa-solid fa-quote-right"></i>
+                        <i class="fa-solid fa-quote-right muted-text"></i>
+                    </div>
+                    <div class="d-flex col-12 justify-content-end review-item-date muted-text">
+                        <small>{{ review.review_time }}</small>
                     </div>
                 </div>   
                 {% endfor %}
