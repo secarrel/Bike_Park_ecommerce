@@ -53,6 +53,7 @@ class ReviewForm(forms.ModelForm):
         fields = ['rating', 'content', 'activity', 'reviewer']
         widgets = {
             'rating': forms.RadioSelect(choices=Review.RATING_CHOICES),
+            'content': forms.Textarea(attrs={'rows': 6}),
             'reviewer': forms.HiddenInput(),
             'activity': forms.HiddenInput(),
         }

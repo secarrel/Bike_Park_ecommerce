@@ -23,21 +23,38 @@
     <div class="d-flex flex-column col-12 text-center p-1">
         <h1 class="text-center">Reviews</h1>
         {% if reviews %}
-            <table class="table table-responsive text-center">
+            <table class="table table-responsive text-center my-3">
                 <thead>
                     <tr>
-                        <th>Activity</th>
-                        <th>Rating</th>
-                        <th>Content</th>
-                        <th>Date Created</th>
-                        <th>Delete</th>
+                        <th class="col-3">Activity</th>
+                        <th class="d-none d-md-table-cell col-3" >Rating</th>
+                        <th class="col">Content</th>
+                        <th class="d-none d-md-table-cell col-2">Date Created</th>
+                        <th class="col-1">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for review in reviews %}
                         <tr>
-                            <td>{{ review.activity }}</td>
+                            <!-- Activity -->
                             <td>
+                                <div>{{ review.activity }}<div>
+                                <div class="d-md-none">
+                                    {% if review.display_rating %}
+                                        {% for star in review.display_rating %}
+                                            {% if star == 'full' %}
+                                                <i class="fa-solid fa-star"></i>
+                                            {% elif star == 'half' %}
+                                                <i class="fa-solid fa-star-half"></i>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        {{ review.rating }}/5
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <!-- Rating -->
+                            <td class="d-none d-md-table-cell">
                                 {% if review.display_rating %}
                                     {% for star in review.display_rating %}
                                         {% if star == 'full' %}
@@ -50,12 +67,19 @@
                                     {{ review.rating }}/5
                                 {% endif %}
                             </td>
-                            <td>{{ review.content|truncatechars:300 }}</td>
-                            <td>
-                                {{ review.review_time }}
+                            <!-- Content -->
+                            <td class="small"> 
+                                {{ review.content|truncatechars:300 }}
+                                <div class="d-md-none"><em>~ {{ review.review_time.date }} ~</em></div>
                             </td>
+                            <!-- Date -->
+                            <td class="d-none d-md-table-cell">
+                                <div class="small" >{{ review.review_time.date }}</div>
+                                <div class="small">{{ review.review_time.time }}</div>
+                            </td>
+                            <!-- Delete -->
                             <td>
-                                <a href="{% url 'delete_review' review.id %}"><i class="fa-regular fa-trash-can"></i></a>
+                                <a href="{% url 'delete_review' review.id %}"><i class="fa-regular text-danger fa-trash-can"></i></a>
                             </td>
                         </tr>
                     {% endfor %}

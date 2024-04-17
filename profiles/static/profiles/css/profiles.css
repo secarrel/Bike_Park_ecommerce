@@ -5,6 +5,8 @@
     background-color: var(--grey);
     border-radius: 5px;
     padding: 10px;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
 
 /* User Details Page */
