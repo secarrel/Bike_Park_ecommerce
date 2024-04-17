@@ -393,14 +393,6 @@ nav {
     overflow: hidden;
 }
 
-.image-fade-out {
-    position: absolute;
-    height: 150px;
-    width: 100%;
-    background-image: linear-gradient(to top, var(--dark-grey), var(--opaque));
-    translate: 0 -189px;
-}
-
 .main-image-title p {
     color: var(--almost-white);
     padding: 0 4%;
