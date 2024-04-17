@@ -193,9 +193,7 @@
             let resultsCount = 0
 
             $('.activity-display').each(function () {
-                console.log(this)
                 let difficulty = $(this).data('difficulty'); 
-                console.log(difficulty)
                 if (!selectedDifficulty || selectedDifficulty === 'reset' || difficulty == selectedDifficulty) {
                     $(this).show(); // Show the activity
                     resultsCount += 1; // Add one to the results count
@@ -203,7 +201,6 @@
                     $(this).hide(); // Hide the activity
                 }
             });
-            console.log(resultsCount)
 
             // Check if there there are any results
             if (resultsCount === 0) {
@@ -213,7 +210,7 @@
                     $("<p>", {
                         id: "empty-message",
                         class: "text-light text-center",
-                        text: "No results found"
+                        text: "No activities match the search criteria."
                     }).appendTo("#empty-list-container");
                 }
             } else if (resultsCount > 0) {
