@@ -18,15 +18,15 @@
 
 
 {% block content %}
-<a class="button mx-2" href="{% url 'bookings' %}">Go Back</a>
-<div class="container d-flex light-text">
+<div class="container d-flex flex-column light-text">
+    <a class="button mx-2" href="{% url 'bookings' %}">Go Back</a>
     <div class="d-flex flex-column col-12 text-center p-1">
         <div>
             <h1 class="text-center">Timeslot Bookings</h1>
-            <h2> {{ timeslot.activity }} </h2>
-            <h3> {{ timeslot.start_time.date}} | {{ timeslot.start_time.time }}
         </div>
         <div class="container my-5">
+            <h2> {{ timeslot.activity }} </h2>
+            <h3> {{ timeslot.start_time.date}} | {{ timeslot.start_time.time }}</h3>
             {% if orders %}
                 <table class="col-12 col-md-6 mx-auto">
                     <thead>
