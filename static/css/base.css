@@ -8,7 +8,7 @@
     --opaque: rgba(255, 255, 255, 0);
     --opaque-grey: #3030302f;
     --opaque-dark-grey: #1b1b1b2e;
-    --danger: rgb(136, 61, 61);
+    --danger: #883d3d;
 }
 
 html {
@@ -142,6 +142,11 @@ label {
     color: var(--dark-grey)!important;
 }
 
+.bg-ft-danger:hover {
+    background-color: #522525 !important;
+    color: var(--almost-white)!important;
+}
+
 .bg-ft-error {
     background-color: rgb(212, 163, 163) !important;
     color: var(--dark-grey)!important;
@@ -215,7 +220,8 @@ button:hover i{
 }
 
 .profile-button:hover {
-    background-color: var(--almost-white);
+    background-color: var(--dark-grey);
+    color: var(--gold)
 }
 
 .btn-close {

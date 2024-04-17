@@ -14,3 +14,11 @@
 #id_default_country option:first-child {
     color: #aab7c4;
 }
+
+.manage-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey);
+    border-radius: 5px;
+    padding: 10px;
+}
