@@ -99,7 +99,6 @@ form ul {
     margin: 20px auto;
 }
 
-
 form li {
     list-style: '-->  ';
     text-align: start;
@@ -108,6 +107,7 @@ form li {
 label {
     margin: auto 10px;
 }
+
 /* -------- PRE-SET TEXT -------- */
 
 .gold-text {
@@ -220,23 +220,6 @@ button:hover i{
     margin: auto;
 }
 
-/* --------- Toasts --------- */
-
-.toast {
-    padding: 4px;
-}
-
-.toast-body{
-    display: flex;
-    justify-content: center;
-    max-width: 350px;
-}
-
-.toast-message {
-    margin: 0 !important;
-    width: 300px;
-}
-
 /* --------- NAVBAR --------- */
 nav {
     overflow: hidden;
@@ -320,6 +303,23 @@ nav {
   
 .form-control::-ms-input-placeholder {
     color: var(--light-grey);
+}
+
+/* --------- Toasts --------- */
+
+.toast {
+    padding: 4px;
+}
+
+.toast-body{
+    display: flex;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.toast-message {
+    margin: 0 !important;
+    width: 300px;
 }
 
 /* -------- HOME -------- */
@@ -460,6 +460,38 @@ nav {
     cursor: pointer;
 }
 
+.remove-item {
+    font-size: 20px;
+}
+
+.update-form {
+    padding: 0;
+}
+
+.item-total {
+    padding: 3px;
+    margin: 7px 0;
+}
+
+#quantity-input-basket {
+    background-color: var(--almost-white);
+    color: var(--dark-grey);
+    width: 100%;
+}
+
+.table>:not(caption)>*>* {
+    background-color: var(--grey);
+    color: var(--almost-white);
+}
+
+.basket-row {
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.align-middle {
+    text-align: center;
+}
 /* -------- Allauth -------- */
 .full-page-image {
     position: absolute;

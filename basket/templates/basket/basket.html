@@ -28,54 +28,61 @@
                 <thead>
                   <tr>
                     <th scope="col">Activity</th>
-                    <th scope="col">Timeslot</th>
+                    <th scope="col" class="d-none d-md-table-cell ">Timeslot</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Subtotal</th>
                   </tr>
                 </thead>
                 <tbody>
                     {% for item in basket_items %}
-                        <tr>
+                        <tr class="basket-row">
                             <td>
                                 <h4>{{item.activity.name}}</h4>
-                                <p class="small" >Item_id: {{item.timeslot.id}}</p>
+                                <div class="d-md-none d-table-cell">
+                                    {% if item.timeslot %}
+                                        <h6>{{ item.timeslot.start_time.date }}</h6>
+                                        <h6>{{ item.timeslot.start_time.time }}</h6>
+                                    {% endif %}
+                                </div>
                                 <p>£{{item.activity.price|floatformat:2}}<p>
                             </td>
-                            <td>
+                            <td class="d-none d-md-table-cell">
                                 {% if item.timeslot %}
-                                    {{ item.timeslot.start_time }}
+                                    <h6>{{ item.timeslot.start_time.date }}</h6>
+                                    <h6>{{ item.timeslot.start_time.time }}</h6>
                                 {% else %}
                                     Timeslot not available
                                 {% endif %}</td>
-                            <td>  
+                            <td class="align-middle">  
                                 <form class="form update-form" method="POST" action="{% url 'update_basket' item.item_id %}">   
                                     {% csrf_token %}                   
-                                    <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id }}" data-initial-quantity="{{ item.quantity }}" value="{{ item.quantity }}" min="1" max="15" required>
+                                    <input type="number" id="quantity-input-basket" name="quantity" data-item_id="{{ timeslot.id }}" data-initial-quantity="{{ item.quantity }}" value="{{ item.quantity }}" min="1" max="15" required>
                                 </form>
                                 <a class="update-link text-info"><small>Update</small></a>
-                                <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                             </td>
-                            <td> £{{item.activity.price| calc_subtotal:item.quantity }}</td>
+                            <td class="align-middle"> 
+                                <div class="d-flex flex-column">
+                                    <p class="item-total"> £{{item.activity.price| calc_subtotal:item.quantity }} </p>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><i class="fa-regular fa-circle-xmark"></i></a>
+                                </div>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <div>
-                <p> Total: £{{total|floatformat:2}}
+            <div class="text-end m-3">
+                <p> Basket Total: <strong>£{{total|floatformat:2}} </strong> </p>
             </div>
             {% else %}
                 <p class="lead mb-5">Your basket is empty</p>
             {% endif %}
             <a href="{% url 'activities' %}" class="btn">
-                <span class="icon">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
                 <span class="text-uppercase text-light">Keep Shopping</span>
             </a>
             {% if basket_items %}
-            <a href="{% url 'checkout' %}" class="btn">
+            <a class="btn bg-l-grey" href="{% url 'checkout' %}" class="btn">
                 <span class="icon">
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-lock text-light"></i>
                 </span>
                 <span class="text-uppercase text-light">Secure checkout</span>
             </a>
@@ -91,16 +98,16 @@
 <script type="text/javascript"> 
     // Update quantity on click
     $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
+        let form = $(this).prev('.update-form');
         form.submit();
     })
 
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/basket/remove_from_basket/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
+        let csrfToken = "{{ csrf_token }}";
+        let itemId = $(this).attr('id').split('remove_')[1];
+        let url = `/basket/remove_from_basket/${itemId}/`;
+        let data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
          .done(function() {
