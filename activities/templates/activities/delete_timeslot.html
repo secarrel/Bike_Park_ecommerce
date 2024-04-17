@@ -17,12 +17,17 @@
                 <hr>
                 <h2 class="mb-4">Manage Timeslot</h2>
                 <hr>
-                <h5> Deleteing: {{ timeslot }} </h5>
-                <a class="button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
-                <form action="{% url 'delete_timeslot' timeslot_id=timeslot.id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger p-2 m-2">Delete</button>
-                </form>
+                <div class="col-8 col-md-6 mx-auto my-5 text-center bg-grey p-4 round-border text-light">
+                    <h5> Deleteing: {{ timeslot }} </h5>
+                    <p> Are you sure you want to delete the timeslot '{{ timeslot }}'? </p>
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <form action="{% url 'delete_timeslot' timeslot_id=timeslot.id %}" method="post" class="col-11 mx-auto">
+                            {% csrf_token %}
+                            <button type="submit" class="btn bg-ft-danger col-11 p-2 m-2">Delete</button>
+                        </form>
+                        <a class="button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -110,7 +110,8 @@ label {
 .form-select {
     background-color: var(--grey);
     border: none;
-    color: var(--light-grey)
+    color: var(--light-grey);
+    cursor: pointer;
 }
 
 .form-select:focus {

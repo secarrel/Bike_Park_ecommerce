@@ -18,52 +18,57 @@
 
 
 {% block content %}
-<a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
-<div class="container d-flex light-text">
-    <div class="d-flex flex-column col-12 text-center p-1">
-        <h1 class="text-center">Bookings</h1>
+<div class="container d-flex mb-3 flex-column light-text">
+    <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
+    <div class="col light-text"> 
+        <hr>
+        <h2> Bookings </h2>
+        <hr>
         {% if timeslot_list %}
-        <div class="row py-4">
-            <div>
-                <input type="text" id="datepicker" placeholder="Select a date">
-            </div>
-            {% if activities %}
-                <div class="activity-select-wrapper w-50">
-                    <select id="activity-filter">
-                        <option value="reset">All Activities</option>
-                        {% for activity in activities%}
-                            <option value="{{ activity.id }}">{{ activity }}</option>
-                        {% endfor %}
-                    </select>
+            <div class="filter-container d-flex flex-column col-12">
+                <div class="text-center"> Filter bookings:</div>
+                <div class="d-flex justify-content-around flex-wrap my-2">
+                    <div>
+                        <input type="text" class="pointer" id="datepicker" placeholder="Select a date">
+                    </div>
+                    {% if activities %}
+                        <div class="activity-select-wrapper">
+                            <select id="activity-filter">
+                                <option value="reset">All Activities</option>
+                                {% for activity in activities%}
+                                    <option value="{{ activity.id }}">{{ activity }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
                 </div>
-            {% endif %}
-            <a class="button mx-2" href="{% url 'bookings' %}">Show all future bookings</a>
-        </div>
-
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <a class="back-button mx-auto p-3 col text-center" href="{% url 'bookings' %}">Show all future bookings</a>
+            </div>
             <table class="table table-responsive text-center">
                 <thead>
                     <tr>
-                        <th>Activity</th>
-                        <th>Date</th>
-                        <th>Start time</th>
-                        <th>Duration</th>
-                        <th>Booked Spaces</th>
-                        <th>Capacity</th>
+                        <th class="col">Activity</th>
+                        <th class="col"class="col">Date</th>
+                        <th class="col d-none d-md-table-cell">Duration</th>
+                        <th class="col">Booked Spaces</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for timeslot, data in timeslot_list.items %}
                         <tr class="timeslot" data-activity={{ timeslot.activity.id }} >
-                            <td>
+                            <td class="col">
                                 <a href="{% url 'booking_info' timeslot_id=timeslot.id %}"> 
                                     {{ timeslot.activity }} 
                                 </a>
                             </td>
-                            <td>{{ timeslot.start_time.date }}</td>
-                            <td>{{ timeslot.start_time.time }}</td>
-                            <td>{{ timeslot.activity.get_duration.0 }}
-                            <td>{{ data.quantity }}</td>
-                            <td>{{ data.capacity }}</td>
+                            <td class="col">
+                                <div class="small">{{ timeslot.start_time.date }}</div>
+                                <div class="small">{{ timeslot.start_time.time }}</div>
+                            </td>
+                            <td class="col d-none d-md-table-cell">{{ timeslot.activity.get_duration.0 }}
+                            <td class="col"><strong>{{ data.quantity }}</strong><small>/{{ data.capacity }}</small></td>
                         </tr>
                     {% endfor %}
                 </tbody>

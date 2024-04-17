@@ -22,12 +22,12 @@
             <form method="POST" action="{% url 'edit_timeslot' timeslot.id %}" class="form d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <div class="d-flex align-items-center col-6 m-auto">
-                    <a class="button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
-                    <button class="btn text-light" type="submit">Update Timeslot</button>
-                    <a class="btn btn-danger" href={% url 'delete_timeslot' timeslot.id %}> 
+                <div class="d-flex flex-column align-items-center col-6 m-auto">
+                    <button class="btn checkout-button col-12 text-light" type="submit">Update Timeslot</button>
+                    <a class="btn bg-ft-danger my-2" href={% url 'delete_timeslot' timeslot.id %}> 
                         Delete Timeslot
                     </a>
+                    <a class="back-button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
                 </div>
             </form>
         </div>

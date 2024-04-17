@@ -175,7 +175,6 @@ def add_timeslot(request):
     context = {
         'form': form,
         'current_activity': current_activity,
-        'timeslot': timeslot,
     }
 
     return render(request, 'activities/add_timeslot.html', context)

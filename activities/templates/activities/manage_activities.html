@@ -14,7 +14,7 @@
     <div class="container mb-2">
         <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
         <div class="row">
-            <div class="col">
+            <div class="col text-light">
                 <hr>
                 <h2 class="logo-font mb-4 text-light">Manage Activities</h2>
                 <hr>
@@ -22,25 +22,25 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th> Activity </th>
-                            <th> Category </th>
-                            <th> Price </th>
-                            <th> Duration </th>
-                            <th> Capacity </th>
-                            <th> Difficulty </th>
-                            <th> edit </th>
+                            <th class="col"> Activity </th>
+                            <th class="col d-none d-md-table-cell"> Category </th>
+                            <th class="col"> Price </th>
+                            <th class="col d-none d-md-table-cell"> Duration </th>
+                            <th class="col"> Capacity </th>
+                            <th class="col d-none d-md-table-cell"> Difficulty </th>
+                            <th class="col"> Edit </th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for activity in activities %}
                             <tr>
-                                <td> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
-                                <td> {{ activity.category.friendly_name }} </td>
-                                <td> £{{ activity.price }} </td>
-                                <td> {{ activity.get_duration.0 }} </td>
-                                <td> {{ activity.capacity }} </td>
-                                <td> {{ activity.difficulty }} </td>
-                                <td><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                <td class="col"> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
+                                <td class="col d-none d-md-table-cell"> {{ activity.category.friendly_name }} </td>
+                                <td class="col"> £{{ activity.price }} </td>
+                                <td class="col d-none d-md-table-cell"> {{ activity.get_duration.0 }} </td>
+                                <td class="col"> {{ activity.capacity }} </td>
+                                <td class="col d-none d-md-table-cell"> {{ activity.difficulty }} </td>
+                                <td class="col"><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

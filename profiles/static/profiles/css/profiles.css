@@ -93,3 +93,37 @@ legend {
     padding: 10px;
     border-radius: 5px;;
 }
+
+/* Bookings Page */
+.activity-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#activity-filter {
+    background-color: var(--grey);
+    border: none;
+    border-radius: 5px;;
+    width: 200px;
+    cursor: pointer;
+    color: var(--light-grey);
+    padding: 1px;
+    text-align: center;
+}
+
+#activity-filter:focus {
+    background-color: var(--light-grey);
+    border: none;
+    border-radius: 5px;;
+    width: 200px;
+    cursor: pointer;
+    color: var(--dark-grey)
+}
+
+.ui-datepicker table, 
+.ui-datepicker th,
+.ui-datepicker-week-end {
+    background-color: var(--dark-grey);
+    color: var(--almost-white)
+}
