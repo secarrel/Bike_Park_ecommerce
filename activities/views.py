@@ -68,12 +68,20 @@ def activity_details(request, activity_id):
 
     activity = get_object_or_404(Activity, pk=activity_id)
     category = activity.category
+
+    # Save activity to session to help with navigation on other pages.
     current_activity = activity_id
     activity_capacity = activity.capacity
     request.session['current_activity'] = current_activity
     request.session['activity_capacity'] = activity_capacity
+
+    # Only show timeslots that are in the future
     future_timeslots = activity.timeslot.filter(start_time__gt=timezone.now())
-    reviews = Review.objects.filter(activity=activity)
+
+    # Only show reviews for current activity
+    # Sort most recent first
+    reviews = Review.objects.filter(activity=activity).order_by('-review_time')
+
     context = {
         'activity': activity,
         'future_timeslots': future_timeslots,
