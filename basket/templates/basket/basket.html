@@ -76,8 +76,8 @@
             {% else %}
                 <p class="lead mb-5">Your basket is empty</p>
             {% endif %}
-            <a href="{% url 'activities' %}" class="btn">
-                <span class="text-uppercase text-light">Keep Shopping</span>
+            <a href="{% url 'activities' %}" class="btn back-button">
+                <span>Keep Shopping</span>
             </a>
             {% if basket_items %}
             <a class="btn bg-l-grey" href="{% url 'checkout' %}" class="btn">

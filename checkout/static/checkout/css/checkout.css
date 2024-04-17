@@ -4,35 +4,36 @@
     height: 40px;
     padding: 10px 12px;
     border: 1px solid transparent;
-    border-radius: 0px;
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
+    border-radius: 5px;
+    background-color: var(--light-grey);
+    box-shadow: 0 0 0 0;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
+    color: var(--almost-white);
 }
   
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-    box-shadow: 0 1px 3px 0 #cfd7df;
+    border: 2px solid var(--gold);
 }
 
 .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+    background-color: #303030 !important;
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4;
+    color: var(--almost-white);
 }
 
 select,
 select option {
-    color: #000000;
+    color: var(--almost-white);
 }
 
 select:invalid,
 select option[value=""] {
-    color: #aab7c4 !important;
+    color: var(--almost-white) !important;
 }
 
 .fieldset-label {
@@ -42,7 +43,7 @@ select option[value=""] {
 
 #payment-form .form-control,
 #card-element {
-    color: #000;
+    color: var(--almost-white);
     border: 1px solid #000;
 }
 

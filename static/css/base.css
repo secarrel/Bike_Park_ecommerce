@@ -222,6 +222,24 @@ button:hover i{
     margin: auto;
 }
 
+.back-button {
+    color: var(--gold);
+}
+
+.back-button:hover {
+    color: var(--almost-white);
+}
+
+.checkout-button {
+    background-color: var(--light-grey);
+    color: var(--almost-white);
+}
+
+.checkout-button:hover {
+    background-color: var(--dark-grey);
+    color: var(--gold) !important;
+}
+
 /* --------- NAVBAR --------- */
 nav {
     overflow: hidden;
@@ -252,9 +270,13 @@ nav {
 
 .nav-underlay {
     position: absolute;
-    width: 110%;
-    height: 100%;
-    z-index: 2220;
+    height: 50px;
+    width: 100%;
+    z-index: -1;
+    border-top: 2px solid;
+    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
+    background-image: linear-gradient(var(--dark-grey), var(--opaque-dark-grey));
+    backdrop-filter: blur(2px);
 }
 
 .top-row-nav {
@@ -264,13 +286,19 @@ nav {
 }
 
 .lower-nav{
-    border-top: 2px solid;
-    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
-    background-image: linear-gradient(var(--dark-grey), var(--opaque-dark-grey));
-    backdrop-filter: blur(2px);
+    position: absolute;
     display: flex;
     justify-content: space-evenly;
     min-height: fit-content;
+    color: var(--almost-white);
+}
+
+.nav-link {
+    color: var(--almost-white)
+}
+
+.nav-link:hover {
+    color: var(--gold) !important;
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -558,6 +586,29 @@ table, th, td {
 .align-middle {
     text-align: center;
 }
+
+/* -------- Checkout -------- */
+.checkout-container{
+    width: 98%;
+    padding: 40px;
+    margin: auto;
+}
+.checkout-container-details {
+    background-color: var(--grey) !important;
+    border-radius: 5px;
+    height: fit-content;
+    margin: auto;
+    padding: 20px 10px;
+}
+
+.checkout-container-summary {
+    background-color: var(--grey) !important;
+    border-radius: 5px;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
 /* -------- Allauth -------- */
 .full-page-image {
     position: absolute;
