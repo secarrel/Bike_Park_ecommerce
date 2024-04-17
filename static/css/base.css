@@ -219,7 +219,7 @@ button:hover i{
 }
 
 .btn-close {
-    margin: auto;
+    margin: auto 3px;
 }
 
 .back-button {
@@ -339,17 +339,16 @@ nav {
 
 .toast {
     padding: 4px;
-}
-
-.toast-body{
+    max-width: 280px;
     display: flex;
-    justify-content: center;
-    max-width: 350px;
+    flex-direction: column-reverse;
+    align-items: flex-end;
 }
 
 .toast-message {
-    margin: 0 !important;
-    width: 300px;
+    margin: auto !important;
+    width: 250px;
+    padding-bottom: 21px;
 }
 
 /* -------- HOME -------- */
@@ -590,9 +589,10 @@ table, th, td {
 /* -------- Checkout -------- */
 .checkout-container{
     width: 98%;
-    padding: 40px;
+    padding: 20px;
     margin: auto;
 }
+
 .checkout-container-details {
     background-color: var(--grey) !important;
     border-radius: 5px;
