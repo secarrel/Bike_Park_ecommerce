@@ -205,6 +205,7 @@ def add_review(request, activity_id):
 
     context = {
         'form': form,
+        'activity': activity
     }
 
     return render(request, 'profiles/add_review.html', context)
