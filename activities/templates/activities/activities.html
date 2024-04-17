@@ -145,13 +145,17 @@
                             </div>
                         </div>
                     {% endfor %}
+                    <div id="empty-list-container" class="d-flex col-12 justify-content-center">
+                    </div>
                 {% else %}
-                <p> No
-                    {% for category in current_categories %}
-                        {{ category.friendly_name|lower }}
-                    {% endfor %}
-                    available at the bike park at the moment. Keep checking in for updates.
-                </p>
+                <div class="d-flex col-12 justify-content-center">
+                    <p class="text-light text-center"> No
+                        {% for category in current_categories %}
+                            {{ category.friendly_name|lower }}
+                        {% endfor %}
+                        available at the bike park at the moment. Keep checking in for updates.
+                    </p>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -185,8 +189,8 @@
         // Filter bookings by difficulty
         $('#difficulty-filter').change(function() {
             let selectedDifficulty = $(this).val();
-            console.log(selectedDifficulty)
             let timeslots = $('.activity-display')
+            let resultsCount = 0
 
             $('.activity-display').each(function () {
                 console.log(this)
@@ -194,10 +198,31 @@
                 console.log(difficulty)
                 if (!selectedDifficulty || selectedDifficulty === 'reset' || difficulty == selectedDifficulty) {
                     $(this).show(); // Show the activity
+                    resultsCount += 1; // Add one to the results count
                 } else {
                     $(this).hide(); // Hide the activity
                 }
             });
+            console.log(resultsCount)
+
+            // Check if there there are any results
+            if (resultsCount === 0) {
+                // Check if the 'p' element with id 'empty-message' exists
+                if ($("#empty-message").length === 0) {
+                    // Add the 'p' element with the desired classes and text
+                    $("<p>", {
+                        id: "empty-message",
+                        class: "text-light text-center",
+                        text: "No results found"
+                    }).appendTo("#empty-list-container");
+                }
+            } else if (resultsCount > 0) {
+                // Check if the 'p' element with id 'empty-message' exists
+                if ($("#empty-message").length > 0) {
+                    // Remove the 'p' element
+                    $("#empty-message").remove();
+                }
+            }
         });
     </script>
 
