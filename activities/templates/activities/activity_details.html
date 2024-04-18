@@ -81,7 +81,7 @@
                     <h3>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h3>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
-                    <p class="card-text px-1">{{activity.requirements}}</p>
+                    <p class="card-text px-1 mx-auto">{{activity.requirements}}</p>
                 </div>
                 <p> Please read through the equipment requirements before booking. </p>
                 <a href={% url 'requirements' %}> Equipment Requirements </a>
@@ -92,7 +92,7 @@
                     <h3>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></h3>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
-                    <p class="card-text px-1">{{activity.details}}</p>
+                    <p class="card-text px-1 mx-auto">{{activity.details}}</p>
                 </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
                 <div class="d-flex flex-column align-items-center col-12 col-md-8 review-item">
                     <div class="d-flex col-12 justify-content-center review-item-rating">
                         <div>
-                            {% for star in activity.average_rating.1 %}
+                            {% for star in review.display_rating %}
                                 {% if star == 'full' %}
                                     <i class="fa-solid fa-star gold-text"></i>
                                 {% elif star == 'half' %}
