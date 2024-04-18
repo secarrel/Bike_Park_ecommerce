@@ -47,4 +47,9 @@ urlpatterns = [
         views.edit_timeslot,
         name='edit_timeslot'
         ),
+    path(
+        'requirements/',
+        views.requirements,
+        name='requirements'
+    )
 ]

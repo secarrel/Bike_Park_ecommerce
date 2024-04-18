@@ -293,3 +293,12 @@ def delete_timeslot(request, timeslot_id):
     }
 
     return render(request, template, context)
+
+
+
+def requirements(request):
+    """ Display the requirements template """
+
+    template = 'activities/requirements.html'
+    
+    return render(request, template)
