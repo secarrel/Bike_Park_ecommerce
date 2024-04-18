@@ -158,6 +158,7 @@ def order_details(request, order_number):
         return redirect(reverse('home'))
 
     order = get_object_or_404(Order, order_number=order_number)
+    order_line_item = OrderLineItem.objects.filter(order=order)
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
@@ -167,6 +168,7 @@ def order_details(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'order_line_item': order_line_item,
         'from_profile': True,
     }
 
