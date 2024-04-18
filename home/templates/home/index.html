@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
 
 {% block page_header %}
     <div class="container header-container">
@@ -17,6 +21,97 @@
             <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712833526/media/hero-landing_kvd39o.jpg" alt="Overlooking Fasttrack">
             <div class="image-fade-out"></div>
         </div>
-        <h1 class="text-center muted-text">Welcome to <em><strong class="gold-text"> FastTrack </strong></em> Bike Park</h1>
+        <div id="welcome-message">
+            <h1 class="text-center muted-text">Welcome to <em><strong class="gold-text"> FastTrack </strong></em> Bike Park</h1>
+            <p class="text-center muted-text">Get ready to experience adrenaline-pumping thrills and heart-racing excitement at our state-of-the-art bike park. Whether you're a seasoned rider looking to conquer challenging trails or a beginner eager to learn new skills, FastTrack Bike Park offers something for everyone.</p>
+            <p class="text-center muted-text">With a variety of trails catering to all skill levels, top-notch facilities, and breathtaking scenery, our park is the ultimate destination for mountain biking enthusiasts. Ride through lush forests, tackle technical obstacles, and feel the rush of soaring down exhilarating descents.</p>
+            <p class="text-center muted-text">Join us at FastTrack Bike Park and embark on an unforgettable adventure filled with fun, adrenaline, and unforgettable memories. Start pedaling and let the journey begin!</p>
+        </div>
+        {% if categories %}
+        <div id="category-summary">
+            <div id="category-banner">
+                <h2 class="text-center">Book your visit now!</h2>
+                <p class="text-center"> See our offering below...</p>
+            </div>
+            <div id="category-container"> 
+                <div class="d-flex flex-wrap">
+                    {% for category in categories %}
+                        <div class="category-display col-12 col-md-6 col-xl-3">
+                            <div class="category card h-100 text-center">
+                                <div class="image-container round-border">
+                                    <!-- image display -->
+                                    {% if category.image %}
+                                    <a class="round-border" href="{% url 'activities' %}?category={{ category }}">
+                                        <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                                    </a>  
+                                {% else %}
+                                <a class="round-border" href="{% url 'activities' %}?category={{ category }}">
+                                    <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
+                                </a>  
+                                {% endif %}
+                                </div>
+                                <!-- activity name -->
+                                <h5 class="card-title mt-4">{{category.friendly_name}}</h5>
+                                <!--Info display-->
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        {% if category.overview %}
+                                            <div>
+                                                {{category.overview|truncatechars:200}}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-text my-4">
+                                        <a class="btn checkout-button" href="{% url 'activities' %}?category={{ category }}"> Find out more!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="info-summary">
+            <div id="info-banner">
+                <h2 class="text-center">First time here?</h2>
+                <p class="text-center">Here's some info to get you started...</p>
+            </div>
+            <div id="info-container"> 
+                <div class="d-flex flex-column">
+                    <div class="info-item col d-flex mx-auto flex-wrap">
+                        <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
+                            <h3>Our Trails</h3>
+                            <p> We are lucky to be positioned on the side of one of Wales' largest mountains. We have a huge variety of trails for all levels; 25 in total!</p>
+                            <a class="btn checkout-button col-6 mx-auto " href="#">Show me the trails!</a>
+                        </div>
+                        <div class="new-info-image col-12 col-md-5">   
+                            <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834016/media/profile_m7ybti.jpg" class="card-img-top" alt="{{ activity.name }}">
+                        </div>
+                    </div>
+                    <div class="info-item col d-flex mx-auto flex-wrap-reverse">
+                        <div class="new-info-image col-12 col-md-5">   
+                            <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834016/media/profile_m7ybti.jpg" class="card-img-top" alt="{{ activity.name }}">
+                        </div>
+                        <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
+                            <h3>Find Us</h3>
+                            <p> Find out about our opening hours, how to find us, and how to get in touch with enquiries!</p>
+                            <a class="btn checkout-button col-6 mx-auto " href="#">Find out more</a>
+                        </div>
+                    </div>
+                    <div class="info-item col d-flex mx-auto flex-wrap">
+                        <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
+                            <h3>What equipment do I need?</h3>
+                            <p> It's important to us that you are safe when riding our trails. To ensure this is the case, please have a look at our minimum requirements for equipment before booking. We offer a limited range of equipment for hire.</p>
+                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'requirements' %}">See the requirments</a>
+                        </div>
+                        <div class="new-info-image col-12 col-md-5">   
+                            <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834016/media/profile_m7ybti.jpg" class="card-img-top" alt="{{ activity.name }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 {% endblock %}
