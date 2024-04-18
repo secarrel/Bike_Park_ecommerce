@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from activities.models import Activity, Category
+from django.conf import settings
 
 
 def index(request):
@@ -18,11 +19,11 @@ def index(request):
 def about(request):
     """ A view to return the about page """
 
-    categories = Category.objects.all()
+    api_key = settings.GOOGLE_API_KEY
 
     template = 'home/about.html'
     context = {
-        'categories': categories,
+        'api_key': api_key,
     }
 
     return render(request, template, context)

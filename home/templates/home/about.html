@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_js %}
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=console.debug&libraries=maps,marker&v=beta"></script>
+{% endblock %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -16,11 +25,86 @@
             <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712833526/media/hero-landing_kvd39o.jpg" alt="Overlooking Fasttrack">
             <div class="image-fade-out"></div>
         </div>
-        <div id="welcome-message">
-            <h1 class="text-center muted-text">Welcome to <em><strong class="gold-text"> FastTrack </strong></em> Bike Park</h1>
-            <p class="text-center muted-text">Get ready to experience adrenaline-pumping thrills and heart-racing excitement at our state-of-the-art bike park. Whether you're a seasoned rider looking to conquer challenging trails or a beginner eager to learn new skills, FastTrack Bike Park offers something for everyone.</p>
-            <p class="text-center muted-text">With a variety of trails catering to all skill levels, top-notch facilities, and breathtaking scenery, our park is the ultimate destination for mountain biking enthusiasts. Ride through lush forests, tackle technical obstacles, and feel the rush of soaring down exhilarating descents.</p>
-            <p class="text-center muted-text">Join us at FastTrack Bike Park and embark on an unforgettable adventure filled with fun, adrenaline, and unforgettable memories. Start pedaling and let the journey begin!</p>
+        <div id="about-message">
+            <h1 class="text-center muted-text"><em><strong class="gold-text"> About </strong></em> FastrTrack Bike Park</h1>
+            <p class="text-center muted-text col-12 col-sm-8 mx-auto">Here you'll find everything you need to know to ensure you have a smooth and stress fre visit to our park, including: opening hours, uplift times, our location and directions!</p>
+        </div>
+        <div id="location-summary">
+            <div id="location-banner">
+                <h2 class="text-center">Find Us</h2>
+            </div>
+            <div id="location-text" class="text-center text-light my-4 col-12 col-sm-8 mx-auto">
+                <p> We are located near Talybont-on-Usk with a huge offering of local campsites and amenities. Located on the side of the mountain, we have incredible views of Llangorse reservoir and the beautiful surround mountainous landscape. </p>
+                <p> It's easiest to find us by following the A40 and joining Station Road. </p>
+                <p> The park is well sign posted, just keep going until you find the carpark! </p>
+            </div>
+            <div id="location-map"> 
+                <gmp-map center="51.90085156908116, -3.3009347745054574" zoom="14" map-id="DEMO_MAP_ID">
+                    <gmp-advanced-marker position="51.90085156908116, -3.3009347745054574" title="My location"></gmp-advanced-marker>
+                </gmp-map>
+            </div>
+        </div>
+        <div id="open-hours-summary">
+            <div id="open-hours-banner">
+                <h2 class="text-center">Opening Hours</h2>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div id="opening-hours-table" class="text-center text-light my-4 col-12 col-sm-8 col-md-4 mx-auto">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div><strong>Monday</strong></div>
+                            <div>Closed</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Tuesday</strong></div>
+                            <div>Closed</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Wednesday</strong></div>
+                            <div>08:30 - 20:00</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Thursday</strong></div>
+                            <div>08:30 - 20:00</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Friday</strong></div>
+                            <div>08:30 - 20:00</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Weekends</strong></div>
+                            <div>08:30 - 17:30</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Bank Holidays</strong></div>
+                            <div>08:30 - 17:30</div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="open-hours-text" class="text-center text-light col-12 col-sm-8 col-md-4 mx-auto">
+                    <p><strong>All riders</strong> must sign in before taking to the trails. Reception opens at the times specified above but all riders must be off the trails 30 minutes before park closes. All other facilities will be available until the specified closing time. </p>
+                    <p><strong>The uplift</strong> will be running from 30 minutes after opening time to an hour before closing time.</p>
+                </div>
+            </div>
+        </div>
+        <div id="contact-summary">
+            <div id="contact-banner">
+                <h2 class="text-center">Contact Us</h2>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div id="contact-text" class="text-center text-light my-4 col-12 col-sm-8 col-md-4 mx-auto">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div><strong>Email</strong></div>
+                            <div>fasttrack@bikepark.com</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div><strong>Phone</strong></div>
+                            <div>07658 965 325</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
     </div>

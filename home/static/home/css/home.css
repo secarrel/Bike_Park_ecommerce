@@ -40,12 +40,6 @@
     color: var(--gold)
 }
 
-#category-summary {
-    padding: 0 0 40px 0;
-    border-bottom: 5px solid;
-    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
-}
-
 #info-summary {
     padding: 0 10px 40px 10px;
 }
@@ -85,4 +79,103 @@
     object-fit: cover;
     height: 100%;
     margin: 0 auto;
+}
+
+/* -------- ABOUT PAGE -------- */
+#about-message {
+    padding: 20px 0 40px 0;
+    border-bottom: 5px solid;
+    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
+}
+
+/* ----- LOCATION ----- */
+
+#location-summary {
+    padding: 0 0 40px 0;
+    border-bottom: 5px solid;
+    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
+}
+
+#location-banner {
+    height: 80px;
+    background-image: linear-gradient(to right, var(--dark-grey), var(--gold), var(--dark-grey));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark-grey);
+    margin-bottom: 10px;
+}
+
+#location-banner p {
+    margin: 0;
+    color: var(--dark-grey);
+}
+
+#location-container p{
+    color: var(--almost-white);
+}
+gmp-map {
+    height: 400px;
+    width: 80%;
+    margin: auto;
+}
+
+/* ----- OPENING HOURS ----- */
+#open-hours-summary {
+    padding: 0 0 40px 0;
+    border-bottom: 5px solid;
+    border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
+}
+
+#open-hours-banner {
+    height: 80px;
+    background-image: linear-gradient(to right, var(--dark-grey), var(--gold), var(--dark-grey));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark-grey);
+    margin-bottom: 10px;
+}
+
+#open-hours-banner p {
+    margin: 0;
+    color: var(--dark-grey);
+}
+
+#open-hours-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ----- CONTACT ----- */
+#contact-summary {
+    padding: 0 0 20px 0;
+}
+
+#contact-banner {
+    height: 80px;
+    background-image: linear-gradient(to right, var(--dark-grey), var(--gold), var(--dark-grey));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--dark-grey);
+    margin-bottom: 10px;
+}
+
+#contact-banner p {
+    margin: 0;
+    color: var(--dark-grey);
+}
+
+/* Lists */
+.list-group-item{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    background-color: none !important;
+}
+
+.list-group {
+    background-color: var(--grey) !important;
 }

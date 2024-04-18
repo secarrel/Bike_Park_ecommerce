@@ -550,6 +550,7 @@ nav {
     border-bottom: 1px solid;
     border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
 }
+
 .review-item-content {
     border-bottom: 1px solid;
     border-image: radial-gradient(var(--gold), var(--dark-grey)) 10;
