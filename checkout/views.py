@@ -67,8 +67,8 @@ def checkout(request):
                                 timeslot=timeslot,
                                 updated_quantity=item_data,
                             )
+                            # Check if there is still space for the booking
                             capacity = timeslot.available_capacity
-                            print('quantity:' + str(item_data))
                             if capacity - item_data < 0:
                                 messages.error(
                                     request,
@@ -76,8 +76,17 @@ def checkout(request):
                                      f'Not enough capacity in {timeslot}.')
                                 )
                                 return redirect(reverse('view_basket'))
+                            # Check if timeslot is in the future
+                            elif not timeslot.is_future_timeslot:
+                                messages.error(
+                                    request,
+                                    ('Unable to complete order.' +
+                                     f'{timeslot} is in the past.')
+                                )
+                            # Save basket item as order line item
                             else:
                                 order_line_item.save()
+                            
                     except Timeslot.DoesNotExist:
                         messages.error(request, (
                             "One of the activities in your bag wasn't found"
@@ -106,7 +115,6 @@ def checkout(request):
                 amount=stripe_total,
                 currency=settings.STRIPE_CURRENCY,
             )
-
             # Attempt to prefill the form with any info in the user profile.
             if request.user.is_authenticated:
                 try:
@@ -156,9 +164,13 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Attach order to user profile
-        order.user_profile = profile
-        order.save()
+        # Check if order is in user profile
+        if order in profile.orders.all():
+            print("order already exists in user profile")
+        else:
+            # Attach order to user profile
+            order.user_profile = profile
+            order.save()
 
     if save_info:
         profile_data = {
