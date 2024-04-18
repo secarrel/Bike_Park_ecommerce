@@ -22,7 +22,8 @@
         <hr>
         <h4> Reviewing: {{ activity }}</h4>
         <div class="review-form-container">
-                <div class="d-flex flex-row flex-wrap">
+            <form class="d-flex flex-column" method="post">
+                <div class="d-flex flex-column">
                     {% csrf_token %}
                     {{ form|crispy }}
                 </div>
