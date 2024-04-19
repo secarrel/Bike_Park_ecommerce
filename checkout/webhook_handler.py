@@ -57,6 +57,7 @@ class StripeWH_Handler:
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
         )
+        print(stripe_charge)
 
         billing_details = stripe_charge.billing_details
         total = round(stripe_charge.amount / 100, 2)
@@ -80,26 +81,16 @@ class StripeWH_Handler:
         order_exists = False
         attempt = 1
         while attempt <= 5:
-            try:
-                order = Order.objects.get(
-                    full_name__iexact=billing_details.name,
-                    email__iexact=billing_details.email,
-                    phone_number__iexact=billing_details.phone,
-                    street_address1__iexact=billing_details.address.line1,
-                    street_address2__iexact=billing_details.address.line2,
-                    town_or_city__iexact=billing_details.address.city,
-                    county__iexact=billing_details.address.state,
-                    country__iexact=billing_details.address.country,
-                    postcode__iexact=billing_details.address.postal_code,
-                    order_total=total,
-                    original_basket=basket,
-                    stripe_pid=pid,
-                )
+            order = Order.objects.filter(
+                stripe_pid=pid
+            ).first()
+            if order is not None:
                 order_exists = True
                 break
-            except Order.DoesNotExist:
+            else:
                 attempt += 1
                 time.sleep(1)
+
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(

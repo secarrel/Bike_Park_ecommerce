@@ -1,4 +1,4 @@
-Hi, {{ order.fill_name }}!
+Hi, {{ order.full_name }}
 
 Thanks for making a booking with us at FastTrack Bike Park! Here are your order details...
 

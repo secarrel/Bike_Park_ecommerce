@@ -84,8 +84,9 @@ def checkout(request):
                                      f'{timeslot} is in the past.')
                                 )
                             # Save basket item as order line item
-                            else:
-                                order_line_item.save()
+                            order_line_item.save()
+                        else:
+                            order_line_item.save()
                             
                     except Timeslot.DoesNotExist:
                         messages.error(request, (
@@ -164,13 +165,9 @@ def checkout_success(request, order_number):
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
-        # Check if order is in user profile
-        if order in profile.orders.all():
-            print("order already exists in user profile")
-        else:
-            # Attach order to user profile
-            order.user_profile = profile
-            order.save()
+        # Attach order to user profile
+        order.user_profile = profile
+        order.save()
 
     if save_info:
         profile_data = {
