@@ -860,33 +860,60 @@ To clone this project, navigate to my [GitHub repository](https://github.com/sec
 8. Set-up your env.py file with the secret keys listed in the deployment section, and ensure it is listed in your .gitignore file.
 
 ## Credit
-- [FreeFido by Amy Richardson](https://github.com/amylour/FreeFido_v2)
-- [Everneed by Amy Richardson](https://github.com/amylour/everneed)
-- [Draw with light by Maria](https://github.com/mariamar95/ms4)
-- [Island Bees by Emma Hewson](https://github.com/emmahewson/island-bees/tree/main)
-- [Taco y Tequila by Gethin Davies](https://github.com/GethinDavies1990/CI_MS4_DTR)
-- [WoWder by my mentor Iuliia Konovalova](https://github.com/IuliiaKonovalova)
-- [Boutique Ado by Code Institute](https://github.com/Code-Institute-Solutions/boutique_ado_v1)
+### Acknowledgement of support
+My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), was very helpful in guiding me through this project and helping set targets and priorities which I used to map my way through the project.
 
-## Useful links
-[Saving Env variables in VSCode](https://www.makeuseof.com/django-secret-key-generate-new/)
+Weekly catch-ups with my Code Institute Cohort were useful to ensure I was staying on track for the deadline and was also a great source of support when encountering and tricky bugs. [Amy Richardson](https://github.com/amylour) was particularly helpful during and outside of these meetings.
 
-[Stack Overflow Solution](https://stackoverflow.com/questions/49416042/how-to-write-an-f-string-on-multiple-lines-without-introducing-unintended-whites)
+Credit and thanks also to my mountain bike friends who let me take photos of their riding on one of our mountain bike trips. 
 
-[thread on stack overflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django)
+My family and friends have all been really helpful and supportive throughout the process of developing this project, helping test and giving feedback on the final site. 
 
-[DEV](https://dev.to/learndjango/django-static-files-tutorial-1fg7)
+### Project Inspiration 
 
-[Whitnoise](https://whitenoise.readthedocs.io/en/latest/)
+The following projects were very helpful for inspiring different aspects of my project:
+- [FreeFido by Amy Richardson](https://github.com/amylour/FreeFido_v2) - user stories, database schema, README.md, TESTING.md
+- [Everneed by Amy Richardson](https://github.com/amylour/everneed) - database schema, README.md, TESTING.md
+- [Draw with light by Maria](https://github.com/mariamar95/ms4) - User experience, database schema
+- [Island Bees by Emma Hewson](https://github.com/emmahewson/island-bees/tree/main) - User experience, database schema
+- [Taco y Tequila by Gethin Davies](https://github.com/GethinDavies1990/CI_MS4_DTR) - User experience, database schema, styling inspiration
+- [WoWder by my mentor Iuliia Konovalova](https://github.com/IuliiaKonovalova) - Use of cloudinary, database design, README.md, TESTING.md
+- [Boutique Ado by Code Institute](https://github.com/Code-Institute-Solutions/boutique_ado_v1) - whole site structure and user journey. This project acted as a skeleton for my site and I adapted and adjusted aspects of it to create the project as it is now. 
 
-[initial value in form](https://docs.djangoproject.com/en/dev/ref/forms/api/#dynamic-initial-values)
+### Useful sources
+I had some trouble setting up my local environment to start with, which turned out to be a PATH mistake I had made while setting up previous projects. This link helped me to better understand how virtual environments work and how to properly prepare my workspace.  [Saving Env variables in VSCode.](https://www.makeuseof.com/django-secret-key-generate-new/)
 
-[Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+While checkout my python code met PEP8 guidelines, I found that most f string lines were too long. I found this site useful for explaining how to shorten them. [Stack Overflow Solution.](https://stackoverflow.com/questions/49416042/how-to-write-an-f-string-on-multiple-lines-without-introducing-unintended-whites)
 
-[On_delete in django models](https://zerotobyte.com/django-on-delete-explained/)
+I had some trouble makiing sure static files were stored correctly so I was recommended to try whitenoise. This ended up causing 500 errors and this [thread on stack overflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) helped me to resolve this. This [DEV](https://dev.to/learndjango/django-static-files-tutorial-1fg7) article was also interesting and helped understand static file collection. 
 
+[This documentation](https://docs.djangoproject.com/en/dev/ref/forms/api/#dynamic-initial-values) was useful for understanding how to set form values.
 
-## Images
+I used these [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to help with bootstrap implimentation.
+
+I was trying to work out the best way to handle the deletion of different data fields and this helped me decide how to set the [On_delete method in django models.](https://zerotobyte.com/django-on-delete-explained/)
+
+[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript?_gl=1*17vatlu*_up*MQ..*_ga*MTAwMjM1MTIwNC4xNzEzNDM0NDQx*_ga_NRWSTWS78N*MTcxMzQzNDQ0MS4xLjAuMTcxMzQzNDQ1NC4wLjAuMA..) helped me when trying to impliment the interactive map on the 'About' Page.
+
+[This article](https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages) was useful for working out how to update the 404 and 500 pages in Django.
+
+[ChatGPT](https://chat.openai.com/) generated some of the large blocks of text on the site (eg. activity data, category summaries, welcome page message). This helped save time on non-technical sections of the project. 
+
+[W3Schools](https://www.w3schools.com/) ash been a useful resource throughout. It has helped me with syntax and styling.
+
+[Django Docs](https://docs.djangoproject.com/en/5.0/) have also been very useful throughout for understanding and implementing different features in django. 
+
+### Images
+
+I used images from a variety of sources for the site. Some are used as perminant images in the project, and some are used as activity or category images which are changeable. 
+
+#### My own photos
+
+#### Unsplash photos
+
+#### Pixels photos 
+
+#### Other photos
 Private Coaching - Photo by Paige Thompson: https://www.pexels.com/photo/man-wearing-a-green-helmet-sitting-on-a-mountain-bike-13923545/
 
 Group Of bikers - Photo by Mark Soetebier: https://www.pexels.com/photo/group-of-mountain-bikers-parked-near-the-mountains-10743835/
