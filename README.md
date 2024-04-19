@@ -234,17 +234,17 @@ To meet the assessment criteria, I also created the following models. 'Timeslots
 #### Wireframes
 
 You can see Wireframes for:
-- Home (desktop, tablet, mobile)
-- Activities (desktop, tablet, mobile)
-- Activity Details (desktop, tablet, mobile)
-- Basket (desktop, tablet, mobile)
-- Checkout (desktop, tablet, mobile)
-- Checkout Success (desktop, tablet, mobile)
-- Sign-up (desktop, tablet, mobile)
-- Sign-in (desktop, tablet, mobile)
-- Sign-out (desktop, tablet, mobile)
+- [Home (desktop, tablet, mobile)](docs/wireframes/home.png)
+- [Activities (desktop, tablet, mobile)](docs/wireframes/activities.png)
+- [Activity Details (desktop, tablet, mobile)](docs/wireframes/actvity-details.png)
+- [Basket (desktop, tablet, mobile)](docs/wireframes/basket.png)
+- [Checkout (desktop, tablet, mobile)](docs/wireframes/checkout.png)
+- [Checkout Success (desktop, tablet, mobile)](docs/wireframes/checkout-success.png)
+- [Sign-up (desktop, tablet, mobile)](docs/wireframes/sign-up.png)
+- [Sign-in (desktop, tablet, mobile)](docs/wireframes/sign-in.png)
+- [Sign-out (desktop, tablet, mobile)](docs/wireframes/sign-out.png)
 
-[Here](docs/wireframes/wireframes.pdf)
+I found that I ended up including more pages than expected at the start of the project so I used the wireframes that I have created as a design guide for those additional pages.
 
 
 ### **Surface Plane:** _The final look and feel_
