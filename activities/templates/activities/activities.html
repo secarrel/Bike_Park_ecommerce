@@ -151,6 +151,10 @@
                     {% endfor %}
                     <div id="empty-list-container" class="d-flex col-12 justify-content-center">
                     </div>
+                {% elif search_term %}
+                <div class="d-flex col-12 justify-content-center">
+                    <p class="text-light text-center"> No activities match your search query. </p>
+                </div>
                 {% else %}
                 <div class="d-flex col-12 justify-content-center">
                     <p class="text-light text-center"> No

@@ -55,7 +55,7 @@ def all_activities(request):
 
     context = {
         'activities': activities,
-        'search-term': query,
+        'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
     }
