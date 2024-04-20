@@ -130,7 +130,11 @@
                                             {% if activity.get_duration %}
                                             <div class="d-flex px-2">
                                                 <div class="circle-icon px-1"><i class="fa-regular fa-hourglass-half"></i></div>
-                                                <p class="card-text px-1">{{activity.get_duration.0}}</p>
+                                                {% if activity.get_duration.1 is True %}
+                                                    <p class="card-text px-1">{{activity.get_duration.0}}</p>
+                                                {% else %}
+                                                    <p class="card-text px-1">{{activity.get_duration.0}} hrs</p>
+                                                {% endif %}
                                             </div>
                                             {% endif %}
                                             {% if activity.capacity %}

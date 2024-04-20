@@ -264,6 +264,11 @@ button:hover i{
     margin: 3px;
 }
 
+#edit_activity_details:hover {
+    color: var(--almost-white);
+    background-color: var(--dark-grey) !important;
+}
+
 /* --------- NAVBAR --------- */
 nav {
     overflow: hidden;
