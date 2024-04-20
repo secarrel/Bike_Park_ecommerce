@@ -185,6 +185,8 @@ def add_review(request, activity_id):
             reverse('order_history', kwargs={'user_id': request.user.id}))
 
     activity = get_object_or_404(Activity, pk=activity_id)
+    user = request.user.id
+
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -207,7 +209,8 @@ def add_review(request, activity_id):
 
     context = {
         'form': form,
-        'activity': activity
+        'activity': activity,
+        'user': user
     }
 
     return render(request, 'profiles/add_review.html', context)
@@ -232,11 +235,19 @@ def delete_review(request, review_id):
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
-
+    
     review = get_object_or_404(Review, id=review_id)
-    review.delete()
-    messages.success(request, 'Review Deleted')
-    return redirect(reverse('user_reviews'))
+
+    if request.method == 'POST':
+        review.delete()
+        messages.success(request, 'Review Deleted')
+        return redirect(reverse('user_reviews'))
+    
+    template = 'profiles/delete_review.html'
+    context = {
+        'review': review,
+    }
+    return render(request, template, context)
 
 
 def bookings(request):

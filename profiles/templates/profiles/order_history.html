@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="container d-flex flex-column light-text text-center">
-    <a class="button mx-2 text-start" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+    <a class="button mx-2 text-start" href="{% url 'profile' %}">Go Back</a>
     <h1> Your Orders </h1>
     <hr>
     <div class="d-flex flex-wrap">

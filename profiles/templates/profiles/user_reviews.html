@@ -18,8 +18,8 @@
 
 
 {% block content %}
-<a class="button mx-2" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
-<div class="container d-flex light-text">
+<div class="container d-flex flex-column light-text">
+    <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
     <div class="d-flex flex-column col-12 text-center p-1">
         <h1 class="text-center">Reviews</h1>
         {% if reviews %}

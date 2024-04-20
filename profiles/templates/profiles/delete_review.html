@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-2">
+        <a class="button" href="{% url 'user_reviews' %}">Go Back</a>
+        <div class="row">
+            <div class="col text-light">
+                <hr>
+                <h2 class="mb-4">Manage Reviews</h2>
+                <hr>
+                <div class="col-8 col-md-6 mx-auto my-5 text-center bg-grey p-4 round-border text-light">
+                    <h5> Delete Your Review </h5>
+                    <p> Are you sure you want to delete your review for '{{ review.activity }}'? </p>
+                    <div class="d-flex flex-column align-items-center justify-content-center">
+                        <form action="{% url 'delete_review' review_id=review.id %}" method="post" class="col-11 mx-auto">
+                            {% csrf_token %}
+                            <button type="submit" class="btn bg-ft-danger col-11 p-2 m-2">Delete</button>
+                        </form>
+                        <a class="button" href="{% url 'user_reviews' %}"> Cancel </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
