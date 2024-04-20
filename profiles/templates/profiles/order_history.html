@@ -51,7 +51,7 @@
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
-                                                {{ item.timeslot.activity }} 
+                                                <a class="round-border" href="{% url 'activity_details' item.timeslot.activity.id %}">{{ item.timeslot.activity }}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
