@@ -24,28 +24,28 @@
         <hr>
         <h2> Bookings </h2>
         <hr>
-        {% if timeslot_list %}
-            <div class="filter-container d-flex flex-column col-12">
-                <div class="text-center"> Filter bookings:</div>
-                <div class="d-flex justify-content-around flex-wrap my-2">
-                    <div>
-                        <input type="text" class="pointer" id="datepicker" placeholder="Select a date">
-                    </div>
-                    {% if activities %}
-                        <div class="activity-select-wrapper">
-                            <select id="activity-filter">
-                                <option value="reset">All Activities</option>
-                                {% for activity in activities%}
-                                    <option value="{{ activity.id }}">{{ activity }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    {% endif %}
+        <div class="filter-container d-flex flex-column col-12">
+            <div class="text-center"> Filter bookings:</div>
+            <div class="d-flex justify-content-around flex-wrap my-2">
+                <div>
+                    <input type="text" class="pointer" id="datepicker" placeholder="Select a date">
                 </div>
+                {% if activities %}
+                <div class="activity-select-wrapper">
+                    <select id="activity-filter">
+                        <option value="reset">All Activities</option>
+                        {% for activity in activities%}
+                        <option value="{{ activity.id }}">{{ activity }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
             </div>
-            <div class="col-12 d-flex justify-content-center">
-                <a class="back-button mx-auto p-3 col text-center" href="{% url 'bookings' %}">Show all future bookings</a>
-            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+            <a class="back-button mx-auto p-3 col text-center" href="{% url 'bookings' %}">Show all future bookings</a>
+        </div>
+        {% if timeslot_list %}
             <table class="table table-responsive text-center">
                 <thead>
                     <tr>
@@ -73,7 +73,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        {%else %}
+        {% else %}
             No upcoming bookings.
         {% endif %}
     </div>
@@ -103,13 +103,10 @@
             // Filter bookings by activity
             $('#activity-filter').change(function() {
                 let selectedActivity = $(this).val();
-                console.log(selectedActivity)
                 let timeslots = $('.timeslot')
 
                 $('.timeslot').each(function () {
-                    console.log(this)
                     let activity = $(this).data('activity'); 
-                    console.log(activity)
                     if (!selectedActivity || selectedActivity === 'reset' || activity == selectedActivity) {
                         $(this).show(); // Show the timeslot
                     } else {
