@@ -57,6 +57,8 @@ def profile(request):
 @login_required
 def user_details(request):
     """ Display the user's details. """
+
+    # Only authenticated users can access user details
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
@@ -87,6 +89,8 @@ def user_details(request):
 @login_required
 def order_history(request, user_id):
     """ Display the user's order history. """
+
+    # Only authenticated users can access profile page
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
@@ -152,6 +156,8 @@ def order_history(request, user_id):
 @login_required
 def order_details(request, order_number):
     """ Display specific order details """
+
+    # Only authenticated users can access order details
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
@@ -159,11 +165,18 @@ def order_details(request, order_number):
 
     order = get_object_or_404(Order, order_number=order_number)
     order_line_item = OrderLineItem.objects.filter(order=order)
+    order_owner = request.user
 
-    messages.info(request, (
+    # Only allow user who made the order able to see order details
+    if not order.user_profile.user == order_owner:
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+    else:
+        messages.info(request, (
         f'This is a past confirmation for order number {order_number}. '
         'A confirmation email was sent on the order date.'
-    ))
+        ))
 
     template = 'checkout/checkout_success.html'
     context = {
@@ -177,12 +190,13 @@ def order_details(request, order_number):
 
 @login_required
 def add_review(request, activity_id):
-    """ Add a timeslot to an activity """
+    """ Add a review to an activity """
+
+    # Only authenticated users can access profile page
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
-        return redirect(
-            reverse('order_history', kwargs={'user_id': request.user.id}))
+        return redirect(reverse('home'))
 
     activity = get_object_or_404(Activity, pk=activity_id)
     user = request.user.id
@@ -217,7 +231,8 @@ def add_review(request, activity_id):
 
 
 def user_reviews(request):
-    """ Edit an activity """
+    """ View to display user's reviews """
+
     reviews = Review.objects.filter(reviewer=request.user)
 
     template = 'profiles/user_reviews.html'
@@ -230,7 +245,8 @@ def user_reviews(request):
 
 @login_required
 def delete_review(request, review_id):
-    """ Delete activity """
+    """ Delete review """
+
     if not request.user.is_authenticated:
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
@@ -250,8 +266,16 @@ def delete_review(request, review_id):
     return render(request, template, context)
 
 
+@login_required
 def bookings(request):
     """ Display future bookings """
+
+    # Only superuser can see this view
+    if not request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     orders = Order.objects.all()
     timeslot_list = {}
 
@@ -310,6 +334,7 @@ def bookings(request):
 
 
 def booking_info(request, timeslot_id):
+    """ Display a list of people who have booked the timeslot """
 
     timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
     orders = OrderLineItem.objects.filter(timeslot=timeslot)

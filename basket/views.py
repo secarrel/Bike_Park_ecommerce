@@ -14,6 +14,13 @@ def view_basket(request):
 def add_to_basket(request, item_id):
     """ Add a timeslot and quantity of the specified activity
     to the shopping bag """
+
+    # Only let non-superusers view this page
+    if request.user.is_superuser:
+        messages.error(
+            request, 'Sorry, you are not authorized to complete this action.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         timeslot_id = request.POST.get('timeslot')
         timeslot = get_object_or_404(Timeslot, pk=timeslot_id)
@@ -21,13 +28,14 @@ def add_to_basket(request, item_id):
         redirect_url = request.POST.get('redirect_url')
         basket = request.session.get('basket', {})
 
+        # Check if the quantity being added to the basket exceeds availablity
         if timeslot.available_capacity < quantity:
             messages.error(
                 request, (
                     f'Could not add {timeslot} to your basket. Not enough \n'
                     f'available spaces in this timeslot.'))
         else:
-            # Count quantity of each item in basket
+            # Count quantity of each item in basket to check availability
             if timeslot_id in basket:
                 currentQuantity = basket[timeslot_id]
                 sumQuantity = currentQuantity + quantity
@@ -51,14 +59,17 @@ def add_to_basket(request, item_id):
 
 def update_basket(request, item_id):
     """ Update the quantity of specified product """
+
     basket = request.session.get('basket', {})
     currentQuantity = basket.get(item_id, 0)
 
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity'))
+        # Check if there are any changes to update
         if quantity != currentQuantity:
             timeslot = get_object_or_404(Timeslot, pk=item_id)
             if quantity > 0:
+                # Check if updated quantity exceeds availability
                 if quantity <= timeslot.available_capacity:
                     basket[item_id] = quantity
                     messages.success(
@@ -69,19 +80,23 @@ def update_basket(request, item_id):
                         request, f'Can not update quantity. There \n'
                                  f'are only {timeslot.available_capacity} \n'
                                  f'spaces available to book.')
+            # If quantity is less than 0, remove item from basket
             else:
                 basket.pop(item_id, None)
                 messages.info(
                     request, f'Quantity is "0" so {timeslot.activity} \n'
                              f'has been removed from your basket')
             request.session['basket'] = basket
+        else:
+            messages.error(request, 'There are no changes to update.')
+
     return redirect(reverse('view_basket'))
 
 
 def remove_from_basket(request, item_id):
     """ Remove specified product from basket """
+    
     if request.method == 'POST':
-
         try:
             basket = request.session.get('basket', {})
             basket.pop(item_id, None)
