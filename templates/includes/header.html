@@ -54,12 +54,10 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Book
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" id="nav-dropdown">
             <li><a class="dropdown-item" href="{% url 'activities' %}?category=day_passes">Day Passes</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'activities' %}?category=courses">Courses</a></li>
             <li><a class="dropdown-item" href="{% url 'activities' %}?category=private_coaching">Private Coaching</a></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{% url 'activities' %}?category=events">Events</a></li>
           </ul>
         </li>

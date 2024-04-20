@@ -339,6 +339,15 @@ nav {
     z-index: 20000;
 }
 
+#nav-dropdown {
+    background-color: var(--dark-grey);
+}
+
+#nav-dropdown .dropdown-item {
+    color: var(--gold);
+}
+
+
 .lower-nav a {
     color: var(--almost-white) !important;
 }
