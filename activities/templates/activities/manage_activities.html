@@ -18,17 +18,20 @@
                 <hr>
                 <h2 class="logo-font mb-4 text-light">Manage Activities</h2>
                 <hr>
+                <a class="btn checkout-button my-2" href="{% url 'add_activity' %}">
+                    <i class="fa-solid fa-circle-plus"></i> Add Activity
+                </a>
                 {% if activities %}
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="col"> Activity </th>
+                            <th class="col"> Activity</th>
                             <th class="col d-none d-md-table-cell"> Category </th>
-                            <th class="col"> Price </th>
+                            <th class="col"> Price</th>
                             <th class="col d-none d-md-table-cell"> Duration </th>
-                            <th class="col"> Capacity </th>
+                            <th class="col"> Capacity</th>
                             <th class="col d-none d-md-table-cell"> Difficulty </th>
-                            <th class="col"> Edit </th>
+                            <th class="col"> Edit/Del</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +43,10 @@
                                 <td class="col d-none d-md-table-cell"> {{ activity.get_duration.0 }} </td>
                                 <td class="col"> {{ activity.capacity }} </td>
                                 <td class="col d-none d-md-table-cell"> {{ activity.difficulty }} </td>
-                                <td class="col"><a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                                <td class="col">
+                                    <a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square mx-2"></i></a>
+                                    <a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular text-danger fa-trash-can mx-2"></i></a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -49,9 +55,6 @@
                 {% else %}
                     <p> No activities have been created yet </p>
                 {% endif %}
-                <a class="m-2" href="{% url 'add_activity' %}">
-                    <i class="fa-solid fa-circle-plus"></i> Add Activity
-                </a>
             </div>
         </div>
     </div>
