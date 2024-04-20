@@ -12,13 +12,21 @@
 
 html {
     height: 100%;
+    display: flex;
 }
 
 body {
+    position: relative;
     background-color: var(--dark-grey);
-    max-width: 1800px;
+    max-width: 1500px !important;
     margin: auto;
     height: 100%;
+    max-width: 100%;
+}
+
+header {
+    position: relative;
+    max-width: 100%;
 }
 
 main {
