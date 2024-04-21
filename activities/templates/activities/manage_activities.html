@@ -28,7 +28,7 @@
                             <th class="col"> Activity</th>
                             <th class="col d-none d-md-table-cell"> Category </th>
                             <th class="col"> Price</th>
-                            <th class="col d-none d-md-table-cell"> Duration </th>
+                            <th class="col d-none d-md-table-cell"> Duration</th>
                             <th class="col"> Capacity</th>
                             <th class="col d-none d-md-table-cell"> Difficulty </th>
                             <th class="col"> Edit/Del</th>
@@ -40,7 +40,13 @@
                                 <td class="col"> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
                                 <td class="col d-none d-md-table-cell"> {{ activity.category.friendly_name }} </td>
                                 <td class="col"> £{{ activity.price }} </td>
-                                <td class="col d-none d-md-table-cell"> {{ activity.get_duration.0 }} </td>
+                                <td class="col d-none d-md-table-cell"> 
+                                    {% if activity.get_duration.1 is True %}
+                                        <p class="card-text px-1">{{activity.get_duration.0}}</p>
+                                    {% else %}
+                                        <p class="card-text px-1">{{activity.get_duration.0}} hrs</p>
+                                    {% endif %} 
+                                </td>
                                 <td class="col"> {{ activity.capacity }} </td>
                                 <td class="col d-none d-md-table-cell"> {{ activity.difficulty }} </td>
                                 <td class="col">

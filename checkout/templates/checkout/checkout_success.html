@@ -29,8 +29,8 @@
                 <h3> Your order has been completed successfully. </h3>
                 <div> Please review the order summary below to ensure your booking is correct. If there are any issues with the order please contact us at fasttrack@bikepark.com. </div>
             </div>
-            <div class="col-12 col-md-6 mx-auto my-5">
-                <h4> Order Summary </h4>
+            <div class="col-12 col-md-8 mx-auto my-5">
+                <h4> Order Summary - #{{ order.order_number }} </h4>
                 <hr>
                 {% if order_line_item %}
                     {% for item in order_line_item %}

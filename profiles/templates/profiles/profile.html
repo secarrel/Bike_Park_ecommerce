@@ -22,21 +22,21 @@
     <div class="overlay"></div>
     <div class="main-image-title text-center">
         <div>
-            <img class="hero-image d-none d-md-block" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834016/media/profile_m7ybti.jpg" class="card-img-top" alt="{{ activity.name }}">
-            <img class="hero-image d-md-none" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1713648303/media/20240330_111756_ubponx.jpg" class="card-img-top" alt="{{ activity.name }}">
+            <img class="hero-image d-none d-md-block" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834016/media/profile_m7ybti.jpg" alt="{{ activity.name }}">
+            <img class="hero-image d-md-none" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1713648303/media/20240330_111756_ubponx.jpg" alt="{{ activity.name }}">
             <div class="image-fade-out"></div>
-        <div>
+        </div>
     </div>
     <div class="container my-3 text-light">
         <div class="row">
             {% if request.user.is_superuser %}
-                <h1 class="logo-font mb-4 gold-text">Welcome, Admin!</h1>
+                <h1 class="logo-font mb-4 gold-text text-center">Welcome, Admin!</h1>
             {% else %}
-                <h1 class="logo-font mb-4 gold-text">{{ request.user.username }}'s Profile</h1>
+                <h1 class="logo-font mb-4 gold-text text-center">{{ request.user.username }}'s Profile</h1>
             {% endif %}
         </div>
         <div class="row">
-            <div class="col col-md-5 mx-auto d-flex flex-column round-border">
+            <div class="col-12 col-md-5 mx-auto d-flex flex-column round-border">
                 {% if request.user.is_superuser %}
                     <h3 class="mx-auto"> Site Management </h3>
                     <div class="manage-container p2">
@@ -51,7 +51,7 @@
                         </a>
                     </div>
                 {% else %}
-                    <h3 class="mx-auto"> Manage Account </h3>
+                    <h3 class="mx-auto text"> Manage Account </h3>
                     <div class="manage-container">
                         <a class="profile-button" href="{% url 'user_details' %}">
                             My Details
@@ -106,7 +106,7 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/profiles.js' %}"></script>
+    <script src="{% static 'profiles/js/profiles.js' %}"></script>
 {% endblock %}
 
 {% endtimezone %}

@@ -80,7 +80,7 @@
                 <span>Keep Shopping</span>
             </a>
             {% if basket_items %}
-            <a class="btn bg-l-grey" href="{% url 'checkout' %}" class="btn">
+            <a class="btn bg-l-grey" href="{% url 'checkout' %}">
                 <span class="icon">
                     <i class="fas fa-lock text-light"></i>
                 </span>
@@ -95,7 +95,7 @@
 {% block postloadjs %}
 {{ block.super }}
 
-<script type="text/javascript"> 
+<script> 
     // Update quantity on click
     $('.update-link').click(function(e) {
         let form = $(this).prev('.update-form');

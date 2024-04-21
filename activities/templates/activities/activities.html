@@ -15,14 +15,14 @@
                     <img class="hero-image m-auto w-100" src="{{ category.image.url }}" alt="{{ category.name }}">
                     <div class="image-fade-out"></div>
                 {% else %}
-                    <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
+                    <img class="hero-image m-auto w-100 " src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" alt="{{ category.name }}">
                     <div class="image-fade-out"></div>
                 {% endif %}
             {% endfor %}
         </div>
         {% else %}
         <div>
-            <img class="hero-image m-auto w-100" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">    
+            <img class="hero-image m-auto w-100 " src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" alt="{{ category.name }}">    
             <div class="image-fade-out"></div> 
         </div>
         {% endif %}
@@ -172,7 +172,7 @@
 
 {% block postloadjs %}
     {{ block.super }} 
-    <script type="text/javascript">
+    <script>
         $('#sort-selector').change(function() {
             var selector = $(this);
             var currentUrl = new URL(window.location);

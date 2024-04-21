@@ -13,8 +13,8 @@
         <div class="col-12 col-sm-8 ">         
           <div class="top-row-nav d-flex px-2 align-items-center justify-content-center justify-content-sm-end">
             <!-- Search -->
-            <form id="search-form"class="d-flex col mx-auto" role="search" method="GET" action="{% url 'activities' %}">
-              <input class="form-control round-border me-2" type="search" name="q" placeholder="&#xf002; Search" style="font-family: FontAwesome, Arial; font-style: normal">
+            <form id="search-form" class="d-flex col mx-auto" role="search" method="GET" action="{% url 'activities' %}">
+              <input class="form-control round-border me-2" type="search" name="q" placeholder="Search">
             </form>
             {% if not user.is_superuser %}
               {% if user.is_authenticated %}                

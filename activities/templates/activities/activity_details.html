@@ -14,13 +14,13 @@
     <div class="main-image-title">
         <div>
             {% if activity.image %}
-                <img class="hero-image" src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                <img class="hero-image" src="{{ activity.image.url }}" alt="{{ activity.name }}">
                 <div class="image-fade-out"></div>                                  
             {% elif category.image %}
-                <img class="hero-image" src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
+                <img class="hero-image" src="{{ category.image.url }}" alt="{{ activity.name }}">
                 <div class="image-fade-out"></div>
             {% else %}
-                <img class="hero-image" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
+                <img class="hero-image" src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" alt="{{ activity.name }}">
                 <div class="image-fade-out"></div>
             {% endif %}
             <div class="mb-3 d-flex flex-row justify-content-between mx-3">
@@ -32,7 +32,7 @@
                     </div>
                 {% endif %}
             </div>
-        <div>
+        </div>
         <h1 class="gold-text text-center"><em>{{ activity.name}}</em></h1>
         <div class="d-flex justify-content-center my-4" >
             <div class="skill-level round-border">
@@ -111,25 +111,23 @@
                         {% csrf_token %}
                         {% if future_timeslots %}
                             <select name="timeslot" id="timeslot-select" class="form-select" required aria-label="Default select example">
-                                <option selected value="None">Select a timeslot</option>
+                                <option selected value="">Select a timeslot</option>
                                 {% for timeslot in activity.timeslot.all %}
                                     {% if timeslot.available_capacity > 0 and timeslot.is_future_timeslot %}
-                                    <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">
-                                        <strong>{{ timeslot.start_time.date }}</strong>
-                                        {% if activity.get_duration.1 %}
-                                             | All Day
-                                        {% else %}
-                                            {{ timeslot.start_time.time }}
-                                        {% endif %}
-                                        <span><em> | {{ timeslot.available_capacity }} spaces available</em></span></option>
-                                    {% else %}
-                                        No timeslots available
+                                        <option value="{{ timeslot.id }}" data-available-capacity="{{ timeslot.available_capacity }}">
+                                            {{ timeslot.start_time.date }}
+                                            {% if activity.get_duration.1 %}
+                                                | All Day
+                                            {% else %}
+                                                {{ timeslot.start_time.time }}
+                                            {% endif %}
+                                            | {{ timeslot.available_capacity }} spaces available
+                                        </option>
                                     {% endif %}
                                 {% endfor %}
                             </select>
-                            <label name="quantity" for="quantity" class="text-light"required >Quantity *</lable>
+                            <label for="quantity-input" class="text-light" >Quantity *</label>
                             <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="10" required>
-                            <p id="quantity-error" class="error-message text-warning"></p>
                             <div class="col-12">
                                 <a href="{% url 'activities' %}" class="btn gold-text">
                                     <span>Keep Browsing</span>
@@ -152,17 +150,19 @@
                             {% if future_timeslots %}
                                 {% for timeslot in future_timeslots %}
                                     <li class="list-group-item"> 
-                                        <strong>{{ timeslot.start_time.date }}</strong>
-                                        {% if activity.get_duration.1 %}
-                                             | All Day
-                                        {% else %}
-                                            {{ timeslot.start_time.time }}
-                                        {% endif %}
-                                         | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
-                                        <a class="mx-3"href={% url 'delete_timeslot' timeslot.id %}><i class="fa-regular fa-trash-can text-danger"></i></a> 
-                                        <a href={% url 'edit_timeslot' timeslot.id %}> 
-                                            <i class="fa-solid fa-pen"></i>
-                                        </a> 
+                                        <p>
+                                            <strong>{{ timeslot.start_time.date }}</strong>
+                                            {% if activity.get_duration.1 %}
+                                                | All Day
+                                            {% else %}
+                                                {{ timeslot.start_time.time }}
+                                            {% endif %}
+                                            | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
+                                            <a class="mx-3" href={% url 'delete_timeslot' timeslot.id %}><i class="fa-regular fa-trash-can text-danger"></i></a> 
+                                            <a href={% url 'edit_timeslot' timeslot.id %}> 
+                                                <i class="fa-solid fa-pen"></i>
+                                            </a> 
+                                        </p>
                                     </li>
                                 {% endfor %}
                             {% else %}
@@ -210,21 +210,25 @@
                                 {% endif %}
                             {% endfor %}        
                         </div>
-                        <p><em>from: </em>{{ review.reviewer }}</p> 
+                        <p class="light-text" ><em>from: </em>{{ review.reviewer }}</p> 
                     </div>
-                    <div class="d-flex col-12 justify-content-around review-item-content">
-                        <i class="fa-solid fa-quote-left muted-text"></i> 
-                        <p>{{ review.content }}</p>
-                        <i class="fa-solid fa-quote-right muted-text"></i>
-                    </div>
-                    <div class="d-flex col-12 justify-content-end review-item-date muted-text">
-                        <small>{{ review.review_time }}</small>
-                    </div>
+                    {% if review.content %}
+                        <div class="d-flex col-12 justify-content-around review-item-content">
+                            <i class="fa-solid fa-quote-left muted-text"></i> 
+                            <p class="light-text" >{{ review.content }}</p>
+                            <i class="fa-solid fa-quote-right muted-text"></i>
+                        </div>
+                    {% endif %}
+                    {% if review.review_time %}
+                        <div class="d-flex col-12 justify-content-end review-item-date muted-text">
+                            <small>{{ review.review_time }}</small>
+                        </div>
+                    {% endif %}
                 </div>   
                 {% endfor %}
             </div>
         {% else %}
-            <p>There are currently no reviews for this activity.</p>
+            <p class="text-light">There are currently no reviews for this activity.</p>
         {% endif %}
     </div>
 {% endblock %}
@@ -237,7 +241,7 @@
                 var timeslotSelect = document.getElementById('timeslot-select');
                 var quantityInput = document.getElementById('quantity-input');
             
-                if (timeslotSelect.value === 'None' || quantityInput.value === '') {
+                if (timeslotSelect.value === '' || quantityInput.value === '') {
                     event.preventDefault();
                     alert('Please select a timeslot.');
                 }
