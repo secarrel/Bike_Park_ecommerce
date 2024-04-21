@@ -76,10 +76,6 @@ def activity_details(request, activity_id):
     activity = get_object_or_404(Activity, pk=activity_id)
     category = activity.category
 
-    # Clear session fields
-    del request.session['current_activity']
-    del request.session['activity_capacity']
-
     # Save activity to session to help with navigation on other pages.
     current_activity = activity_id
     activity_capacity = activity.capacity
