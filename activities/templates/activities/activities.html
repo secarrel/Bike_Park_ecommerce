@@ -192,13 +192,12 @@
 
                 window.location.replace(currentUrl);
             }
-        })
+        });
 
         // Filter bookings by difficulty
         $('#difficulty-filter').change(function() {
             let selectedDifficulty = $(this).val();
-            let timeslots = $('.activity-display')
-            let resultsCount = 0
+            let resultsCount = 0;
 
             $('.activity-display').each(function () {
                 let difficulty = $(this).data('difficulty'); 
