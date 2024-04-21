@@ -174,8 +174,8 @@ def order_details(request, order_number):
         return redirect(reverse('home'))
     else:
         messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
+            f'This is a past confirmation for order number {order_number}. '
+            'A confirmation email was sent on the order date.'
         ))
 
     template = 'checkout/checkout_success.html'
@@ -251,14 +251,14 @@ def delete_review(request, review_id):
         messages.error(
             request, 'Sorry, you are not authorized to complete this action.')
         return redirect(reverse('home'))
-    
+
     review = get_object_or_404(Review, id=review_id)
 
     if request.method == 'POST':
         review.delete()
         messages.success(request, 'Review Deleted')
         return redirect(reverse('user_reviews'))
-    
+
     template = 'profiles/delete_review.html'
     context = {
         'review': review,

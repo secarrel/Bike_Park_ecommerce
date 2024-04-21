@@ -280,7 +280,7 @@ def edit_timeslot(request, timeslot_id):
 @login_required
 def delete_activity(request, activity_id):
     """ Delete activity """
-    
+
     # Only let superuser view this page
     if not request.user.is_superuser:
         messages.error(
@@ -331,10 +331,9 @@ def delete_timeslot(request, timeslot_id):
     return render(request, template, context)
 
 
-
 def requirements(request):
     """ Display the requirements template """
 
     template = 'activities/requirements.html'
-    
+
     return render(request, template)

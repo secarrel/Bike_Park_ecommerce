@@ -87,7 +87,7 @@ def checkout(request):
                             order_line_item.save()
                         else:
                             order_line_item.save()
-                            
+
                     except Timeslot.DoesNotExist:
                         messages.error(request, (
                             "One of the activities in your bag wasn't found"

@@ -27,7 +27,7 @@ class TimeslotForm(forms.ModelForm):
 
     class Meta:
         model = Timeslot
-        exclude = ['spaces_booked',]
+        exclude = ['spaces_booked', ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

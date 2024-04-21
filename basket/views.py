@@ -95,7 +95,7 @@ def update_basket(request, item_id):
 
 def remove_from_basket(request, item_id):
     """ Remove specified product from basket """
-    
+
     if request.method == 'POST':
         try:
             basket = request.session.get('basket', {})
