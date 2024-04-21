@@ -401,7 +401,7 @@ nav {
 /* -------- HOME -------- */
 .hero-image {
     position: relative;
-    translate:0 -40px;
+    transform: translate(0, -40px);
     z-index: -40;
     width: 100%;
     object-fit: cover;
