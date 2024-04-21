@@ -5,11 +5,96 @@ This file contains evidence and details of the thorough testing process undertak
 You can access the [README.md file here](README.md)
 
 ## Validation
+
+### HTML Validation
+I used [W3C HTML Validator](https://validator.w3.org/nu/ ) to validate the HTML code. No major issues were raised during the process, only very small tweeks, making for a smooth process.
+
+See screenshots of all pages being validated [here](docs/validation/html/html-validation.pdf)
+
+| Page                     | Notes |
+| ------------------------ | ----- |
+| Welcome                  | ✅ No errors |
+| About                    | ✅ No errors |
+| Trails                   | ✅ No errors |
+| Activities (all)         | ✅ No errors |
+| Activities (filtered)    | ✅ No errors |
+| Activity Details (user)  | ✅ No errors |
+| Activity Details (admin) | ✅ No errors |
+| Basket                   | ✅ No errors |
+| Checkout                 | ✅ No errors |
+| Checkout Success         | ✅ No errors |
+| Add activity             | ✅ No errors |
+| Add timeslot             | ✅ No errors |
+| Edit activity            | ✅ No errors |
+| Edit timeslot            | ✅ No errors |
+| Delete Activity          | ✅ No errors |
+| Delete Timeslot          | ✅ No errors |
+| Manage activities        | ✅ No errors |
+| Requirements             | ✅ No errors |
+| Profile                  | ✅ No errors |
+| Add review               | ✅ No errors |
+| Booking info             | ✅ No errors |
+| Bookings                 | ✅ No errors |
+| Delete Review            | ✅ No errors |
+| Order history            | ✅ No errors |
+| User details             | ✅ No errors |
+| User reviews             | ✅ No errors |
+
+### CSS Validation
+I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) to validate my CSS code.
+
+I checked the website link and recieved the following result:
+
+![css1](docs/validation/css/validation-css.png)
+
+ I also entered each CSS file seperately and got the following for each: 
+ 
+ ![css2](docs/validation/css/validation-css2.png)
+
+Both methods showed no errors in my CSS.
+
+### JavaScript
+All javascript was tested with [JShint validator](https://jshint.com/).
+
+| Page/file | Notes |
+| ------------------------ | ----- |
+| [Activities](docs/validation/jshint/validation-activities-js.png) | ✅ No errors |
+| [Activity Details](docs/validation/jshint/validation-activity-details-js.png) | ✅ No errors |
+| [Edit Activities](docs/validation/jshint/validation-edit-activities-js.png) | ✅ No errors |
+| [Basket](docs/validation/jshint/validation-basket-js.png) | ✅ No errors |
+| [Bookings](docs/validation/jshint/validation-bookings-js.png) | ✅ No errors |
+| [Base.html](docs/validation/jshint/validation-base-js.png) | ✅ No errors |
+| [profiles.js](docs/validation/jshint/validation-profiles-js.png) | ✅ No errors |
+| [stripe-element.js](docs/validation/jshint/validation-stripe-element-js.png) | ✅ No errors |
+
+
+### Python
+I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com/) to validate all of my Python files. All files were found to have 0 errors violating PEP8 guidelines.
+
+| App | __init__.py | admin.py | apps.py | forms.py | models.py | urls.py | views.py |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| activities | | [✅](docs/validation/pep8/activities/validation-activities-admin.png) | [✅](docs/validation/pep8/activities/validation-activities-apps.png) | [✅](docs/validation/pep8/activities/validation-activities-forms.png) | [✅](docs/validation/pep8/activities/validation-activities-models.png) | [✅](docs/validation/pep8/activities/validation-activities-urls.png) | [✅](docs/validation/pep8/activities/validation-activities-views.png) |
+| basket | | | [✅](docs/validation/pep8/basket/validation-basket-apps.png) | | | [✅](docs/validation/pep8/basket/validation-basket-urls.png) | [✅](docs/validation/pep8/basket/validation-basket-views.png) | 
+| bike_park | | | | | | [✅](docs/validation/pep8/bike-park/validation-bikepark-urls.png)    | |
+| checkout | [✅](docs/validation/pep8/checkout/validation-checkout-init.png) | [✅](docs/validation/pep8/checkout/validation-checkout-admin.png) | [✅](docs/validation/pep8/checkout/validation-checkout-apps.png) | [✅](docs/validation/pep8/checkout/validation-checkout-forms.png) | [✅](docs/validation/pep8/checkout/validation-checkout-models.png) | [✅](docs/validation/pep8/checkout/validation-checkout-urls.png) | [✅](docs/validation/pep8/checkout/validation-checkout-views.png) |
+| home | | | [✅](docs/validation/pep8/home/validation-home-apps.png) | | | [✅](docs/validation/pep8/home/validation-home-urls.png) | [✅](docs/validation/pep8/home/validation-home-views.png) |
+| profiles | | [✅](docs/validation/pep8/profiles/validation-profiles-admin.png) | [✅](docs/validation/pep8/profiles/validation-profiles-apps.png) | [✅](docs/validation/pep8/profiles/validation-profiles-forms.png) | [✅](docs/validation/pep8/profiles/validation-profiles-models.png) | [✅](docs/validation/pep8/profiles/validation-profiles-urls.png) | [✅](docs/validation/pep8/profiles/validation-profiles-views.png) |
+| timeslots | | [✅](docs/validation/pep8/timeslots/validation-timeslots-admin.png) | [✅](docs/validation/pep8/timeslots/validation-timeslots-apps.png) | | [✅](docs/validation/pep8/timeslots/validation-timeslots-models.png)   | | |
+
+Additional one-off files for PEP8 testing:
+- checkout > [signals.py ✅](docs/validation/pep8/checkout/validation-checkout-signals.png)
+- basket > [contexts.py ✅](docs/validation/pep8/basket/validation-basket-contexts.png)
+- bike-park > [asgi.py ✅](docs/validation/pep8/bike-park/validation-bikepark-asgi.png)
+- bike-park > [settings.py ✅](docs/validation/pep8/bike-park/validation-bikepark-settings.png)
+- bike-park > [wsgi.py ✅](docs/validation/pep8/bike-park/validation-bikepark-wsgi.png)
+- activities > [widgets.py ✅](docs/validation/pep8/activities/validation-activities-widgets.png)
+- checkout > [webhooks.py ✅](docs/validation/pep8/checkout/validation-checkout-webhooks.png)
+- checkout > [webhook handlers ✅](docs/validation/pep8/checkout/validation-checkout-wh-handler.png)
+
 ## Manual Testing (feature testing)
 I used the feature section from the README as a guide for the structure for this section. So if you would like to reference any features with the README.md you should be able to do so easily.
 
-
-### Authentication:
+### Authentication
 
 | Page | User Action | Expected Result | Pass/Fail | Comments |
 | --- | --- | --- | --- | --- |
@@ -104,7 +189,6 @@ I used the feature section from the README as a guide for the structure for this
 | 500 | Hovers over 'home' button | colour change, cursor is pointer | ✅ Pass |  |
 |  | Clicks 'home' button | Directs user to home page | ✅ Pass |  |
 
-
 ### Authenticated Visitors
 
 | Page | User Action | Expected Result | Pass/Fail | Comments |
@@ -115,7 +199,7 @@ I used the feature section from the README as a guide for the structure for this
 |  | Clicks on 'My Reviews' | Directed to 'My Reviews' page. | ✅ Pass |  |
 |  | Clicks on 'Sign out' | Directed to 'Sign out' confirmation page. | ✅ Pass |  |
 | Manage Details | Clicks on form field | Colour change | ✅ Pass |  |
-|  | Makes valid change and hovers clicks 'save and update' | Details are updated. Toast confirms details have changed. Directed to 'Profile' page | ❌ FAIL | Failed on first test. |
+|  | Makes valid change and hovers clicks 'save and update' | Details are updated. Toast confirms details have changed. Directed to 'Profile' page | ✅ Pass |  |
 |  | Hovers over 'Back to profile' | Colour change and cursor is pointer | ✅ Pass |  |
 |  | Clicks 'Back to profile' | Directs to profile page | ✅ Pass |  |
 |  | Hovers over 'Change Password' button | Colour change and cursor is pointer | ✅ Pass |  |
@@ -127,59 +211,59 @@ I used the feature section from the README as a guide for the structure for this
 |  | Clicks 'Review' button | Direct to 'Add review' page. Should say 'Reviewing: _selected activity_' | ✅ Pass |  |
 | Add Review | Submits review without filling in required fields | Form validation error message | ✅ Pass |  |
 |  | Submits valid review details and submits | Redirect to 'Your orders'. Toast confirming review was submitted successfully. | ✅ Pass |  |
-|  | Clicks 'back to order history' | Redirects to order history page. | ❌ FAIL | Redirects to profile page |
-| Reviews | Click delete review | Redirect to delete confirmation | ❌ FAIL | Ideally this would go to a delete confirmation but I ran out of time to impliment this. |
-|  | Click 'Go back' | Redirected to profile page | ❌ FAIL | No change |
+|  | Clicks 'back to order history' | Redirects to order history page. | ✅ Pass |  |
+| Reviews | Click delete review | Redirect to delete confirmation | ✅ Pass |  |
+|  | Click 'Go back' | Redirected to profile page | ✅ Pass |  |
 
 ### Admin
 
 | Page | User Action | Expected Result | PAss/Fail | Comments |
 | --- | --- | --- | --- | --- |
-| Activity Details | Hover Over any button or link | Colour change and cursor is pointer | ❌ FAIL | The colour of the 'Edit activity text isn't correct. Delete timeslot button doesn't change colour but cursor does change to a pointer. |
-|  | Click 'Edit Activity' | Redirects to edit activity page. Activity name should be displayed on the page. Form should be prefilled with activity information. | ✅ Pass | --- |
-|  | Click 'Delete Activity' | Redirects to delete activity confirmation page. Activity name should be displayed on the page. | ✅ Pass | --- |
-|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | Click 'Add Timeslot' button | Redirects to 'Add timeslot' page with the current activity prefilled. | ✅ Pass | --- |
-|  | Click 'Edit timeslot' button |  | ✅ Pass | --- |
-|  | Click 'Delete Timeslot' button |  | ✅ Pass | --- |
-| Edit Activity | Click 'Go back' button | Return to activity details page | ✅ Pass | --- |
-|  | Submit with empty required field | Form validation prompts user to fill field | ✅ Pass | --- |
+| Activity Details | Hover Over any button or link | Colour change and cursor is pointer | ✅ Pass |  |
+|  | Click 'Edit Activity' | Redirects to edit activity page. Activity name should be displayed on the page. Form should be prefilled with activity information. | ✅ Pass |  |
+|  | Click 'Delete Activity' | Redirects to delete activity confirmation page. Activity name should be displayed on the page. | ✅ Pass |  |
+|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass |  |
+|  | Click 'Add Timeslot' button | Redirects to 'Add timeslot' page with the current activity prefilled. | ✅ Pass |  |
+|  | Click 'Edit timeslot' button |  | ✅ Pass |  |
+|  | Click 'Delete Timeslot' button |  | ✅ Pass |  |
+| Edit Activity | Click 'Go back' button | Return to activity details page | ✅ Pass |  |
+|  | Submit with empty required field | Form validation prompts user to fill field | ✅ Pass |  |
 |  | Submit with invalid values | Error toast is displayed | ✅ Pass |  |
-|  | Submit form with all valid fields | Redirect to activity details. Toast message confirms update. Changes appear to be applied in activity details. | ✅ Pass | --- |
-|  | Click 'Cancel' button | Redirect to 'activity details' page without implimenting changes. | ✅ Pass | --- |
-|  | Click 'Delete Activity' button | Redirect to 'Delete activity confirmation' page which has the details of the current activity. | ✅ Pass | --- |
-| Delete Activity Confirmation | Click 'Delete' button | Activity is deleted. Toast confrimation. Redirect to activities page. | ❌ FAIL | Test this with disposable activity |
-|  | click 'cancel' | Return to activity details without deleting the activity | ✅ Pass | --- |
-| Add Timeslot | Submit with required fields empty | Form validation prompts user to fill empty fields. | ✅ Pass | --- |
-|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | Submit with valid fields | Redirects to activity details page. Timeslot can be seen in timeslot list (as long as it is in the future). Toast confirms timeslot was created. | ✅ Pass | --- |
-|  | Click 'cancel' | Return to activity details without creating the timeslot | ✅ Pass | --- |
-| Edit Timeslot | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | Submit with valid fields | Redirects to activity details page. Timeslot is be seen to be updated. Toast confirms timeslot was Updated. | ✅ Pass | --- |
-|  | Click 'cancel' | Return to activity details without changing the timeslot | ✅ Pass | --- |
-|  | click 'Delete' | Redirects to delete timeslot confirmation page | ✅ Pass | --- |
-| Delete Timeslot Confirmation | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | click 'Delete' | Redirects to activity details page. Toast message confirms timeslot is deleted. Timeslot doesn't appear in timeslot list. | ✅ Pass | --- |
-|  | Click 'cancel' | Return to activity details without deleteing the timeslot | ✅ Pass | --- |
+|  | Submit form with all valid fields | Redirect to activity details. Toast message confirms update. Changes appear to be applied in activity details. | ✅ Pass |  |
+|  | Click 'Cancel' button | Redirect to 'activity details' page without implimenting changes. | ✅ Pass |  |
+|  | Click 'Delete Activity' button | Redirect to 'Delete activity confirmation' page which has the details of the current activity. | ✅ Pass |  |
+| Delete Activity Confirmation | Click 'Delete' button | Activity is deleted. Toast confrimation. Redirect to activities page. | ✅ Pass |  |
+|  | click 'cancel' | Return to activity details without deleting the activity | ✅ Pass |  |
+| Add Timeslot | Submit with required fields empty | Form validation prompts user to fill empty fields. | ✅ Pass |  |
+|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | |
+|  | Submit with valid fields | Redirects to activity details page. Timeslot can be seen in timeslot list (as long as it is in the future). Toast confirms timeslot was created. | ✅ Pass | |
+|  | Click 'cancel' | Return to activity details without creating the timeslot | ✅ Pass | |
+| Edit Timeslot | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | |
+|  | Submit with valid fields | Redirects to activity details page. Timeslot is be seen to be updated. Toast confirms timeslot was Updated. | ✅ Pass | |
+|  | Click 'cancel' | Return to activity details without changing the timeslot | ✅ Pass | |
+|  | click 'Delete' | Redirects to delete timeslot confirmation page | ✅ Pass | |
+| Delete Timeslot Confirmation | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | |
+|  | click 'Delete' | Redirects to activity details page. Toast message confirms timeslot is deleted. Timeslot doesn't appear in timeslot list. | ✅ Pass | |
+|  | Click 'cancel' | Return to activity details without deleteing the timeslot | ✅ Pass | |
 | Profile | Hovers over any of the buttons in 'Site Management' list. | Colour change & cursor is pointer | ✅ Pass |  |
 |  | Clicks on 'Manage Activities' | Directed to 'Manage Activities' page. | ✅ Pass |  |
 |  | Clicks on 'Bookings' | Directed to 'Bookings' page. | ✅ Pass |  |
 |  | Clicks on 'Sign out' | Directed to 'Sign out' confirmation page. | ✅ Pass |  |
-| Manage Activities | Hovers over any link | Colour change and cursor is pointer | ✅ Pass | --- |
-|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | Click on activity link | Redirects to the relevant activity details page. | ✅ Pass | --- |
-|  | Click 'Edit'link | Redirects to edit activity page. Activity name should be displayed on the page. Form should be prefilled with activity information. | ✅ Pass | --- |
-|  | Click 'Add Activity' | Redirects to 'Add activity' page | ✅ Pass | --- |
-| Add Activity | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | These should always direct the user to 'Manage activities' page. Update this to do so. |
-|  | Submit form with empty required fields | Prompted to fill required fields | ✅ Pass | --- |
-|  | Submit with invalid fields | Form validation raises an error which is displayed appropriately. | ✅ Pass | --- |
-|  | Submit valid form | Redirect to activity details page. Activity details match those in form. Toast confirms successful creation of an activity. | ✅ Pass | --- |
-| Bookings | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | --- |
-|  | Select a date with no activity timeslots | No results message displayed | ❌ FAIL | Whole table and sort/filter toptions are removed. |
-|  | Select a date that has activity timeslots | Displays timelsot for the selected date.  | ✅ Pass | --- |
-|  | Click 'show all future bookings' | All bookings are displayed with the soonest first. | ✅ Pass | --- |
-|  | Select an activity to filter by that has timeslots | Timeslots are displayed | ✅ Pass | --- |
-|  | Select an activity with no timeslots booked | No results message displayed  | ❌ FAIL | Empty table displayed. |
+| Manage Activities | Hovers over any link | Colour change and cursor is pointer | ✅ Pass | |
+|  | Click 'Go back' button | Redirects to the previous page. | ✅ Pass | |
+|  | Click on activity link | Redirects to the relevant activity details page. | ✅ Pass | |
+|  | Click 'Edit'link | Redirects to edit activity page. Activity name should be displayed on the page. Form should be prefilled with activity information. | ✅ Pass |  |
+|  | Click 'Add Activity' | Redirects to 'Add activity' page | ✅ Pass |  |
+| Add Activity | Click 'Go back' button | Redirects to the previous page. | ✅ Pass |  |
+|  | Submit form with empty required fields | Prompted to fill required fields | ✅ Pass |  |
+|  | Submit with invalid fields | Form validation raises an error which is displayed appropriately. | ✅ Pass |  |
+|  | Submit valid form | Redirect to activity details page. Activity details match those in form. Toast confirms successful creation of an activity. | ✅ Pass |  |
+| Bookings | Click 'Go back' button | Redirects to the previous page. | ✅ Pass |  |
+|  | Select a date with no activity timeslots | No results message displayed | ✅ Pass |  |
+|  | Select a date that has activity timeslots | Displays timelsot for the selected date.  | ✅ Pass |  |
+|  | Click 'show all future bookings' | All bookings are displayed with the soonest first. | ✅ Pass |  |
+|  | Select an activity to filter by that has timeslots | Timeslots are displayed | ✅ Pass |  |
+|  | Select an activity with no timeslots booked | No results message displayed  | ❌ FAIL | Empty table displayed. I attempted to implement this but didn't have time to get it working before the deadline. |
 
 ## User Story Testing
 
@@ -198,7 +282,7 @@ I used the feature section from the README as a guide for the structure for this
 | | to receive confirmation of any orders | be sure that they were completed successfully. | Confirmation emails are being sent successfully to the user's email after an order is completed successfully. | ✅ Pass |
 | Registered User | to see my upcoming bookings | check I have remembered the details correctly. | Their upcoming bookings are displayed immediately on the profile page so it's easy for them to find. There are further details on the 'Order History' page. | ✅ Pass |
 | | to see my previous purchases | order the same product again or find out the details of a booking.| The order history page shows previous bookings with the names of activities. The user is also able to leave a review and see their reviews to remind them what they thought of the activity. | ✅ Pass |
-| | to edit my account details | keep using my account with the correct personal information.| Django AllAuth allows the user to change their password. The 'My Details' page allows the user to update their detais. | ❌ FAIL |
+| | to edit my account details | keep using my account with the correct personal information.| Django AllAuth allows the user to change their password. The 'My Details' page allows the user to update their detais. | ✅ Pass |
 | | save my checkout details | checkout more efficiently next time. | If the user is authenticated they can check 'save my details' and their billing information will be saved for the next time they make an order. | ✅ Pass |
 | | to sign into an account I have previously created| keep track of purchases and continue to purchase products. | Django's AllAuth ensures the user can sign in to an account they have already created. There is also a forgot password option which allows the user to regain access to an account they have forgotten the details for. | ✅ Pass |
 | Site Admin| to have the ability to add, edit and delete activities | ensure users have accurate and up to date information about the activities. | The admin can add, edit and delete all activities. This can be done from the admin's manage activities page or from the activity details page of the relevant activity. | ✅ Pass |
