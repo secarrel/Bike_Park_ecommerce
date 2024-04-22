@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="container d-flex flex-column light-text text-center">
-    <a class="button mx-2 text-start" href="{% url 'profile' %}">Go Back</a>
+    <a class="button mx-2 text-start" href="{% url 'profile' %}" aria-label="Go back to your profile">Go Back</a>
     <h1> Your Orders </h1>
     <hr>
     <div class="d-flex flex-wrap">
@@ -42,7 +42,7 @@
                                 <!--Order number-->
                                 <td class="col">
                                     <a href="{% url 'order_details' order.order_number %}"
-                                                title="{{ order.order_number }}">
+                                                title="{{ order.order_number }}" aria-label="View details for order {{ order.order_number }}">
                                                     {{ order.order_number|truncatechars:6 }}
                                                 </a>
                                 </td>
@@ -51,7 +51,7 @@
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
-                                                <a class="round-border" href="{% url 'activity_details' item.timeslot.activity.id %}">{{ item.timeslot.activity }}</a>
+                                                <a class="round-border" href="{% url 'activity_details' item.timeslot.activity.id %}"  aria-label="See details for {{ item.timeslot.activity }}">{{ item.timeslot.activity }}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -97,7 +97,7 @@
                                     <ul class="list-unstyled">
                                         {% for item in order.lineitems.all %}
                                             <li class="small">
-                                                <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}">Review</a>
+                                                <a href="{% url 'add_review' activity_id=item.timeslot.activity.id %}" aria-label="Add a review" >Review</a>
                                             </li>
                                         {% endfor %}
                                     </ul>

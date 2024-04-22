@@ -19,7 +19,7 @@
 
 {% block content %}
 <div class="container d-flex mb-3 flex-column light-text">
-    <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
+    <a class="button mx-2" href="{% url 'profile' %}" aria-label="Go back to the profile page">Go Back</a>
     <div class="col light-text"> 
         <hr>
         <h2> Bookings </h2>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="col-12 d-flex justify-content-center">
-            <a class="back-button mx-auto p-3 col text-center" href="{% url 'bookings' %}">Show all future bookings</a>
+            <a class="back-button mx-auto p-3 col text-center" href="{% url 'bookings' %}" aria-label="Show all future bookings by continuing to the bookinsg page.">Show all future bookings</a>
         </div>
         {% if timeslot_list %}
             <table class="table table-responsive text-center">
@@ -59,7 +59,7 @@
                     {% for timeslot, data in timeslot_list.items %}
                         <tr class="timeslot" data-activity={{ timeslot.activity.id }} >
                             <td class="col">
-                                <a href="{% url 'booking_info' timeslot_id=timeslot.id %}"> 
+                                <a href="{% url 'booking_info' timeslot_id=timeslot.id %}" aria-label="Redirect to the booking info for this timeslot"> 
                                     {{ timeslot.activity }} 
                                 </a>
                             </td>

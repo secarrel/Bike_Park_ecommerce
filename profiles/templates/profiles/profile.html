@@ -40,29 +40,29 @@
                 {% if request.user.is_superuser %}
                     <h3 class="mx-auto"> Site Management </h3>
                     <div class="manage-container p2">
-                        <a class="profile-button" href="{% url 'manage_activities' %}">
+                        <a class="profile-button" href="{% url 'manage_activities' %}" aria-label="Manage activities">
                             Manage Activities
                         </a>
-                        <a class="profile-button" href="{% url 'bookings' %}">
+                        <a class="profile-button" href="{% url 'bookings' %}" aria-label="See all bookings">
                             Bookings
                         </a>
-                        <a class="profile-button bg-ft-danger" href="{% url 'account_logout' %}">
+                        <a class="profile-button bg-ft-danger" href="{% url 'account_logout' %}" aria-label="Sign out of your account">
                             Sign Out
                         </a>
                     </div>
                 {% else %}
                     <h3 class="mx-auto text"> Manage Account </h3>
                     <div class="manage-container">
-                        <a class="profile-button" href="{% url 'user_details' %}">
+                        <a class="profile-button" href="{% url 'user_details' %}" aria-label="Go to the 'My details' page to view and update your information.">
                             My Details
                         </a>
-                        <a class="profile-button" href="{% url 'order_history' user_id=user.id %}">
+                        <a class="profile-button" href="{% url 'order_history' user_id=user.id %}" aria-label="Go to your order history">
                             Order History
                         </a>
-                        <a class="profile-button" href="{% url 'user_reviews' %}">
+                        <a class="profile-button" href="{% url 'user_reviews' %}" aria-label="See the 'my reviews' page to view and delete reviews.">
                             My Reviews
                         </a>
-                        <a class="profile-button bg-ft-danger" href="{% url 'account_logout' %}">
+                        <a class="profile-button bg-ft-danger" href="{% url 'account_logout' %}" aria-label="Sign out of your account">
                             Sign Out
                         </a>
                     </div>

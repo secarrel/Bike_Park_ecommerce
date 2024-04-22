@@ -58,12 +58,12 @@
                                     {% csrf_token %}                   
                                     <input type="number" id="quantity-input-basket" name="quantity" data-item_id="{{ timeslot.id }}" data-initial-quantity="{{ item.quantity }}" value="{{ item.quantity }}" min="1" max="15" required>
                                 </form>
-                                <a class="update-link text-info"><small>Update</small></a>
+                                <a class="update-link text-info" aria-label="Update the quantity of this item"><small>Update</small></a>
                             </td>
                             <td class="align-middle"> 
                                 <div class="d-flex flex-column">
                                     <p class="item-total"> £{{item.activity.price| calc_subtotal:item.quantity }} </p>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><i class="fa-regular fa-circle-xmark"></i></a>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" aria-label="Remove this item from the basket"><i class="fa-regular fa-circle-xmark"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -76,11 +76,11 @@
             {% else %}
                 <p class="lead mb-5">Your basket is empty</p>
             {% endif %}
-            <a href="{% url 'activities' %}" class="btn back-button">
+            <a href="{% url 'activities' %}" class="btn back-button" aria-label="Redirect to the 'activities' page to keep shopping.">
                 <span>Keep Shopping</span>
             </a>
             {% if basket_items %}
-            <a class="btn bg-l-grey" href="{% url 'checkout' %}">
+            <a class="btn bg-l-grey" href="{% url 'checkout' %}" aria-label="Continue to secure checkout">
                 <span class="icon">
                     <i class="fas fa-lock text-light"></i>
                 </span>

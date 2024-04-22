@@ -12,7 +12,7 @@
 
 {% block content %}
     <div class="container mb-2">
-        <a class="button" href="{% url 'activity_details' current_activity %}">Go Back</a>
+        <a class="button" href="{% url 'activity_details' current_activity %}" aria-label="Go back to the previous page.">Go Back</a>
         <div class="row">
             <div class="col text-light">
                 <hr>
@@ -23,7 +23,7 @@
                     {% csrf_token %}
                     {{ form | crispy }}
                     <div class="text-right">
-                        <a class="btn back-button"  href="{% url 'activity_details' current_activity %}">Cancel</a>
+                        <a class="btn back-button"  href="{% url 'activity_details' current_activity %}" aria-label="Redirect to the 'activity details' page.">Cancel</a>
                         <button class="btn checkout-button " type="submit">Add Timeslot</button>
                     </div>
                 </form> 

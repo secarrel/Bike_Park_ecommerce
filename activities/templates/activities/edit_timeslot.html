@@ -12,7 +12,7 @@
 
 {% block content %}
 <div class="container mb-2">
-    <a class="button" href="{% url 'activity_details' activity.id %}">Go Back</a>
+    <a class="button" href="{% url 'activity_details' activity.id %}" aria-label="Go back to the previous page.">Go Back</a>
     <div class="row">
         <div class="col text-light">
             <hr>
@@ -24,10 +24,10 @@
                 {{ form | crispy }}
                 <div class="d-flex flex-column align-items-center col-6 m-auto">
                     <button class="btn checkout-button col-12 text-light" type="submit">Update Timeslot</button>
-                    <a class="btn bg-ft-danger my-2" href={% url 'delete_timeslot' timeslot.id %}> 
+                    <a class="btn bg-ft-danger my-2" href={% url 'delete_timeslot' timeslot.id %} aria-label="Continue to delete timeslot"> 
                         Delete Timeslot
                     </a>
-                    <a class="back-button" href="{% url 'activity_details' activity.id %}"> Cancel </a>
+                    <a class="back-button" href="{% url 'activity_details' activity.id %}" aria-label="Cancel and go back to activity details"> Cancel </a>
                 </div>
             </form>
         </div>

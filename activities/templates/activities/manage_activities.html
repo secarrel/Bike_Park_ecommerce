@@ -12,13 +12,13 @@
 {% block content %}
     {% if request.user.is_superuser %}
     <div class="container mb-2">
-        <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
+        <a class="button mx-2" href="{% url 'profile' %}" aria-label="Go back to your profile.">Go Back</a>
         <div class="row">
             <div class="col text-light">
                 <hr>
                 <h2 class="logo-font mb-4 text-light">Manage Activities</h2>
                 <hr>
-                <a class="btn checkout-button my-2" href="{% url 'add_activity' %}">
+                <a class="btn checkout-button my-2" href="{% url 'add_activity' %}" aria-label="Continue to add activity">
                     <i class="fa-solid fa-circle-plus"></i> Add Activity
                 </a>
                 {% if activities %}
@@ -37,7 +37,11 @@
                     <tbody>
                         {% for activity in activities %}
                             <tr>
-                                <td class="col"> <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}"> {{ activity.name }}</a> </td>
+                                <td class="col"> 
+                                    <a href="{% url 'activity_details' activity.id %}" title="{{ activity.name }}" aria-label="See more of the activity details"> 
+                                        {{ activity.name }}
+                                    </a> 
+                                </td>
                                 <td class="col d-none d-md-table-cell"> {{ activity.category.friendly_name }} </td>
                                 <td class="col"> £{{ activity.price }} </td>
                                 <td class="col d-none d-md-table-cell"> 
@@ -50,8 +54,8 @@
                                 <td class="col"> {{ activity.capacity }} </td>
                                 <td class="col d-none d-md-table-cell"> {{ activity.difficulty }} </td>
                                 <td class="col">
-                                    <a href="{% url 'edit_activity' activity.id %}"><i class="fa-regular fa-pen-to-square mx-2"></i></a>
-                                    <a href="{% url 'delete_activity' activity.id %}"><i class="fa-regular text-danger fa-trash-can mx-2"></i></a>
+                                    <a href="{% url 'edit_activity' activity.id %}" aria-label="Continue to edit activity"><i class="fa-regular fa-pen-to-square mx-2"></i></a>
+                                    <a href="{% url 'delete_activity' activity.id %}" aria-label="Continue to delete activity"><i class="fa-regular text-danger fa-trash-can mx-2"></i></a>
                                 </td>
                             </tr>
                         {% endfor %}

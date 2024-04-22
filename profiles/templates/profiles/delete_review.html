@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="container mb-2">
-        <a class="button" href="{% url 'user_reviews' %}">Go Back</a>
+        <a class="button" href="{% url 'user_reviews' %}" aria-label="Go back to see your reviews">Go Back</a>
         <div class="row">
             <div class="col text-light">
                 <hr>
@@ -25,7 +25,7 @@
                             {% csrf_token %}
                             <button type="submit" class="btn bg-ft-danger col-11 p-2 m-2">Delete</button>
                         </form>
-                        <a class="button" href="{% url 'user_reviews' %}"> Cancel </a>
+                        <a class="button" href="{% url 'user_reviews' %}" aria-label="Cancel and go back to see your reviews."> Cancel </a>
                     </div>
                 </div>
             </div>

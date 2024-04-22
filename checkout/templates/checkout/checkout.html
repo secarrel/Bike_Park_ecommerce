@@ -51,7 +51,14 @@
                                     <label class="id-save-info" for="id-save-info">Save this delivery information to my profile</label>
                                     <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                                 {% else %}
-                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                    <a class="text-info" href="{% url 'account_signup' %}" aria-label="Create an account">
+                                        Create an account
+                                    </a>
+                                     or 
+                                     <a class="text-info" href="{% url 'account_login' %}" aria-label="login if you already have an account.">
+                                        login
+                                    </a> 
+                                    to save this information
                                 {% endif %}
                             </div>
                         </fieldset>
@@ -65,7 +72,7 @@
                         </fieldset>
                         <!-- Adjust or Complete Buttons -->
                         <div class="submit-button text-right my-2">                    
-                            <a href="{% url 'view_basket' %}" class="btn back-button">
+                            <a href="{% url 'view_basket' %}" class="btn back-button" aria-label="Redirect to the 'view basket' page to adjust your basket.">
                                 <span class="font-weight-bold">Adjust basket</span>
                             </a>
                             <button id="submit-button" class="btn checkout-button">

@@ -24,7 +24,7 @@
                             {% csrf_token %}
                             <button type="submit" class="btn bg-ft-danger text-light p-2 col-12">Delete</button>
                         </form>
-                        <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
+                        <a class="button" href="{{ request.META.HTTP_REFERER }}" aria-label="Go back to the previous page."> Cancel </a>
                     </div>
                 </div>
             </div>

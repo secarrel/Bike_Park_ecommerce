@@ -173,7 +173,6 @@ gmp-map {
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
-    opacity: 0 !important;
 }
 
 .list-group {

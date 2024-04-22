@@ -12,7 +12,7 @@
 
 {% block content %}
     <div class="container mb-2">
-        <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+        <a class="button" href="{{ request.META.HTTP_REFERER }}" aria-label="Go back to the previous page.">Go Back</a>
         <div class="edit-activities-container light-text">
             <div class="row">
                 <div class="col-12">
@@ -35,8 +35,8 @@
                     <div class="text-right">
                         <button class="btn col-8 checkout-button text-light mx-3" type="submit">Update Activity</button>
                         <div>
-                            <a class="btn checkout-button bg-d-grey mx-3" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
-                            <a class="mx-auto btn bg-ft-danger text-light" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+                            <a class="btn checkout-button bg-d-grey mx-3" href="{{ request.META.HTTP_REFERER }}" aria-label="Cancel and go back to the previous page."> Cancel </a>
+                            <a class="mx-auto btn bg-ft-danger text-light" href={% url 'delete_activity' activity.id %} aria-label="Redirect to delete activity."> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
                         </div>
                     </div>
                 </form>

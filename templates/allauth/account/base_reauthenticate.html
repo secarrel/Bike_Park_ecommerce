@@ -19,7 +19,7 @@
         <ul>
             {% for alt in reauthentication_alternatives %}
                 <li>
-                    <a href="{{ alt.url }}">{{ alt.description }}</a>
+                    <a href="{{ alt.url }}" aria-label="{{ alt.description }}">{{ alt.description }}</a>
                 </li>
             {% endfor %}
         </ul>

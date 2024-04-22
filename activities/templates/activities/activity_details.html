@@ -24,11 +24,11 @@
                 <div class="image-fade-out"></div>
             {% endif %}
             <div class="mb-3 d-flex flex-row justify-content-between mx-3">
-                <a class="button activity-details-control mx-5" href="{% url 'activities' %}?category={{ category }}">Go Back</a>
+                <a class="button activity-details-control mx-5" href="{% url 'activities' %}?category={{ category }}" aria-label="Go back to the 'activities' page">Go Back</a>
                 {% if request.user.is_superuser %}
                     <div>
-                        <a class="btn bg-grey activity-details-control" id="edit_activity_details" href="{% url 'edit_activity' activity.id %}">Edit Activity <i class="fa-regular fa-pen-to-square"></i></a>
-                        <a class="btn bg-ft-danger activity-details-control" href={% url 'delete_activity' activity.id %}> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+                        <a class="btn bg-grey activity-details-control" id="edit_activity_details" href="{% url 'edit_activity' activity.id %}" aria-label="Continue to edit activity.">Edit Activity <i class="fa-regular fa-pen-to-square"></i></a>
+                        <a class="btn bg-ft-danger activity-details-control" href={% url 'delete_activity' activity.id %} aria-label="Continue to delete activity"> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
                     </div>
                 {% endif %}
             </div>
@@ -90,7 +90,7 @@
                     <p class="card-text px-1 mx-auto">{{activity.requirements}}</p>
                 </div>
                 <p> Please read through the equipment requirements before booking. </p>
-                <a href={% url 'requirements' %}> Equipment Requirements </a>
+                <a href={% url 'requirements' %} aria-label="View the minimum equipment requirements."> Equipment Requirements </a>
             </div>
             <!-- Details -->
             <div class="d-flex flex-column mx-auto py-3 ">
@@ -129,7 +129,7 @@
                             <label for="quantity-input" class="text-light" >Quantity *</label>
                             <input type="number" id="quantity-input" name="quantity" data-item_id="{{ timeslot.id}}" value="1" min="1" max="10" required>
                             <div class="col-12">
-                                <a href="{% url 'activities' %}" class="btn gold-text">
+                                <a href="{% url 'activities' %}" class="btn gold-text" aria-label="Redirect to the 'activities' page to keep browsing.">
                                     <span>Keep Browsing</span>
                                 </a>
                                 <input type="submit" class="btn add-to-basket text-light" value="Add to Basket">
@@ -141,7 +141,7 @@
                     </form>
                 {% elif request.user.is_superuser %}
                     <div class="d-flex justify-content-between">
-                        <a class="btn m-2 activity-details-control bg-d-grey" href="{% url 'add_timeslot' %}">
+                        <a class="btn m-2 activity-details-control bg-d-grey" href="{% url 'add_timeslot' %}" aria-label="Continue to add timeslot">
                             Add Timeslot <i class="fa-regular fa-calendar-plus"></i>
                         </a>
                     </div>
@@ -158,8 +158,8 @@
                                                 {{ timeslot.start_time.time }}
                                             {% endif %}
                                             | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
-                                            <a class="mx-3" href={% url 'delete_timeslot' timeslot.id %}><i class="fa-regular fa-trash-can text-danger"></i></a> 
-                                            <a href={% url 'edit_timeslot' timeslot.id %}> 
+                                            <a class="mx-3" href={% url 'delete_timeslot' timeslot.id %} aria-label="Continue to delete timeslot."><i class="fa-regular fa-trash-can text-danger"></i></a> 
+                                            <a href={% url 'edit_timeslot' timeslot.id %} aria-label="Continue to edit timeslot."> 
                                                 <i class="fa-solid fa-pen"></i>
                                             </a> 
                                         </p>

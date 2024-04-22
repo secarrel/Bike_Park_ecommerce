@@ -12,7 +12,7 @@
 
 {% block content %}
     <div class="container mb-2">
-        <a class="button" href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+        <a class="button" href="{{ request.META.HTTP_REFERER }}" aria-label="Go back to the previous page.">Go Back</a>
         <div class="row">
             <div class="col text-light">
                 <hr>
@@ -29,7 +29,7 @@
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
-                        <a class="button" href="{{ request.META.HTTP_REFERER }}"> Cancel </a>
+                        <a class="button" href="{{ request.META.HTTP_REFERER }}" aria-label="Cancel and go back to the previous page"> Cancel </a>
                         <button class="btn col-8 checkout-button text-light mx-3" type="submit">Add Activity</button>
                     </div>
                 </form>

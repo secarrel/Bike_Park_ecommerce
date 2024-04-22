@@ -45,7 +45,7 @@
                                         <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                     </a>  
                                 {% else %}
-                                <a class="round-border" href="{% url 'activities' %}?category={{ category }}">
+                                <a class="round-border" href="{% url 'activities' %}?category={{ category }}" aria-label="Redirect to the 'activities' page.">
                                     <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ category.name }}">
                                 </a>  
                                 {% endif %}
@@ -62,7 +62,7 @@
                                         {% endif %}
                                     </div>
                                     <div class="card-text my-4">
-                                        <a class="btn checkout-button" href="{% url 'activities' %}?category={{ category }}"> Find out more!</a>
+                                        <a class="btn checkout-button" href="{% url 'activities' %}?category={{ category }}" aria-label="Redirect to the 'activities' page to find out more"> Find out more!</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                         <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
                             <h3 class="gold-text">Our Trails</h3>
                             <p> We are lucky to be positioned on the side of one of Wales' largest mountains. We have a huge variety of trails for all levels; 25 in total!</p>
-                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'trails' %}">Show me the trails!</a>
+                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'trails' %}" aria-label="Redirect to the 'trails' page to show me the trails">Show me the trails!</a>
                         </div>
                         <div class="new-info-image col-12 col-md-5">   
                             <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1713647959/media/devon-hawkins-j5EFEaF4rrk-unsplash_tw3k3c.jpg" class="card-img-top" alt="{{ activity.name }}">
@@ -96,14 +96,14 @@
                         <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
                             <h3 class="gold-text">Find Us</h3>
                             <p> Find out about our opening hours, how to find us, and how to get in touch with enquiries!</p>
-                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'about' %}">Find out more</a>
+                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'about' %}" aria-label="Redirect to the 'about' page to find out more">Find out more</a>
                         </div>
                     </div>
                     <div class="info-item col-12 d-flex mx-auto flex-wrap">
                         <div class="new-info d-flex flex-column text-center text-light justify-content-center col-12 col-md-7 my-4">
                             <h3 class="gold-text">What equipment do I need?</h3>
                             <p> It's important to us that you are safe when riding our trails. To ensure this is the case, please have a look at our minimum requirements for equipment before booking. We offer a limited range of equipment for hire.</p>
-                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'requirements' %}">See the requirments</a>
+                            <a class="btn checkout-button col-6 mx-auto " href="{% url 'requirements' %}" aria-label="Redirect to the 'requirements' page to see the requirements for equipment.">See the requirments</a>
                         </div>
                         <div class="new-info-image col-12 col-md-5">   
                             <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1713648187/media/tom-conway-dU2HDmE_tgw-unsplash_tnpfsg.jpg" class="card-img-top" alt="{{ activity.name }}">

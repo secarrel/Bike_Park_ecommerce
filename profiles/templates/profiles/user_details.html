@@ -46,10 +46,10 @@
             {{ form.errors }}
         </div>
         <div class="d-flex flex-row justify-content-around col">
-            <a class="btn back-button m-2" href="{% url 'profile' %}">
+            <a class="btn back-button m-2" href="{% url 'profile' %}" aria-label="Back to profile page">
                 Back to profile
             </a>
-            <a class="btn checkout-button m-2" href="{% url 'account_change_password' %}">
+            <a class="btn checkout-button m-2" href="{% url 'account_change_password' %}" aria-label="Continue to change password page">
                 Change Password
             </a>
 

@@ -19,7 +19,7 @@
 
 {% block content %}
 <div class="container d-flex flex-column light-text">
-    <a class="button mx-2" href="{% url 'profile' %}">Go Back</a>
+    <a class="button mx-2" href="{% url 'profile' %}" aria-label="Go back to your profile">Go Back</a>
     <div class="d-flex flex-column col-12 text-center p-1">
         <h1 class="text-center">Reviews</h1>
         {% if reviews %}
@@ -79,7 +79,7 @@
                             </td>
                             <!-- Delete -->
                             <td>
-                                <a href="{% url 'delete_review' review.id %}"><i class="fa-regular text-danger fa-trash-can"></i></a>
+                                <a href="{% url 'delete_review' review.id %}" aria-label="Delete this review"><i class="fa-regular text-danger fa-trash-can"></i></a>
                             </td>
                         </tr>
                     {% endfor %}
