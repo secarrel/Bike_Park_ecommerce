@@ -22,6 +22,32 @@ cvc: any 3 digits
 
 exp: any future date
 
+[Back to main navigation](#contents)
+
+
+## Contents
+- [Project Planning](#project-planning)
+    - [strategy plane](#strategy-plane-the-big-picture)
+    - [Scope Plane](#scope-plane-defining-boundaries-and-features)
+    - [Structure Plane](#structure-plane-organizing-information-and-functionality)
+    - [Skeleton Plane](#skeleton-plane-wireframes-and-database-schema)
+    - [Surface Plane](#surface-plane-the-final-look-and-feel)
+- [Features](#features)
+- [Future Features](#future-features)
+- [Technologies](#technologies-and-languages)
+- [Testing](#testing)
+- [Deployment](#deployment)
+    - [Django and Database Setup](#django-project-and-database-setup)
+    - [Heroku](#heroku)
+    - [Cloudinary](#cloudinary)
+    - [Gmail](#gmail)
+    - [Stripe](#stripe)
+- [Clone the Project](#clone-the-project)
+- [Credit](#credit)
+    - [Support](#acknowledgement-of-support)
+    - [Inspiration](#project-inspiration)
+    - [Resources](#useful-sources)
+    - [Images](#images)
 
 ## Project Planning
 Planning for this e-commerce site project followed the 5 planes framework for designing and developing a user-centric product.
@@ -67,7 +93,7 @@ With the goals of the project identified, I was able to create user stories that
 | [18](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721744) | | to have the ability to add, edit and delete timeslots | manage the number of people on site in advance. |
 | [19](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721888) | | to see a calendar of bookings | prepare staff numbers and equipment in advance. |
 
-
+[Back to main navigation](#contents)
 
 ### **Scope Plane:** _Defining boundaries and features_
 
@@ -174,9 +200,32 @@ I'm including this category so that I can control scope creep. It will help to s
 
 
 #### Time Management with Sprints
-I have also broken the project into sprints with soft deadlines to guide me through development. You can see these sprints and a timeline below. The intention is that at the end of a sprint, I will review the work I have completed and test it for bugs and poor UX. I aimed to complete each sprint in full before moving on to the next. 
+I have also broken the project into sprints with soft deadlines to guide me through development. You can see these sprints and a timeline below. The intention is that at the end of a sprint, I will review the work I have completed and test it for bugs and UX. I aimed to complete each sprint in full before moving on to the next. 
 
-[INSERT SCHEDULING TABLE HERE]()
+| Order | Description | Target Deadline | 
+| ---- | ---- | ---- | 
+| 1 | Planning | 19/02/24 - 24/02/24|
+| 2 | Project Setup | 24/02/24 - 26/02/24 |
+| 3 | Authentication Setup | 26/02/24 - 28/02/24 |
+| 4 | Create models | 29/02/24 - 10/03/24 |
+| 5 | Sign-in and Sign-up page | 10/03/24 - 12/03/2024 |
+| 6 | Navigation | 12/03/2024 - 14/03/2024 |
+| 8 | Product Pages | 14/03/2024 - 17/03/2024 |
+| 7 | Search and sort | 17/03/2024 - 19/03/2024 |
+| 9 | Shopping basket | 19/03/2024 - 21/03/2024 |
+| 10 | Stripe payments | 21/03/2024 - 24/03/2024 |
+| 11 | User Profile | 24/03/2024 - 25/03/2024 |
+| 12 | Landing Page | 25/03/2024 - 26/03/2024 |
+| 13 | Managing products | 26/03/24 - 30/03/24 |
+| 14 | Admin pages | 30/03/24 - 31/03/24 |
+| 15 | Deployment | 01/04/24 - 02/04/24 |
+| 16 | Emails | 02/04/24 - 03/04/24 |
+| 17 | Styling | 03/04/24 - 10/04/24 |
+| 18 | Testing | 10/04/24 - 20/04/24 |
+
+On reflection, the intentions of these sprints were good, and it did help with identifying the scale of the project and the order in which to target the different aspects, but there were a few major bugs that took a long time to resolve so this made it hard to stay on track. 
+
+[Back to main navigation](#contents)
 
 ### **Structure Plane:** _Organizing information and functionality_
 For this phase of planning, I thought about the user journey through the site and split the site into 4 categories which I felt needed attention at this stage:
@@ -207,6 +256,8 @@ Both the admin and user pages are available through the main navigation by selec
 ![User Journey](docs/readme_images/planning/user_journey.png)
 
 Take note of the key in the diagram to identify the MVP pages and features compared to extra pages and features.
+
+[Back to main navigation](#contents)
 
 ### **Skeleton Plane:** _Wireframes and Database Schema_
 
@@ -254,6 +305,7 @@ You can see Wireframes for:
 
 I found that I ended up including more pages than expected at the start of the project so I used the wireframes that I have created as a design guide for those additional pages.
 
+[Back to main navigation](#contents)
 
 ### **Surface Plane:** _The final look and feel_
 
@@ -282,8 +334,13 @@ For the rest of the site, I used 'system-ui' for its readability. The site is qu
 
 ![fonts](docs/readme_images/planning/fonts.png)
 
+[Back to main navigation](#contents)
+
 ## Features
 You can see from the MoSCoW features table what features I planned to include in the project. To clearly outline the user experience of the site I have split this into all visitor, authenticated visitor, and admin accessible features. I have also split the feature explanation into pages, some of which are replicated to show the perspective of the relevant user.
+
+[Back to main navigation](#contents)
+
 
 Authentication:
 - [Sign in](#sign-in) - [(img)](docs\readme_images\full-page\sign-in.png)
@@ -784,6 +841,8 @@ The bookings page displays all bookings and has affective sorting, searching and
 
 [back to features naviagtion](#features)
 
+[Back to main navigation](#contents)
+
 ## Future Features 
 - Pagination - Reviews, Activities, Order History, Manage Activities
 
@@ -804,6 +863,8 @@ The bookings page displays all bookings and has affective sorting, searching and
 - Sort, filter, and search functionality for the 'manage activities' page results. 
 
     I have implimented sort, filter and search functionlaity in various parts of the site but didn't have time to impliment this in the 'Manage activities' page for the admin. Becuase my database was quite empty during development, I overlooked the fact that this section would very quickly increase in size. I would like to add pagination to this page, but to improve the experience for the admin in finding specific activities, I would like to add sort, filter and search features. 
+
+[Back to main navigation](#contents)
 
 ## Technologies and Languages
 
@@ -830,18 +891,23 @@ The bookings page displays all bookings and has affective sorting, searching and
 
 ### Tools and technology
 
-- [Stripe]() : used for secure payments.
+- [SQLite3](https://www.sqlite.org/index.html) for local database storage before deployment.
+- [ElephantSQL](https://www.elephantsql.com/) for structured data storage.
+- [Stripe](https://stripe.com/gb) : used for secure payments.
 - [Heroku](https://dashboard.heroku.com/) : Used for deploymnet of the full-stack site.
 - [Cloudinary](https://cloudinary.com/) : used for media file storage.
 - [Git](https://git-scm.com/): used for version control.
 - [GitHub](https://github.com/) : used for storing code for the project.
-- [GitHub Projects]() : used for agile methodology, time management and project planning.
+- [GitHub Projects](https://github.com/secarrel?tab=projects) : used for agile methodology, time management and project planning.
 - [VS Code](https://code.visualstudio.com/) : is the IDE I used for development.
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/web-components/overview) : used to display an interactive map showing the location of the park.
 - [Figma](https://www.figma.com/) : used to create wireframes.
 - [Coolors](https://coolors.co/ceba72-1b1b1b-868686-303030-cacaca) : used to create the colour pallet.
 - [Logo.com](https://logo.com/) : used to create the logo.
-- [Lucidchart]() for ERD (entity relationship diagram) creation.
+- [Lucidchart](https://www.lucidchart.com/pages/) for ERD (entity relationship diagram) creation.
+- [Krita](https://krita.org/en/) for creating the trail map
+
+[Back to main navigation](#contents)
 
 ## Testing
 
@@ -849,7 +915,6 @@ For all testing, please refer to [TESTING.md](TESTING.md).
 
   
 ## Deployment
-### Connect to GitHub
 
 ### Django Project and database setup
 #### Set up your database
@@ -864,6 +929,7 @@ I used the free tiny turtle plan with ElephantSQL for this project, but other DB
 8. Return to the dashboard to view your instances. 
 
 By clicking on the hyperlinked name of the instance you will be able to see the information required to link this to your project.
+
 
 #### Connect your database to the project
 1. In the terminal, use the command:
@@ -905,6 +971,8 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 8. You can check this has been successful by going to your ElephantSQL dashboard, selecting the relevant instance, opening the 'BROWSER' tab and executing options from the table queries dropdown.
 
     ![test connection](docs/readme_images/deployment/deployment-database-setup-3.png)
+
+[Back to main navigation](#contents)
 
 ### Heroku
 
@@ -960,7 +1028,7 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 
         ALLOWED_HOSTS = ['deployed link', 'localhost']
 
-
+[Back to main navigation](#contents)
 
 ### Cloudinary
 I found this link to be useful in setting up cloudinary: [medium](https://medium.com/@carolgitongaofficial/how-to-use-cloudinary-with-django-cdc998393204)
@@ -977,6 +1045,8 @@ I found this link to be useful in setting up cloudinary: [medium](https://medium
 
 5. Set your environment variables as described above. You should be able to find these in your cloudinary dashboard.
 
+[Back to main navigation](#contents)
+
 ### Gmail
 
 1. Setup a Gmail account if you haven't already. This will be used to manage your emails from the application so you may not want this to be your main, personal email. 
@@ -989,6 +1059,7 @@ I found this link to be useful in setting up cloudinary: [medium](https://medium
 
     ![settings.py](docs/readme_images/deployment/deployment-email-settings.png)
 
+[Back to main navigation](#contents)
 
 ### Stripe 
 
@@ -1006,6 +1077,7 @@ Stripe is used for secure payment processing. to set up:
 7. You can choose to retrieve all events and then add the endpoint.
 8. This should generate a new STRIPE_WH_SECRET key for you to add to your Heroku Config Vars and env.py file. 
 
+[Back to main navigation](#contents)
 
 ## Clone the Project
 
@@ -1031,6 +1103,8 @@ To clone this project, navigate to my [GitHub repository](https://github.com/sec
 
 8. Set-up your env.py file with the secret keys listed in the deployment section, and ensure it is listed in your .gitignore file.
 
+[Back to main navigation](#contents)
+
 ## Credit
 ### Acknowledgement of support
 My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), was very helpful in guiding me through this project and helping set targets and priorities which I used to map my way through the project.
@@ -1040,6 +1114,8 @@ Weekly catch-ups with my Code Institute Cohort were useful to ensure I was stayi
 Credit and thanks also to my mountain bike friends who let me take photos of their riding on one of our mountain bike trips. 
 
 My family and friends have all been really helpful and supportive throughout the process of developing this project, helping test and giving feedback on the final site. 
+
+[Back to main navigation](#contents)
 
 ### Project Inspiration 
 
@@ -1051,6 +1127,8 @@ The following projects were very helpful for inspiring different aspects of my p
 - [Taco y Tequila by Gethin Davies](https://github.com/GethinDavies1990/CI_MS4_DTR) - User experience, database schema, styling inspiration
 - [WoWder by my mentor Iuliia Konovalova](https://github.com/IuliiaKonovalova) - Use of cloudinary, database design, README.md, TESTING.md
 - [Boutique Ado by Code Institute](https://github.com/Code-Institute-Solutions/boutique_ado_v1) - whole site structure and user journey. This project acted as a skeleton for my site and I adapted and adjusted aspects of it to create the project as it is now. 
+
+[Back to main navigation](#contents)
 
 ### Useful sources
 I had some trouble setting up my local environment to start with, which turned out to be a PATH mistake I had made while setting up previous projects. This link helped me to better understand how virtual environments work and how to properly prepare my workspace.  [Saving Env variables in VSCode.](https://www.makeuseof.com/django-secret-key-generate-new/)
@@ -1074,6 +1152,8 @@ I was trying to work out the best way to handle the deletion of different data f
 [W3Schools](https://www.w3schools.com/) ash been a useful resource throughout. It has helped me with syntax and styling.
 
 [Django Docs](https://docs.djangoproject.com/en/5.0/) have also been very useful throughout for understanding and implementing different features in django. 
+
+[Back to main navigation](#contents)
 
 ### Images
 
@@ -1127,3 +1207,5 @@ I used images from a variety of sources for the site. Some are used as perminant
 - [Photo by Jonathan Cooper](https://www.pexels.com/photo/man-using-a-mountain-bike-in-the-forest-11715051/)
 - [Photo by Lars Mai](https://www.pexels.com/photo/man-in-green-helmet-riding-a-bicycle-in-the-forest-3880623/)
 - [Photo by Dó Castle](https://www.pexels.com/photo/three-men-riding-on-bicycles-2158963/)
+
+[Back to main navigation](#contents)
