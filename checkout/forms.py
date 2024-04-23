@@ -40,5 +40,5 @@ class OrderForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs[
-                'class'] = 'stripe-style-input p-2 m-2'
+                'class'] = 'stripe-style-input p-2 m-2 text-center'
             self.fields[field].label = False

@@ -40,25 +40,26 @@
                                 <h4>{{item.activity.name}}</h4>
                                 <div class="d-md-none d-table-cell">
                                     {% if item.timeslot %}
-                                        <h6>{{ item.timeslot.start_time.date }}</h6>
-                                        <h6>{{ item.timeslot.start_time.time }}</h6>
+                                        <p class="p-0 m-0">{{ item.timeslot.start_time.date }}</p>
+                                        <p class="p-0 m-0">{{ item.timeslot.start_time.time }}</p>
                                     {% endif %}
                                 </div>
                                 <p>£{{item.activity.price|floatformat:2}}<p>
                             </td>
                             <td class="d-none d-md-table-cell">
                                 {% if item.timeslot %}
-                                    <h6>{{ item.timeslot.start_time.date }}</h6>
-                                    <h6>{{ item.timeslot.start_time.time }}</h6>
+                                    <p class="p-0 m-0">{{ item.timeslot.start_time.date }}</p>
+                                    <p class="p-0 m-0">{{ item.timeslot.start_time.time }}</p>
                                 {% else %}
                                     Timeslot not available
                                 {% endif %}</td>
                             <td class="align-middle">  
                                 <form class="form update-form" method="POST" action="{% url 'update_basket' item.item_id %}">   
-                                    {% csrf_token %}                   
+                                    {% csrf_token %}     
+                                    <label for="quantity-input-basket" class="small">Qty:</label>   
                                     <input type="number" id="quantity-input-basket" name="quantity" data-item_id="{{ timeslot.id }}" data-initial-quantity="{{ item.quantity }}" value="{{ item.quantity }}" min="1" max="15" required>
                                 </form>
-                                <a class="update-link text-info" aria-label="Update the quantity of this item"><small>Update</small></a>
+                                <p class="update-link text-info" aria-label="Update the quantity of this item"><small>Update</small></p>
                             </td>
                             <td class="align-middle"> 
                                 <div class="d-flex flex-column">
@@ -80,11 +81,11 @@
                 <span>Keep Shopping</span>
             </a>
             {% if basket_items %}
-            <a class="btn bg-l-grey" href="{% url 'checkout' %}" aria-label="Continue to secure checkout">
+            <a class="btn checkout-button" href="{% url 'checkout' %}" aria-label="Continue to secure checkout">
                 <span class="icon">
-                    <i class="fas fa-lock text-light"></i>
+                    <i class="fas fa-lock"></i>
                 </span>
-                <span class="text-uppercase text-light">Secure checkout</span>
+                <span>Secure checkout</span>
             </a>
             {% endif %}
         </div>

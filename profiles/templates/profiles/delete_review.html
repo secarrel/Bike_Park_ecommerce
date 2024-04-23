@@ -18,7 +18,7 @@
                 <h2 class="mb-4">Manage Reviews</h2>
                 <hr>
                 <div class="col-8 col-md-6 mx-auto my-5 text-center bg-grey p-4 round-border text-light">
-                    <h5> Delete Your Review </h5>
+                    <h3> Delete Your Review? </h3>
                     <p> Are you sure you want to delete your review for '{{ review.activity }}'? </p>
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <form action="{% url 'delete_review' review_id=review.id %}" method="post" class="col-11 mx-auto">

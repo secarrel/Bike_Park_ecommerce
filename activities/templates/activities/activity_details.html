@@ -54,7 +54,7 @@
         <div class="activity-details d-flex flex-column col-12 col-lg-6 m-auto">
             <!-- Info -->
             <div class="d-flex flex-column mx-auto py-3">
-                <h3>Info <i class="fa-solid fa-circle-info ms-2"></i> </h3>
+                <h2>Info <i class="fa-solid fa-circle-info ms-2"></i> </h2>
                 <!-- Price -->
                 {% if activity.price %}
                 <div class="d-flex px-2 activity-info-item">
@@ -84,7 +84,7 @@
             <!-- Requirements -->
                 <div class="d-flex flex-column mx-auto py-3 ">
                 <div class="d-flex justify-content-center" >
-                    <h3>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h3>
+                    <h2>Requirements <i class="fa-solid fa-circle-exclamation ms-2"></i></h2>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
                     <p class="card-text px-1 mx-auto">{{activity.requirements}}</p>
@@ -95,7 +95,7 @@
             <!-- Details -->
             <div class="d-flex flex-column mx-auto py-3 ">
                 <div class="d-flex justify-content-center" >
-                    <h3>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></h3>
+                    <h2>Details <i class="fa-solid fa-magnifying-glass-plus ms-2"></i></h2>
                 </div>
                 <div class="d-flex px-2 activity-info-item">
                     <p class="card-text px-1 mx-auto">{{activity.details}}</p>
@@ -105,7 +105,7 @@
         <!-- Calander -->
         <div class="col-11 col-lg-5 m-auto">
             <div class="big-square round-border">
-                <h3 class="text-light"> {% if request.user.is_superuser %} Manage Timeslots {% else %} Book your space! {% endif %} </h3>
+                <h2 class="text-light"> {% if request.user.is_superuser %} Manage Timeslots {% else %} Book your space! {% endif %} </h2>
                 {% if not request.user.is_superuser %}
                     <form class="form d-flex flex-column" id="basket-form" action="{% url 'add_to_basket' activity.id %}" method="POST">
                         {% csrf_token %}
@@ -183,10 +183,10 @@
             <div class="d-flex flex-column align-items-center reviews-display col-11 text-center">
                 {% if activity.average_rating %}
                 <div class="d-flex text-center gold-text col-12 justify-content-center">
-                    <h5 class="mx-3"> 
+                    <h4 class="mx-3"> 
                         Average Rating:
-                    </h5> 
-                    <h5 class="mx-3"> 
+                    </h4> 
+                    <h4 class="mx-3"> 
                         {% for star in activity.average_rating.1 %}
                             {% if star == 'full' %}
                                 <i class="fa-solid fa-star"></i>
@@ -195,7 +195,7 @@
                             {% endif %}
                         {% endfor %}
                         ({{activity.review_count.0}} {% if activity.review_count.0 == 1 %} review {% else %} reviews {% endif %})
-                    </h5>
+                    </h4>
                 </div>
                 {% endif %}
                 {% for review in reviews %}

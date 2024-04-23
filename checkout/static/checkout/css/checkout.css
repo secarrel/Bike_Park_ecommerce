@@ -5,11 +5,15 @@
     padding: 10px 12px;
     border: 1px solid transparent;
     border-radius: 5px;
-    background-color: var(--light-grey);
     box-shadow: 0 0 0 0;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
     color: var(--almost-white);
+}
+
+.stripe-style-input {
+    background-color: var(--dark-grey) !important;
+    color: var(--almost-white) !important;
 }
   
 .StripeElement--focus,

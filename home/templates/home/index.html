@@ -41,7 +41,7 @@
                                 <div class="image-container round-border">
                                     <!-- image display -->
                                     {% if category.image %}
-                                    <a class="round-border" href="{% url 'activities' %}?category={{ category }}">
+                                    <a class="round-border" href="{% url 'activities' %}?category={{ category }}"  aria-label="Continue to the activities page to see activities within this category">
                                         <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
                                     </a>  
                                 {% else %}
@@ -51,7 +51,7 @@
                                 {% endif %}
                                 </div>
                                 <!-- activity name -->
-                                <h5 class="card-title mt-4">{{category.friendly_name}}</h5>
+                                <h3 class="card-title mt-4">{{category.friendly_name}}</h3>
                                 <!--Info display-->
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">

@@ -42,6 +42,7 @@
         <div class="container py-4">
             <div class="d-flex justify-content-center">
                 <div class="sort-select-wrapper my-2">
+                    <label class="text-center muted-text" for="sort-selector">Sort:</label>
                     <select id="sort-selector" class="round-border pointer">
                         <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                         <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
@@ -51,7 +52,7 @@
             </div>
             <div class="d-flex justify-content-center">
                 <div class="sort-select-wrapper my-2">
-                    <p class="text-center muted-text"> Filter by difficulty: </p>
+                    <label class="text-center muted-text" for="difficulty-filter">Filter:</label>
                     <select id="difficulty-filter" class="round-border pointer">
                         <option value="reset">All Difficulty Levels</option>
                         <option value="BEGINNER">Beginner</option>
@@ -77,17 +78,14 @@
                                     {% if activity.image %}
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}" aria-label="Redirect to the 'activity details' page.">
                                             <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.name }}">
-                                            <div class="text round-border">Book Now!</div>
                                         </a>                                
                                     {% elif category.image %}
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}" aria-label="Redirect to the 'activity details' page.">
                                             <img src="{{ category.image.url }}" class="card-img-top" alt="{{ activity.name }}">
-                                            <div class="text round-border">Book Now!</div>
                                         </a>
                                     {% else %}
                                         <a class="round-border" href="{% url 'activity_details' activity.id %}" aria-label="Redirect to the 'activity details' page.">
                                             <img src="https://res.cloudinary.com/dxgaw1xya/image/upload/v1712834118/media/activities_kmhbyd.jpg" class="card-img-top" alt="{{ activity.name }}">
-                                            <div class="text round-border">Book Now!</div>
                                         </a>
                                     {% endif %}
                                 </div>
@@ -108,7 +106,7 @@
                                             </div>
                                         {% endif %}
                                     </div>
-                                    <h5 class="card-title">{{activity.name}}</h5>
+                                    <h2 class="card-title">{{activity.name}}</h2>
                                     <div class="card-text my-2">
                                         <div class="d-flex justify-content-center my-4" >
                                             <div class="skill-level round-border">
@@ -145,6 +143,9 @@
                                             {% endif %}
                                         </div>
                                     </div>
+                                    <a href="{% url 'activity_details' activity.id %}" aria-label="Redirect to the 'activity details' page.">
+                                        <div class="btn skill-title col-8 mt-3">Book Now!</div>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -30,9 +30,9 @@
     <div class="container my-3 text-light">
         <div class="row">
             {% if request.user.is_superuser %}
-                <h1 class="logo-font mb-4 gold-text text-center">Welcome, Admin!</h1>
+                <h2 class="logo-font mb-4 gold-text text-center">Welcome, Admin!</h2>
             {% else %}
-                <h1 class="logo-font mb-4 gold-text text-center">{{ request.user.username }}'s Profile</h1>
+                <h2 class="logo-font mb-4 gold-text text-center">{{ request.user.username }}'s Profile</h2>
             {% endif %}
         </div>
         <div class="row">
@@ -51,7 +51,7 @@
                         </a>
                     </div>
                 {% else %}
-                    <h3 class="mx-auto text"> Manage Account </h3>
+                    <h3 class="mx-auto"> Manage Account </h3>
                     <div class="manage-container">
                         <a class="profile-button" href="{% url 'user_details' %}" aria-label="Go to the 'My details' page to view and update your information.">
                             My Details

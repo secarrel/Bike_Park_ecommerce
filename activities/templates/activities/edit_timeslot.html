@@ -18,13 +18,13 @@
             <hr>
             <h2 class="logo-font mb-4">Manage Timeslot</h2>
             <hr>
-            <h5> Editing: {{ timeslot }} </h5>
+            <h3> Editing: {{ timeslot }} </h3>
             <form method="POST" action="{% url 'edit_timeslot' timeslot.id %}" class="form d-flex flex-column" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="d-flex flex-column align-items-center col-6 m-auto">
-                    <button class="btn checkout-button col-12 text-light" type="submit">Update Timeslot</button>
-                    <a class="btn bg-ft-danger my-2" href={% url 'delete_timeslot' timeslot.id %} aria-label="Continue to delete timeslot"> 
+                    <button class="btn checkout-button col-12" type="submit">Update Timeslot</button>
+                    <a class="btn btn-danger my-2" href={% url 'delete_timeslot' timeslot.id %} aria-label="Continue to delete timeslot"> 
                         Delete Timeslot
                     </a>
                     <a class="back-button" href="{% url 'activity_details' activity.id %}" aria-label="Cancel and go back to activity details"> Cancel </a>

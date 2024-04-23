@@ -20,15 +20,17 @@
 {% block content %}
 <div class="container d-flex flex-column light-text">
     <a class="button mx-2" href="{% url 'bookings' %}" aria-label="Go back to the bookings page">Go Back</a>
-    <div class="d-flex flex-column col-12 text-center p-1">
+    <div class="d-flex flex-column col-12 p-1">
         <div>
-            <h1 class="text-center">Timeslot Bookings</h1>
+            <hr>
+            <h2 class="mb-4">Timeslot Bookings</h2>
+            <hr>
         </div>
-        <div class="container my-5">
+        <div class="container text-center my-5">
             <h2> {{ timeslot.activity }} </h2>
             <h3> {{ timeslot.start_time.date}} | {{ timeslot.start_time.time }}</h3>
             {% if orders %}
-                <table class="col-12 col-md-6 mx-auto">
+                <table class="col-12 col-md-6 mx-auto my-5">
                     <thead>
                         <tr>
                             <th>Booking Name</th>

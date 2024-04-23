@@ -1,13 +1,13 @@
 :root {
     --almost-white: #cacaca;
     --gold: #ceba72;
-    --light-grey: #868686;
+    --light-grey: #b9b9b9;
     --grey: #303030;
     --dark-grey: #1b1b1b;
     --opaque: rgba(255, 255, 255, 0);
     --opaque-grey: #3030302f;
     --opaque-dark-grey: #1b1b1b2e;
-    --danger: #883d3d;
+    --danger: #c92020;
 }
 
 html {
@@ -163,7 +163,7 @@ label {
 }
 
 .bg-ft-danger:hover {
-    background-color: #522525 !important;
+    background-color: #b94b4b !important;
     color: var(--almost-white)!important;
 }
 
@@ -337,6 +337,7 @@ nav {
 #search-bar::placeholder {
     color: white !important;
 }
+
 .nav-link {
     color: var(--almost-white)
 }
@@ -369,7 +370,7 @@ nav {
 .form-control{
     background-color: var(--grey);
     border-color: var(--dark-grey);
-    color: var(--light-grey);
+    color: var(--almost-white);
 }
 
 .form-control:focus {
@@ -380,7 +381,7 @@ nav {
 }
 
 .form-control::placeholder {
-    color: var(--light-grey);
+    color: var(--almost-white);
     opacity: 1;
 }
   
@@ -409,13 +410,11 @@ nav {
     position: relative;
     transform: translate(0, -40px);
     z-index: -40;
-    width: 100vw;
+    width: 100%;
     object-fit: cover;
     display: block;
     min-height: 300px;
     max-height: 400px;
-    width: auto;
-    height: auto;
 }
 
 .hero-div {
@@ -548,7 +547,6 @@ nav {
 }
 
 .add-to-basket {
-    background-color: var(--light-grey);
     color: var(--almost-white);
 }
 
@@ -623,8 +621,8 @@ nav {
 }
 
 .item-total {
-    padding: 3px;
-    margin: 7px 0;
+    padding: 1px;
+    margin: 3px 0;
 }
 
 #quantity-input-basket {

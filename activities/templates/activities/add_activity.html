@@ -18,7 +18,7 @@
                 <hr>
                 <h2 class="mb-4">Manage Activity</h2>
                 <hr>
-                <h5> Add an Activity </h5>
+                <h3> Add an Activity </h3>
                 <form method="POST" action="{% url 'add_activity' %}" class="form mb-2 d-flex flex-column" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -30,7 +30,7 @@
                     {% endfor %}
                     <div class="text-right">
                         <a class="button" href="{{ request.META.HTTP_REFERER }}" aria-label="Cancel and go back to the previous page"> Cancel </a>
-                        <button class="btn col-8 checkout-button text-light mx-3" type="submit">Add Activity</button>
+                        <button class="btn col-8 checkout-button mx-3" type="submit">Add Activity</button>
                     </div>
                 </form>
             </div>

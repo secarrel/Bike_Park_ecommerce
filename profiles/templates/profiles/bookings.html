@@ -25,14 +25,15 @@
         <h2> Bookings </h2>
         <hr>
         <div class="filter-container d-flex flex-column col-12">
-            <div class="text-center"> Filter bookings:</div>
             <div class="d-flex justify-content-around flex-wrap my-2">
-                <div>
-                    <input type="text" class="pointer" id="datepicker" placeholder="Select a date">
+                <div class="d-flex flex-column">
+                    <label class="text-center m-0 p-0" for="datepicker">Filter by date:</label>
+                    <input type="text" class="pointer m-2" id="datepicker" placeholder="Select a date">
                 </div>
                 {% if activities %}
-                <div class="activity-select-wrapper">
-                    <select id="activity-filter">
+                <div class="activity-select-wrapper d-flex flex-column">
+                    <label class="text-center m-0 p-0" for="activity-filter">Filter by activity:</label>
+                    <select id="activity-filter" class="m-2">
                         <option value="reset">All Activities</option>
                         {% for activity in activities%}
                         <option value="{{ activity.id }}">{{ activity }}</option>

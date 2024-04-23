@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="d-flex flex-column">
-                <h5 class="text-light"> Edit '{{ activity }}' </h5>
+                <h3 class="text-light"> Edit '{{ activity }}' </h3>
                 <form method="POST" action="{% url 'edit_activity' activity.id %}" class="form f-flex flex-column  text-light" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
@@ -33,10 +33,10 @@
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
-                        <button class="btn col-8 checkout-button text-light mx-3" type="submit">Update Activity</button>
+                        <button class="btn col-8 checkout-button mx-3" type="submit">Update Activity</button>
                         <div>
-                            <a class="btn checkout-button bg-d-grey mx-3" href="{{ request.META.HTTP_REFERER }}" aria-label="Cancel and go back to the previous page."> Cancel </a>
-                            <a class="mx-auto btn bg-ft-danger text-light" href={% url 'delete_activity' activity.id %} aria-label="Redirect to delete activity."> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
+                            <a class="btn back-button bg-d-grey mx-3" href="{{ request.META.HTTP_REFERER }}" aria-label="Cancel and go back to the previous page."> Cancel </a>
+                            <a class="mx-auto btn btn-danger" href={% url 'delete_activity' activity.id %} aria-label="Redirect to delete activity."> Delete Activity <i class="fa-regular fa-trash-can"></i></a> 
                         </div>
                     </div>
                 </form>
