@@ -45,27 +45,27 @@ The site should encourage customers to visit the bike park and reserve spaces th
 With the goals of the project identified, I was able to create user stories that were instrumental in the development of the project.
 
 
-| As a...| I would like...| so that I can ... | 
-|----| ---- | ---- |
-| First Time User | to see a navbar with clear and intuitive navigation links | easily navigate the site to find relevant products and information. | 
-| | to see information about activities the park offers | identify if the park meets the criteria of a visit. |
-| | to be able to add activities to my basket | checkout at any time after identifying interesting products. |
-| | to be able to create an account | see my order history and bookings. |
-| | to be able to sort, filter and search products | find the most suitable products for me easily and quickly. |
-| | to see items added to my basket, edit them, and remove them individually | checkout with exactly the products I would like to buy, without having to create a whole new basket. |
-| | to checkout with the current basket | be sure my space is reserved on the specified activity. |
-| | the checkout process to be secure | be confident and comfortable making the payment. |
-| | to know what abilities the park caters for | look forward to my visit knowing the park is suitable for my skill level.|
-| | to know details about the park that could affect my visit (eg. contact, hours, trails, location) | be sufficiently prepared for my visit.|
-| | to receive confirmation of any orderS | be sure that they were completed successfully. |
-| Registered User | to see my upcoming bookingS | check I have remembered the details correctly. |
-| | to see my previous purchaseS | order the same product again or find out the details of a booking.|
-| | to edit my account details | keep using my account with the correct personal information.|
-| | save my checkout detailS | checkout more efficiently next time. |
-| | to sign into an account I have previously created| keep track of purchases and continue to purchase products. |
-| Site Admin| to have the ability to add, edit and delete activities | ensure users have accurate and up to date information about the activities. |
-| | to have the ability to add, edit and delete timeslotS | manage the number of people on site in advance. |
-| | to see a calender of bookings | prepare staff numbers and equipment in advance. |
+| # | As a...| I would like...| so that I can ... | 
+| ---- | ---- | ---- | ---- |
+| [1](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60719601) | First Time User | to see a navbar with clear and intuitive navigation links | easily navigate the site to find relevant products and information. | 
+| [2](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60719742) | | to see information about activities the park offers | identify if the park meets the criteria of a visit. |
+| [3](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60719860) | | to be able to add activities to my basket | checkout at any time after identifying interesting products. |
+| [4](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60719948) | | to be able to create an account | see my order history and bookings. |
+| [5](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720099) | | to be able to sort, filter and search products | find the most suitable products for me easily and quickly. |
+| [6](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720247) | | to see items added to my basket, edit them, and remove them individually | checkout with exactly the products I would like to buy, without having to create a whole new basket. |
+| [7](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720321) | | to checkout with the current basket | be sure my space is reserved on the specified activity. |
+| [8](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720419) | | the checkout process to be secure | be confident and comfortable making the payment. |
+| [9](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720614) | | to know what abilities the park caters for | look forward to my visit knowing the park is suitable for my skill level.|
+| [10](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720719) | | to know details about the park that could affect my visit (eg. contact, hours, trails, location) | be sufficiently prepared for my visit.|
+| [11](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60720886) | | to receive confirmation of any orders | be sure that they were completed successfully. |
+| [12](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721067) | Registered User | to see my upcoming bookings | check I have remembered the details correctly. |
+| [13](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721276) | | to see my previous purchases | order the same product again or find out the details of a booking.|
+| [14](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721347) | | to edit my account details | keep using my account with the correct personal information.|
+| [15](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721433) | | save my checkout details | checkout more efficiently next time. |
+| [16](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721541) | | to sign into an account I have previously created| keep track of purchases and continue to purchase products. |
+| [17](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721641) | Site Admin| to have the ability to add, edit and delete activities | ensure users have accurate and up to date information about the activities. |
+| [18](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721744) | | to have the ability to add, edit and delete timeslots | manage the number of people on site in advance. |
+| [19](https://github.com/users/secarrel/projects/5/views/1?pane=issue&itemId=60721888) | | to see a calendar of bookings | prepare staff numbers and equipment in advance. |
 
 
 
@@ -76,7 +76,7 @@ I have approached this project with [agile methodology](https://asana.com/resour
 
 I used Github Projects to manage my time and to ensure I completed the user stories. 
 
-[ADD LINK TO KANBAN BOARD]()
+[Kanban Board](https://github.com/users/secarrel/projects/5)
 
 #### 'MoSCoW' Prioritization 
 Below you can see a table highlighting the features that I wanted to include in the project. In an attempt to limit scope creep and clearly define the MVP I have prioritized which to include using the [MoSCoW](https://www.techtarget.com/searchsoftwarequality/definition/MoSCoW-method) method. 
