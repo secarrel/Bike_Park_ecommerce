@@ -1,6 +1,6 @@
 # FastTrack Bike Park
 
-[MOCKUP]
+![logo](docs/readme_images/planning/logo-color.png)
 
 [DEPLOYED SITE](https://fasttrack-bike-park-415cb30571a3.herokuapp.com/)
 
@@ -13,6 +13,14 @@ The user has the option to create an account before completing an order, which a
 The site offers activities in 4 categories: Day Passes, Courses, Private Coaching and Events. The activities are managed by the admin who has full CRUD capabilities for activities and their timeslots.
 
 I decided to create an e-commerce that provided a service rather than a product, as I wanted to have a go at building a booking system to support the e-commerce site. The admin can set the capacity of each activity, and therefore the available capacity of the timeslot, which updates after each order and ensures timeslots aren't overbooked!
+
+Stripe is used for secure payments and is currently set to 'test' mode which means no real payments will be taken. If you wish to test the checkout process, you can use Stripe's [test card numbers](https://docs.stripe.com/testing). For valid payments use:
+
+card number: 4242424242424242
+
+cvc: any 3 digits
+
+exp: any future date
 
 
 ## Project Planning
@@ -278,48 +286,49 @@ For the rest of the site, I used 'system-ui' for its readability. The site is qu
 You can see from the MoSCoW features table what features I planned to include in the project. To clearly outline the user experience of the site I have split this into all visitor, authenticated visitor, and admin accessible features. I have also split the feature explanation into pages, some of which are replicated to show the perspective of the relevant user.
 
 Authentication:
-- Sign in
-- Sign up 
-- Sign out confirmation
+- [Sign in](#sign-in) - [(img)](docs\readme_images\full-page\sign-in.png)
+- [Sign up](#sign-up) - [(img)](docs\readme_images\full-page\sign-up.png)
+- [Sign out confirmation](#sign-out-confirmation)- [(img)](docs\readme_images\full-page\sign-out.png)
 
 All Visitor Features:
-- Navbar
-- Home
-- About
-- Trails
-- Activities (filtered and unfiltered)
-- Activity Details
-- Basket
-- Checkout
-- Checkout Success
-- Footer
-- 404
-- 500
+- [Navbar](#navbar)
+- [Home](#home)- [(img)](docs/readme_images/full-page/welcome.png)
+- [About](#about)- [(img)](docs/readme_images/full-page/about.png)
+- [Trails](#trails)- [(img)](docs/readme_images/full-page/trails.png)
+- [Activities](#activities-filtered-and-unfiltered)- [(img filtered)](docs/readme_images/full-page/activities.png) [(img unfiltered)](docs/readme_images/full-page/activities-unfiltered.png)
+- [Activity Details](#activity-details)- [(img)](docs/readme_images/full-page/activity-details.png)
+- [Basket](#basket)- [(img)](docs/readme_images/full-page/basket.png)
+- [Checkout](#checkout)- [(img)](docs/readme_images/full-page/checkout.png)
+- [Checkout Success](#checkout-success)- [(img)](docs/readme_images/full-page/checkout-success.png)
+- [Footer](#footer)
+- [404 & 500](#404--500)- [(img)](docs\readme_images\full-page\404.png)
 
 Authenticated Visitors:
-- Profile
-- Manage Details
-- Reset Password
-- User Orders
-- Add Review
-- User Reviews
+- [Profile](#profile)- [(img)](docs/readme_images/full-page/profile-user.png)
+- [Manage Details](#manage-details)- [(img)](docs/readme_images/full-page/user-details.png)
+- [Reset Password](#change-password)- [(img)](docs/readme_images/full-page/reset-pasword.png)
+- [User Orders](#user-orders)- [(img)](docs/readme_images/full-page/order-history.png)
+- [Add Review](#add-review)- [(img)](docs/readme_images/full-page/add-review.png)
+- [User Reviews](#user-reviews)- [(img)](docs/readme_images/full-page/reviews.png)
 
 Admin:
-- Activity Details
-- Edit Activity
-- Delete Activity Confirmation
-- Add Timeslot
-- Edit Timeslot
-- Delete Timeslot Confirmation
-- Profile
-- Manage Activities
-- Add Activity
-- Bookings
+- [Activity Details](#activity-details-1)- [(img)](docs/readme_images/full-page/activity-details-admin.png)
+- [Edit Activity](#edit-activity)- [(img)](docs/readme_images/full-page/edit-activity-admin.png)
+- [Delete Activity Confirmation](#delete-activity-confirmation)- [(img)](docs/readme_images/full-page/delete-activity.png)
+- [Add Timeslot](#add-timeslot)- [(img)](docs/readme_images/full-page/add-timeslot.png)
+- [Edit Timeslot](#edit-timeslot)- [(img)](docs/readme_images/full-page/edit-timeslot.png)
+- [Delete Timeslot Confirmation](#delete-timeslot-confirmation)- [(img)](docs/readme_images/full-page/delete-timeslot.png)
+- [Profile](#profile-1)- [(img)](docs/readme_images/full-page/profile-admin.png)
+- [Manage Activities](#manage-activities)- [(img)](docs/readme_images/full-page/manage-activities.png)
+- [Add Activity](#add-activity)- [(img)](docs/readme_images/full-page/add-activity.png)
+- [Bookings](#bookings)- [(img)](docs/readme_images/full-page/bookings.png)
 
-### **Authentication Features:** _Mixture of authenticated and non-authenticated users and admin_
+### **Authentication Features:** _Mixture of authenticated, non-authenticated users and admin_
 All authentication features are implemented in dedicated pages from Djnago's AllAuth app.
 #### Sign in
-The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient link to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
+The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient [link](docs\readme_images\allauth\sign-up-link.png) to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
+
+![invalid](docs\readme_images\allauth\allauth-invalid.png)
 
 Additionally, there is a link to reset the user's password. This directs the user to a page specific to this functionality.
 
@@ -328,24 +337,52 @@ There is also an option for the user to have their details remembered to save th
 #### Sign up
 To sign up the user needs to set a username, email (twice), and password (twice). The validation criteria are outlined and if the form is not valid when it is submitted, the error is highlighted. 
 
+![sign-up](docs\readme_images\allauth\sign-up.png)
+
 There is a link to sign in for users who have already created their accounts.
  
 #### Sign out confirmation
 
+The user is given the option to sign out in the profile page as shown below:
+
+<details>
+<summary>Sign out buttons</summary>
+
+![admin](docs\readme_images\allauth\sign-out-admin.png)
+
+![user](docs\readme_images\allauth\sign-out-user.png)
+
+</details>
+
+
+
 In most cases, the user clicks a sign-out button which directs them to this sign-out confirmation page. The user can select 'sign out' to confirm their decision. 
+
+[back to features naviagtion](#features)
 
 ### **Visitor Features:** _Authenticated and non-authenticated_
 
 #### Navbar
+Admin:
+![navbar](docs\readme_images\navbar/navbar.png)
+
+Anyone else:
+![navbar-user](docs\readme_images\navbar/navbar-user.png)
 
 The navbar is split into three sections; logo, top section and the bottom section. The navbar has been designed to be functional and to also allow space for a large logo as I felt the park would benefit from having a strong brand to inject extra personality. This should help it to appeal to its target audience. 
 
 ##### The logo
+
+![logo](docs\readme_images\planning\logo-color.png)
+
 - When the user clicks on the logo, they are redirected to the home page. 
 
 - I designed the logo using [logo.com](https://logo.com/). This has been a really useful site for the flexibility it offers in logo design. I designed the logo to be eye-catching and to set an expectation of the terrain at the park for the user. The logo image is a hill that graduates from steep to flat(from left to right), which I felt demonstrates the range in trail difficulty and helps appeal to advanced and beginner riders. I also liked the image as it had the trees which suggests a natural and beautiful environment which should widen the park's appeal further. 
 
 ##### Top section
+
+![navbar top section](docs\readme_images\navbar\top-section.png)
+
  - Search Bar
  This allows the user to search for any activity. It is a text search so if there is a match of any part of the activity name, it will display the activity. If no search query is entered when the form is submitted, a toast displays an error message explaining that no query was entered so all activities are displayed. 
 
@@ -359,6 +396,9 @@ The navbar is split into three sections; logo, top section and the bottom sectio
  The maintenance icon directs the admin to their profile which has the options to manage activities and view bookings. 
 
 ##### Bottom Section
+
+![bottom section](docs\readme_images\navbar\bottom-section.png)
+
  - 'Book' Dropdown
  This dropdown allows the user to see activities within certain categories. The four categories of 'Day Passes', 'Courses', 'Private Coaching', and 'Events' are displayed as options. 
 
@@ -368,6 +408,7 @@ The navbar is split into three sections; logo, top section and the bottom sectio
  - 'Trails'
  The trails link directs the user to the 'trails' page which is an important feature for the user to decide whether they want to make a booking and visit the park.
 
+[back to features naviagtion](#features)
 
 #### Home
 The home page is designed mostly to help new users get their barings and decide if they want to continue and book something on the site. It also guides them in the right direction to do so. 
@@ -376,16 +417,28 @@ The home page is designed mostly to help new users get their barings and decide 
 - This section greets the user and determines the user's initial impression of the park. It has a distinctive hero image which instantly gives the user an idea of the sort of landscape and trails on offer. 
 
 ##### 'Book your visit now' Section
+
  - The activity categories are summarised here as well as in the nav to help the user with site navigation. This is specifically designed to aid new visitors who aren't yet sure what they are looking for or what the site offers. This gives the user a clear idea of the categories straight away, thanks to the addition of images. Each category tile offers the user the option to navigate to the activities of that category.
+
+![categories](docs\readme_images\welcome-page\catgeories-home.png)
 
 ##### 'First time here' Section. 
  - Similar to the previous section, I included this for first-time visitors to help them decide if they want to visit the park. Each sub-section has a link to a page with useful information for new visitors.
+
+[back to features naviagtion](#features)
 
 #### About
 This provides users with any information they may need to effectively plan their visit to the park. 
 
 ##### 'Find Us' Section
 - To help users easily find the park, I embedded Google Maps with a pin dropped and the screen focused on the park's location. This felt like an important feature for UX.
+
+<details>
+<summary>Google maps integration</summary>
+
+![map](docs\readme_images\about-page\google-maps.png)
+
+</details>
 
 ##### 'Opening Hours' Section
 - The opening hours section contains a table highlighting the opening hours so the user can easily plan their visit. 
@@ -396,11 +449,15 @@ This provides users with any information they may need to effectively plan their
 #### Trails
 This page contains a site map to help the user identify the range of trail difficulty. 
 
+[back to features naviagtion](#features)
+
 #### Activities (filtered and unfiltered)
 The activities page displays the activities being offered by the park and either filters or sorts depending on the users' request.
 
 ##### Category Summary ( or all activities summary )
 - This describes the category that the activities are currently filtered by. This helps the user understand if they want to be looking in this section or another.
+
+![summary](docs\readme_images\activities\category-summary.png)
 
 ##### Sort & Filter
  - Sort:
@@ -413,6 +470,9 @@ The activities page displays the activities being offered by the park and either
     In addition, I found that when no results showed for filtered options, there was no empty list message which is bad UX. To improve this, I added a javascript function that counts the number of results from the filter query and displays an empty list message if there are none. 
 
 ##### Activity List
+
+![activities](docs\readme_images\activities\activities.png)
+
  - All activities that meet the search, sort and filter criteria are displayed in the activities list section. Each activity is displayed on a card tile with the following details specific to the activity:
     
     - Image
@@ -437,13 +497,20 @@ The activities page displays the activities being offered by the park and either
 
  - If no activities are displayed, an empty list message will appear, indicating to the user that there is nothing in the category. This helps the user to understand the situation and prevents them from thinking there is an issue with the rendering of the activities.
 
+[back to features naviagtion](#features)
+
 #### Activity Details
 This page is specific to the activity that the user has decided to get more information about. It gives more in-depth information to help the user decide if they want to book. It also displays the timeslots that are available to book.
+
+![summary](docs\readme_images\activities\activity-summary.png)
 
 ##### Go back button 
 - Directs the user to the previous URL, matching the sort and filter settings.
 ##### Activity summary and information
 - These sections provide all the information the user would need to know about the activity to know if it is what they want to book. There is also a link to the requirements page.
+
+![details](docs\readme_images\activities\activity-details.png)
+
 ##### Booking form
 - This form displays all timeslots available to book as long as they are in the _future_. The number of remaining spaces is displayed on the timeslot option as well.
 - The user can then select a quantity, indicating how many of that timeslot they would like to add to their basket. I set out to set a maximum limit for the input field which matched the available spaces for the timeslot selected. This required the use of AJAX but I unfortunately ran out of time to implement this feature. I have set the max to 10, as nobody should be able to book more than 10 spaces on any activity anyway. 
@@ -451,6 +518,8 @@ This page is specific to the activity that the user has decided to get more info
     To make up for the lack of limitation on the input validation, I added some backend logic to check that there were enough spaces in the timeslot to add that quantity to the basket. If not enough spaces, a toast is displayed with an error message explaining that it couldn't be added to the basket. 
 
     In Addition, there is a check when the order is being processed. This check makes sure that in the time it took for the user to add the item to their basket and then checkout, that the spaces haven't been booked by somebody else. 
+
+![booking form](docs\readme_images\activities\booking-form.png)
 
 ##### Customer Reviews 
 - Average rating
@@ -462,16 +531,23 @@ This page is specific to the activity that the user has decided to get more info
 
     I would have liked to add pagination to the reviews section but ran out of time to implement this feature as well. Pagination would allow for larger numbers of reviews to be handled.
 
+    ![reviews](docs\readme_images\activities\reviews.png)
+
+[back to features naviagtion](#features)
+
 #### Basket
 The shopping basket displays the timeslots of the activities the user has selected to purchase. 
-    
+
+![basket item](docs\readme_images\checkout\basket-item.png)
+
 - If there are no items in the basket, a message is displayed indicating that this is the case.
 - Items that are in the basket are displayed in a row that contains a summary of the timeslot including the activity, start time, price of the individual item, quantity, and the total price of all spaces in that timeslot. 
 - The user can at this point update the quantity of each timeslot in the basket. If they exceed the number of available spaces, an error message is displayed. 
 - There is also an option to remove the timeslot from the basket. I aimed to add a confirmation modal to this functionality but also didn't have time to do this. I didn't feel this was a priority as it isn't lost data from the database, and just cached data which is easy to recreate if removed by mistake.
 
-
 The user then has the option to keep browsing or to proceed to the checkout page. 
+
+[back to features naviagtion](#features)
 
 #### Checkout
 The checkout page displays an order summary and also a form for the user to add their billing information. 
@@ -479,6 +555,13 @@ The checkout page displays an order summary and also a form for the user to add 
 - Order summary 
 
     The order summary lists all items that are going to be included in the order in progress. This just reassures the user that the items they intended to include in their order are in fact in the order.  
+
+<details>
+<summary>Order summary screenshot</summary>
+
+![order](docs\readme_images\checkout\order-summary.png)
+
+</details>
 
 - Billing details and payment
 
@@ -492,25 +575,50 @@ The checkout page displays an order summary and also a form for the user to add 
 
     When they click 'complete order', the available spaces are checked again and there is also a check that the timeslot is in the future. 
 
+<details>
+<summary>Billing details screenshot</summary>
+
+![billing details](docs\readme_images\checkout\order-details.png)
+
+</details>
+
+[back to features naviagtion](#features)
+
 #### Checkout Success
 This page outlines the order details and confirms that the order was successful. A toast show displaying the order number and an email is sent to the email address listed with the order. A 'keep shopping' button makes it easy for the user to navigate back to the activities page and find more activities to book! 
 
+![checkout success](docs\readme_images\checkout\success.png)
+
+[back to features naviagtion](#features)
 
 #### Footer
+
+![footer](docs\readme_images\navbar\footer.png)
+
 The footer is quite basic with navigation links to find the park on social media. This is important for the user to be able to further their understanding of what the park offers.
 
 #### 404 & 500
+
 The 404 and 500 pages have been updated from the standard Django pages. There is now a link to navigate the user back to the home page. 
+
+[back to features naviagtion](#features)
 
 ### **Visitor Features:** _Authenticated Visitors only_
 
 #### Profile
 The profile is accessed when the user clicks on the account button in the navbar when already logged in. If not logged in, they will be prompted to do so. 
 
+
+![user profile](docs\readme_images\allauth\sign-out-user.png)
+
 There are two sections to the User's profile; a manage account section which allows the user to update their details, see their order history, and view and delete reviews they have written. The other section displays upcoming bookings, showing the soonest first. This is an affective and quick way to show the user what's coming up to ensure they don't miss any of their bookings. I felt it would be good to include this here as well as in the 'my orders' section as they might pass through here and be reminded of their booking. Also, I felt this would be the main reason for visiting this section anyway so reduces the number of clicks for the user.
+
+[back to features naviagtion](#features)
 
 #### Manage Details
 If the user selects 'My Details' on their profile, they are directed to the 'Manage Details' page which contains a form with their saved (or not yet saved) billing details. If they have already made an order on this account and selected to save their billing details, this will be populated; otherwise, it will be empty.
+
+![manage details](docs\readme_images\profile\manage-details-form.png)
 
 They have the option to update their details and select 'save and update' to confirm. Confirmation of this action is displayed in a toast.
 
@@ -522,11 +630,18 @@ Alternatively, they can navigate back to their profile with the conveniently loc
 As mentioned above, this is a built-in Django template that I have customized to suit the site's theming. Confirmation of this action is displayed in a toast.
 
 #### User Orders
+
+
 If the user selects 'My Orders' on the profile page, they are directed to the orders page. This page is again split into two sections:
 
 (There is also a convenient 'go back' button to help the user navigate back to their profile.)
 
+[back to features naviagtion](#features)
+
 ##### Order History
+
+![user's orders](docs\readme_images\profile\orders.png)
+
 - The order history section lists all of their past orders with the most recent first. This not only helps them find details of activities they enjoyed in case they want to book again, but also allows them to gain confirmation that their order has been processed. 
 
 - The order number has a link that directs the user to the checkout success page that they would have seen when they completed their order. This again acts as confirmation that their order has been successful.
@@ -534,11 +649,17 @@ If the user selects 'My Orders' on the profile page, they are directed to the or
 - The final column in the table is the 'review' section which allows the user to leave a review for the timeslot they have selected. 
 
 ##### Your bookings
+
+![bookings](docs\readme_images\profile\future-bookings.png)
+
 - Similar to the order history section, the bookings section shows the user what timeslots are coming up. It splits their orders into timeslots for clarity, where their order history just lists the orders which could contain many timeslots in any order. This ensures they don't miss any of their bookings.
 
 - Additionally, this section displays past bookings which, again, makes it easier for the user to find an activity they liked in order to re-book.
 
 #### Add Review
+
+![add review](docs\readme_images\profile\add-review.png)
+
 The user can access this page by selecting 'review' on the order history table. They will be directed to this page which contains a form with the activity field pre-set to the activity they chose to review, and then that field is hidden so they cannot change it. 
 
 The activity they are reviewing is indicated at the top of the page to avoid confusion.
@@ -547,7 +668,12 @@ The form for the review allows the user to select a rating out of 5 and leave a 
 
 There is then a convenient 'back to order history' button to help them get back to the previous page. 
 
+[back to features naviagtion](#features)
+
 #### User Reviews
+
+![User's reviews](docs\readme_images\profile\reviews.png)
+
 If the user selects 'My Reviews' in the 'Manage Account' section of their profile, they are directed to the 'Reviews' page. This page lists their reviews. It gives details of the activity, rating, content text, and the date it was created. They are also given the option to delete the review. This directs the user to a delete confirmation page. 
 
 The 'go back' button conveniently poistioned at the top of the page, directs the user back to their profile. 
@@ -555,30 +681,52 @@ The 'go back' button conveniently poistioned at the top of the page, directs the
 #### Checkout
 The checkout page looks identical as for a non-authenticated user with the exception of the details form. If the user is logged in and has their details saved in their profile, this form will be prefilled with those details. They will also be given the option to update them and save them for next time on check-out. 
 
+![checkout](docs\readme_images\profile\user-checkout.png)
+
+[back to features naviagtion](#features)
+
 ### **Admin Features:** _Admin only_
 
 #### Activity Details
+
 On the activity details page the admin has a different view to any other user. They will see the option to edit and delete the activity. 
 
 They also see the timeslots section very differently as I decided to stop the admin from being able to book timeslots. This restriction starts on the activity details page where they are unable to add timeslots to their basket, then continued in that they can't access the basket or checkout pages.
 
 ##### Edit and Delete Activity Buttons
+
+![activity details](docs\readme_images\admin\activity-buttons.png)
+
 - These buttons are located at the top of the information section as I felt this was an intuitive place for them to be. Each navigates the user to the edit or delete timeslot page, depending on their selection. 
 
 ##### Manage Timeslots Section
+
+![timeslot management](docs\readme_images\admin\timeslot-management.png)
+
 - In the same place that the timeslot form would have been for any other user, the manage timeslot section displays the future timeslots with an option to add another, delete a timeslot of edit a timeslot. The buttons have been located for convemience and intutive and efficient UX. Each button directs the admin to the corresponding page. 
 
+[back to features naviagtion](#features)
+
 #### Edit Activity
+
+![edit activity](docs\readme_images\admin\edit-activity.png)
+
 This page displays a form allowing the user to fill in all of the details for the current activity and allows them to edit any field. Placeholders are used where formatting is important and could otherwise cause problems. The current image is displayed and opens as a whole page view on click. 
 
 At the bottom of the form they can update their changes, go back or delete the activity. They are directed to the relevant page as a result. If they confirm the activiy changes, they are shown a toast with a success message confirming. 
 
 #### Delete Activity Confirmation
+
+![delete confirmation](docs\readme_images\admin\delete-activity.png)
+
 Either by selecting to delete the activity from 'Activity Details' or 'Edit Activity', the user is directed to this delete confirmation page. This page gives the user the option to confirm deletion and explains the consequences, or to go back and not delete. 
 
 If they chose to delete, this action is confirmed with a toast displaying a success message explaining the action.
 
 #### Add Timeslot
+
+![add timeslot](docs\readme_images\admin\add-timeslot.png)
+
 If the admin selects the 'Add Timeslot' button in the 'Manage Timeslots' section, they are directed to this page. 
 
 The add timeslot page has a back button which directs the admin back to the activity details page for convenience. 
@@ -588,16 +736,31 @@ The main feature of this page is the add timeslot form, which contains all the f
 Thye can confirm their details and will be redirected to the activity detials page with a toast confirming that the addition was successful.
 
 #### Edit Timeslot
+
+![edit timeslot](docs\readme_images\admin\edit-timeslot.png)
+
 This page is similar to the add timeslot page but instead updates the current timeslot with the new details. They are also given the option to delete the timeslot at this point.  
+
+[back to features naviagtion](#features)
+
 #### Delete Timeslot Confirmation
+
+![delete timeslot](docs\readme_images\admin\delete-timeslot.png)
+
 If they chose to delete a timeslot they are directed to the 'delete confirmation' page which displays details of the timeslot being deleted and also explains the consequences. Successful deletion is confirmed with a toast. 
 
 I initially wanted to have the confirmation of delete functionality in modals but I found again that I would have needed to use AJAX to achieve this and I didn't have time to set this up atthe point of implimentation. 
 
 #### Profile
+
+![admin](docs\readme_images\allauth\sign-out-admin.png)
+
 For the admin, the profile page is more of a site management page where they are able to manage activities and see what bookings have been made to allow them to manage thier team and make suitable preperations for activities. 
 
 #### Manage Activities
+
+![manage activities](docs\readme_images\admin\admin-activities.png)
+
 This page displays all activities that currently exist in the database. 
 
 The activities are displayed in a table and show the main information that the admin may need to see at a glance. But there is also a link to the activity details page which allows them to find out more quickly. The activity details page offers Update and Delete functionality for the admin on that activity as well to save them returning to this page.
@@ -607,10 +770,19 @@ They are also able to edit the activity by clicking on the 'edit' button and bei
 Futhermore, they can add an activity from this page, by clicking 'add activity'. 
 
 #### Add Activity
+
+![add activities](docs\readme_images\admin\add-activity.png)
+
 This page is very similar to the edit activity view, but the form is not pre-filled with any activity information. 
 
 #### Bookings
-The bookings page displays all bookings and has affective sorting, serahcing and filtering functionality. The admin can select a date to see if there are any bookings on that date; this can also be used to see past bookings. They can also filter by activity.
+
+![bookings filter](docs\readme_images\admin\orders-sort.png)
+The bookings page displays all bookings and has affective sorting, searching and filtering functionality. The admin can select a date to see if there are any bookings on that date; this can also be used to see past bookings. They can also filter by activity.
+
+![bookings list](docs\readme_images\admin\orders-list.png)
+
+[back to features naviagtion](#features)
 
 ## Future Features 
 - Pagination - Reviews, Activities, Order History, Manage Activities
@@ -659,12 +831,12 @@ The bookings page displays all bookings and has affective sorting, serahcing and
 ### Tools and technology
 
 - [Stripe]() : used for secure payments.
+- [Heroku](https://dashboard.heroku.com/) : Used for deploymnet of the full-stack site.
+- [Cloudinary](https://cloudinary.com/) : used for media file storage.
 - [Git](https://git-scm.com/): used for version control.
 - [GitHub](https://github.com/) : used for storing code for the project.
 - [GitHub Projects]() : used for agile methodology, time management and project planning.
 - [VS Code](https://code.visualstudio.com/) : is the IDE I used for development.
-- [Heroku](https://dashboard.heroku.com/) : Used for deploymnet of the full-stack site.
-- [Cloudinary](https://cloudinary.com/) : used for media file storage.
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/web-components/overview) : used to display an interactive map showing the location of the park.
 - [Figma](https://www.figma.com/) : used to create wireframes.
 - [Coolors](https://coolors.co/ceba72-1b1b1b-868686-303030-cacaca) : used to create the colour pallet.
@@ -909,81 +1081,49 @@ I used images from a variety of sources for the site. Some are used as perminant
 
 #### My own photos
 
+- [hero image](docs\image-credit\hero-landing.jpg)
+- [user profile](docs\image-credit\uplift_category.jpg)
+- [admin profile](docs\image-credit\20240330_111756.jpg)
+- [uplift](docs\image-credit\uplift_category.jpg)
+- [uplift 2](docs\image-credit\uplift_category.jpg)
+- [Find us](docs\image-credit\20240330_112441.jpg)
+- Trail map on 'trails' page
+
 #### Unsplash photos
+- [Photo](https://unsplash.com/photos/four-multicolored-mountain-bikes-parked-beside-brown-wooden-railing-dU2HDmE_tgw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Tom Conwayon](https://unsplash.com/@tecreate?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-riding-bike-doing-stunt-near-green-trees-during-daytime-US06QF_sxu8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Andhika Sorengon](https://unsplash.com/@dhika88?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/two-person-riding-hardtail-bikes-on-trail-1Mdth1sVDbg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Lorenzo Ceratoon](https://unsplash.com/@lorenzocerato?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-riding-bike-qrIy8dBzCVU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Tim Fosteron](https://unsplash.com/@timberfoster?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-in-black-helmet-riding-on-bicycle-on-green-grass-field-during-daytime-c7f03aFW5gg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Nathanaël Desmeuleson](https://unsplash.com/@nathanael240606?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-riding-on-bicycle-pSq_6oM3rTI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Trevor Chownon](https://unsplash.com/@chownyt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/@norv952?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Mark Northernon](https://unsplash.com/photos/man-riding-on-gray-full-suspension-mountain-bicycle-during-daytime-qvk8QFyGfWA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 
+- [Photo](https://unsplash.com/photos/man-in-black-jacket-riding-on-motocross-dirt-bike-uf9UiWOpYtk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Luca Beanion ](https://unsplash.com/@pigiama?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-in-red-helmet-riding-on-bicycle-during-daytime-NJQv0W6DHaM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Clement Delhayeon](https://unsplash.com/@clementdelhaye?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 
+- [Photo](https://unsplash.com/photos/man-riding-motorcycle-on-dirt-road-during-daytime-j5EFEaF4rrk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Devon Hawkins](https://unsplash.com/@thelifeofdev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) 
+- [Photo](https://unsplash.com/photos/man-riding-mountain-bike-ramping-on-forest-gjTiRjM9MFg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Marc Sendra Martorell](https://unsplash.com/@marcsm?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/a-man-standing-on-top-of-a-cliff-next-to-a-bike-52MEDk2jx4s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Tim Foster](https://unsplash.com/@timberfoster?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Photo](https://unsplash.com/photos/man-carrying-black-mountain-bike-uphill-PlBvp1tOI7Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) by [Andrei J Castanha](https://unsplash.com/@andreicastanha?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
 
 #### Pixels photos 
-
-#### Other photos
-Private Coaching - Photo by Paige Thompson: https://www.pexels.com/photo/man-wearing-a-green-helmet-sitting-on-a-mountain-bike-13923545/
-
-Group Of bikers - Photo by Mark Soetebier: https://www.pexels.com/photo/group-of-mountain-bikers-parked-near-the-mountains-10743835/
-
-
-Private Coaching 2 - Photo by Andrew LaBonne: https://www.pexels.com/photo/men-riding-off-road-bicycles-7476445/
-
-Race Shot - Photo by Crys Jardim Fotografia: https://www.pexels.com/photo/man-in-black-and-white-helmet-riding-bicycle-6937088/
-
-Photo by Darcy Lawrey: https://www.pexels.com/photo/photo-of-boy-riding-a-bike-735691/
-
-Photo by Danny Bor: https://www.pexels.com/photo/man-mountain-biking-in-forest-9994278/
-
-Photo by Danny Bor: https://www.pexels.com/photo/man-mountain-biking-in-forest-9994208/
-
-Photo by Amar Preciado: https://www.pexels.com/photo/a-man-riding-bicycle-in-a-forest-12031126/
-
-Photo by Anastasia Shuraeva: https://www.pexels.com/photo/cyclist-jumping-on-ramps-in-the-forest-8926944/
-
-Photo by Jody Parks: https://www.pexels.com/photo/photo-of-person-riding-bicycle-4668487/
-
-Photo by Thomas K: https://www.pexels.com/photo/downhill-cyclist-jumping-in-forest-14625016/
-
-Photo by Javier Piva Flos: https://www.pexels.com/photo/photograph-of-a-man-wit-a-green-helmet-riding-a-bicycle-11049373/
-
-Photo by Sergio Benavides: https://www.pexels.com/photo/cyclist-at-mountain-bike-racing-16066068/
-
-Photo by <a href="https://unsplash.com/@tecreate?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tom Conway</a> on <a href="https://unsplash.com/photos/four-multicolored-mountain-bikes-parked-beside-brown-wooden-railing-dU2HDmE_tgw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@dhika88?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Andhika Soreng</a> on <a href="https://unsplash.com/photos/man-riding-bike-doing-stunt-near-green-trees-during-daytime-US06QF_sxu8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
-Photo by <a href="https://unsplash.com/@lorenzocerato?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Lorenzo Cerato</a> on <a href="https://unsplash.com/photos/two-person-riding-hardtail-bikes-on-trail-1Mdth1sVDbg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@timberfoster?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim Foster</a> on <a href="https://unsplash.com/photos/man-riding-bike-qrIy8dBzCVU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@nathanael240606?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Nathanaël Desmeules</a> on <a href="https://unsplash.com/photos/man-in-black-helmet-riding-on-bicycle-on-green-grass-field-during-daytime-c7f03aFW5gg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@chownyt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Trevor Chown</a> on <a href="https://unsplash.com/photos/man-riding-on-bicycle-pSq_6oM3rTI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@norv952?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Mark Northern</a> on <a href="https://unsplash.com/photos/man-riding-on-gray-full-suspension-mountain-bicycle-during-daytime-qvk8QFyGfWA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@pigiama?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Luca Beani</a> on <a href="https://unsplash.com/photos/man-in-black-jacket-riding-on-motocross-dirt-bike-uf9UiWOpYtk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@clementdelhaye?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Clement Delhaye</a> on <a href="https://unsplash.com/photos/man-in-red-helmet-riding-on-bicycle-during-daytime-NJQv0W6DHaM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
-<a href="https://www.freepik.com/free-photo/young-adult-using-electric-bike-country-side_19124510.htm#fromView=search&page=1&position=18&uuid=332fd06c-baf1-47f9-9d7b-cae53bbd304a">Image by freepik</a>
-<a href="https://www.freepik.com/free-photo/man-riding-mountain-bike_11383484.htm#fromView=search&page=1&position=32&uuid=332fd06c-baf1-47f9-9d7b-cae53bbd304a">Image by freepik</a>
-
-Photo by Anastasia Shuraeva: https://www.pexels.com/photo/a-person-riding-a-mountain-bike-in-the-woods-8926958/
-
-Photo by Jonathan Cooper: https://www.pexels.com/photo/a-man-riding-a-bike-in-the-forest-12328608/
-
-Photo by Andrea Crabbi: https://www.pexels.com/photo/person-riding-bicycle-on-dirt-road-5778445/
-
-Photo by Anastasia Shuraeva: https://www.pexels.com/photo/a-person-on-a-mountain-bike-mid-air-8927285/
-
-Photo by Anastasia Shuraeva: https://www.pexels.com/photo/a-person-on-a-mountain-bike-mid-air-8927285/
-
-Photo by Thomas K: https://www.pexels.com/photo/a-man-doing-tricks-using-mountain-bike-15049833/
-
-Photo by Jonathan Cooper: https://www.pexels.com/photo/man-using-a-mountain-bike-in-the-forest-11715051/
-
-Photo by Lars Mai: https://www.pexels.com/photo/man-in-green-helmet-riding-a-bicycle-in-the-forest-3880623/
-
-Photo by Dó Castle: https://www.pexels.com/photo/three-men-riding-on-bicycles-2158963/
-
-Photo by <a href="https://unsplash.com/@thelifeofdev?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Devon Hawkins</a> on <a href="https://unsplash.com/photos/man-riding-motorcycle-on-dirt-road-during-daytime-j5EFEaF4rrk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@marcsm?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marc Sendra Martorell</a> on <a href="https://unsplash.com/photos/man-riding-mountain-bike-ramping-on-forest-gjTiRjM9MFg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
- 
-Photo by <a href="https://unsplash.com/@timberfoster?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Tim Foster</a> on <a href="https://unsplash.com/photos/a-man-standing-on-top-of-a-cliff-next-to-a-bike-52MEDk2jx4s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
-Photo by <a href="https://unsplash.com/@andreicastanha?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Andrei J Castanha</a> on <a href="https://unsplash.com/photos/man-carrying-black-mountain-bike-uphill-PlBvp1tOI7Y?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- [Photo by Paige Thompson](https://www.pexels.com/photo/man-wearing-a-green-helmet-sitting-on-a-mountain-bike-13923545/)
+- [Photo by Mark Soetebier](https://www.pexels.com/photo/group-of-mountain-bikers-parked-near-the-mountains-10743835/)
+- [Photo by Andrew LaBonne](https://www.pexels.com/photo/men-riding-off-road-bicycles-7476445/)
+- [Photo by Crys Jardim Fotografia](https://www.pexels.com/photo/man-in-black-and-white-helmet-riding-bicycle-6937088/)
+- [Photo by Darcy Lawrey](https://www.pexels.com/photo/photo-of-boy-riding-a-bike-735691/)
+- [Photo by Danny Bor](https://www.pexels.com/photo/man-mountain-biking-in-forest-9994278/)
+- [Photo by Danny Bor](https://www.pexels.com/photo/man-mountain-biking-in-forest-9994208/)
+- [Photo by Amar Preciado](https://www.pexels.com/photo/a-man-riding-bicycle-in-a-forest-12031126/)
+- [Photo by Anastasia Shuraeva](https://www.pexels.com/photo/cyclist-jumping-on-ramps-in-the-forest-8926944/)
+- [Photo by Jody Parks](https://www.pexels.com/photo/photo-of-person-riding-bicycle-4668487/)
+- [Photo by Thomas K](https://www.pexels.com/photo/downhill-cyclist-jumping-in-forest-14625016/)
+- [Photo by Javier Piva Flos](https://www.pexels.com/photo/photograph-of-a-man-wit-a-green-helmet-riding-a-bicycle-11049373/)
+- [Photo by Sergio Benavides](https://www.pexels.com/photo/cyclist-at-mountain-bike-racing-16066068/)
+- [Photo by Anastasia Shuraeva](https://www.pexels.com/photo/a-person-riding-a-mountain-bike-in-the-woods-8926958/)
+- [Photo by Jonathan Cooper](https://www.pexels.com/photo/a-man-riding-a-bike-in-the-forest-12328608/)
+- [Photo by Andrea Crabbi](https://www.pexels.com/photo/person-riding-bicycle-on-dirt-road-5778445/)
+- [Photo by Anastasia Shuraeva](https://www.pexels.com/photo/a-person-on-a-mountain-bike-mid-air-8927285/)
+- [Photo by Anastasia Shuraeva](https://www.pexels.com/photo/a-person-on-a-mountain-bike-mid-air-8927285/)
+- [Photo by Thomas K](https://www.pexels.com/photo/a-man-doing-tricks-using-mountain-bike-15049833/)
+- [Photo by Jonathan Cooper](https://www.pexels.com/photo/man-using-a-mountain-bike-in-the-forest-11715051/)
+- [Photo by Lars Mai](https://www.pexels.com/photo/man-in-green-helmet-riding-a-bicycle-in-the-forest-3880623/)
+- [Photo by Dó Castle](https://www.pexels.com/photo/three-men-riding-on-bicycles-2158963/)

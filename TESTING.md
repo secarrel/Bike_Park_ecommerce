@@ -289,8 +289,189 @@ I used the feature section from the README as a guide for the structure for this
 | | to have the ability to add, edit and delete timeslots | manage the number of people on site in advance. | The admin can add, edit and delete all timeslots. This can be done from the admin's manage activities page or from the activity details page of the relevant activity. | ✅ Pass |
 | | to see a calender of bookings | prepare staff numbers and equipment in advance. | The admin can see, sort and filter all bookings in the admin side of the site but they are not displayed as a calander. This is a feature I really wanted to implement but didn't have time in the end. | ✅ Pass |
 
-## Lighthouse 
-## Compatibility
+## Lighthouse Audit
+
+I got the following scores for the lighthouse testing in chrome devtools. The results for the desktop are displayed in the screenshots, while the values for mobile results are listed to the left.
+
+| Page                     | Performance | Accessibility | Best Practice | SEO | comments | Evidence |
+| ------------------------ | ----- | ----- | ----- | ----- | ----- | ----- |
+| Welcome                  | 74 | 100 | 81  | 100 | Low BP score due to cloudinary using http | ![scrnsht](docs/testing_images/lighthouse/lh-welcome.png) |
+| About                    | 70 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-about.png) |
+| Trails                   | 73 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-trails.png) |
+| Activities               | 70 | 100 | 81  | 100 | Low BP score due to cloudinary using http | ![scrnsht](docs/testing_images/lighthouse/lh-activities.png) |
+| Activity Details         | 63 | 100 | 81  | 100 | Low BP score due to cloudinary using http | ![scrnsht](docs/testing_images/lighthouse/lh-activity-details.png) |
+| Basket                   | 86 | 98  | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-basket.png) |
+| Checkout                 | 80 | 91  | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-checkout.png) |
+| Checkout Success         | 76 | 100 | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-order-details.png) |
+| Add activity             | 85 | 100 | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-add-activity.png) |
+| Edit activity            | 85 | 96  | 81  | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-edit-activity.png) |
+| Add timeslot             | 75 | 100 | 100 | 99  |  | ![scrnsht](docs/testing_images/lighthouse/lh-add-timeslot.png) |
+| Edit timeslot            | 70 | 100 | 100 | 99  |  | ![scrnsht](docs/testing_images/lighthouse/lh-edit-timeslot.png) |
+| Delete Activity          | 75 | 96  | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-delete-activity.png) |
+| Delete Timeslot          | 71 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-delete-timeslot.png) |
+| Manage activities        | 81 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-manage-activities.png) |
+| Requirements             | 72 | 100 | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-requiremenets.png) |
+| Profile                  | 65 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-profile.png) |
+| Add review               | 73 | 100 | 100 | 96  |  | ![scrnsht](docs/testing_images/lighthouse/lh-add-review.png) |
+| Booking info             | 80 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-booking-info.png) |
+| Bookings                 | 71 | 100 | 100 | 99  |  | ![scrnsht](docs/testing_images/lighthouse/lh-bookings.png) |
+| Delete Review            | 83 | 96  | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-delete-review.png) |
+| Order history            | 74 | 96  | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-order-history.png) |
+| User details             | 76 | 96  | 100 | 100 | Label not attached to country field | ![scrnsht](docs/testing_images/lighthouse/lh-user-details.png) |
+| User reviews             | 76 | 100 | 100 | 98  |  | ![scrnsht](docs/testing_images/lighthouse/lh-user-reviews.png) |
+| AllAuth pages            | 98 | 100 | 100 | 100 |  | ![scrnsht](docs/testing_images/lighthouse/lh-allauth.png) |
+
+Performance is generally low due to image sizing. I've been doing research into improving performance through correct image sizing. This is something I need to think about in advance of the testing phase, and more during planning. In the future, I will be more thoughtful with how I import images regards performance.
+
+## Browser Compatibility
+I've tested my deployed project on multiple browsers to check for compatibility issues. I followed each point in the 'Feature testing' section below.
+
+| Browser | Notes |
+| ---- | ---- |
+| Chrome | ✅ All tests and development were carried out using the chrome browser so I haven't included additional evidence, as every screenshot in this documentation (appart from this section) is on the chrome browser. |
+| Firefox | ✅ Pass. No noticable differences. Image rendering seemed a little slower. |
+| Edge | ✅ Pass. Struggled with image rendering - had to refresh to load them. All other functionality works as expected. |
+| Brave | ✅ Pass. No noticable differenced. Images seemed to render slowly again compared to chrome. |
+| Safari | ✅ Pass. Tested on tablet device. All functionlaity working as expected. |
+
+Image rendering seemed to be the only problem with any of the browsers, I think this was also linked to poor internet speeds. I have already identified this as a major area for improvement so will be doinga additional reseaerch into improving image rendering speeds. 
+
 ## Responsiveness
+
+I've tested my deployed project on multiple devices to check for responsiveness issues. I tried to use responsiveness testing tools which I have previously used for testing, but these don't seem to work with django. I found that [responsive vewier extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en) worked, so i used that in combination with testing on different devices and chrome dev tools. 
+
+All pages were tested, but I only included screenshots of a selection of pages as there are so many pages in this project.
+
+| Device                            | Size          | Evidnece | Notes      |
+| ----                              | ----          | ----     |  ----      |
+| iPhone 8 Plus, 7 Plus, 6S Plus    | 414 x 736     | [activities](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-activities.png) | ✅ Pass    |
+|                                   | 414 x 736     | [activity details](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-activity-details.png) | ✅ Pass    |
+|                                   | 414 x 736     | [bookings](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-bookings.png) | ✅ Pass    |
+|                                   | 414 x 736     | [manage activities](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-manage-activities.png) | ✅ Pass    |
+|                                   | 414 x 736     | [orders](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-orders.png) | ✅ Pass    |
+|                                   | 414 x 736     | [welcome](docs/responsiveness-ftbp/mobile/iPhone-8-Plus-7-Plus-6S-Plus-414x736-welcome.png) | ✅ Pass    |
+| iPhone 8, 7, 6S, 6                | 375 x 667     | [activities](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-activities.png) | ✅ Pass    |
+|                                   | 375 x 667     | [activity-details](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-activity-details.png) | ✅ Pass    |
+|                                   | 375 x 667     | [bookings](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-bookings.png) | ✅ Pass    |
+|                                   | 375 x 667     | [manage activities](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-manage-activities.png) | ✅ Pass    |
+|                                   | 375 x 667     | [orders](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-orders.png) | ✅ Pass    |
+|                                   | 375 x 667     | [welcome](docs/responsiveness-ftbp/mobile/iPhone-8-7-6S-6-375x667-welcome.png) | ✅ Pass    |
+| iPhone 5/SE                       | 320 x 568     | [activities](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-activities.png) | ✅ Pass    |
+|                                   | 320 x 568     | [activity details](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-activity-details.png) | ✅ Pass    |
+|                                   | 320 x 568     | [bookings](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-bookings.png) | ✅ Pass    |
+|                                   | 320 x 568     | [manage activities](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-manage-activities.png) | ✅ Pass    |
+|                                   | 320 x 568     | [orders](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-orders.png) | ✅ Pass    |
+|                                   | 320 x 568     | [welcome](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-welcome.png) | ✅ Pass    |
+| Kindle Fire HDX                   | 800 x 1280    | [activity details](docs/responsiveness-ftbp/tablet/Kindle-Fire-HDX-800x1280-activity-details.png) | ✅ Pass    |
+|                                   | 800 x 1280    | [order history](docs/responsiveness-ftbp/tablet/Kindle-Fire-HDX-800x1280-order-history.png) | ✅ Pass    |
+|                                   | 800 x 1280    | [welcome](docs/responsiveness-ftbp/tablet/Kindle-Fire-HDX-800x1280-welcome.png) | ✅ Pass    |
+| iPad                              | 768 x 1024    | [activity details](docs/responsiveness-ftbp/tablet/iPad-768x1024-activity-details.png) | ✅ Pass    |
+|                                   | 768 x 1024    | [order history](docs/responsiveness-ftbp/tablet/iPad-768x1024-order-history.png) | ✅ Pass    |
+|                                   | 768 x 1024    | [welcome](docs/responsiveness-ftbp/tablet/iPad-768x1024-welcome.png) | ✅ Pass    |
+| iPad Pro                          | 1024 x 1366   | [activity details](docs/responsiveness-ftbp/tablet/iPad-Pro-1024x1366-activity-details.png) | ✅ Pass    |
+|                                   | 1024 x 1366   | [order history](docs/responsiveness-ftbp/tablet/iPad-Pro-1024x1366-order-history.png) | ✅ Pass    |
+|                                   | 1024 x 1366   | [welcome](docs/responsiveness-ftbp/tablet/iPad-Pro-1024x1366-welcome.png) | ✅ Pass    |
+| Desktop 1                         | 1440 x 900    | [activities](docs/responsiveness-ftbp/desktop/Laptop-1-1440x900-activities.png) | ✅ Pass    |
+|                                   | 1440 x 900    | [activity-details](docs/responsiveness-ftbp/desktop/Laptop-1-1440x900-activity-details.png) | ✅ Pass    |
+|                                   | 1440 x 900    | [welcome](docs/responsiveness-ftbp/desktop/Laptop-1-1440x900-welcome.png) | ✅ Pass    |
+|                                   | 1440 x 900    | [orders](docs/responsiveness-ftbp/desktop/Laptop-1-1440x900-your-orders.png) | ✅ Pass    |
+| Desktop 2                         | 1280 x 800    | [activities](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-activities.png) | ✅ Pass    |
+|                                   | 1280 x 800    | [activity details](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-activity-details.png) | ✅ Pass    |
+|                                   | 1280 x 800    | [welcome](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-welcome.png) | ✅ Pass    |
+|                                   | 1280 x 800    | [orders](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-your-orders.png) | ✅ Pass    |
+
+#### Main things to note from responsiveness of the site:
+I used Bootstrap for the majority of the responsiveness which really sped up the process and ensured consistent breakpoints were used on all elements. I also did some work to make the tables responsive without losing functionlaity or hiding important daa. This was quite challenging as there is a lot of data to display in the tables, but i opted to merge some table columns' data on smaller screens, which was quite affective. 
+
 ## Bugs
-## Assessment criteria checklist
+
+### Resolved Bugs
+-  #### Webhook Handler
+    When testing the webhooks for the payment process were working correctly, I found that a webhook wasn't being completed as displayed below.
+
+    ![webhook payment intent.succeeded](docs/testing_images/bugs/webhooks/webhook-handler-error-2.png)
+
+    The error message that was displayed in the webhook response was:
+
+        Cannot resolve keyword 'total' into field. Choices are: country, county, date, email, full_name, id, lineitems, order_number, order_total, original_basket, phone_number, postcode, street_address1, street_address2, stripe_pid, town_or_city, user_profile, user_profile_id
+
+    I found that in the checkout view, I was using:
+
+        total = total 
+
+    instead of 
+
+        order_total = total
+
+    I made this change so that the order being saved matched the fields of the Order model. This resolved this error but I uncovered another.
+
+    A new webhook response displayed saying:
+
+        TemplateDoesNotExist at /checkout/wh/
+    
+    in reference to my 
+    
+        checkout/confirmation_emails/confirmation_email_body.txt
+    
+    After investigation, I found a typo in the file name for the email body. I left out the '.' between 'body' and 'txt'. So corrected this, which caused this response message to disappear and be replaced by the next error...
+
+    The next response message for the failing webhook was:
+
+        TypeError at /checkout/wh/
+
+        Order' object is not iterable
+
+    To resolve this, I removed the loop that iterates over order in the template and set it up to iterate through the items within the order.
+
+    Webhooks now work! But you can see from the below screenshot that each payment_intent was being created twice. This took a lot of investigation to resolve.
+
+    ![webhook payment working](docs/testing_images/bugs/doubleorder/double-payment-intent-created-bug.png)
+
+-  #### Double Payment Intent Created
+
+    This bug was noticable in two locations; in the webhooks as shown above, and in my order list in the admin panel. With print statements I located the problem. In the webhook handler, there is a section that checks if the order exists by checking the combination of every field against each order in the database. If there's a match, the order is updated, otherwise a new order is created. 
+
+    To resolve this, I checked the database for a match with the stripe_pid as this is a unique value, specific to the order. 
+
+    ![Double payment fix](docs/testing_images/bugs/doubleorder/double-orders-created-bug.png) 
+
+    Webhooks then showed only one payment intent being created, and the orders database showed that there was only one of each order.
+
+    ![Fixed bug](docs/testing_images/bugs/doubleorder/double-order-fix.png)
+
+-  #### Second order value is 0
+
+    This bug mingled with the above, which made it difficult to identify it as a seperate problem. But when I fixed the above bug, I found that the value of the orders was 0. Unfortunately, I didn't take a screenshot before clearing orders from the database. I identified through print statements that the cause was in the checkout view.
+
+    I had added in extra functionality to ensure to ensure that there were enough spaces available for the order to be completed, and also that the timeslot was in the future. In doing so I forgot to add a line taht saves the data to the order line item, meaining it was empty when completing the order. 
+
+    This is the code for the bug:
+
+    ![zero value order bug](docs/testing_images/bugs/zero-value-order/order-value-zero-bug.png)
+
+    This is the code for the fix:
+
+    ![zero value order fix](docs/testing_images/bugs/zero-value-order/order-value-zero-fix.png)
+
+    You can see the addition of
+
+        order_line_item.save()
+
+    before the else statement in the fixed code. 
+
+    After this change, orders were working as expected. The screenshot shown at the end of the double payment bug, shows this working as well. I fixed these bugs at the same time so screenshots are partly shared. 
+
+- #### User details update form not saving
+
+    During testing, I found that the user details form accessed from the profile page, doesn't save and update the details for the user if there is a change. After investigation I found that the method 'POST' wasn't in the request so nothing after the 'if' statement in my view for this functionality was happeing. With the view looking correct, I investigated the template and form for this feature. I found that I had set the action of the form to 'profile' instead of 'user_details', which is the name of the function in the view that handles this functionality. After updating this the user details were behaving as expected. 
+
+- #### Order details page doesn't display order details
+
+    So the user can review their order details, I added a link on the 'Order History' page which directs the user to the Checkout Success template. However, I had a seperate function in my view for this and hadn't updated the contexts to include 'OrderLineItems' which is what was being iterated through in the template. After adding OrderLineItems to the contexts, the page displayed the correct information.
+
+### Unresolved Bugs
+
+- #### Empty List when filtering activities
+
+    On the bookings page for the admin, I added the functionlaity to filter by activity. This functionality works but if no results are returned, there is no message explaining there are no activities. I added in a javascript function to confirm that there were no activities but couldn't make the message disappear when there were activities. I tried to resolve this for a while but with time pressures, had to remove the functionlaity all together with the intention of implimenting it after submission of the project. 
+    
