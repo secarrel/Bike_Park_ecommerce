@@ -16,11 +16,11 @@ I decided to create an e-commerce that provided a service rather than a product,
 
 Stripe is used for secure payments and is currently set to 'test' mode which means no real payments will be taken. If you wish to test the checkout process, you can use Stripe's [test card numbers](https://docs.stripe.com/testing). For valid payments use:
 
-card number: 4242424242424242
+Card number: 4242424242424242
 
-cvc: any 3 digits
+CVC: any 3 digits
 
-exp: any future date
+Exp: any future date
 
 [Back to main navigation](#contents)
 
@@ -223,7 +223,7 @@ I have also broken the project into sprints with soft deadlines to guide me thro
 | 17 | Styling | 03/04/24 - 10/04/24 |
 | 18 | Testing | 10/04/24 - 20/04/24 |
 
-On reflection, the intentions of these sprints were good, and it did help with identifying the scale of the project and the order in which to target the different aspects, but there were a few major bugs that took a long time to resolve so this made it hard to stay on track. 
+On reflection, the intentions of these sprints were good, and they did help with identifying the scale of the project and the order in which to target the different aspects, but there were a few major bugs that took a long time to resolve so this made it hard to stay on track. 
 
 [Back to main navigation](#contents)
 
@@ -343,49 +343,49 @@ You can see from the MoSCoW features table what features I planned to include in
 
 
 Authentication:
-- [Sign in](#sign-in) - [(img)](docs\readme_images\full-page\sign-in.png)
-- [Sign up](#sign-up) - [(img)](docs\readme_images\full-page\sign-up.png)
-- [Sign out confirmation](#sign-out-confirmation)- [(img)](docs\readme_images\full-page\sign-out.png)
+- [Sign in](#sign-in) - [(image)](docs/readme_images/full-page/sign-in.png)
+- [Sign up](#sign-up) - [( image )](docs/readme_images/full-page/sign-up.png)
+- [Sign-out confirmation](#sign-out-confirmation)- [( image )](docs/readme_images/full-page/sign-out.png)
 
 All Visitor Features:
 - [Navbar](#navbar)
-- [Home](#home)- [(img)](docs/readme_images/full-page/welcome.png)
-- [About](#about)- [(img)](docs/readme_images/full-page/about.png)
-- [Trails](#trails)- [(img)](docs/readme_images/full-page/trails.png)
-- [Activities](#activities-filtered-and-unfiltered)- [(img filtered)](docs/readme_images/full-page/activities.png) [(img unfiltered)](docs/readme_images/full-page/activities-unfiltered.png)
-- [Activity Details](#activity-details)- [(img)](docs/readme_images/full-page/activity-details.png)
-- [Basket](#basket)- [(img)](docs/readme_images/full-page/basket.png)
-- [Checkout](#checkout)- [(img)](docs/readme_images/full-page/checkout.png)
-- [Checkout Success](#checkout-success)- [(img)](docs/readme_images/full-page/checkout-success.png)
+- [Home](#home)- [( image )](docs/readme_images/full-page/welcome.png)
+- [About](#about)- [( image )](docs/readme_images/full-page/about.png)
+- [Trails](#trails)- [( image )](docs/readme_images/full-page/trails.png)
+- [Activities](#activities-filtered-and-unfiltered)- [(image filtered)](docs/readme_images/full-page/activities.png) [(image unfiltered)](docs/readme_images/full-page/activities-unfiltered.png)
+- [Activity Details](#activity-details)- [( image )](docs/readme_images/full-page/activity-details.png)
+- [Basket](#basket)- [( image )](docs/readme_images/full-page/basket.png)
+- [Checkout](#checkout)- [( image )](docs/readme_images/full-page/checkout.png)
+- [Checkout Success](#checkout-success)- [( image )](docs/readme_images/full-page/checkout-success.png)
 - [Footer](#footer)
-- [404 & 500](#404--500)- [(img)](docs\readme_images\full-page\404.png)
+- [404 & 500](#404--500)- [( image )](docs/readme_images/full-page/404.png)
 
 Authenticated Visitors:
-- [Profile](#profile)- [(img)](docs/readme_images/full-page/profile-user.png)
-- [Manage Details](#manage-details)- [(img)](docs/readme_images/full-page/user-details.png)
-- [Reset Password](#change-password)- [(img)](docs/readme_images/full-page/reset-pasword.png)
-- [User Orders](#user-orders)- [(img)](docs/readme_images/full-page/order-history.png)
-- [Add Review](#add-review)- [(img)](docs/readme_images/full-page/add-review.png)
-- [User Reviews](#user-reviews)- [(img)](docs/readme_images/full-page/reviews.png)
+- [Profile](#profile)- [( image )](docs/readme_images/full-page/profile-user.png)
+- [Manage Details](#manage-details)- [( image )](docs/readme_images/full-page/user-details.png)
+- [Reset Password](#change-password)- [( image )](docs/readme_images/full-page/reset-pasword.png)
+- [User Orders](#user-orders)- [( image )](docs/readme_images/full-page/order-history.png)
+- [Add Review](#add-review)- [( image )](docs/readme_images/full-page/add-review.png)
+- [User Reviews](#user-reviews)- [( image )](docs/readme_images/full-page/reviews.png)
 
 Admin:
-- [Activity Details](#activity-details-1)- [(img)](docs/readme_images/full-page/activity-details-admin.png)
-- [Edit Activity](#edit-activity)- [(img)](docs/readme_images/full-page/edit-activity-admin.png)
-- [Delete Activity Confirmation](#delete-activity-confirmation)- [(img)](docs/readme_images/full-page/delete-activity.png)
-- [Add Timeslot](#add-timeslot)- [(img)](docs/readme_images/full-page/add-timeslot.png)
-- [Edit Timeslot](#edit-timeslot)- [(img)](docs/readme_images/full-page/edit-timeslot.png)
-- [Delete Timeslot Confirmation](#delete-timeslot-confirmation)- [(img)](docs/readme_images/full-page/delete-timeslot.png)
-- [Profile](#profile-1)- [(img)](docs/readme_images/full-page/profile-admin.png)
-- [Manage Activities](#manage-activities)- [(img)](docs/readme_images/full-page/manage-activities.png)
-- [Add Activity](#add-activity)- [(img)](docs/readme_images/full-page/add-activity.png)
-- [Bookings](#bookings)- [(img)](docs/readme_images/full-page/bookings.png)
+- [Activity Details](#activity-details-1)- [( image )](docs/readme_images/full-page/activity-details-admin.png)
+- [Edit Activity](#edit-activity)- [( image )](docs/readme_images/full-page/edit-activity-admin.png)
+- [Delete Activity Confirmation](#delete-activity-confirmation)- [( image )](docs/readme_images/full-page/delete-activity.png)
+- [Add Timeslot](#add-timeslot)- [( image )](docs/readme_images/full-page/add-timeslot.png)
+- [Edit Timeslot](#edit-timeslot)- [( image )](docs/readme_images/full-page/edit-timeslot.png)
+- [Delete Timeslot Confirmation](#delete-timeslot-confirmation)- [( image )](docs/readme_images/full-page/delete-timeslot.png)
+- [Profile](#profile-1)- [( image )](docs/readme_images/full-page/profile-admin.png)
+- [Manage Activities](#manage-activities)- [( image )](docs/readme_images/full-page/manage-activities.png)
+- [Add Activity](#add-activity)- [( image )](docs/readme_images/full-page/add-activity.png)
+- [Bookings](#bookings)- [( image )](docs/readme_images/full-page/bookings.png)
 
 ### **Authentication Features:** _Mixture of authenticated, non-authenticated users and admin_
 All authentication features are implemented in dedicated pages from Djnago's AllAuth app.
 #### Sign in
-The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient [link](docs\readme_images\allauth\sign-up-link.png) to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
+The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient [link](docs/readme_images/allauth/sign-up-link.png) to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
 
-![invalid](docs\readme_images\allauth\allauth-invalid.png)
+![invalid](docs/readme_images/allauth/allauth-invalid.png)
 
 Additionally, there is a link to reset the user's password. This directs the user to a page specific to this functionality.
 
@@ -394,20 +394,20 @@ There is also an option for the user to have their details remembered to save th
 #### Sign up
 To sign up the user needs to set a username, email (twice), and password (twice). The validation criteria are outlined and if the form is not valid when it is submitted, the error is highlighted. 
 
-![sign-up](docs\readme_images\allauth\sign-up.png)
+![sign-up](docs/readme_images/allauth/sign-up.png)
 
 There is a link to sign in for users who have already created their accounts.
  
 #### Sign out confirmation
 
-The user is given the option to sign out in the profile page as shown below:
+The user is given the option to sign out on the profile page as shown below:
 
 <details>
 <summary>Sign out buttons</summary>
 
-![admin](docs\readme_images\allauth\sign-out-admin.png)
+![admin](docs/readme_images/allauth/sign-out-admin.png)
 
-![user](docs\readme_images\allauth\sign-out-user.png)
+![user](docs/readme_images/allauth/sign-out-user.png)
 
 </details>
 
@@ -415,22 +415,22 @@ The user is given the option to sign out in the profile page as shown below:
 
 In most cases, the user clicks a sign-out button which directs them to this sign-out confirmation page. The user can select 'sign out' to confirm their decision. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 ### **Visitor Features:** _Authenticated and non-authenticated_
 
 #### Navbar
 Admin:
-![navbar](docs\readme_images\navbar/navbar.png)
+![navbar](docs/readme_images/navbar/navbar.png)
 
 Anyone else:
-![navbar-user](docs\readme_images\navbar/navbar-user.png)
+![navbar-user](docs/readme_images/navbar/navbar-user.png)
 
 The navbar is split into three sections; logo, top section and the bottom section. The navbar has been designed to be functional and to also allow space for a large logo as I felt the park would benefit from having a strong brand to inject extra personality. This should help it to appeal to its target audience. 
 
 ##### The logo
 
-![logo](docs\readme_images\planning\logo-color.png)
+![logo](docs/readme_images/planning/logo-color.png)
 
 - When the user clicks on the logo, they are redirected to the home page. 
 
@@ -438,7 +438,7 @@ The navbar is split into three sections; logo, top section and the bottom sectio
 
 ##### Top section
 
-![navbar top section](docs\readme_images\navbar\top-section.png)
+![navbar top section](docs/readme_images/navbar/top-section.png)
 
  - Search Bar
  This allows the user to search for any activity. It is a text search so if there is a match of any part of the activity name, it will display the activity. If no search query is entered when the form is submitted, a toast displays an error message explaining that no query was entered so all activities are displayed. 
@@ -454,7 +454,7 @@ The navbar is split into three sections; logo, top section and the bottom sectio
 
 ##### Bottom Section
 
-![bottom section](docs\readme_images\navbar\bottom-section.png)
+![bottom section](docs/readme_images/navbar/bottom-section.png)
 
  - 'Book' Dropdown
  This dropdown allows the user to see activities within certain categories. The four categories of 'Day Passes', 'Courses', 'Private Coaching', and 'Events' are displayed as options. 
@@ -465,10 +465,10 @@ The navbar is split into three sections; logo, top section and the bottom sectio
  - 'Trails'
  The trails link directs the user to the 'trails' page which is an important feature for the user to decide whether they want to make a booking and visit the park.
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Home
-The home page is designed mostly to help new users get their barings and decide if they want to continue and book something on the site. It also guides them in the right direction to do so. 
+The home page is designed mostly to help new users get their bearings and decide if they want to continue and book something on the site. It also guides them in the right direction to do so. 
 
 ##### 'Welcome' Section
 - This section greets the user and determines the user's initial impression of the park. It has a distinctive hero image which instantly gives the user an idea of the sort of landscape and trails on offer. 
@@ -477,12 +477,12 @@ The home page is designed mostly to help new users get their barings and decide 
 
  - The activity categories are summarised here as well as in the nav to help the user with site navigation. This is specifically designed to aid new visitors who aren't yet sure what they are looking for or what the site offers. This gives the user a clear idea of the categories straight away, thanks to the addition of images. Each category tile offers the user the option to navigate to the activities of that category.
 
-![categories](docs\readme_images\welcome-page\catgeories-home.png)
+![categories](docs/readme_images/welcome-page/catgeories-home.png)
 
 ##### 'First time here' Section. 
  - Similar to the previous section, I included this for first-time visitors to help them decide if they want to visit the park. Each sub-section has a link to a page with useful information for new visitors.
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### About
 This provides users with any information they may need to effectively plan their visit to the park. 
@@ -493,7 +493,7 @@ This provides users with any information they may need to effectively plan their
 <details>
 <summary>Google maps integration</summary>
 
-![map](docs\readme_images\about-page\google-maps.png)
+![map](docs/readme_images/about-page/google-maps.png)
 
 </details>
 
@@ -506,7 +506,7 @@ This provides users with any information they may need to effectively plan their
 #### Trails
 This page contains a site map to help the user identify the range of trail difficulty. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Activities (filtered and unfiltered)
 The activities page displays the activities being offered by the park and either filters or sorts depending on the users' request.
@@ -514,7 +514,7 @@ The activities page displays the activities being offered by the park and either
 ##### Category Summary ( or all activities summary )
 - This describes the category that the activities are currently filtered by. This helps the user understand if they want to be looking in this section or another.
 
-![summary](docs\readme_images\activities\category-summary.png)
+![summary](docs/readme_images/activities/category-summary.png)
 
 ##### Sort & Filter
  - Sort:
@@ -528,7 +528,7 @@ The activities page displays the activities being offered by the park and either
 
 ##### Activity List
 
-![activities](docs\readme_images\activities\activities.png)
+![activities](docs/readme_images/activities/activities.png)
 
  - All activities that meet the search, sort and filter criteria are displayed in the activities list section. Each activity is displayed on a card tile with the following details specific to the activity:
     
@@ -554,19 +554,19 @@ The activities page displays the activities being offered by the park and either
 
  - If no activities are displayed, an empty list message will appear, indicating to the user that there is nothing in the category. This helps the user to understand the situation and prevents them from thinking there is an issue with the rendering of the activities.
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Activity Details
 This page is specific to the activity that the user has decided to get more information about. It gives more in-depth information to help the user decide if they want to book. It also displays the timeslots that are available to book.
 
-![summary](docs\readme_images\activities\activity-summary.png)
+![summary](docs/readme_images/activities/activity-summary.png)
 
 ##### Go back button 
 - Directs the user to the previous URL, matching the sort and filter settings.
 ##### Activity summary and information
 - These sections provide all the information the user would need to know about the activity to know if it is what they want to book. There is also a link to the requirements page.
 
-![details](docs\readme_images\activities\activity-details.png)
+![details](docs/readme_images/activities/activity-details.png)
 
 ##### Booking form
 - This form displays all timeslots available to book as long as they are in the _future_. The number of remaining spaces is displayed on the timeslot option as well.
@@ -576,7 +576,7 @@ This page is specific to the activity that the user has decided to get more info
 
     In Addition, there is a check when the order is being processed. This check makes sure that in the time it took for the user to add the item to their basket and then checkout, that the spaces haven't been booked by somebody else. 
 
-![booking form](docs\readme_images\activities\booking-form.png)
+![booking form](docs/readme_images/activities/booking-form.png)
 
 ##### Customer Reviews 
 - Average rating
@@ -588,14 +588,14 @@ This page is specific to the activity that the user has decided to get more info
 
     I would have liked to add pagination to the reviews section but ran out of time to implement this feature as well. Pagination would allow for larger numbers of reviews to be handled.
 
-    ![reviews](docs\readme_images\activities\reviews.png)
+    ![reviews](docs/readme_images/activities/reviews.png)
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Basket
 The shopping basket displays the timeslots of the activities the user has selected to purchase. 
 
-![basket item](docs\readme_images\checkout\basket-item.png)
+![basket item](docs/readme_images/checkout/basket-item.png)
 
 - If there are no items in the basket, a message is displayed indicating that this is the case.
 - Items that are in the basket are displayed in a row that contains a summary of the timeslot including the activity, start time, price of the individual item, quantity, and the total price of all spaces in that timeslot. 
@@ -604,19 +604,19 @@ The shopping basket displays the timeslots of the activities the user has select
 
 The user then has the option to keep browsing or to proceed to the checkout page. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Checkout
 The checkout page displays an order summary and also a form for the user to add their billing information. 
 
-- Order summary 
+- Order Summary 
 
     The order summary lists all items that are going to be included in the order in progress. This just reassures the user that the items they intended to include in their order are in fact in the order.  
 
 <details>
 <summary>Order summary screenshot</summary>
 
-![order](docs\readme_images\checkout\order-summary.png)
+![order](docs/readme_images/checkout/order-summary.png)
 
 </details>
 
@@ -635,22 +635,22 @@ The checkout page displays an order summary and also a form for the user to add 
 <details>
 <summary>Billing details screenshot</summary>
 
-![billing details](docs\readme_images\checkout\order-details.png)
+![billing details](docs/readme_images/checkout/order-details.png)
 
 </details>
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Checkout Success
 This page outlines the order details and confirms that the order was successful. A toast show displaying the order number and an email is sent to the email address listed with the order. A 'keep shopping' button makes it easy for the user to navigate back to the activities page and find more activities to book! 
 
-![checkout success](docs\readme_images\checkout\success.png)
+![checkout success](docs/readme_images/checkout/success.png)
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Footer
 
-![footer](docs\readme_images\navbar\footer.png)
+![footer](docs/readme_images/navbar/footer.png)
 
 The footer is quite basic with navigation links to find the park on social media. This is important for the user to be able to further their understanding of what the park offers.
 
@@ -658,7 +658,7 @@ The footer is quite basic with navigation links to find the park on social media
 
 The 404 and 500 pages have been updated from the standard Django pages. There is now a link to navigate the user back to the home page. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 ### **Visitor Features:** _Authenticated Visitors only_
 
@@ -666,16 +666,16 @@ The 404 and 500 pages have been updated from the standard Django pages. There is
 The profile is accessed when the user clicks on the account button in the navbar when already logged in. If not logged in, they will be prompted to do so. 
 
 
-![user profile](docs\readme_images\allauth\sign-out-user.png)
+![user profile](docs/readme_images/allauth/sign-out-user.png)
 
-There are two sections to the User's profile; a manage account section which allows the user to update their details, see their order history, and view and delete reviews they have written. The other section displays upcoming bookings, showing the soonest first. This is an affective and quick way to show the user what's coming up to ensure they don't miss any of their bookings. I felt it would be good to include this here as well as in the 'my orders' section as they might pass through here and be reminded of their booking. Also, I felt this would be the main reason for visiting this section anyway so reduces the number of clicks for the user.
+There are two sections to the User's profile; a manage account section which allows the user to update their details, see their order history, and view and delete reviews they have written. The other section displays upcoming bookings, showing the soonest first. This is an effective and quick way to show the user what's coming up to ensure they don't miss any of their bookings. I felt it would be good to include this here as well as in the 'my orders' section as they might pass through here and be reminded of their booking. Also, I felt this would be the main reason for visiting this section anyway so reduces the number of clicks for the user.
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Manage Details
 If the user selects 'My Details' on their profile, they are directed to the 'Manage Details' page which contains a form with their saved (or not yet saved) billing details. If they have already made an order on this account and selected to save their billing details, this will be populated; otherwise, it will be empty.
 
-![manage details](docs\readme_images\profile\manage-details-form.png)
+![manage details](docs/readme_images/profile/manage-details-form.png)
 
 They have the option to update their details and select 'save and update' to confirm. Confirmation of this action is displayed in a toast.
 
@@ -693,13 +693,13 @@ If the user selects 'My Orders' on the profile page, they are directed to the or
 
 (There is also a convenient 'go back' button to help the user navigate back to their profile.)
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 ##### Order History
 
-![user's orders](docs\readme_images\profile\orders.png)
+![user's orders](docs/readme_images/profile/orders.png)
 
-- The order history section lists all of their past orders with the most recent first. This not only helps them find details of activities they enjoyed in case they want to book again, but also allows them to gain confirmation that their order has been processed. 
+- The order history section lists all of their past orders with the most recent first. This not only helps them find details of activities they enjoyed in case they want to book again but also allows them to gain confirmation that their order has been processed. 
 
 - The order number has a link that directs the user to the checkout success page that they would have seen when they completed their order. This again acts as confirmation that their order has been successful.
 
@@ -707,7 +707,7 @@ If the user selects 'My Orders' on the profile page, they are directed to the or
 
 ##### Your bookings
 
-![bookings](docs\readme_images\profile\future-bookings.png)
+![bookings](docs/readme_images/profile/future-bookings.png)
 
 - Similar to the order history section, the bookings section shows the user what timeslots are coming up. It splits their orders into timeslots for clarity, where their order history just lists the orders which could contain many timeslots in any order. This ensures they don't miss any of their bookings.
 
@@ -715,7 +715,7 @@ If the user selects 'My Orders' on the profile page, they are directed to the or
 
 #### Add Review
 
-![add review](docs\readme_images\profile\add-review.png)
+![add review](docs/readme_images/profile/add-review.png)
 
 The user can access this page by selecting 'review' on the order history table. They will be directed to this page which contains a form with the activity field pre-set to the activity they chose to review, and then that field is hidden so they cannot change it. 
 
@@ -725,22 +725,22 @@ The form for the review allows the user to select a rating out of 5 and leave a 
 
 There is then a convenient 'back to order history' button to help them get back to the previous page. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### User Reviews
 
-![User's reviews](docs\readme_images\profile\reviews.png)
+![User's reviews](docs/readme_images/profile/reviews.png)
 
 If the user selects 'My Reviews' in the 'Manage Account' section of their profile, they are directed to the 'Reviews' page. This page lists their reviews. It gives details of the activity, rating, content text, and the date it was created. They are also given the option to delete the review. This directs the user to a delete confirmation page. 
 
-The 'go back' button conveniently poistioned at the top of the page, directs the user back to their profile. 
+The 'go back' button conveniently positioned at the top of the page, directs the user back to their profile. 
 
 #### Checkout
-The checkout page looks identical as for a non-authenticated user with the exception of the details form. If the user is logged in and has their details saved in their profile, this form will be prefilled with those details. They will also be given the option to update them and save them for next time on check-out. 
+The checkout page looks identical to the page for a non-authenticated user except for the details form. If the user is logged in and has their details saved in their profile, this form will be prefilled with those details. They will also be given the option to update them and save them for the next time at check-out. 
 
-![checkout](docs\readme_images\profile\user-checkout.png)
+![checkout](docs/readme_images/profile/user-checkout.png)
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 ### **Admin Features:** _Admin only_
 
@@ -748,121 +748,121 @@ The checkout page looks identical as for a non-authenticated user with the excep
 
 On the activity details page the admin has a different view to any other user. They will see the option to edit and delete the activity. 
 
-They also see the timeslots section very differently as I decided to stop the admin from being able to book timeslots. This restriction starts on the activity details page where they are unable to add timeslots to their basket, then continued in that they can't access the basket or checkout pages.
+They also see the timeslots section very differently as I decided to stop the admin from being able to book timeslots. This restriction starts on the activity details page where they are unable to add timeslots to their basket, and then continues in that they can't access the basket or checkout pages.
 
 ##### Edit and Delete Activity Buttons
 
-![activity details](docs\readme_images\admin\activity-buttons.png)
+![activity details](docs/readme_images/admin/activity-buttons.png)
 
 - These buttons are located at the top of the information section as I felt this was an intuitive place for them to be. Each navigates the user to the edit or delete timeslot page, depending on their selection. 
 
 ##### Manage Timeslots Section
 
-![timeslot management](docs\readme_images\admin\timeslot-management.png)
+![timeslot management](docs/readme_images/admin/timeslot-management.png)
 
-- In the same place that the timeslot form would have been for any other user, the manage timeslot section displays the future timeslots with an option to add another, delete a timeslot of edit a timeslot. The buttons have been located for convemience and intutive and efficient UX. Each button directs the admin to the corresponding page. 
+- In the same place that the timeslot form would have been for any other user, the manage timeslot section displays the future timeslots with an option to add another, delete a timeslot or edit a timeslot. The buttons have been located for convenience and intuitive and efficient UX. Each button directs the admin to the corresponding page. 
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Edit Activity
 
-![edit activity](docs\readme_images\admin\edit-activity.png)
+![edit activity](docs/readme_images/admin/edit-activity.png)
 
 This page displays a form allowing the user to fill in all of the details for the current activity and allows them to edit any field. Placeholders are used where formatting is important and could otherwise cause problems. The current image is displayed and opens as a whole page view on click. 
 
-At the bottom of the form they can update their changes, go back or delete the activity. They are directed to the relevant page as a result. If they confirm the activiy changes, they are shown a toast with a success message confirming. 
+At the bottom of the form, they can update their changes, go back or delete the activity. They are directed to the relevant page as a result. If they confirm the activity changes, they are shown a toast with a success message confirming. 
 
 #### Delete Activity Confirmation
 
-![delete confirmation](docs\readme_images\admin\delete-activity.png)
+![delete confirmation](docs/readme_images/admin/delete-activity.png)
 
-Either by selecting to delete the activity from 'Activity Details' or 'Edit Activity', the user is directed to this delete confirmation page. This page gives the user the option to confirm deletion and explains the consequences, or to go back and not delete. 
+Either by selecting to delete the activity from 'Activity Details' or 'Edit Activity', the user is directed to this delete confirmation page. This page gives the user the option to confirm deletion and explain the consequences, or to go back and not delete. 
 
-If they chose to delete, this action is confirmed with a toast displaying a success message explaining the action.
+If they choose to delete, this action is confirmed with a toast displaying a success message explaining the action.
 
 #### Add Timeslot
 
-![add timeslot](docs\readme_images\admin\add-timeslot.png)
+![add timeslot](docs/readme_images/admin/add-timeslot.png)
 
 If the admin selects the 'Add Timeslot' button in the 'Manage Timeslots' section, they are directed to this page. 
 
-The add timeslot page has a back button which directs the admin back to the activity details page for convenience. 
+The add timeslot page has a back button that directs the admin back to the activity details page for convenience. 
 
 The main feature of this page is the add timeslot form, which contains all the fields required to create a new timeslot. The activity field and available capacity fields are prefilled with the activity from the page they navigated here from. I decided that the admin should be able to change the activity from here as it may make it easier for them to achieve their timeslot and activity management goals. 
 
-Thye can confirm their details and will be redirected to the activity detials page with a toast confirming that the addition was successful.
+They can confirm their details and will be redirected to the activity details page with a toast confirming that the addition was successful.
 
 #### Edit Timeslot
 
-![edit timeslot](docs\readme_images\admin\edit-timeslot.png)
+![edit timeslot](docs/readme_images/admin/edit-timeslot.png)
 
 This page is similar to the add timeslot page but instead updates the current timeslot with the new details. They are also given the option to delete the timeslot at this point.  
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 #### Delete Timeslot Confirmation
 
-![delete timeslot](docs\readme_images\admin\delete-timeslot.png)
+![delete timeslot](docs/readme_images/admin/delete-timeslot.png)
 
-If they chose to delete a timeslot they are directed to the 'delete confirmation' page which displays details of the timeslot being deleted and also explains the consequences. Successful deletion is confirmed with a toast. 
+If they choose to delete a timeslot they are directed to the 'delete confirmation' page which displays details of the timeslot being deleted and also explains the consequences. Successful deletion is confirmed with a toast. 
 
-I initially wanted to have the confirmation of delete functionality in modals but I found again that I would have needed to use AJAX to achieve this and I didn't have time to set this up atthe point of implimentation. 
+I initially wanted to have the confirmation of delete functionality in modals but I found again that I would have needed to use AJAX to achieve this and I didn't have time to set this up at the point of implementation. 
 
 #### Profile
 
-![admin](docs\readme_images\allauth\sign-out-admin.png)
+![admin](docs/readme_images/allauth/sign-out-admin.png)
 
-For the admin, the profile page is more of a site management page where they are able to manage activities and see what bookings have been made to allow them to manage thier team and make suitable preperations for activities. 
+For the admin, the profile page is more of a site management page where they are able to manage activities and see what bookings have been made to allow them to manage their team and make suitable preparations for activities. 
 
 #### Manage Activities
 
-![manage activities](docs\readme_images\admin\admin-activities.png)
+![manage activities](docs/readme_images/admin/admin-activities.png)
 
 This page displays all activities that currently exist in the database. 
 
-The activities are displayed in a table and show the main information that the admin may need to see at a glance. But there is also a link to the activity details page which allows them to find out more quickly. The activity details page offers Update and Delete functionality for the admin on that activity as well to save them returning to this page.
+The activities are displayed in a table and show the main information that the admin may need to see at a glance. But there is also a link to the activity details page which allows them to find out more quickly. The activity details page offers Update and Delete functionality for the admin on that activity as well to save them from returning to this page.
 
 They are also able to edit the activity by clicking on the 'edit' button and being directed to the 'edit activity' page. 
 
-Futhermore, they can add an activity from this page, by clicking 'add activity'. 
+Furthermore, they can add an activity from this page, by clicking 'add activity'. 
 
 #### Add Activity
 
-![add activities](docs\readme_images\admin\add-activity.png)
+![add activities](docs/readme_images/admin/add-activity.png)
 
 This page is very similar to the edit activity view, but the form is not pre-filled with any activity information. 
 
 #### Bookings
 
-![bookings filter](docs\readme_images\admin\orders-sort.png)
-The bookings page displays all bookings and has affective sorting, searching and filtering functionality. The admin can select a date to see if there are any bookings on that date; this can also be used to see past bookings. They can also filter by activity.
+![bookings filter](docs/readme_images/admin/orders-sort.png)
+The bookings page displays all bookings and has effective sorting, searching and filtering functionality. The admin can select a date to see if there are any bookings on that date; this can also be used to see past bookings. They can also filter by activity.
 
-![bookings list](docs\readme_images\admin\orders-list.png)
+![bookings list](docs/readme_images/admin/orders-list.png)
 
-[back to features naviagtion](#features)
+[back to features navigation](#features)
 
 [Back to main navigation](#contents)
 
 ## Future Features 
 - Pagination - Reviews, Activities, Order History, Manage Activities
 
-    With more time I would like to add pagination to the above areas as I feel with increased use of the site, the number of items being rendered would soon becom un-navigable.
+    With more time I would like to add pagination to the above areas as I feel with increased use of the site, the number of items being rendered would soon become un-navigable.
 
 - Timeslots as a calander
 
-    Initially I intended to display the timeslots as a calander as I thought this was more intuitive and it's what I would hope and expect to see in a booking system. However, after looking into different methods of doing this I concluded that time was limited and this wasn't an essential feature. As a result, it is something I have left myself to complete after the deadline.
+    Initially, I intended to display the timeslots as a calendar as I thought this was more intuitive and it's what I would hope and expect to see in a booking system. However, after looking into different methods of doing this I concluded that time was limited and this wasn't an essential feature. As a result, it is something I have left myself to complete after the deadline.
 
 - Ajax in the quantity field
 
-    To make it impossible for the user to try to add to many items to their basket, I would have liked to set the max-value of the quantity input field in the activity details page to the available spaces in the timeslot. This required the use of AJAX which I started looking to impliment but also didn't have enough time to make this a priority. This is something I hope to impliment in the future.
+    To make it impossible for the user to try to add too many items to their basket, I would have liked to set the max-value of the quantity input field in the activity details page to the available spaces in the timeslot. This required the use of AJAX which I started looking to implement but also didn't have enough time to make this a priority. This is something I hope to implement in the future.
 
 - The loading wheel should be a bike wheel
 
-    A non-essential feature that feel would really add to the personality of the site, is the addition of a bicycle wheel in place of the loading wheel on the checkout page. 
+    A non-essential feature that I feel would add to the personality of the site, is the addition of a bicycle wheel in place of the loading wheel on the checkout page. 
 
 - Sort, filter, and search functionality for the 'manage activities' page results. 
 
-    I have implimented sort, filter and search functionlaity in various parts of the site but didn't have time to impliment this in the 'Manage activities' page for the admin. Becuase my database was quite empty during development, I overlooked the fact that this section would very quickly increase in size. I would like to add pagination to this page, but to improve the experience for the admin in finding specific activities, I would like to add sort, filter and search features. 
+    I have implemented the sort, filter and search functionality in various parts of the site but didn't have time to implement this in the 'Manage activities' page for the admin. Because my database was quite empty during development, I overlooked the fact that this section would very quickly increase in size. I would like to add pagination to this page, but to improve the experience for the admin in finding specific activities, I would like to add sort, filter and search features. 
 
 [Back to main navigation](#contents)
 
@@ -875,35 +875,35 @@ The bookings page displays all bookings and has affective sorting, searching and
 - Python
 
 ### Frameworks
-- [Django](https://www.djangoproject.com/) : used as the backend framework.
-- [Bootstrap v5.3](https://getbootstrap.com/) : used as the frontend framework
+- [Django](https://www.djangoproject.com/): is used as the backend framework.
+- [Bootstrap v5.3](https://getbootstrap.com/): is used as the frontend framework
 
 ### Django tools and apps
 
 - Django v5.0.3
 - [dj-database-url v0.5.0](https://pypi.org/project/dj-database-url/) for setting the DATABASE_URL.
 - [django-allauth v0.61.1](https://docs.allauth.org/en/latest/) for user authentication and account management.
-- [django-countries v7.6](https://pypi.org/project/django-countries/) for creating a country field with country options in checkout model and forms.
+- [django-countries v7.6](https://pypi.org/project/django-countries/) for creating a country field with country options in the checkout model and forms.
 - [django-crispy-forms v2.1](https://django-crispy-forms.readthedocs.io/en/latest/) for rendering forms neatly.
-- [crispy-bootstrap5 v2024.2](https://pypi.org/project/crispy-bootstrap5/) required for use of cripsy forms with boostrap 5
+- [crispy-bootstrap5 v2024.2](https://pypi.org/project/crispy-bootstrap5/) required for use of crispy forms with bootstrap 5.
 - [django-environ v0.11.2](https://django-environ.readthedocs.io/en/latest/) for configuring the application with environment variables
-- [Gunicorn v21.2.0](https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/gunicorn/) a pure-Python WSGI server for UNIX.
+- [Gunicorn v21.2.0](https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/gunicorn/) is a pure-Python WSGI server for UNIX.
 
 ### Tools and technology
 
 - [SQLite3](https://www.sqlite.org/index.html) for local database storage before deployment.
 - [ElephantSQL](https://www.elephantsql.com/) for structured data storage.
-- [Stripe](https://stripe.com/gb) : used for secure payments.
-- [Heroku](https://dashboard.heroku.com/) : Used for deploymnet of the full-stack site.
-- [Cloudinary](https://cloudinary.com/) : used for media file storage.
+- [Stripe](https://stripe.com/gb): used for secure payments.
+- [Heroku](https://dashboard.heroku.com/): Used for deployment of the full-stack site.
+- [Cloudinary](https://cloudinary.com/): used for media file storage.
 - [Git](https://git-scm.com/): used for version control.
-- [GitHub](https://github.com/) : used for storing code for the project.
-- [GitHub Projects](https://github.com/secarrel?tab=projects) : used for agile methodology, time management and project planning.
-- [VS Code](https://code.visualstudio.com/) : is the IDE I used for development.
-- [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/web-components/overview) : used to display an interactive map showing the location of the park.
-- [Figma](https://www.figma.com/) : used to create wireframes.
-- [Coolors](https://coolors.co/ceba72-1b1b1b-868686-303030-cacaca) : used to create the colour pallet.
-- [Logo.com](https://logo.com/) : used to create the logo.
+- [GitHub](https://github.com/): used for storing code for the project.
+- [GitHub Projects](https://github.com/secarrel?tab=projects): used for agile methodology, time management and project planning.
+- [VS Code](https://code.visualstudio.com/): this is the IDE I used for development.
+- [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/web-components/overview): used to display an interactive map showing the location of the park.
+- [Figma](https://www.figma.com/): used to create wireframes.
+- [Coolors](https://coolors.co/ceba72-1b1b1b-868686-303030-cacaca): used to create the colour pallet.
+- [Logo.com](https://logo.com/): used to create the logo.
 - [Lucidchart](https://www.lucidchart.com/pages/) for ERD (entity relationship diagram) creation.
 - [Krita](https://krita.org/en/) for creating the trail map
 
@@ -948,7 +948,7 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 
 4. Add your database_url in the 'DATABASES' section, being careful not to commit any secret keys.
 
-    ![add database url](docs/readme_images/deployment/deployment-connect-to-database.png)
+    ![add database URL](docs/readme_images/deployment/deployment-connect-to-database.png)
 
 5. In the terminal run the command:
 
@@ -979,7 +979,7 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 #### Create your app in Heroku
 1. Log in or create an account on Heroku.
 2. Click 'New'.
-    ![heroku 1](docs/readme_images/deployment/deployment-heroku-setup-1.png)
+    ![Heroku 1](docs/readme_images/deployment/deployment-heroku-setup-1.png)
 3. Click 'Create New App'.
     ![new app](docs/readme_images/deployment/deployment-heroku-setup-2.png)
 4. Name the app and set the region to the closest of the options.
@@ -1005,7 +1005,7 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 
     Populate each with a value as appropriate.
     If you set DISABLE_COLLECTSTATIC previously, you can remove this before deploying.
-9. Add the Heroku host name in your 'ALLOWED_HOSTS' in your setings.py file.
+9. Add the Heroku hostname in your 'ALLOWED_HOSTS' in your setings.py file.
 10. Make sure DEBUG=False, your requirements.txt, file storage, and Procfile are set up, then you can push to GitHub.
 11. Go to the deploy tab and select a deployment method.
 12. Search for your GitHub repository and connect it. Your deploy settings should look like this but you can select either automatic or manual deployment.
@@ -1031,27 +1031,27 @@ By clicking on the hyperlinked name of the instance you will be able to see the 
 [Back to main navigation](#contents)
 
 ### Cloudinary
-I found this link to be useful in setting up cloudinary: [medium](https://medium.com/@carolgitongaofficial/how-to-use-cloudinary-with-django-cdc998393204)
+I found this link to be useful in setting up Cloudinary: [medium](https://medium.com/@carolgitongaofficial/how-to-use-cloudinary-with-django-cdc998393204)
 
-1. Create a cloudinary account by visiting [their site](https://cloudinary.com/).
-2. Install cloudinary in your project by using the following command in the terminal:
+1. Create a Cloudinary account by visiting [their site](https://cloudinary.com/).
+2. Install Cloudinary in your project by using the following command in the terminal:
 
         pip install cloudinary
 
-3. Add cloudinary to your list of installed apps in your settings.py file, or ensure it is already.
-4. import cloudinary's Python classes at the top of your setings.py
+3. Add Cloudinary to your list of installed apps in your settings.py file, or ensure it is already.
+4. Import Cloudinary's Python classes at the top of your setings.py
 
-    ![import cloudinary](docs/readme_images/deployment/deployment-import-cloudinary.png)
+    ![Import Cloudinary](docs/readme_images/deployment/deployment-import-cloudinary.png)
 
-5. Set your environment variables as described above. You should be able to find these in your cloudinary dashboard.
+5. Set your environment variables as described above. You should be able to find these in your Cloudinary dashboard.
 
 [Back to main navigation](#contents)
 
 ### Gmail
 
-1. Setup a Gmail account if you haven't already. This will be used to manage your emails from the application so you may not want this to be your main, personal email. 
+1. Set up a Gmail account if you haven't already. This will be used to manage your emails from the application so you may not want this to be your main, personal email. 
 2. Navigate to 'settings' > 'see all settings' > accounts and imports > 'Other Google Account settings' > 'security'
-3. Activate 2-step verification. Follow the sign in and verification steps.
+3. Activate 2-step verification. Follow the sign-in and verification steps.
 4. Access App Passwords > Other
 5. Enter a name for the password and click 'create'.
 6. Copy the password that is created and add it to your environment variables in your Heroku app and to your env.py. You should include the other Config Vars mentioned above. 
@@ -1068,9 +1068,9 @@ Stripe is used for secure payment processing. to set up:
 1. Create an account/log on at [Stripe.com](https://stripe.com/gb)
 2. Go to 'developers' once signed in.
 3. Navigate to the 'API keys' tab 
-4. Add your stripe public key and private key to your env.py and heroku congig vars. 
+4. Add your stripe public key and private key to your env.py and Heroku config vars. 
 5. Add a webhook endpoint to ensure payments are successful even if the user leaves the payment process midway through. Go to 'Developers' > 'Webhooks' > 'Add Endpoint'.
-6. You can add your heroku url as the endpoint as so:
+6. You can add your Heroku URL as the endpoint as so:
 
         herokuappURL/checkout/wh/
 
@@ -1089,7 +1089,7 @@ To clone this project, navigate to my [GitHub repository](https://github.com/sec
 4. Open your Git Bash terminal and select the directory you want to work within.
 5. Use the following command to clone the project:
 
-        git clone (copied url)
+        git clone (copied URL)
 
 6. Set up your virtual environment and activate it with the following:
 
@@ -1101,15 +1101,15 @@ To clone this project, navigate to my [GitHub repository](https://github.com/sec
 
         pip install -r requirements.txt
 
-8. Set-up your env.py file with the secret keys listed in the deployment section, and ensure it is listed in your .gitignore file.
+8. Set up your env.py file with the secret keys listed in the deployment section, and ensure it is listed in your .gitignore file.
 
 [Back to main navigation](#contents)
 
 ## Credit
 ### Acknowledgement of support
-My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), was very helpful in guiding me through this project and helping set targets and priorities which I used to map my way through the project.
+My mentor, [Iuliia Konovalova](https://github.com/IuliiaKonovalova), was very helpful in guiding me through this project and helping me set targets and priorities which I used to map my way through the project.
 
-Weekly catch-ups with my Code Institute Cohort were useful to ensure I was staying on track for the deadline and was also a great source of support when encountering and tricky bugs. [Amy Richardson](https://github.com/amylour) was particularly helpful during and outside of these meetings.
+Weekly catch-ups with my Code Institute Cohort were useful to ensure I was staying on track for the deadline and were also a great source of support when encountering tricky bugs. [Amy Richardson](https://github.com/amylour) was particularly helpful during and outside of these meetings.
 
 Credit and thanks also to my mountain bike friends who let me take photos of their riding on one of our mountain bike trips. 
 
@@ -1119,7 +1119,7 @@ My family and friends have all been really helpful and supportive throughout the
 
 ### Project Inspiration 
 
-The following projects were very helpful for inspiring different aspects of my project:
+The following projects were very helpful in inspiring different aspects of my project:
 - [FreeFido by Amy Richardson](https://github.com/amylour/FreeFido_v2) - user stories, database schema, README.md, TESTING.md
 - [Everneed by Amy Richardson](https://github.com/amylour/everneed) - database schema, README.md, TESTING.md
 - [Draw with light by Maria](https://github.com/mariamar95/ms4) - User experience, database schema
@@ -1133,40 +1133,39 @@ The following projects were very helpful for inspiring different aspects of my p
 ### Useful sources
 I had some trouble setting up my local environment to start with, which turned out to be a PATH mistake I had made while setting up previous projects. This link helped me to better understand how virtual environments work and how to properly prepare my workspace.  [Saving Env variables in VSCode.](https://www.makeuseof.com/django-secret-key-generate-new/)
 
-While checkout my python code met PEP8 guidelines, I found that most f string lines were too long. I found this site useful for explaining how to shorten them. [Stack Overflow Solution.](https://stackoverflow.com/questions/49416042/how-to-write-an-f-string-on-multiple-lines-without-introducing-unintended-whites)
+While checking that my Python code met PEP8 guidelines, I found that most 'f' string lines were too long. I found this site useful for explaining how to shorten them. [Stack Overflow Solution.](https://stackoverflow.com/questions/49416042/how-to-write-an-f-string-on-multiple-lines-without-introducing-unintended-whites)
 
-I had some trouble makiing sure static files were stored correctly so I was recommended to try whitenoise. This ended up causing 500 errors and this [thread on stack overflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) helped me to resolve this. This [DEV](https://dev.to/learndjango/django-static-files-tutorial-1fg7) article was also interesting and helped understand static file collection. 
+I had some trouble making sure static files were stored correctly so I was recommended to try Whitenoise. This ended up causing 500 errors and this [thread on stack overflow](https://stackoverflow.com/questions/52311724/500-error-when-debug-false-with-heroku-and-django) helped me to resolve this. This [DEV](https://dev.to/learndjango/django-static-files-tutorial-1fg7) article was also interesting and helped me understand static file collection. 
 
 [This documentation](https://docs.djangoproject.com/en/dev/ref/forms/api/#dynamic-initial-values) was useful for understanding how to set form values.
 
-I used these [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to help with bootstrap implimentation.
+I used these [Bootstrap docs](https://getbootstrap.com/docs/5.3/getting-started/introduction/) to help with Bootstrap implementation.
 
-I was trying to work out the best way to handle the deletion of different data fields and this helped me decide how to set the [On_delete method in django models.](https://zerotobyte.com/django-on-delete-explained/)
+I was trying to work out the best way to handle the deletion of different data fields and this helped me decide how to set the [On_delete method in Django models.](https://zerotobyte.com/django-on-delete-explained/)
 
-[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript?_gl=1*17vatlu*_up*MQ..*_ga*MTAwMjM1MTIwNC4xNzEzNDM0NDQx*_ga_NRWSTWS78N*MTcxMzQzNDQ0MS4xLjAuMTcxMzQzNDQ1NC4wLjAuMA..) helped me when trying to impliment the interactive map on the 'About' Page.
+[Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript?_gl=1*17vatlu*_up*MQ..*_ga*MTAwMjM1MTIwNC4xNzEzNDM0NDQx*_ga_NRWSTWS78N*MTcxMzQzNDQ0MS4xLjAuMTcxMzQzNDQ1NC4wLjAuMA..) helped me when trying to implement the interactive map on the 'About' Page.
 
 [This article](https://learndjango.com/tutorials/customizing-django-404-and-500-error-pages) was useful for working out how to update the 404 and 500 pages in Django.
 
 [ChatGPT](https://chat.openai.com/) generated some of the large blocks of text on the site (eg. activity data, category summaries, welcome page message). This helped save time on non-technical sections of the project. 
 
-[W3Schools](https://www.w3schools.com/) ash been a useful resource throughout. It has helped me with syntax and styling.
+[W3Schools](https://www.w3schools.com/) has been a useful resource throughout. It has helped me with syntax and styling.
 
-[Django Docs](https://docs.djangoproject.com/en/5.0/) have also been very useful throughout for understanding and implementing different features in django. 
+[Django Docs](https://docs.djangoproject.com/en/5.0/) have also been very useful throughout for understanding and implementing different features in Django. 
 
 [Back to main navigation](#contents)
 
 ### Images
 
-I used images from a variety of sources for the site. Some are used as perminant images in the project, and some are used as activity or category images which are changeable. 
+I used images from a variety of sources for the site. Some are used as permanent images in the project, and some are used as activity or category images which are changeable. 
 
-#### My own photos
-
-- [hero image](docs\image-credit\hero-landing.jpg)
-- [user profile](docs\image-credit\uplift_category.jpg)
-- [admin profile](docs\image-credit\20240330_111756.jpg)
-- [uplift](docs\image-credit\uplift_category.jpg)
-- [uplift 2](docs\image-credit\uplift_category.jpg)
-- [Find us](docs\image-credit\20240330_112441.jpg)
+#### My photos
+- [hero image](docs/image-credit/hero-landing.jpg)
+- [user profile](docs/image-credit/uplift_category.jpg)
+- [admin profile](docs/image-credit/20240330_111756.jpg)
+- [uplift](docs/image-credit/uplift_category.jpg)
+- [uplift 2](docs/image-credit/uplift_category.jpg)
+- [Find us](docs/image-credit/20240330_112441.jpg)
 - Trail map on 'trails' page
 
 #### Unsplash photos
