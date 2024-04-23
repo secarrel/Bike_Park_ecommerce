@@ -7,7 +7,7 @@ You can access the [README.md file here](README.md)
 ## Validation
 
 ### HTML Validation
-I used [W3C HTML Validator](https://validator.w3.org/nu/ ) to validate the HTML code. No major issues were raised during the process, only very small tweeks, making for a smooth process.
+I used [W3C HTML Validator](https://validator.w3.org/nu/ ) to validate the HTML code. No major issues were raised during the process, only very small tweaks, making for a smooth process.
 
 See screenshots of all pages being validated [here](docs/validation/html/html-validation.pdf)
 
@@ -43,18 +43,18 @@ See screenshots of all pages being validated [here](docs/validation/html/html-va
 ### CSS Validation
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) to validate my CSS code.
 
-I checked the website link and recieved the following result:
+I checked the website link and received the following result:
 
 ![css1](docs/validation/css/validation-css.png)
 
- I also entered each CSS file seperately and got the following for each: 
+ I also entered each CSS file separately and got the following for each: 
  
  ![css2](docs/validation/css/validation-css2.png)
 
 Both methods showed no errors in my CSS.
 
 ### JavaScript
-All javascript was tested with [JShint validator](https://jshint.com/).
+All javascript was tested with the [JShint validator](https://jshint.com/).
 
 | Page/file | Notes |
 | ------------------------ | ----- |
@@ -92,7 +92,7 @@ Additional one-off files for PEP8 testing:
 - checkout > [webhook handlers ✅](docs/validation/pep8/checkout/validation-checkout-wh-handler.png)
 
 ## Manual Testing (feature testing)
-I used the feature section from the README as a guide for the structure for this section. So if you would like to reference any features with the README.md you should be able to do so easily.
+I used the feature section from the README as a guide for the structure of this section. So if you would like to reference any features with the README.md you should be able to do so easily.
 
 ### Authentication
 
@@ -291,7 +291,7 @@ I used the feature section from the README as a guide for the structure for this
 
 ## Lighthouse Audit
 
-I got the following scores for the lighthouse testing in chrome devtools. The results for the desktop are displayed in the screenshots, while the values for mobile results are listed to the left.
+I got the following scores for the lighthouse testing in Chrome Devtools. The results for the desktop are displayed in the screenshots, while the values for mobile results are listed to the left.
 
 | Page                     | Performance | Accessibility | Best Practice | SEO | comments | Evidence |
 | ------------------------ | ----- | ----- | ----- | ----- | ----- | ----- |
@@ -334,11 +334,11 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 | Brave | ✅ Pass. No noticable differenced. Images seemed to render slowly again compared to chrome. |
 | Safari | ✅ Pass. Tested on tablet device. All functionlaity working as expected. |
 
-Image rendering seemed to be the only problem with any of the browsers, I think this was also linked to poor internet speeds. I have already identified this as a major area for improvement so will be doinga additional reseaerch into improving image rendering speeds. 
+Image rendering seemed to be the only problem with any of the browsers, I think this was also linked to poor internet speeds. I have already identified this as a major area for improvement so will be doing additional research into improving image rendering speeds. 
 
 ## Responsiveness
 
-I've tested my deployed project on multiple devices to check for responsiveness issues. I tried to use responsiveness testing tools which I have previously used for testing, but these don't seem to work with django. I found that [responsive vewier extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en) worked, so i used that in combination with testing on different devices and chrome dev tools. 
+I've tested my deployed project on multiple devices to check for responsiveness issues. I tried to use responsiveness testing tools which I have previously used for testing, but these don't seem to work with Django. I found that the [responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en) worked, so I used that in combination with testing on different devices and Chrome Devtools. 
 
 All pages were tested, but I only included screenshots of a selection of pages as there are so many pages in this project.
 
@@ -380,8 +380,8 @@ All pages were tested, but I only included screenshots of a selection of pages a
 |                                   | 1280 x 800    | [welcome](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-welcome.png) | ✅ Pass    |
 |                                   | 1280 x 800    | [orders](docs/responsiveness-ftbp/desktop/Laptop-2-1280x800-your-orders.png) | ✅ Pass    |
 
-#### Main things to note from responsiveness of the site:
-I used Bootstrap for the majority of the responsiveness which really sped up the process and ensured consistent breakpoints were used on all elements. I also did some work to make the tables responsive without losing functionlaity or hiding important daa. This was quite challenging as there is a lot of data to display in the tables, but i opted to merge some table columns' data on smaller screens, which was quite affective. 
+#### Main things to note from the responsiveness of the site:
+I used Bootstrap for the majority of the responsiveness which sped up the process and ensured consistent breakpoints were used on all elements. I also did some work to make the tables responsive without losing functionality or hiding important data. This was quite challenging as there was a lot of data to display in the tables, but I opted to merge some table columns' data on smaller screens, which was quite effective. 
 
 ## Bugs
 
@@ -421,15 +421,15 @@ I used Bootstrap for the majority of the responsiveness which really sped up the
 
         Order' object is not iterable
 
-    To resolve this, I removed the loop that iterates over order in the template and set it up to iterate through the items within the order.
+    To resolve this, I removed the loop that iterates over the order in the template and set it up to iterate through the items within the order.
 
-    Webhooks now work! But you can see from the below screenshot that each payment_intent was being created twice. This took a lot of investigation to resolve.
+    Webhooks now work! But you can see from the below screenshot that each payment_intent was created twice. This took a lot of investigation to resolve.
 
     ![webhook payment working](docs/testing_images/bugs/doubleorder/double-payment-intent-created-bug.png)
 
 -  #### Double Payment Intent Created
 
-    This bug was noticable in two locations; in the webhooks as shown above, and in my order list in the admin panel. With print statements I located the problem. In the webhook handler, there is a section that checks if the order exists by checking the combination of every field against each order in the database. If there's a match, the order is updated, otherwise a new order is created. 
+    This bug was noticeable in two locations; in the webhooks as shown above, and in my order list in the admin panel. With print statements, I located the problem. In the webhook handler, there is a section that checks if the order exists by checking the combination of every field against each order in the database. If there's a match, the order is updated, otherwise a new order is created. 
 
     To resolve this, I checked the database for a match with the stripe_pid as this is a unique value, specific to the order. 
 
@@ -441,9 +441,9 @@ I used Bootstrap for the majority of the responsiveness which really sped up the
 
 -  #### Second order value is 0
 
-    This bug mingled with the above, which made it difficult to identify it as a seperate problem. But when I fixed the above bug, I found that the value of the orders was 0. Unfortunately, I didn't take a screenshot before clearing orders from the database. I identified through print statements that the cause was in the checkout view.
+    This bug mingled with the above, which made it difficult to identify it as a separate problem. But when I fixed the above bug, I found that the value of the orders was 0. Unfortunately, I didn't take a screenshot before clearing orders from the database. I identified through print statements that the cause was in the checkout view.
 
-    I had added in extra functionality to ensure to ensure that there were enough spaces available for the order to be completed, and also that the timeslot was in the future. In doing so I forgot to add a line taht saves the data to the order line item, meaining it was empty when completing the order. 
+    I had added extra functionality to ensure to ensure that there were enough spaces available for the order to be completed, and also that the timeslot was in the future. In doing so I forgot to add a line that saves the data to the order line item, meaning it was empty when completing the order. 
 
     This is the code for the bug:
 
@@ -459,19 +459,19 @@ I used Bootstrap for the majority of the responsiveness which really sped up the
 
     before the else statement in the fixed code. 
 
-    After this change, orders were working as expected. The screenshot shown at the end of the double payment bug, shows this working as well. I fixed these bugs at the same time so screenshots are partly shared. 
+    After this change, orders were working as expected. The screenshot shown at the end of the double payment bug shows this working as well. I fixed these bugs at the same time so screenshots are partly shared. 
 
 - #### User details update form not saving
 
-    During testing, I found that the user details form accessed from the profile page, doesn't save and update the details for the user if there is a change. After investigation I found that the method 'POST' wasn't in the request so nothing after the 'if' statement in my view for this functionality was happeing. With the view looking correct, I investigated the template and form for this feature. I found that I had set the action of the form to 'profile' instead of 'user_details', which is the name of the function in the view that handles this functionality. After updating this the user details were behaving as expected. 
+    During testing, I found that the user details form accessed from the profile page doesn't save and update the details for the user if there is a change. After investigation, I found that the method 'POST' wasn't in the request so nothing after the 'if' statement in my view for this functionality was happening. With the view looking correct, I investigated the template and form for this feature. I found that I had set the action of the form to 'profile' instead of 'user_details', which is the name of the function in the view that handles this functionality. After updating this the user details were behaving as expected. 
 
 - #### Order details page doesn't display order details
 
-    So the user can review their order details, I added a link on the 'Order History' page which directs the user to the Checkout Success template. However, I had a seperate function in my view for this and hadn't updated the contexts to include 'OrderLineItems' which is what was being iterated through in the template. After adding OrderLineItems to the contexts, the page displayed the correct information.
+    So the user can review their order details, I added a link on the 'Order History' page which directs the user to the Checkout Success template. However, I had a separate function in my view for this and hadn't updated the contexts to include 'OrderLineItems' which is what was being iterated through in the template. After adding OrderLineItems to the contexts, the page displayed the correct information.
 
 ### Unresolved Bugs
 
 - #### Empty List when filtering activities
 
-    On the bookings page for the admin, I added the functionlaity to filter by activity. This functionality works but if no results are returned, there is no message explaining there are no activities. I added in a javascript function to confirm that there were no activities but couldn't make the message disappear when there were activities. I tried to resolve this for a while but with time pressures, had to remove the functionlaity all together with the intention of implimenting it after submission of the project. 
+    On the bookings page for the admin, I added the functionality to filter by activity. This functionality works but if no results are returned, there is no message explaining there are no activities. I added a javascript function to confirm that there were no activities but couldn't make the message disappear when there were activities. I tried to resolve this for a while but with time pressures, had to remove the functionality. I intend to implement it after the submission of the project. I believe that this also requires the use of AJAX so I'll be looking into this as a priority.
     
