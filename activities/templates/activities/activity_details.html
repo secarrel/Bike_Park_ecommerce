@@ -157,7 +157,7 @@
                                             {% else %}
                                                 {{ timeslot.start_time.time }}
                                             {% endif %}
-                                            | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.available_capacity }}
+                                            | Spaces booked: {{ timeslot.spaces_booked }}/{{ timeslot.total_capacity }}
                                             <a class="mx-3" href={% url 'delete_timeslot' timeslot.id %} aria-label="Continue to delete timeslot."><i class="fa-regular fa-trash-can text-danger"></i></a> 
                                             <a href={% url 'edit_timeslot' timeslot.id %} aria-label="Continue to edit timeslot."> 
                                                 <i class="fa-solid fa-pen"></i>

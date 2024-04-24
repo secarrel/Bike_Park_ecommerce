@@ -89,6 +89,11 @@ def activity_details(request, activity_id):
     # Sort most recent first
     reviews = Review.objects.filter(activity=activity).order_by('-review_time')
 
+    for timeslot in future_timeslots:
+        timeslot.total_capacity = (
+            timeslot.available_capacity + timeslot.spaces_booked)
+        print(timeslot.total_capacity)
+
     context = {
         'activity': activity,
         'future_timeslots': future_timeslots,
@@ -179,7 +184,7 @@ def add_timeslot(request):
             form = TimeslotForm(request.POST)
             if form.is_valid():
                 timeslot = form.save()
-                messages.success(request, 'Successfully added timeslot!')
+                messages.success(request, f'Successfully added {timeslot}!')
                 return redirect(
                     reverse('activity_details', args=[current_activity]))
             else:
