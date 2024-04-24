@@ -640,6 +640,8 @@ The checkout page displays an order summary and also a form for the user to add 
 #### Checkout Success
 This page outlines the order details and confirms that the order was successful. A toast show displaying the order number and an email is sent to the email address listed with the order. A 'keep shopping' button makes it easy for the user to navigate back to the activities page and find more activities to book! 
 
+Unfortunately, even after multiple attempts, I couldn't change the colour of the text in the stripe card input field, and on the dark background, the text wasn't visible. So for the sake of UX and accessibility, I made the background colour of this field white, despite it not fitting the theme of the site. 
+
 ![checkout success](docs/readme_images/checkout/success.png)
 
 [back to features navigation](#features)
