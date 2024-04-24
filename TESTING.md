@@ -469,6 +469,18 @@ I used Bootstrap for the majority of the responsiveness which sped up the proces
 
     So the user can review their order details, I added a link on the 'Order History' page which directs the user to the Checkout Success template. However, I had a separate function in my view for this and hadn't updated the contexts to include 'OrderLineItems' which is what was being iterated through in the template. After adding OrderLineItems to the contexts, the page displayed the correct information.
 
+- #### Manage timeslot available capacity
+
+    I noticed that the admin's view of timeslots displayed the capacity as 
+    
+        spaces_booked / available_capacity
+
+    When I built this functionality I didn't consider that I have set up available capacity to change depending on the spaces booked. Therefore, what I was aiming to show the admin was:
+
+        spaces_booked / total_capacity
+
+    To fix this functionality I added a for loop to my views.py which iterated through the future timeslots and calculated the total capacity by adding booked spaces and available capacity. I then rendered this in the template and it worked as hoped. 
+
 ### Unresolved Bugs
 
 - #### Empty List when filtering activities
