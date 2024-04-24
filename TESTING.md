@@ -118,7 +118,7 @@ I used the feature section from the README as a guide for the structure of this 
 | Page | User Action | Expected Result | Pass/Fail | Comments |
 | --- | --- | --- | --- | --- |
 | Navbar - logo | Hover over logo | Cursor is pointer | ✅ Pass |  |
-| --- | Clicks logo | Navigate to Home/Welcome page | ✅ Pass |  |
+|  | Clicks logo | Navigate to Home/Welcome page | ✅ Pass |  |
 | Navbar - top section | Hover over search-bar | Cursor is text selector | ✅ Pass |  |
 |  | Clicks Search-bar | Input field is highlighted | ✅ Pass |  |
 |  | Enters vaid search request | Results matching search request are displayed. | ✅ Pass |  |
@@ -359,7 +359,7 @@ All pages were tested, but I only included screenshots of a selection of pages a
 | iPhone 5/SE                       | 320 x 568     | [activities](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-activities.png) | ✅ Pass    |
 |                                   | 320 x 568     | [activity details](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-activity-details.png) | ✅ Pass    |
 |                                   | 320 x 568     | [bookings](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-bookings.png) | ✅ Pass    |
-|                                   | 320 x 568     | [manage activities](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-manage-activities.png) | ✅ Pass    |
+|                                   | 320 x 568     | [manage activities](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-manage-activities.png) | ✅ Pass. In this screenshot you can see some scroll on the x-axis. I have resolved this since the screenshot and there is no longer a x-axid scroll. |
 |                                   | 320 x 568     | [orders](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-orders.png) | ✅ Pass    |
 |                                   | 320 x 568     | [welcome](docs/responsiveness-ftbp/mobile/iPhone-5-SE-320x568-welcome.png) | ✅ Pass    |
 | Kindle Fire HDX                   | 800 x 1280    | [activity details](docs/responsiveness-ftbp/tablet/Kindle-Fire-HDX-800x1280-activity-details.png) | ✅ Pass    |

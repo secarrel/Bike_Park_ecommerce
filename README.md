@@ -22,12 +22,9 @@ CVC: any 3 digits
 
 Exp: any future date
 
-[Back to main navigation](#contents)
-
-
 ## Contents
 - [Project Planning](#project-planning)
-    - [strategy plane](#strategy-plane-the-big-picture)
+    - [Strategy plane](#strategy-plane-the-big-picture)
     - [Scope Plane](#scope-plane-defining-boundaries-and-features)
     - [Structure Plane](#structure-plane-organizing-information-and-functionality)
     - [Skeleton Plane](#skeleton-plane-wireframes-and-database-schema)
@@ -103,6 +100,8 @@ I have approached this project with [agile methodology](https://asana.com/resour
 I used Github Projects to manage my time and to ensure I completed the user stories. 
 
 [Kanban Board](https://github.com/users/secarrel/projects/5)
+
+Unfortunately, due to an issue with my environment setup, I had to create a new repository for my project and so the project board has been recreated to represent what it was. The dates therefore aren't realistic of when user stories were added and completed. 
 
 #### 'MoSCoW' Prioritization 
 Below you can see a table highlighting the features that I wanted to include in the project. In an attempt to limit scope creep and clearly define the MVP I have prioritized which to include using the [MoSCoW](https://www.techtarget.com/searchsoftwarequality/definition/MoSCoW-method) method. 
@@ -268,7 +267,7 @@ I used the [Boutique Ado](https://github.com/Code-Institute-Solutions/boutique_a
 - [Draw with light by Maria](https://github.com/mariamar95/ms4)
 - [Island Bees by Emma Hewson](https://github.com/emmahewson/island-bees/tree/main)
 - [Taco y Tequila by Gethin Davies](https://github.com/GethinDavies1990/CI_MS4_DTR)
-- [WoWder by my mentor Iuliia Konovalova](https://github.com/IuliiaKonovalova)
+- [WoWder by my mentor Iuliia Konovalova](https://github.com/IuliiaKonovalova/e-commerce)
 
 I found these projects incredibly useful for seeing different ways of designing a database and also for identifying recurring design features. I found that FreeFido was particularly insightful as it also implements a booking system. 
 
@@ -339,9 +338,6 @@ For the rest of the site, I used 'system-ui' for its readability. The site is qu
 ## Features
 You can see from the MoSCoW features table what features I planned to include in the project. To clearly outline the user experience of the site I have split this into all visitor, authenticated visitor, and admin accessible features. I have also split the feature explanation into pages, some of which are replicated to show the perspective of the relevant user.
 
-[Back to main navigation](#contents)
-
-
 Authentication:
 - [Sign in](#sign-in) - [(image)](docs/readme_images/full-page/sign-in.png)
 - [Sign up](#sign-up) - [( image )](docs/readme_images/full-page/sign-up.png)
@@ -383,7 +379,7 @@ Admin:
 ### **Authentication Features:** _Mixture of authenticated, non-authenticated users and admin_
 All authentication features are implemented in dedicated pages from Djnago's AllAuth app.
 #### Sign in
-The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient [link](docs/readme_images/allauth/sign-up-link.png) to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
+The user can sign in, if they already have an account, using Djnago's AllAuth app. If they do not have an account, they have a convenient link to sign up. This was already built in, but I restyled the page to fit the design of my site. Only the username and password are required for signing in. If either of these is incorrect, a generic message is displayed explaining that one of the fields is incorrect. This combats brute force log-in.
 
 ![invalid](docs/readme_images/allauth/allauth-invalid.png)
 
@@ -1161,10 +1157,10 @@ I used images from a variety of sources for the site. Some are used as permanent
 
 #### My photos
 - [hero image](docs/image-credit/hero-landing.jpg)
-- [user profile](docs/image-credit/uplift_category.jpg)
+- [user profile](docs\image-credit\profile.jpg)
 - [admin profile](docs/image-credit/20240330_111756.jpg)
 - [uplift](docs/image-credit/uplift_category.jpg)
-- [uplift 2](docs/image-credit/uplift_category.jpg)
+- [uplift 2](docs\image-credit\day_passes_category.jpg)
 - [Find us](docs/image-credit/20240330_112441.jpg)
 - Trail map on 'trails' page
 
