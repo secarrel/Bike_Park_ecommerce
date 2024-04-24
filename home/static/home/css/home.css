@@ -59,7 +59,6 @@
     margin-bottom: 10px;
 }
 
-
 .info-item {
     background-color: var(--grey);
     justify-content: space-around;
@@ -89,7 +88,6 @@
 }
 
 /* ----- LOCATION ----- */
-
 #location-summary {
     padding: 0 0 40px 0;
     border-bottom: 5px solid;
@@ -114,6 +112,7 @@
 #location-container p{
     color: var(--almost-white);
 }
+
 gmp-map {
     height: 400px;
     width: 80%;

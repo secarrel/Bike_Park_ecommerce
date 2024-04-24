@@ -10,6 +10,8 @@
     --danger: #c92020;
 }
 
+/*  Main element styling  */
+
 html {
     height: 100%;
     display: flex;
@@ -55,9 +57,80 @@ a:hover {
     color: var(--almost-white)
 }
 
+/* -------- PRE-SET TEXT -------- */
+
+.gold-text {
+    color: var(--gold);
+}
+
+.muted-text {
+    color: var(--light-grey);
+}
+
+.light-text {
+    color: var(--almost-white);
+}
+
+/* -------- PRE-SET BACKGROUNDS -------- */
+.bg-grey {
+    background-color: var(--grey)!important;
+    color: var(--dark-grey);
+}
+
+.bg-l-grey {
+    background-color: var(--light-grey)!important;
+    color: var(--dark-grey);
+}
+
+.bg-d-grey {
+    background-color: var(--dark-grey)!important;
+    color: var(--almost-white);
+}
+
+.bg-ft-danger {
+    background-color: var(--danger) !important;
+    color: var(--dark-grey);
+}
+
+.bg-ft-danger:hover {
+    background-color: #b94b4b !important;
+    color: var(--almost-white)!important;
+}
+
+.bg-ft-error {
+    background-color: rgb(212, 163, 163) !important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-success {
+    background-color: rgb(163, 211, 163)!important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-info {
+    background-color: rgb(174, 207, 228)!important;
+    color: var(--dark-grey)!important;
+}
+
+.bg-ft-warning {
+    background-color: rgb(230, 212, 175) !important;
+    color: var(--dark-grey)!important;
+}
+
+/* -------- PRE-SET CLASSES -------- */
+.round-border {
+    border-radius: 5px !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.hover-gold:hover {
+    color: var(--gold) !important;
+}
 
 /* -------- INPUT FIELDS -------- */
-
 input {
     background-color: var(--grey);
     color: var(--light-grey);
@@ -128,79 +201,7 @@ label {
     color: var(--dark-grey)
 }
 
-/* -------- PRE-SET TEXT -------- */
-
-.gold-text {
-    color: var(--gold);
-}
-
-.muted-text {
-    color: var(--light-grey);
-}
-
-.light-text {
-    color: var(--almost-white);
-}
-
-/* -------- PRE-SET BACKGROUNDS -------- */
-.bg-grey {
-    background-color: var(--grey)!important;
-    color: var(--dark-grey);
-}
-
-.bg-l-grey {
-    background-color: var(--light-grey)!important;
-    color: var(--dark-grey);
-}
-
-.bg-d-grey {
-    background-color: var(--dark-grey)!important;
-    color: var(--almost-white);
-}
-
-.bg-ft-danger {
-    background-color: var(--danger) !important;
-    color: var(--dark-grey);
-}
-
-.bg-ft-danger:hover {
-    background-color: #b94b4b !important;
-    color: var(--almost-white)!important;
-}
-
-.bg-ft-error {
-    background-color: rgb(212, 163, 163) !important;
-    color: var(--dark-grey)!important;
-}
-
-.bg-ft-success {
-    background-color: rgb(163, 211, 163)!important;
-    color: var(--dark-grey)!important;
-}
-
-.bg-ft-info {
-    background-color: rgb(174, 207, 228)!important;
-    color: var(--dark-grey)!important;
-}
-
-.bg-ft-warning {
-    background-color: rgb(230, 212, 175) !important;
-    color: var(--dark-grey)!important;
-}
-/* -------- PRE-SET CLASSES -------- */
-.round-border {
-    border-radius: 5px !important;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.hover-gold:hover {
-    color: var(--gold) !important;
-}
 /* --------- BUTTONS --------- */
-
 .box-shadow {
     box-shadow: 1px 1px 20px 10px var(--grey);
 }
@@ -391,7 +392,6 @@ nav {
 }
 
 /* --------- Toasts --------- */
-
 .toast {
     padding: 4px;
     max-width: 280px;
@@ -427,6 +427,7 @@ nav {
     color: var(--almost-white);
     padding: 0 4%;
 }
+
 /* -------- ACTIVITIES -------- */
 #activities-list{
    background-color: var(--grey); 
@@ -490,7 +491,6 @@ nav {
     opacity: 0;
     transition: .9s ease;
     backface-visibility: hidden;
-
 }
 
 .skill-level {
@@ -682,10 +682,4 @@ table, th, td {
     object-fit: cover;
     z-index: -60;
     opacity: 0.5;
-}
-
-
-/* -------- MEDIA QUERIES -------- */
-@media only screen and (min-width: 576px) {
-  
 }
